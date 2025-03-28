@@ -3,8 +3,11 @@ import 'package:coinllector_app/themes/colors.dart';
 import 'package:coinllector_app/themes/common.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:logging/logging.dart';
 
 void main() {
+  Logger.root.level = Level.ALL;
+
   runApp(const MyApp());
 }
 

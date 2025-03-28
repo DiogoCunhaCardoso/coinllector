@@ -1,13 +1,21 @@
+import 'package:coinllector_app/shared_components/tab_button.dart';
 import 'package:coinllector_app/themes/colors.dart';
 import 'package:coinllector_app/themes/sizes.dart';
 import 'package:coinllector_app/ui/coin_showcase/widgets/showcase_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class CoinShowcase extends StatelessWidget {
+class CoinShowcase extends StatefulWidget {
   const CoinShowcase({super.key, required this.type});
 
   final String type;
+
+  @override
+  State<CoinShowcase> createState() => _CoinShowcaseState();
+}
+
+class _CoinShowcaseState extends State<CoinShowcase> {
+  int _selectedQualityIndex = -1; // Track selected quality tab index
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +99,7 @@ class CoinShowcase extends StatelessWidget {
                         ),
                       ),
 
-                      const SizedBox(height: AppSizes.p16),
+                      const SizedBox(height: AppSizes.p24),
 
                       // Left-aligned text section
                       Padding(
@@ -101,6 +109,58 @@ class CoinShowcase extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            // Quality selector tabs
+                            Container(
+                              height: 48,
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 6,
+                                vertical: 6,
+                              ),
+                              decoration: BoxDecoration(
+                                color: AppColors.onSurfaceVariant,
+                                borderRadius: BorderRadius.circular(
+                                  AppSizes.r8,
+                                ),
+                              ),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: TabButton(
+                                      text: "Poor",
+                                      isSelected: _selectedQualityIndex == 0,
+                                      onPressed:
+                                          () => setState(
+                                            () => _selectedQualityIndex = 0,
+                                          ),
+                                    ),
+                                  ),
+                                  SizedBox(width: AppSizes.p8),
+                                  Expanded(
+                                    child: TabButton(
+                                      text: "Average",
+                                      isSelected: _selectedQualityIndex == 1,
+                                      onPressed:
+                                          () => setState(
+                                            () => _selectedQualityIndex = 1,
+                                          ),
+                                    ),
+                                  ),
+                                  SizedBox(width: AppSizes.p8),
+                                  Expanded(
+                                    child: TabButton(
+                                      text: "Good",
+                                      isSelected: _selectedQualityIndex == 2,
+                                      onPressed:
+                                          () => setState(
+                                            () => _selectedQualityIndex = 2,
+                                          ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(height: AppSizes.p24),
+
                             Text(
                               "Andorra",
                               style: Theme.of(context).textTheme.titleLarge
@@ -120,9 +180,7 @@ class CoinShowcase extends StatelessWidget {
             ],
           ),
 
-          // POSITIONED ITEMS -----------------------------------
-
-          // Coin image
+          // Positioned elements
           Positioned(
             top: kToolbarHeight + 24 + AppSizes.p32,
             left: 0,
@@ -131,18 +189,17 @@ class CoinShowcase extends StatelessWidget {
               child: Image.asset(
                 width: 148,
                 "assets/value/value-2euro.png",
-                fit: BoxFit.fill,
+                fit: BoxFit.contain, // Changed from fill to contain
               ),
             ),
           ),
 
-          // AppBar
           Positioned(
             top: 0,
             left: 0,
             right: 0,
             child: AppBar(
-              title: Text(type),
+              title: Text(widget.type),
               leading: IconButton(
                 icon: const Icon(Icons.arrow_back),
                 onPressed: () => context.pop(),
@@ -150,7 +207,6 @@ class CoinShowcase extends StatelessWidget {
             ),
           ),
 
-          // Navigation Buttons
           Positioned(
             left: 0,
             right: 0,

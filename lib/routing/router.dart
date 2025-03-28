@@ -1,3 +1,4 @@
+import 'package:coinllector_app/models/coin.dart';
 import 'package:coinllector_app/routing/routes.dart';
 import 'package:coinllector_app/ui/coin_showcase/coin_showcase_view.dart';
 import 'package:coinllector_app/ui/coins/coins_view.dart';
@@ -8,6 +9,9 @@ import 'package:coinllector_app/ui/settings/settings_view.dart';
 import 'package:coinllector_app/ui/settings_about/about_view.dart';
 import 'package:coinllector_app/ui/profile_statistics/profile_statistics_view.dart';
 import 'package:go_router/go_router.dart';
+import 'package:logging/logging.dart';
+
+final _log = Logger('ROUTER');
 
 // Routing Configuration
 final GoRouter router = GoRouter(
@@ -24,9 +28,10 @@ final GoRouter router = GoRouter(
           builder: (context, state) => const CoinsView(),
           routes: [
             GoRoute(
-              path: ':type', // Now dynamic
+              path: ':type',
               builder: (context, state) {
-                final type = state.pathParameters['type']!;
+                final typeStr = state.pathParameters['type']!;
+                final type = CoinType.values.byName(typeStr);
                 return CoinsByTypeView(type: type);
               },
               routes: [

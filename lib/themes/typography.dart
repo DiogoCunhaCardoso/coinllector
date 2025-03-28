@@ -6,6 +6,11 @@ class AppTextStyles {
     fontWeight: FontWeight.w600, // semibold
   );
 
+  static const TextStyle bodyMedium = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w600, // semibold
+  );
+
   static const TextStyle bodyLarge = TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.w600, // semibold
