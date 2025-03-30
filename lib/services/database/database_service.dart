@@ -36,6 +36,8 @@ class DatabaseService {
     final databaseDirPath = await getDatabasesPath();
     final databasePath = join(databaseDirPath, DatabaseConfig.databaseName);
 
+    await deleteDatabase(databasePath);
+
     return await openDatabase(
       databasePath,
       version: DatabaseConfig.databaseVersion,

@@ -1,6 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:coinllector_app/models/country.dart';
+import 'package:coinllector_app/services/database/core/database_tables.dart';
 
 enum CoinType {
   COMMEMORATIVE,
@@ -18,20 +19,53 @@ class Coin {
   final int id;
   final CoinType type;
   final String image;
-  final int quantity;
+  final int? quantity;
   final String periodStartDate;
   final String? periodEndDate;
   final String description;
-  final CountryEnum country;
+  final CountryNames country;
 
   Coin({
     required this.id,
     required this.type,
     required this.image,
-    required this.quantity,
+    this.quantity,
     required this.periodStartDate,
     this.periodEndDate,
     required this.description,
     required this.country,
   });
+
+  // TO MAP ------------------------------------------------------------
+
+  Map<String, dynamic> toMap() {
+    return {
+      DatabaseTables.id: id,
+      DatabaseTables.type: type.name, // Store CoinType as a string
+      DatabaseTables.image: image,
+      DatabaseTables.quantity: quantity,
+      DatabaseTables.periodStartDate: periodStartDate,
+      DatabaseTables.periodEndDate: periodEndDate,
+      DatabaseTables.description: description,
+      DatabaseTables.country: country.name, // Store CountryEnum as a string
+    };
+  }
+
+  // FROM MAP -----------------------------------------------------------
+
+  factory Coin.fromMap(Map<String, dynamic> map) {
+    final coinType = CoinType.values.byName(map[DatabaseTables.type]);
+    final countryEnum = CountryNames.values.byName(map[DatabaseTables.country]);
+
+    return Coin(
+      id: map[DatabaseTables.id] as int,
+      type: coinType,
+      image: map[DatabaseTables.image] as String,
+      quantity: map[DatabaseTables.quantity] as int?,
+      periodStartDate: map[DatabaseTables.periodStartDate] as String,
+      periodEndDate: map[DatabaseTables.periodEndDate] as String?,
+      description: map[DatabaseTables.description] as String,
+      country: countryEnum,
+    );
+  }
 }

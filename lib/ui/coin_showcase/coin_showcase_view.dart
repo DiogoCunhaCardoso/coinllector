@@ -1,21 +1,52 @@
-import 'package:coinllector_app/shared_components/tab_button.dart';
-import 'package:coinllector_app/themes/colors.dart';
+import 'package:coinllector_app/models/coin.dart';
+import 'package:coinllector_app/models/country.dart';
+import 'package:coinllector_app/services/database/database_service.dart';
 import 'package:coinllector_app/themes/sizes.dart';
 import 'package:coinllector_app/ui/coin_showcase/widgets/showcase_buttons.dart';
+import 'package:coinllector_app/ui/coin_showcase/widgets/showcase_description.dart';
+import 'package:coinllector_app/ui/coin_showcase/widgets/showcase_header.dart';
+import 'package:coinllector_app/ui/coin_showcase/widgets/showcase_quality_selector.dart';
+import 'package:coinllector_app/ui/coin_showcase/widgets/showcase_stats.dart';
+import 'package:coinllector_app/utils/text_display.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:logging/logging.dart';
 
 class CoinShowcase extends StatefulWidget {
-  const CoinShowcase({super.key, required this.type});
+  const CoinShowcase({super.key, required this.coin});
 
-  final String type;
+  final Coin coin;
 
   @override
   State<CoinShowcase> createState() => _CoinShowcaseState();
 }
 
 class _CoinShowcaseState extends State<CoinShowcase> {
-  int _selectedQualityIndex = -1; // Track selected quality tab index
+  final _log = Logger('COINS_SHOWCASE');
+  final DatabaseService _databaseService = DatabaseService.instance;
+  int _selectedQualityIndex = -1;
+  Country? _country;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadCountry();
+  }
+
+  Future<void> _loadCountry() async {
+    try {
+      await _databaseService.database;
+      final country = await _databaseService.countryRepository.getCountryByEnum(
+        widget.coin.country,
+      );
+
+      setState(() {
+        _country = country;
+      });
+    } catch (e) {
+      _log.info('Error loading country: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,84 +55,18 @@ class _CoinShowcaseState extends State<CoinShowcase> {
         children: [
           Column(
             children: [
-              // Header section
-              Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(
-                    bottomRight: Radius.circular(16),
-                    bottomLeft: Radius.circular(16),
-                  ),
-                  gradient: AppColors.gradient,
-                ),
-                padding: const EdgeInsets.only(
-                  top: kToolbarHeight + 24,
-                  left: 24,
-                  right: 24,
-                  bottom: 24,
-                ),
-                height: 220,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                      width: 28,
-                      height: 28,
-                      child: Transform.scale(
-                        scale: 1.33,
-                        child: Checkbox(
-                          value: true,
-                          onChanged: (bool? value) {},
-                        ),
-                      ),
-                    ),
-                    const CircleAvatar(radius: 16),
-                  ],
-                ),
-              ),
-
+              ShowcaseHeader(country: _country),
               Expanded(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.only(bottom: 80),
                   child: Column(
                     children: [
                       const SizedBox(height: 64),
-                      // Centered stats row
-                      Center(
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Column(
-                              children: [
-                                Text(
-                                  "1M",
-                                  style: TextStyle(
-                                    color: AppColors.onSurfaceVariant,
-                                  ),
-                                ),
-                                const Text("Quantity"),
-                              ],
-                            ),
-                            SizedBox(width: AppSizes.p24),
-                            Column(
-                              children: [
-                                Text(
-                                  "jan 2004",
-                                  style: TextStyle(
-                                    color: AppColors.onSurfaceVariant,
-                                  ),
-                                ),
-                                const Text("Release"),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
+
+                      ShowcaseStats(coin: widget.coin),
 
                       const SizedBox(height: AppSizes.p24),
 
-                      // Left-aligned text section
                       Padding(
                         padding: const EdgeInsets.symmetric(
                           horizontal: AppSizes.p16,
@@ -109,67 +74,15 @@ class _CoinShowcaseState extends State<CoinShowcase> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            // Quality selector tabs
-                            Container(
-                              height: 48,
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 6,
-                                vertical: 6,
-                              ),
-                              decoration: BoxDecoration(
-                                color: AppColors.onSurfaceVariant,
-                                borderRadius: BorderRadius.circular(
-                                  AppSizes.r8,
-                                ),
-                              ),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: TabButton(
-                                      text: "Poor",
-                                      isSelected: _selectedQualityIndex == 0,
-                                      onPressed:
-                                          () => setState(
-                                            () => _selectedQualityIndex = 0,
-                                          ),
-                                    ),
-                                  ),
-                                  SizedBox(width: AppSizes.p8),
-                                  Expanded(
-                                    child: TabButton(
-                                      text: "Average",
-                                      isSelected: _selectedQualityIndex == 1,
-                                      onPressed:
-                                          () => setState(
-                                            () => _selectedQualityIndex = 1,
-                                          ),
-                                    ),
-                                  ),
-                                  SizedBox(width: AppSizes.p8),
-                                  Expanded(
-                                    child: TabButton(
-                                      text: "Good",
-                                      isSelected: _selectedQualityIndex == 2,
-                                      onPressed:
-                                          () => setState(
-                                            () => _selectedQualityIndex = 2,
-                                          ),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                            ShowcaseQualitySelector(
+                              selectedQualityIndex: _selectedQualityIndex,
+                              onQualitySelected: (index) {
+                                setState(() => _selectedQualityIndex = index);
+                              },
                             ),
                             const SizedBox(height: AppSizes.p24),
 
-                            Text(
-                              "Andorra",
-                              style: Theme.of(context).textTheme.titleLarge
-                                  ?.copyWith(fontWeight: FontWeight.bold),
-                            ),
-                            const SizedBox(height: 8),
-                            const Text(
-                              'The €2 coin shows the coat of arms of Andorra with the motto "virtus unita fortior" (virtue united is stronger). Edge-lettering of the €2 coin: 2 **, repeated six times.',
-                            ),
+                            ShowcaseDescription(coin: widget.coin),
                           ],
                         ),
                       ),
@@ -180,7 +93,9 @@ class _CoinShowcaseState extends State<CoinShowcase> {
             ],
           ),
 
-          // Positioned elements
+          // POSITIONED ELEMENTS ----------------------------------------------------------------------------------
+
+          // IMAGE
           Positioned(
             top: kToolbarHeight + 24 + AppSizes.p32,
             left: 0,
@@ -188,18 +103,19 @@ class _CoinShowcaseState extends State<CoinShowcase> {
             child: Center(
               child: Image.asset(
                 width: 148,
-                "assets/value/value-2euro.png",
-                fit: BoxFit.contain, // Changed from fill to contain
+                widget.coin.image,
+                fit: BoxFit.contain,
               ),
             ),
           ),
 
+          // APP BAR
           Positioned(
             top: 0,
             left: 0,
             right: 0,
             child: AppBar(
-              title: Text(widget.type),
+              title: Text(showcaseTitle(widget.coin.type.name)),
               leading: IconButton(
                 icon: const Icon(Icons.arrow_back),
                 onPressed: () => context.pop(),
@@ -207,6 +123,7 @@ class _CoinShowcaseState extends State<CoinShowcase> {
             ),
           ),
 
+          // BOTTOM NAVIGATION
           Positioned(
             left: 0,
             right: 0,

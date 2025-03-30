@@ -1,4 +1,4 @@
-import 'package:coinllector_app/services/data/coins_data.dart';
+import 'package:coinllector_app/models/country.dart';
 import 'package:logging/logging.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:coinllector_app/models/coin.dart';
@@ -10,16 +10,8 @@ class CoinRepository {
 
   CoinRepository(this.db);
 
-  Future<List<Map<String, dynamic>>> getCoinsByType(CoinType type) async {
-    final typeString = type.name; // Ensure this matches database storage
-    _log.info('Querying coins with type: $typeString');
-
-    // Log all coin table columns for debugging
-    final columns = await db.query(
-      DatabaseTables.coins,
-      columns: ['id', 'type', 'image', 'country'],
-    );
-    _log.info('All coin table entries: $columns');
+  Future<List<Coin>> getCoinsByType(CoinType type) async {
+    final typeString = type.name;
 
     final data = await db.query(
       DatabaseTables.coins,
@@ -29,14 +21,21 @@ class CoinRepository {
 
     _log.info('Found ${data.length} coins matching type: $typeString');
 
-    // Log detailed coin data for verification
-    for (var coin in data) {
-      _log.info('Matching coin details: $coin');
-    }
+    return data.map((e) => Coin.fromMap(e)).toList();
+  }
 
-    return data
-        .map((e) => {'image': e[DatabaseTables.image], 'type': typeString})
-        .toList();
+  Future<List<Coin>> getCoinsByCountry(CountryNames country) async {
+    final countryString = country.name;
+
+    final data = await db.query(
+      DatabaseTables.coins,
+      where: '${DatabaseTables.country} = ?',
+      whereArgs: [countryString],
+    );
+
+    _log.info('Found ${data.length} coins matching country: $countryString');
+
+    return data.map((e) => Coin.fromMap(e)).toList();
   }
 
   Future<void> insertInitialCoins(List<Coin> coins) async {

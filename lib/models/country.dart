@@ -2,7 +2,7 @@
 
 import 'package:coinllector_app/services/database/core/database_tables.dart';
 
-enum CountryEnum {
+enum CountryNames {
   EU,
   ANDORRA,
   AUSTRIA,
@@ -31,7 +31,7 @@ enum CountryEnum {
 }
 
 class Country {
-  final CountryEnum name;
+  final CountryNames name;
   final String flagImage;
   final String joinedOn;
 
@@ -55,7 +55,7 @@ class Country {
 
   factory Country.fromMap(Map<String, dynamic> map) {
     final countryName = map[DatabaseTables.countryName] as String;
-    final CountryEnum countryEnum = CountryEnum.values.byName(
+    final CountryNames countryEnum = CountryNames.values.byName(
       countryName.toUpperCase().replaceAll(" ", "_"),
     );
 

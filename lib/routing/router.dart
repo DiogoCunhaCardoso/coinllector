@@ -1,8 +1,10 @@
 import 'package:coinllector_app/models/coin.dart';
+import 'package:coinllector_app/models/country.dart';
 import 'package:coinllector_app/routing/routes.dart';
 import 'package:coinllector_app/ui/coin_showcase/coin_showcase_view.dart';
 import 'package:coinllector_app/ui/coins/coins_view.dart';
-import 'package:coinllector_app/ui/coins_type/coins_type_view.dart';
+import 'package:coinllector_app/ui/coins_filter_country/coins_filter_country_view.dart';
+import 'package:coinllector_app/ui/coins_filter_value/coins_filter_value_view.dart';
 import 'package:coinllector_app/ui/menu_view.dart';
 import 'package:coinllector_app/ui/profile/profile_view.dart';
 import 'package:coinllector_app/ui/settings/settings_view.dart';
@@ -28,19 +30,35 @@ final GoRouter router = GoRouter(
           builder: (context, state) => const CoinsView(),
           routes: [
             GoRoute(
-              path: ':type',
+              path: '/type/:type',
               builder: (context, state) {
                 final typeStr = state.pathParameters['type']!;
                 final type = CoinType.values.byName(typeStr);
-                return CoinsByTypeView(type: type);
+                return CoinsFilterView(type: type);
               },
               routes: [
                 GoRoute(
-                  path:
-                      AppRoutes.showcaseViewRelative, // Now using the variable
+                  path: AppRoutes.showcaseViewRelative,
                   builder: (context, state) {
-                    final type = state.pathParameters['type']!;
-                    return CoinShowcase(type: type);
+                    final coin = state.extra as Coin; // Get the coin from extra
+                    return CoinShowcase(coin: coin);
+                  },
+                ),
+              ],
+            ),
+            GoRoute(
+              path: '/country/:name',
+              builder: (context, state) {
+                final typeStr = state.pathParameters['name']!;
+                final name = CountryNames.values.byName(typeStr);
+                return CountriesFilterView(name: name);
+              },
+              routes: [
+                GoRoute(
+                  path: AppRoutes.showcaseViewRelative,
+                  builder: (context, state) {
+                    final coin = state.extra as Coin; // Get the coin from extra
+                    return CoinShowcase(coin: coin);
                   },
                 ),
               ],

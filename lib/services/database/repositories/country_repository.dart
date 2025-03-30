@@ -21,10 +21,31 @@ class CountryRepository {
     }
   }
 
+  Future<Country?> getCountryByEnum(CountryNames countryEnum) async {
+    try {
+      final data = await db.query(
+        DatabaseTables.countries,
+        where: '${DatabaseTables.countryName} = ?',
+        whereArgs: [countryEnum.name],
+        limit: 1,
+      );
+
+      if (data.isEmpty) {
+        _log.warning('No country found for enum: $countryEnum');
+        return null;
+      }
+
+      _log.info('Found country: ${countryEnum.name}');
+      return Country.fromMap(data.first);
+    } catch (e) {
+      _log.severe('Error fetching country by enum: $e');
+      rethrow;
+    }
+  }
+
   Future<void> insertInitialCountries(List<Country> countries) async {
     try {
       for (var country in countries) {
-        _log.info('Inserting country: ${country.name}');
         await db.insert(
           DatabaseTables.countries,
           country.toMap(),
