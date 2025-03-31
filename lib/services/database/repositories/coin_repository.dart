@@ -10,6 +10,8 @@ class CoinRepository {
 
   CoinRepository(this.db);
 
+  // FILTERS ----------------------------------------------------
+
   Future<List<Coin>> getCoinsByType(CoinType type) async {
     final typeString = type.name;
 
@@ -37,6 +39,17 @@ class CoinRepository {
 
     return data.map((e) => Coin.fromMap(e)).toList();
   }
+
+  // COUNT ------------------------------------------------------
+
+  Future<int> getCoinCount() async {
+    final result = await db.rawQuery(
+      'SELECT COUNT(*) FROM ${DatabaseTables.coins}',
+    );
+    return Sqflite.firstIntValue(result) ?? 0;
+  }
+
+  // INSERT ------------------------------------------------------
 
   Future<void> insertInitialCoins(List<Coin> coins) async {
     for (var coin in coins) {

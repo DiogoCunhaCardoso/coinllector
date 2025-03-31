@@ -1,24 +1,29 @@
 import 'package:coinllector_app/models/coin.dart';
 import 'package:coinllector_app/routing/routes.dart';
+import 'package:coinllector_app/shared_components/coin_card_complex.dart';
 import 'package:coinllector_app/themes/sizes.dart';
-import 'package:coinllector_app/ui/coins/widgets/coin_card.dart';
 import 'package:coinllector_app/utils/get_coin_size.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class CoinsFilterValueGrid extends StatelessWidget {
   final List<Coin>? coins;
+  final Set<int> ownedCoins;
+  final ValueChanged<int> onToggleCoin;
 
-  const CoinsFilterValueGrid({super.key, required this.coins});
+  const CoinsFilterValueGrid({
+    super.key,
+    required this.coins,
+    required this.ownedCoins,
+    required this.onToggleCoin,
+  });
 
   @override
   Widget build(BuildContext context) {
-    // LOADING STATE
     if (coins == null) {
       return const Center(child: CircularProgressIndicator());
     }
 
-    // EMPTY STATE
     if (coins!.isEmpty) {
       return const Center(child: Text('No coins available'));
     }
@@ -34,14 +39,16 @@ class CoinsFilterValueGrid extends StatelessWidget {
       itemCount: coins!.length,
       itemBuilder: (context, index) {
         final coin = coins![index];
-        return CoinCard(
+        final isOwned = ownedCoins.contains(coin.id);
+
+        return CoinCardComplex(
           imageUrl: coin.image,
-          size: getItemSizeForCoinsView(coin),
-          onTap:
-              () => context.push(
-                AppRoutes.coinsShowcase(coin),
-                extra: coin, // Pass the coin object as extra
-              ),
+          size: getItemSizeForFilterView(coin.type),
+          onTap: () => context.push(AppRoutes.coinsShowcase(coin), extra: coin),
+          isSelected: isOwned,
+          onSelected: (selected) => onToggleCoin(coin.id),
+          countryImage:
+              "assets/country/${coin.country.name.toLowerCase()}-flag.png",
         );
       },
     );

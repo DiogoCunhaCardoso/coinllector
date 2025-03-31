@@ -1,53 +1,42 @@
-import 'package:coinllector_app/shared_components/custom_app_bar.dart';
-import 'package:coinllector_app/shared_components/highest_coin_card.dart';
-import 'package:coinllector_app/shared_components/tab_button.dart';
-import 'package:coinllector_app/themes/colors.dart';
 import 'package:coinllector_app/themes/sizes.dart';
+import 'package:coinllector_app/ui/profile_statistics/components/statistics_list.dart';
+import 'package:coinllector_app/ui/profile_statistics/components/statistics_tabs.dart';
+import 'package:coinllector_app/ui/profile_statistics/statistics_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:coinllector_app/shared_components/custom_app_bar.dart';
+import 'package:coinllector_app/services/database/database_service.dart';
 
 class ProfileStatisticsView extends StatefulWidget {
   const ProfileStatisticsView({super.key});
 
   @override
-  ProfileStatisticsViewState createState() => ProfileStatisticsViewState();
+  State<ProfileStatisticsView> createState() => _ProfileStatisticsViewState();
 }
 
-class ProfileStatisticsViewState extends State<ProfileStatisticsView> {
+class _ProfileStatisticsViewState extends State<ProfileStatisticsView> {
+  final StatisticsProvider _provider = StatisticsProvider(
+    DatabaseService.instance,
+  );
   int _selectedIndex = 0;
+  StatisticsData? _data;
+  bool _isLoading = true;
 
-  // Arrays with data for Value and Country
-  final List<Map<String, String>> valueData = [
-    {
-      'countryName': 'Portugal',
-      'image':
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Flag_of_Portugal_%28alternate%29.svg/255px-Flag_of_Portugal_%28alternate%29.svg.png",
-      'coinsOwned': '15',
-      'totalCoins': '25',
-    },
-    {
-      'countryName': 'France',
-      'image':
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/1024px-Flag_of_France.svg.png",
-      'coinsOwned': '20',
-      'totalCoins': '30',
-    },
-    {
-      'countryName': 'Germany',
-      'image':
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/255px-Flag_of_Germany.svg.png",
-      'coinsOwned': '18',
-      'totalCoins': '28',
-    },
-  ];
+  @override
+  void initState() {
+    super.initState();
+    _loadData();
+  }
 
-  final List<Map<String, String>> countryData = [
-    {'countryName': 'Country A', 'coinsOwned': '10', 'totalCoins': '20'},
-    {'countryName': 'Country B', 'coinsOwned': '25', 'totalCoins': '40'},
-    {'countryName': 'Country C', 'coinsOwned': '30', 'totalCoins': '45'},
-  ];
-
-  List<Map<String, String>> getSelectedData() {
-    return _selectedIndex == 0 ? valueData : countryData;
+  Future<void> _loadData() async {
+    try {
+      final data = await _provider.fetchStatisticsData();
+      setState(() {
+        _data = data;
+        _isLoading = false;
+      });
+    } catch (e) {
+      setState(() => _isLoading = false);
+    }
   }
 
   @override
@@ -61,51 +50,22 @@ class ProfileStatisticsViewState extends State<ProfileStatisticsView> {
         ),
         child: Column(
           children: [
-            Container(
-              height: 48, // Set any height you want
-              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
-              decoration: BoxDecoration(
-                color: AppColors.onSurfaceVariant,
-                borderRadius: BorderRadius.circular(AppSizes.r8),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TabButton(
-                    text: "Value",
-                    isSelected: _selectedIndex == 0,
-                    onPressed: () => setState(() => _selectedIndex = 0),
-                  ),
-                  const SizedBox(width: AppSizes.p8),
-                  TabButton(
-                    text: "Country",
-                    isSelected: _selectedIndex == 1,
-                    onPressed: () => setState(() => _selectedIndex = 1),
-                  ),
-                ],
-              ),
+            StatisticsTabs(
+              selectedIndex: _selectedIndex,
+              onTabChanged: (index) => setState(() => _selectedIndex = index),
             ),
-
-            // List of cards
-            Expanded(
-              child: ListView.builder(
-                itemCount: getSelectedData().length,
-                itemBuilder: (context, index) {
-                  final item = getSelectedData()[index];
-                  return Padding(
-                    padding: EdgeInsets.only(
-                      top: index == 0 ? AppSizes.p24 : AppSizes.p8,
-                    ),
-                    child: HighestCoinCard(
-                      countryName: item['countryName']!,
-                      coinsOwned: item['coinsOwned']!,
-                      totalCoins: item['totalCoins']!,
-                      image: item['image']!,
-                    ),
-                  );
-                },
-              ),
-            ),
+            const SizedBox(height: AppSizes.p16),
+            _isLoading || _data == null
+                ? const Center(child: CircularProgressIndicator())
+                : Expanded(
+                  child: StatisticsList(
+                    showByType: _selectedIndex == 0,
+                    coinsByType: _data!.coinsByType,
+                    coinsByCountry: _data!.coinsByCountry,
+                    ownedByType: _data!.ownedByType,
+                    ownedByCountry: _data!.ownedByCountry,
+                  ),
+                ),
           ],
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:coinllector_app/routing/routes.dart';
+import 'package:coinllector_app/services/database/database_service.dart';
 import 'package:coinllector_app/themes/colors.dart';
 import 'package:coinllector_app/themes/sizes.dart';
 import 'package:coinllector_app/shared_components/highest_coin_card.dart';
@@ -7,9 +8,41 @@ import 'package:coinllector_app/ui/profile/components/profile_header.dart';
 import 'package:coinllector_app/ui/profile/components/stats_card.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:logging/logging.dart';
 
-class ProfileView extends StatelessWidget {
+class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
+
+  @override
+  State<ProfileView> createState() => _ProfileViewState();
+}
+
+class _ProfileViewState extends State<ProfileView> {
+  final DatabaseService _databaseService = DatabaseService.instance;
+  final _log = Logger('PROFILE_VIEW');
+
+  int _owndedCoinCount = 0;
+  int _totalCoinCount = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _getAllCoinsCount();
+  }
+
+  Future<void> _getAllCoinsCount() async {
+    final ownedCoinCount =
+        await _databaseService.userCoinRepository.getOwnedCoinCount();
+    final allCoinCount = await _databaseService.coinRepository.getCoinCount();
+
+    if (mounted) {
+      setState(() {
+        _owndedCoinCount = ownedCoinCount;
+        _totalCoinCount = allCoinCount;
+      });
+    }
+    _log.info("Got owned coin count - $ownedCoinCount");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,10 +80,10 @@ class ProfileView extends StatelessWidget {
                     children: [
                       Text("Total", style: AppTextStyles.body),
                       SizedBox(height: AppSizes.p8),
-                      const StatsCard(
+                      StatsCard(
                         title: "Total Coins",
-                        coinsOwned: "127",
-                        totalCoins: "232",
+                        coinsOwned: _owndedCoinCount.toString(),
+                        totalCoins: _totalCoinCount.toString(),
                       ),
                       SizedBox(height: AppSizes.p24),
                       Row(

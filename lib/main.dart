@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       routerConfig: router,
-      title: 'Flutter App',
+      title: 'Coinllector',
       theme: ThemeData(
         textTheme: GoogleFonts.openSansTextTheme().apply(
           bodyColor: AppColors.onSurface,

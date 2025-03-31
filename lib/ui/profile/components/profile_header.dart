@@ -16,7 +16,7 @@ class ProfileHeader extends StatelessWidget {
             const CircleAvatar(
               radius: 48,
               backgroundImage: NetworkImage(
-                'https://scontent.fopo6-2.fna.fbcdn.net/v/t39.30808-1/384106452_6702664629841372_2506567935603255304_n.jpg?stp=c342.0.1365.1365a_dst-jpg_s200x200_tt6&_nc_cat=111&ccb=1-7&_nc_sid=e99d92&_nc_ohc=kINerdyMBS4Q7kNvgFJWL2K&_nc_oc=AdlVfVxoDpkx1VQdp9ur0ZORM9-ats_9KklAze9jkfGE23227CDPzEMLcS3Bdsu1u4-kdUpm8L6mpGRfibh28Enk&_nc_zt=24&_nc_ht=scontent.fopo6-2.fna&_nc_gid=tLKsWsHRpaU9CF4Y0ffMVg&oh=00_AYGJVozyIOI1k8Jf8mQoufaz1oZgwf6swzx3TnDDh_56vA&oe=67EA025D',
+                'https://t3.ftcdn.net/jpg/02/36/99/22/360_F_236992283_sNOxCVQeFLd5pdqaKGh8DRGMZy7P4XKm.jpg',
               ),
             ),
             Positioned(

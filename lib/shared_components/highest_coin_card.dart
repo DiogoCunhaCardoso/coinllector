@@ -19,8 +19,10 @@ class HighestCoinCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double percentage =
-        double.parse(coinsOwned) / double.parse(totalCoins);
+    final double owned = double.tryParse(coinsOwned) ?? 0;
+    final double total =
+        double.tryParse(totalCoins) ?? 1; // Prevent division by zero
+    final double percentage = total > 0 ? owned / total : 0;
 
     return Card(
       child: Padding(
@@ -33,7 +35,7 @@ class HighestCoinCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                CircleAvatar(radius: 20, backgroundImage: NetworkImage(image)),
+                CircleAvatar(radius: 20, backgroundImage: AssetImage(image)),
                 SizedBox(width: AppSizes.p16),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

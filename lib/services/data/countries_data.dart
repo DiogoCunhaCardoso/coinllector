@@ -103,7 +103,7 @@ final List<Country> countriesData = [
   ),
   Country(
     name: CountryNames.SAN_MARINO,
-    flagImage: "assets/country/san-marino-flag.png",
+    flagImage: "assets/country/san_marino-flag.png",
     joinedOn: "1992-03-01",
   ),
   Country(
