@@ -413,4 +413,16 @@ final List<Coin> coinsData = [
         'Third series: Features King Philippe with "FP" monogram, "BE" country code, and flanking mint marks.',
     country: CountryNames.BELGIUM,
   ),
+
+  // DELETE AFTER
+  // DELETE AFTER
+  Coin(
+    id: 41,
+    type: CoinType.ONE_CENT,
+    image: 'assets/coins/belgium/models/one_cent_v3.png',
+    periodStartDate: '2014-01-01',
+    description:
+        'Third series: Features King Philippe with "FP" monogram, "BE" country code, and flanking mint marks.',
+    country: CountryNames.GERMANY,
+  ),
 ];

@@ -40,8 +40,12 @@ final GoRouter router = GoRouter(
                 GoRoute(
                   path: AppRoutes.showcaseViewRelative,
                   builder: (context, state) {
-                    final coin = state.extra as Coin; // Get the coin from extra
-                    return CoinShowcase(coin: coin);
+                    final extra = state.extra as Map<String, dynamic>;
+                    return CoinShowcase(
+                      coin: extra['coin'] as Coin,
+                      coins: extra['coins'] as List<Coin>,
+                      currentIndex: extra['currentIndex'] as int,
+                    );
                   },
                 ),
               ],
@@ -57,8 +61,17 @@ final GoRouter router = GoRouter(
                 GoRoute(
                   path: AppRoutes.showcaseViewRelative,
                   builder: (context, state) {
-                    final coin = state.extra as Coin; // Get the coin from extra
-                    return CoinShowcase(coin: coin);
+                    // Get the navigation data from extra
+                    final extra = state.extra as Map<String, dynamic>;
+                    final coin = extra['coin'] as Coin;
+                    final coins = extra['coins'] as List<Coin>;
+                    final currentIndex = extra['currentIndex'] as int;
+
+                    return CoinShowcase(
+                      coin: coin,
+                      coins: coins,
+                      currentIndex: currentIndex,
+                    );
                   },
                 ),
               ],

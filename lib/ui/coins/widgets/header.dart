@@ -8,10 +8,15 @@ class Header extends StatelessWidget {
   final int selectedIndex;
   final Function(int) onTabChanged;
 
+  final int coinsOwned;
+  final int totalCoins;
+
   const Header({
     super.key,
     required this.selectedIndex,
     required this.onTabChanged,
+    required this.coinsOwned,
+    required this.totalCoins,
   });
 
   @override
@@ -41,7 +46,10 @@ class Header extends StatelessWidget {
           RichText(
             text: TextSpan(
               style: AppTextStyles.bodyLarge,
-              children: const [TextSpan(text: "127/"), TextSpan(text: "231")],
+              children: [
+                TextSpan(text: "${coinsOwned.toString()}/"),
+                TextSpan(text: totalCoins.toString()),
+              ],
             ),
           ),
           const SizedBox(height: 20),

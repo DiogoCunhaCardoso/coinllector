@@ -3,8 +3,8 @@ import 'package:coinllector_app/themes/sizes.dart';
 import 'package:flutter/material.dart';
 
 class ShowcaseButtons extends StatelessWidget {
-  final VoidCallback onBackPressed;
-  final VoidCallback onNextPressed;
+  final void Function()? onBackPressed;
+  final void Function()? onNextPressed;
 
   const ShowcaseButtons({
     super.key,
@@ -40,7 +40,7 @@ class ShowcaseButtons extends StatelessWidget {
 }
 
 class _ShowcaseButton extends StatelessWidget {
-  final VoidCallback onPressed;
+  final void Function()? onPressed; // Keep as nullable
   final IconData icon;
   final String label;
   final bool iconFirst;
@@ -55,7 +55,7 @@ class _ShowcaseButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: onPressed,
+      onPressed: onPressed, // Flutter's TextButton accepts nullable callbacks
       style: TextButton.styleFrom(
         foregroundColor: AppColors.onSurface,
         padding: const EdgeInsets.symmetric(horizontal: AppSizes.p16),
@@ -65,14 +65,26 @@ class _ShowcaseButton extends StatelessWidget {
         children:
             iconFirst
                 ? [
-                  Icon(icon, color: AppColors.onSurface),
+                  Icon(
+                    icon,
+                    color: onPressed == null ? null : AppColors.onSurface,
+                  ),
                   const SizedBox(width: AppSizes.p8),
-                  Text(label),
+                  Text(
+                    label,
+                    style: TextStyle(color: onPressed == null ? null : null),
+                  ),
                 ]
                 : [
-                  Text(label),
+                  Text(
+                    label,
+                    style: TextStyle(color: onPressed == null ? null : null),
+                  ),
                   const SizedBox(width: AppSizes.p8),
-                  Icon(icon, color: AppColors.onSurface),
+                  Icon(
+                    icon,
+                    color: onPressed == null ? null : AppColors.onSurface,
+                  ),
                 ],
       ),
     );

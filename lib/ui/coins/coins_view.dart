@@ -18,6 +18,10 @@ class _CoinsViewState extends State<CoinsView> {
   int _selectedIndex = 0;
   List<Country>? _countries;
 
+  bool _isLoading = true;
+  int _ownedCoinCount = 0;
+  int _totalCoinCount = 0;
+
   final List<ValueData> coinsData = [
     ValueData(
       image: "assets/value/value-commemorative.png",
@@ -60,11 +64,36 @@ class _CoinsViewState extends State<CoinsView> {
   @override
   void initState() {
     super.initState();
-    _loadCountries();
+    _initializeData();
+  }
+
+  Future<void> _initializeData() async {
+    try {
+      await _databaseService.database;
+      await Future.wait([_loadCountries(), _getAllCoinsCount()]);
+    } catch (e) {
+      debugPrint('Error initializing data: $e');
+    } finally {
+      setState(() => _isLoading = false);
+    }
+  }
+
+  Future<void> _getAllCoinsCount() async {
+    final ownedCoinCount =
+        await _databaseService.userCoinRepository.getOwnedCoinCount();
+    final allCoinCount = await _databaseService.coinRepository.getCoinCount();
+
+    debugPrint(
+      'Counts - Owned: $ownedCoinCount, Total: $allCoinCount',
+    ); // Add debug
+
+    setState(() {
+      _ownedCoinCount = ownedCoinCount;
+      _totalCoinCount = allCoinCount;
+    });
   }
 
   Future<void> _loadCountries() async {
-    await _databaseService.database;
     final countries = await _databaseService.countryRepository.getCountries();
     setState(() => _countries = countries);
   }
@@ -77,6 +106,9 @@ class _CoinsViewState extends State<CoinsView> {
           Column(
             children: [
               Header(
+                coinsOwned:
+                    _isLoading ? 0 : _ownedCoinCount, // NOT CURRENTLY WORKING
+                totalCoins: _isLoading ? 0 : _totalCoinCount,
                 selectedIndex: _selectedIndex,
                 onTabChanged: (index) => setState(() => _selectedIndex = index),
               ),

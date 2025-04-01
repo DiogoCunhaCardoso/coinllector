@@ -4,8 +4,15 @@ import 'package:flutter/material.dart';
 
 class ShowcaseHeader extends StatelessWidget {
   final Country? country;
+  final bool isOwned;
+  final ValueChanged<bool>? onToggleOwnership;
 
-  const ShowcaseHeader({super.key, this.country});
+  const ShowcaseHeader({
+    super.key,
+    this.country,
+    required this.isOwned,
+    required this.onToggleOwnership,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +40,16 @@ class ShowcaseHeader extends StatelessWidget {
             width: 28,
             height: 28,
             child: Transform.scale(
-              scale: 1.33,
-              child: Checkbox(value: true, onChanged: (bool? value) {}),
+              scale: 1.2,
+              child: Checkbox(
+                value: isOwned,
+                onChanged: (value) => onToggleOwnership?.call(value ?? false),
+                fillColor: WidgetStateProperty.resolveWith<Color>((states) {
+                  return states.contains(WidgetState.selected)
+                      ? AppColors.primary
+                      : AppColors.onSurfaceVariant;
+                }),
+              ),
             ),
           ),
           CircleAvatar(

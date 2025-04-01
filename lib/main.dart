@@ -1,18 +1,23 @@
 import 'package:coinllector_app/routing/router.dart';
+import 'package:coinllector_app/shared_preferences/user_settings.dart';
 import 'package:coinllector_app/themes/colors.dart';
 import 'package:coinllector_app/themes/common.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:logging/logging.dart';
 
-void main() {
-  Logger.root.level = Level.ALL;
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(const MyApp());
+  final userSettings = UserSettings();
+  await userSettings.loadSettings();
+
+  runApp(MyApp(userSettings: userSettings));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({super.key, required this.userSettings});
+
+  final UserSettings userSettings;
 
   @override
   Widget build(BuildContext context) {

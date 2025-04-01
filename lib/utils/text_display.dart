@@ -34,3 +34,15 @@ String convertDate(String dateStr) {
     return 'Invalid date format';
   }
 }
+
+String convertDateToYear(String dateStr) {
+  try {
+    DateTime dateTime = DateTime.parse(dateStr);
+
+    String formattedDate = DateFormat('yyyy').format(dateTime);
+
+    return formattedDate;
+  } catch (e) {
+    return 'Invalid date format';
+  }
+}

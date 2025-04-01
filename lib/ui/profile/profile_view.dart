@@ -35,12 +35,11 @@ class _ProfileViewState extends State<ProfileView> {
         await _databaseService.userCoinRepository.getOwnedCoinCount();
     final allCoinCount = await _databaseService.coinRepository.getCoinCount();
 
-    if (mounted) {
-      setState(() {
-        _owndedCoinCount = ownedCoinCount;
-        _totalCoinCount = allCoinCount;
-      });
-    }
+    setState(() {
+      _owndedCoinCount = ownedCoinCount;
+      _totalCoinCount = allCoinCount;
+    });
+
     _log.info("Got owned coin count - $ownedCoinCount");
   }
 

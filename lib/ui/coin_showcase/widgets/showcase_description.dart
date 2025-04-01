@@ -1,4 +1,5 @@
 import 'package:coinllector_app/models/coin.dart';
+import 'package:coinllector_app/themes/sizes.dart';
 import 'package:coinllector_app/utils/text_display.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,11 @@ class ShowcaseDescription extends StatelessWidget {
             context,
           ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
         ),
-        const SizedBox(height: 8),
+        if (coin.periodEndDate != null)
+          Text(
+            '${convertDateToYear(coin.periodStartDate)} - ${convertDateToYear(coin.periodEndDate!)}',
+          ),
+        const SizedBox(height: AppSizes.p12),
         Text(coin.description),
       ],
     );

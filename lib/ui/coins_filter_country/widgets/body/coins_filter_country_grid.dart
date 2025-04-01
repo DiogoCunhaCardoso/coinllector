@@ -1,5 +1,7 @@
 import 'package:coinllector_app/models/coin.dart';
+import 'package:coinllector_app/models/country.dart';
 import 'package:coinllector_app/routing/routes.dart';
+import 'package:coinllector_app/shared_components/bottom_sheets/mints.dart';
 import 'package:coinllector_app/shared_components/coin_card_complex.dart';
 import 'package:coinllector_app/themes/sizes.dart';
 import 'package:coinllector_app/utils/get_coin_size.dart';
@@ -48,13 +50,26 @@ class CoinsFilterCountryGrid extends StatelessWidget {
               "assets/country/${coin.country.name.toLowerCase()}-flag.png",
           imageUrl: coin.image,
           isSelected: isOwned,
-          onSelected: (selected) => onToggleCoin(coin.id),
+          onSelected: (selected) {
+            // Toggle ownership when checkbox is clicked
+            onToggleCoin(coin.id);
+
+            // If the country is GERMANY, show the modal
+            if (coin.country == CountryNames.GERMANY) {
+              showModalList(context);
+            }
+          },
           size: getItemSizeForFilterView(coin.type),
-          onTap:
-              () => context.push(
-                AppRoutes.coinsShowcase(coin),
-                extra: coin, // Pass the coin object as extra
-              ),
+          onTap: () async {
+            final result = await context.push(
+              AppRoutes.coinsShowcase(coin),
+              extra: {'coin': coin, 'coins': coins, 'currentIndex': index},
+            );
+
+            if (result is bool && result != isOwned) {
+              onToggleCoin(coin.id);
+            }
+          },
         );
       },
     );

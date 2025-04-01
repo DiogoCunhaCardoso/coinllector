@@ -44,11 +44,20 @@ class CoinsFilterValueGrid extends StatelessWidget {
         return CoinCardComplex(
           imageUrl: coin.image,
           size: getItemSizeForFilterView(coin.type),
-          onTap: () => context.push(AppRoutes.coinsShowcase(coin), extra: coin),
           isSelected: isOwned,
           onSelected: (selected) => onToggleCoin(coin.id),
           countryImage:
               "assets/country/${coin.country.name.toLowerCase()}-flag.png",
+          onTap: () async {
+            final result = await context.push(
+              AppRoutes.coinsShowcase(coin),
+              extra: {'coin': coin, 'coins': coins, 'currentIndex': index},
+            );
+
+            if (result is bool && result != isOwned) {
+              onToggleCoin(coin.id);
+            }
+          },
         );
       },
     );

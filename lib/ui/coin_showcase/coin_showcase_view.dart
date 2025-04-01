@@ -1,5 +1,6 @@
 import 'package:coinllector_app/models/coin.dart';
 import 'package:coinllector_app/models/country.dart';
+import 'package:coinllector_app/routing/routes.dart';
 import 'package:coinllector_app/services/database/database_service.dart';
 import 'package:coinllector_app/themes/sizes.dart';
 import 'package:coinllector_app/ui/coin_showcase/widgets/showcase_buttons.dart';
@@ -13,9 +14,16 @@ import 'package:go_router/go_router.dart';
 import 'package:logging/logging.dart';
 
 class CoinShowcase extends StatefulWidget {
-  const CoinShowcase({super.key, required this.coin});
+  const CoinShowcase({
+    super.key,
+    required this.coin,
+    required this.coins,
+    required this.currentIndex,
+  });
 
   final Coin coin;
+  final List<Coin> coins;
+  final int currentIndex;
 
   @override
   State<CoinShowcase> createState() => _CoinShowcaseState();
@@ -26,11 +34,13 @@ class _CoinShowcaseState extends State<CoinShowcase> {
   final DatabaseService _databaseService = DatabaseService.instance;
   int _selectedQualityIndex = -1;
   Country? _country;
+  bool _isOwned = false; // Track if this coin is owned
 
   @override
   void initState() {
     super.initState();
     _loadCountry();
+    _checkIfOwned();
   }
 
   Future<void> _loadCountry() async {
@@ -48,6 +58,49 @@ class _CoinShowcaseState extends State<CoinShowcase> {
     }
   }
 
+  // Method to check if the coin is owned
+  Future<void> _checkIfOwned() async {
+    try {
+      await _databaseService.database;
+      final ownedCoins =
+          await _databaseService.userCoinRepository.getOwnedCoins();
+      setState(() {
+        _isOwned = ownedCoins.contains(widget.coin.id);
+      });
+    } catch (e) {
+      _log.info('Error checking ownership: $e');
+    }
+  }
+
+  // Method to toggle ownership
+  Future<void> _toggleOwnership(bool owned) async {
+    try {
+      if (owned) {
+        await _databaseService.userCoinRepository.addCoin(widget.coin.id);
+      } else {
+        await _databaseService.userCoinRepository.removeCoin(widget.coin.id);
+      }
+      setState(() {
+        _isOwned = owned;
+      });
+    } catch (e) {
+      _log.info('Error toggling ownership: $e');
+    }
+  }
+
+  void _navigateToCoin(int newIndex) {
+    if (newIndex < 0 || newIndex >= widget.coins.length) return;
+
+    context.pushReplacement(
+      AppRoutes.coinsShowcase(widget.coins[newIndex]),
+      extra: {
+        'coin': widget.coins[newIndex],
+        'coins': widget.coins,
+        'currentIndex': newIndex,
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,18 +108,19 @@ class _CoinShowcaseState extends State<CoinShowcase> {
         children: [
           Column(
             children: [
-              ShowcaseHeader(country: _country),
+              ShowcaseHeader(
+                country: _country,
+                isOwned: _isOwned,
+                onToggleOwnership: _toggleOwnership,
+              ),
               Expanded(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.only(bottom: 80),
                   child: Column(
                     children: [
                       const SizedBox(height: 64),
-
                       ShowcaseStats(coin: widget.coin),
-
                       const SizedBox(height: AppSizes.p24),
-
                       Padding(
                         padding: const EdgeInsets.symmetric(
                           horizontal: AppSizes.p16,
@@ -81,7 +135,6 @@ class _CoinShowcaseState extends State<CoinShowcase> {
                               },
                             ),
                             const SizedBox(height: AppSizes.p24),
-
                             ShowcaseDescription(coin: widget.coin),
                           ],
                         ),
@@ -92,8 +145,6 @@ class _CoinShowcaseState extends State<CoinShowcase> {
               ),
             ],
           ),
-
-          // POSITIONED ELEMENTS ----------------------------------------------------------------------------------
 
           // IMAGE
           Positioned(
@@ -116,9 +167,20 @@ class _CoinShowcaseState extends State<CoinShowcase> {
             right: 0,
             child: AppBar(
               title: Text(showcaseTitle(widget.coin.type.name)),
-              leading: IconButton(
-                icon: const Icon(Icons.arrow_back),
-                onPressed: () => context.pop(),
+              leading: PopScope(
+                canPop: false,
+                onPopInvokedWithResult: (didPop, result) {
+                  if (!didPop) {
+                    context.pop(_isOwned);
+                    return;
+                  }
+                },
+                child: IconButton(
+                  icon: const Icon(Icons.arrow_back),
+                  onPressed: () {
+                    context.pop(_isOwned);
+                  },
+                ),
               ),
             ),
           ),
@@ -128,7 +190,24 @@ class _CoinShowcaseState extends State<CoinShowcase> {
             left: 0,
             right: 0,
             bottom: 0,
-            child: ShowcaseButtons(onBackPressed: () {}, onNextPressed: () {}),
+            child: ShowcaseButtons(
+              onBackPressed:
+                  widget.currentIndex > 0
+                      ? () {
+                        final newIndex = widget.currentIndex - 1;
+                        _log.info('Going to coin at index: $newIndex');
+                        _navigateToCoin(newIndex);
+                      }
+                      : null,
+              onNextPressed:
+                  widget.currentIndex < widget.coins.length - 1
+                      ? () {
+                        final newIndex = widget.currentIndex + 1;
+                        _log.info('Going to coin at index: $newIndex');
+                        _navigateToCoin(newIndex);
+                      }
+                      : null,
+            ),
           ),
         ],
       ),
