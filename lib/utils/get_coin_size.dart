@@ -1,9 +1,10 @@
-import 'package:coinllector_app/models/coin.dart';
-import 'package:coinllector_app/models/country.dart';
-import 'package:coinllector_app/ui/coins/data/value_data.dart';
+import 'package:coinllector_app/data/models/country_model.dart';
+import 'package:coinllector_app/domain/entities/country.dart';
+import 'package:coinllector_app/presentation/model/coin_display.dart';
+import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
 
 double getItemSizeForCoinsView(dynamic item) {
-  if (item is ValueData) {
+  if (item is CoinDisplay) {
     const coinSizes = {
       CoinType.COMMEMORATIVE: 92.0,
       CoinType.TWO_EURO: 92.0,
