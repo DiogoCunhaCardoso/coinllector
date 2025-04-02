@@ -3,9 +3,10 @@ import 'package:coinllector_app/domain/entities/country.dart';
 import 'package:coinllector_app/presentation/model/coin_display.dart';
 import 'package:coinllector_app/presentation/views/coins/widgets/coins_view_grid.dart';
 import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
+import 'package:coinllector_app/utils/result.dart';
 import 'package:flutter/material.dart';
-import 'package:coinllector_app/data/models/country_model.dart';
 import 'package:coinllector_app/presentation/views/coins/widgets/coins_header.dart';
+import 'package:logging/logging.dart';
 
 class CoinsView extends StatefulWidget {
   const CoinsView({super.key});
@@ -15,6 +16,7 @@ class CoinsView extends StatefulWidget {
 }
 
 class _CoinsViewState extends State<CoinsView> {
+  final _log = Logger("COINS_VIEW");
   final DatabaseService _databaseService = DatabaseService.instance;
   int _selectedIndex = 0;
   List<Country>? _countries;
@@ -73,30 +75,41 @@ class _CoinsViewState extends State<CoinsView> {
       await _databaseService.database;
       await Future.wait([_loadCountries(), _getAllCoinsCount()]);
     } catch (e) {
-      debugPrint('Error initializing data: $e');
+      _log.severe('Error initializing data: $e');
     } finally {
       setState(() => _isLoading = false);
     }
   }
 
   Future<void> _loadCountries() async {
-    final countries = await _databaseService.countryRepository.getCountries();
-    setState(() => _countries = countries);
+    final result = await _databaseService.countryRepository.getCountries();
+
+    switch (result) {
+      case Success<List<Country>>():
+        setState(() => _countries = result.value);
+      case Error<List<Country>>():
+        _log.severe('Error loading countries: ${result.error}');
+    }
   }
 
   Future<void> _getAllCoinsCount() async {
-    final ownedCoinCount =
+    final ownedCoinResult =
         await _databaseService.userCoinRepository.getOwnedCoinCount();
-    final allCoinCount = await _databaseService.coinRepository.getCoinCount();
+    final totalCoinResult =
+        await _databaseService.coinRepository.getCoinCount();
 
-    debugPrint(
-      'Counts - Owned: $ownedCoinCount, Total: $allCoinCount',
-    ); // Add debug
+    switch (ownedCoinResult) {
+      case Success<int>():
+        setState(() => _ownedCoinCount = ownedCoinResult.value);
+      case Error<int>():
+        _log.severe('Error getting owned coin count: ${ownedCoinResult.error}');
 
-    setState(() {
-      _ownedCoinCount = ownedCoinCount;
-      _totalCoinCount = allCoinCount;
-    });
+        switch (totalCoinResult) {
+          case Success<int>():
+            setState(() => _totalCoinCount = totalCoinResult.value);
+          case Error<int>():
+        }
+    }
   }
 
   @override
@@ -108,7 +121,9 @@ class _CoinsViewState extends State<CoinsView> {
             children: [
               CoinsHeader(
                 coinsOwned:
-                    _isLoading ? 0 : _ownedCoinCount, // NOT CURRENTLY WORKING
+                    _isLoading
+                        ? 0
+                        : _ownedCoinCount, //TODO:  NOT CURRENTLY WORKING
                 totalCoins: _isLoading ? 0 : _totalCoinCount,
                 selectedIndex: _selectedIndex,
                 onTabChanged: (index) => setState(() => _selectedIndex = index),

@@ -5,7 +5,6 @@ import 'package:coinllector_app/config/themes/sizes.dart';
 import 'package:coinllector_app/presentation/views/coins/widgets/coin_card.dart';
 import 'package:coinllector_app/utils/get_coin_size.dart';
 import 'package:flutter/material.dart';
-import 'package:coinllector_app/data/models/country_model.dart';
 import 'package:go_router/go_router.dart';
 
 class CoinsViewGrid extends StatelessWidget {

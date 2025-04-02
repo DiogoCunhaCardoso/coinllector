@@ -5,6 +5,7 @@ import 'package:coinllector_app/presentation/views/profile_statistics/statistics
 import 'package:flutter/material.dart';
 import 'package:coinllector_app/shared/components/custom_app_bar.dart';
 import 'package:coinllector_app/data/local/database/database_service.dart';
+import 'package:logging/logging.dart';
 
 class ProfileStatisticsView extends StatefulWidget {
   const ProfileStatisticsView({super.key});
@@ -14,6 +15,7 @@ class ProfileStatisticsView extends StatefulWidget {
 }
 
 class _ProfileStatisticsViewState extends State<ProfileStatisticsView> {
+  final _log = Logger("PROFILE_STATS_VIEW");
   final StatisticsProvider _provider = StatisticsProvider(
     DatabaseService.instance,
   );
@@ -36,6 +38,7 @@ class _ProfileStatisticsViewState extends State<ProfileStatisticsView> {
       });
     } catch (e) {
       setState(() => _isLoading = false);
+      _log.severe("Error fetching statistics data: $e");
     }
   }
 
@@ -55,8 +58,12 @@ class _ProfileStatisticsViewState extends State<ProfileStatisticsView> {
               onTabChanged: (index) => setState(() => _selectedIndex = index),
             ),
             const SizedBox(height: AppSizes.p16),
-            _isLoading || _data == null
+            _isLoading
                 ? const Center(child: CircularProgressIndicator())
+                : _data == null
+                ? const Center(
+                  child: Text('Failed to load data. Please try again later.'),
+                )
                 : Expanded(
                   child: StatisticsList(
                     showByType: _selectedIndex == 0,

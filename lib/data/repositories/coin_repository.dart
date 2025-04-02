@@ -2,6 +2,7 @@ import 'package:coinllector_app/domain/entities/coin.dart';
 import 'package:coinllector_app/domain/interfaces/coin_interface.dart';
 import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';
+import 'package:coinllector_app/utils/result.dart';
 import 'package:logging/logging.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:coinllector_app/data/models/coin_model.dart';
@@ -16,68 +17,80 @@ class CoinRepository implements ICoinRepository {
   // FILTERS ----------------------------------------------------
 
   @override
-  Future<List<Coin>> getCoinsByType(CoinType type) async {
-    final typeString = type.name;
+  Future<Result<List<Coin>>> getCoinsByType(CoinType type) async {
+    try {
+      final typeString = type.name;
+      final data = await db.query(
+        DatabaseTables.coins,
+        where: '${DatabaseTables.type} = ?',
+        whereArgs: [typeString],
+      );
 
-    final data = await db.query(
-      DatabaseTables.coins,
-      where: '${DatabaseTables.type} = ?',
-      whereArgs: [typeString],
-    );
+      _log.info('Found ${data.length} coins matching type: $typeString');
 
-    _log.info('Found ${data.length} coins matching type: $typeString');
-
-    return data.map((e) {
-      final coinModel = CoinModel.fromMap(e);
-      return coinModel.toEntity(); // Convert to Coin
-    }).toList();
+      final coins = data.map((e) => CoinModel.fromMap(e).toEntity()).toList();
+      return Result.success(coins);
+    } catch (e) {
+      return Result.error(Exception('Failed to fetch coins by type: $e'));
+    }
   }
 
   @override
-  Future<List<Coin>> getCoinsByCountry(CountryNames country) async {
-    final countryString = country.name;
+  Future<Result<List<Coin>>> getCoinsByCountry(CountryNames country) async {
+    try {
+      final countryString = country.name;
 
-    final data = await db.query(
-      DatabaseTables.coins,
-      where: '${DatabaseTables.country} = ?',
-      whereArgs: [countryString],
-    );
+      final data = await db.query(
+        DatabaseTables.coins,
+        where: '${DatabaseTables.country} = ?',
+        whereArgs: [countryString],
+      );
 
-    _log.info('Found ${data.length} coins matching country: $countryString');
-
-    return data.map((e) {
-      final coinModel = CoinModel.fromMap(e);
-      return coinModel.toEntity(); // Convert to Coin
-    }).toList();
+      _log.info('Found ${data.length} coins matching country: $countryString');
+      final coins = data.map((e) => CoinModel.fromMap(e).toEntity()).toList();
+      return Result.success(coins);
+    } catch (e) {
+      return Result.error(Exception('Failed to fetch coins by country: $e'));
+    }
   }
 
   // COUNT ------------------------------------------------------
 
   @override
-  Future<int> getCoinCount() async {
-    final result = await db.rawQuery(
-      'SELECT COUNT(*) FROM ${DatabaseTables.coins}',
-    );
-    return Sqflite.firstIntValue(result) ?? 0;
+  Future<Result<int>> getCoinCount() async {
+    try {
+      final result = await db.rawQuery(
+        'SELECT COUNT(*) FROM ${DatabaseTables.coins}',
+      );
+      final count = Sqflite.firstIntValue(result) ?? 0;
+      return Result.success(count);
+    } catch (e) {
+      return Result.error(Exception('Failed to count coins: $e'));
+    }
   }
 
   // INSERT ------------------------------------------------------
 
   @override
-  Future<void> insertInitialCoins(List<CoinModel> coins) async {
-    for (var coin in coins) {
-      final Map<String, dynamic> coinMap = {
-        DatabaseTables.id: coin.id,
-        DatabaseTables.type: coin.type.name,
-        DatabaseTables.image: coin.image,
-        DatabaseTables.quantity: coin.quantity,
-        DatabaseTables.periodStartDate: coin.periodStartDate,
-        DatabaseTables.periodEndDate: coin.periodEndDate,
-        DatabaseTables.description: coin.description,
-        DatabaseTables.country: coin.country.name,
-      };
+  Future<Result<void>> insertInitialCoins(List<CoinModel> coins) async {
+    try {
+      for (var coin in coins) {
+        final Map<String, dynamic> coinMap = {
+          DatabaseTables.id: coin.id,
+          DatabaseTables.type: coin.type.name,
+          DatabaseTables.image: coin.image,
+          DatabaseTables.quantity: coin.quantity,
+          DatabaseTables.periodStartDate: coin.periodStartDate,
+          DatabaseTables.periodEndDate: coin.periodEndDate,
+          DatabaseTables.description: coin.description,
+          DatabaseTables.country: coin.country.name,
+        };
 
-      await db.insert(DatabaseTables.coins, coinMap);
+        await db.insert(DatabaseTables.coins, coinMap);
+      }
+      return Result.success(null);
+    } catch (e) {
+      return Result.error(Exception('Failed to insert initial coins: $e'));
     }
   }
 }

@@ -6,6 +6,7 @@ import 'package:coinllector_app/shared/components/highest_coin_card.dart';
 import 'package:coinllector_app/config/themes/typography.dart';
 import 'package:coinllector_app/presentation/views/profile/components/profile_header.dart';
 import 'package:coinllector_app/presentation/views/profile/components/profile_stats_card.dart';
+import 'package:coinllector_app/utils/result.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:logging/logging.dart';
@@ -21,7 +22,7 @@ class _ProfileViewState extends State<ProfileView> {
   final DatabaseService _databaseService = DatabaseService.instance;
   final _log = Logger('PROFILE_VIEW');
 
-  int _owndedCoinCount = 0;
+  int _ownedCoinCount = 0;
   int _totalCoinCount = 0;
 
   @override
@@ -31,16 +32,26 @@ class _ProfileViewState extends State<ProfileView> {
   }
 
   Future<void> _getAllCoinsCount() async {
-    final ownedCoinCount =
+    final ownedCoinResult =
         await _databaseService.userCoinRepository.getOwnedCoinCount();
-    final allCoinCount = await _databaseService.coinRepository.getCoinCount();
+    final allCoinResult = await _databaseService.coinRepository.getCoinCount();
 
-    setState(() {
-      _owndedCoinCount = ownedCoinCount;
-      _totalCoinCount = allCoinCount;
-    });
-
-    _log.info("Got owned coin count - $ownedCoinCount");
+    switch (ownedCoinResult) {
+      case Success<int>():
+        switch (allCoinResult) {
+          case Success<int>():
+            setState(() {
+              _ownedCoinCount = ownedCoinResult.value;
+              _totalCoinCount = allCoinResult.value;
+            });
+          case Error<int>():
+            _log.info(
+              'Error fetching total coin count: ${allCoinResult.error}',
+            );
+        }
+      case Error<int>():
+        _log.info('Error fetching owned coin count: ${ownedCoinResult.error}');
+    }
   }
 
   @override
@@ -81,7 +92,7 @@ class _ProfileViewState extends State<ProfileView> {
                       SizedBox(height: AppSizes.p8),
                       ProfileStatsCard(
                         title: "Total Coins",
-                        coinsOwned: _owndedCoinCount.toString(),
+                        coinsOwned: _ownedCoinCount.toString(),
                         totalCoins: _totalCoinCount.toString(),
                       ),
                       SizedBox(height: AppSizes.p24),

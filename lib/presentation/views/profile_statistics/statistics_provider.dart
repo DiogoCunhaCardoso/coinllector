@@ -2,6 +2,7 @@ import 'package:coinllector_app/data/local/database/database_service.dart';
 import 'package:coinllector_app/domain/entities/coin.dart';
 import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';
+import 'package:coinllector_app/utils/result.dart';
 import 'package:logging/logging.dart';
 
 class StatisticsProvider {
@@ -16,8 +17,8 @@ class StatisticsProvider {
       final results = await Future.wait([
         _fetchCoinsByType(),
         _fetchCoinsByCountry(),
-        _database.userCoinRepository.getOwnedCoinsCountByType(),
-        _database.userCoinRepository.getOwnedCoinsCountByCountry(),
+        _fetchOwnedCoinsByType(),
+        _fetchOwnedCoinsByCountry(),
       ]);
 
       return StatisticsData(
@@ -35,8 +36,14 @@ class StatisticsProvider {
   Future<Map<CoinType, List<Coin>>> _fetchCoinsByType() async {
     final data = <CoinType, List<Coin>>{};
     for (final type in CoinType.values) {
-      final coins = await _database.coinRepository.getCoinsByType(type);
-      data[type] = coins;
+      final result = await _database.coinRepository.getCoinsByType(type);
+      if (result is Success<List<Coin>>) {
+        data[type] = result.value;
+      } else if (result is Error<List<Coin>>) {
+        _log.severe(
+          "Error fetching coins by type ${type.name}: ${result.error}",
+        );
+      }
     }
     return data;
   }
@@ -44,10 +51,38 @@ class StatisticsProvider {
   Future<Map<CountryNames, List<Coin>>> _fetchCoinsByCountry() async {
     final data = <CountryNames, List<Coin>>{};
     for (final country in CountryNames.values) {
-      final coins = await _database.coinRepository.getCoinsByCountry(country);
-      data[country] = coins;
+      final result = await _database.coinRepository.getCoinsByCountry(country);
+      if (result is Success<List<Coin>>) {
+        data[country] = result.value;
+      } else if (result is Error<List<Coin>>) {
+        _log.severe(
+          "Error fetching coins by country ${country.name}: ${result.error}",
+        );
+      }
     }
     return data;
+  }
+
+  Future<Map<CoinType, int>> _fetchOwnedCoinsByType() async {
+    final result =
+        await _database.userCoinRepository.getOwnedCoinsCountByType();
+    if (result is Success<Map<CoinType, int>>) {
+      return result.value;
+    } else if (result is Error<Map<CoinType, int>>) {
+      _log.severe("Error fetching owned coins by type: ${result.error}");
+    }
+    return {}; // Return empty map if there's an error
+  }
+
+  Future<Map<CountryNames, int>> _fetchOwnedCoinsByCountry() async {
+    final result =
+        await _database.userCoinRepository.getOwnedCoinsCountByCountry();
+    if (result is Success<Map<CountryNames, int>>) {
+      return result.value;
+    } else if (result is Error<Map<CountryNames, int>>) {
+      _log.severe("Error fetching owned coins by country: ${result.error}");
+    }
+    return {}; // Return empty map if there's an error
   }
 }
 

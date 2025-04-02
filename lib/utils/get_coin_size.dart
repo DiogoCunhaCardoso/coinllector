@@ -1,4 +1,3 @@
-import 'package:coinllector_app/data/models/country_model.dart';
 import 'package:coinllector_app/domain/entities/country.dart';
 import 'package:coinllector_app/presentation/model/coin_display.dart';
 import 'package:coinllector_app/shared/enums/coin_types_enum.dart';

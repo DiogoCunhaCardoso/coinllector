@@ -1,6 +1,7 @@
 import 'package:coinllector_app/domain/interfaces/user_coin_interface.dart';
 import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';
+import 'package:coinllector_app/utils/result.dart';
 import 'package:logging/logging.dart';
 import 'package:sqflite/sqflite.dart';
 import '../local/database/database_tables.dart';
@@ -11,105 +12,126 @@ class UserCoinRepository implements IUserCoinRepository {
 
   UserCoinRepository(this.db);
   @override
-  Future<void> addCoin(int coinId) async {
-    await db.insert(DatabaseTables.userCoins, {
-      DatabaseTables.userCoinId: coinId,
-    });
-    _log.info("Added coin $coinId");
+  Future<Result<void>> addCoin(int coinId) async {
+    try {
+      await db.insert(DatabaseTables.userCoins, {
+        DatabaseTables.userCoinId: coinId,
+      });
+      _log.info("Added coin $coinId");
+      return Result.success(null);
+    } catch (e) {
+      return Result.error(Exception('Failed to add coin: $e'));
+    }
   }
 
   @override
-  Future<void> removeCoin(int coinId) async {
-    await db.delete(
-      DatabaseTables.userCoins,
-      where: '${DatabaseTables.userCoinId} = ?',
-      whereArgs: [coinId],
-    );
-    _log.info("Removed coin $coinId");
+  Future<Result<void>> removeCoin(int coinId) async {
+    try {
+      await db.delete(
+        DatabaseTables.userCoins,
+        where: '${DatabaseTables.userCoinId} = ?',
+        whereArgs: [coinId],
+      );
+      _log.info("Removed coin $coinId");
+      return Result.success(null);
+    } catch (e) {
+      return Result.error(Exception('Failed to remove coin: $e'));
+    }
   }
 
   @override
-  Future<bool> userOwnsCoin(int coinId) async {
-    final result = await db.query(
-      DatabaseTables.userCoins,
-      where: '${DatabaseTables.userCoinId} = ?',
-      whereArgs: [coinId],
-    );
-    return result.isNotEmpty;
+  Future<Result<bool>> userOwnsCoin(int coinId) async {
+    try {
+      final result = await db.query(
+        DatabaseTables.userCoins,
+        where: '${DatabaseTables.userCoinId} = ?',
+        whereArgs: [coinId],
+      );
+      return Result.success(result.isNotEmpty);
+    } catch (e) {
+      return Result.error(Exception('Failed to check if user owns coin: $e'));
+    }
   }
 
   @override
-  Future<List<int>> getOwnedCoins() async {
-    final result = await db.query(DatabaseTables.userCoins);
-    return result.map((row) => row[DatabaseTables.userCoinId] as int).toList();
+  Future<Result<List<int>>> getOwnedCoins() async {
+    try {
+      final result = await db.query(DatabaseTables.userCoins);
+      final ownedCoins =
+          result.map((row) => row[DatabaseTables.userCoinId] as int).toList();
+      return Result.success(ownedCoins);
+    } catch (e) {
+      return Result.error(Exception('Failed to fetch owned coins: $e'));
+    }
   }
 
   // COUNT ------------------------------------------------------
+
   @override
-  Future<int> getOwnedCoinCount() async {
-    final result = await db.rawQuery(
-      'SELECT COUNT(*) FROM ${DatabaseTables.userCoins}',
-    );
-    return Sqflite.firstIntValue(result) ?? 0;
+  Future<Result<int>> getOwnedCoinCount() async {
+    try {
+      final result = await db.rawQuery(
+        'SELECT COUNT(*) FROM ${DatabaseTables.userCoins}',
+      );
+      return Result.success(Sqflite.firstIntValue(result) ?? 0);
+    } catch (e) {
+      return Result.error(Exception('Failed to fetch owned coin count: $e'));
+    }
   }
 
   @override
-  Future<Map<CoinType, int>> getOwnedCoinsCountByType() async {
-    // Join userCoins with coins table to get type information
-    final result = await db.rawQuery('''
-    SELECT c.${DatabaseTables.type}, COUNT(*) as count 
-    FROM ${DatabaseTables.userCoins} uc
-    JOIN ${DatabaseTables.coins} c ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.id}
-    GROUP BY c.${DatabaseTables.type}
-  ''');
+  Future<Result<Map<CoinType, int>>> getOwnedCoinsCountByType() async {
+    try {
+      final result = await db.rawQuery('''
+        SELECT c.${DatabaseTables.type}, COUNT(*) as count 
+        FROM ${DatabaseTables.userCoins} uc
+        JOIN ${DatabaseTables.coins} c ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.id}
+        GROUP BY c.${DatabaseTables.type}
+      ''');
 
-    // Initialize all types with 0 count
-    final counts = <CoinType, int>{};
-    for (var type in CoinType.values) {
-      counts[type] = 0;
-    }
-
-    // Update counts from query results
-    for (var row in result) {
-      try {
-        final type = CoinType.values.byName(row[DatabaseTables.type] as String);
-        counts[type] = row['count'] as int;
-      } catch (e) {
-        _log.warning('Error parsing coin type: $e');
+      final counts = {for (var type in CoinType.values) type: 0};
+      for (var row in result) {
+        try {
+          final type = CoinType.values.byName(
+            row[DatabaseTables.type] as String,
+          );
+          counts[type] = row['count'] as int;
+        } catch (e) {
+          _log.warning('Error parsing coin type: $e');
+        }
       }
+      return Result.success(counts);
+    } catch (e) {
+      return Result.error(Exception('Failed to fetch owned coins by type: $e'));
     }
-
-    return counts;
   }
 
   @override
-  Future<Map<CountryNames, int>> getOwnedCoinsCountByCountry() async {
-    // Join userCoins with coins table to get country information
-    final result = await db.rawQuery('''
-    SELECT c.${DatabaseTables.country}, COUNT(*) as count 
-    FROM ${DatabaseTables.userCoins} uc
-    JOIN ${DatabaseTables.coins} c ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.id}
-    GROUP BY c.${DatabaseTables.country}
-  ''');
+  Future<Result<Map<CountryNames, int>>> getOwnedCoinsCountByCountry() async {
+    try {
+      final result = await db.rawQuery('''
+        SELECT c.${DatabaseTables.country}, COUNT(*) as count 
+        FROM ${DatabaseTables.userCoins} uc
+        JOIN ${DatabaseTables.coins} c ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.id}
+        GROUP BY c.${DatabaseTables.country}
+      ''');
 
-    // Initialize all countries with 0 count
-    final counts = <CountryNames, int>{};
-    for (var country in CountryNames.values) {
-      counts[country] = 0;
-    }
-
-    // Update counts from query results
-    for (var row in result) {
-      try {
-        final country = CountryNames.values.byName(
-          row[DatabaseTables.country] as String,
-        );
-        counts[country] = row['count'] as int;
-      } catch (e) {
-        _log.warning('Error parsing country: $e');
+      final counts = {for (var country in CountryNames.values) country: 0};
+      for (var row in result) {
+        try {
+          final country = CountryNames.values.byName(
+            row[DatabaseTables.country] as String,
+          );
+          counts[country] = row['count'] as int;
+        } catch (e) {
+          _log.warning('Error parsing country: $e');
+        }
       }
+      return Result.success(counts);
+    } catch (e) {
+      return Result.error(
+        Exception('Failed to fetch owned coins by country: $e'),
+      );
     }
-
-    return counts;
   }
 }

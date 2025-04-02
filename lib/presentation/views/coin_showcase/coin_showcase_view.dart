@@ -8,6 +8,7 @@ import 'package:coinllector_app/presentation/views/coin_showcase/widgets/showcas
 import 'package:coinllector_app/presentation/views/coin_showcase/widgets/showcase_header.dart';
 import 'package:coinllector_app/presentation/views/coin_showcase/widgets/showcase_quality_selector.dart';
 import 'package:coinllector_app/presentation/views/coin_showcase/widgets/showcase_stats.dart';
+import 'package:coinllector_app/utils/result.dart';
 import 'package:coinllector_app/utils/text_display.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -46,15 +47,18 @@ class _CoinShowcaseState extends State<CoinShowcase> {
   Future<void> _loadCountry() async {
     try {
       await _databaseService.database;
-      final country = await _databaseService.countryRepository.getCountryByEnum(
+      final result = await _databaseService.countryRepository.getCountryByEnum(
         widget.coin.country,
       );
 
-      setState(() {
-        _country = country;
-      });
+      switch (result) {
+        case Success<Country?>():
+          setState(() => _country = result.value);
+        case Error<Country?>():
+          _log.severe('Error loading country: ${result.error}');
+      }
     } catch (e) {
-      _log.info('Error loading country: $e');
+      _log.severe('Error loading country: $e');
     }
   }
 
@@ -62,29 +66,46 @@ class _CoinShowcaseState extends State<CoinShowcase> {
   Future<void> _checkIfOwned() async {
     try {
       await _databaseService.database;
-      final ownedCoins =
-          await _databaseService.userCoinRepository.getOwnedCoins();
-      setState(() {
-        _isOwned = ownedCoins.contains(widget.coin.id);
-      });
+      final result = await _databaseService.userCoinRepository.getOwnedCoins();
+
+      switch (result) {
+        case Success<List<int>>():
+          setState(() {
+            _isOwned = result.value.contains(widget.coin.id);
+          });
+        case Error<List<int>>():
+          _log.severe('Error checking ownership: ${result.error}');
+      }
     } catch (e) {
-      _log.info('Error checking ownership: $e');
+      _log.severe('Error checking ownership: $e');
     }
   }
 
   // Method to toggle ownership
   Future<void> _toggleOwnership(bool owned) async {
     try {
+      Result<void> result;
+
       if (owned) {
-        await _databaseService.userCoinRepository.addCoin(widget.coin.id);
+        result = await _databaseService.userCoinRepository.addCoin(
+          widget.coin.id,
+        );
       } else {
-        await _databaseService.userCoinRepository.removeCoin(widget.coin.id);
+        result = await _databaseService.userCoinRepository.removeCoin(
+          widget.coin.id,
+        );
       }
-      setState(() {
-        _isOwned = owned;
-      });
+
+      switch (result) {
+        case Success<void>():
+          setState(() {
+            _isOwned = owned;
+          });
+        case Error<void>():
+          _log.severe('Error toggling ownership: ${result.error}');
+      }
     } catch (e) {
-      _log.info('Error toggling ownership: $e');
+      _log.severe('Error toggling ownership: $e');
     }
   }
 
