@@ -2,7 +2,7 @@ import 'package:coinllector_app/config/themes/colors.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
 import 'package:coinllector_app/presentation/views/coins_filter_value/widgets/header/header_image_stack.dart';
 import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
-import 'package:coinllector_app/shared/header_info_text.dart';
+import 'package:coinllector_app/shared/components/header_info_text.dart';
 import 'package:flutter/material.dart';
 
 class CoinBanner extends StatelessWidget {

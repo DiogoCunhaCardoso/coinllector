@@ -1,0 +1,61 @@
+import 'package:sqflite/sqflite.dart';
+import '../local/database/database_tables.dart';
+
+class UserCoinLocalDataSource {
+  final Database db;
+
+  UserCoinLocalDataSource(this.db);
+
+  Future<void> insertCoin(int coinId) async {
+    await db.insert(DatabaseTables.userCoins, {
+      DatabaseTables.userCoinId: coinId,
+    });
+  }
+
+  Future<void> removeCoin(int coinId) async {
+    await db.delete(
+      DatabaseTables.userCoins,
+      where: '${DatabaseTables.userCoinId} = ?',
+      whereArgs: [coinId],
+    );
+  }
+
+  Future<bool> userOwnsCoin(int coinId) async {
+    final result = await db.query(
+      DatabaseTables.userCoins,
+      where: '${DatabaseTables.userCoinId} = ?',
+      whereArgs: [coinId],
+    );
+    return result.isNotEmpty;
+  }
+
+  Future<List<int>> getOwnedCoins() async {
+    final result = await db.query(DatabaseTables.userCoins);
+    return result.map((row) => row[DatabaseTables.userCoinId] as int).toList();
+  }
+
+  Future<int> getOwnedCoinCount() async {
+    final result = await db.rawQuery(
+      'SELECT COUNT(*) FROM ${DatabaseTables.userCoins}',
+    );
+    return Sqflite.firstIntValue(result) ?? 0;
+  }
+
+  Future<List<Map<String, Object?>>> getCountGroupedByType() async {
+    return await db.rawQuery('''
+      SELECT c.${DatabaseTables.type}, COUNT(*) as count 
+      FROM ${DatabaseTables.userCoins} uc
+      JOIN ${DatabaseTables.coins} c ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.id}
+      GROUP BY c.${DatabaseTables.type}
+    ''');
+  }
+
+  Future<List<Map<String, Object?>>> getCountGroupedByCountry() async {
+    return await db.rawQuery('''
+      SELECT c.${DatabaseTables.country}, COUNT(*) as count 
+      FROM ${DatabaseTables.userCoins} uc
+      JOIN ${DatabaseTables.coins} c ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.id}
+      GROUP BY c.${DatabaseTables.country}
+    ''');
+  }
+}

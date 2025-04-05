@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
-import 'package:coinllector_app/data/local/database/database_tables.dart';
+import 'package:coinllector_app/data/datasources/local/database/database_tables.dart';
 import 'package:coinllector_app/domain/entities/country.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 

@@ -5,6 +5,8 @@ import 'package:coinllector_app/utils/result.dart';
 
 abstract class ICountryRepository {
   Future<Result<List<Country>>> getCountries();
+
   Future<Result<Country?>> getCountryByEnum(CountryNames countryEnum);
+
   Future<Result<void>> insertInitialCountries(List<CountryModel> countries);
 }

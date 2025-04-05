@@ -14,8 +14,6 @@ class CoinProvider extends ChangeNotifier {
   final Logger _log = Logger('CoinProvider');
   final ICoinRepository _coinRepository;
 
-  //
-  //
   // INITIALIZATION ----------------------------------------------------------
   bool _isInitializing = false;
   Exception? _initializationError;
@@ -45,16 +43,12 @@ class CoinProvider extends ChangeNotifier {
     }
   }
 
-  //
-  //
   // VALUE TAB DATA ----------------------------------------------------------
   final List<CoinDisplay> _valueCoins = CoinDisplayData.coinTypes;
 
   UnmodifiableListView<CoinDisplay> get items =>
       UnmodifiableListView(_valueCoins);
 
-  //
-  //
   // TOTAL COIN COUNT --------------------------------------------------------
   int _totalCoinCount = 0;
 
@@ -73,8 +67,6 @@ class CoinProvider extends ChangeNotifier {
     }
   }
 
-  //
-  //
   // COINS BY TYPE (LAZY LOADING) --------------------------------------------
   final Map<CoinType, List<Coin>> _coinsByType = {};
 
@@ -110,4 +102,14 @@ class CoinProvider extends ChangeNotifier {
   }
 
   // CACHE MANAGEMENT -------------------------------------------------------
+
+  void invalidateCache(CoinType type) {
+    _coinsByType.remove(type);
+    notifyListeners();
+  }
+
+  void invalidateAllCache() {
+    _coinsByType.clear();
+    notifyListeners();
+  }
 }

@@ -1,5 +1,5 @@
 import 'package:coinllector_app/config/router/routes.dart';
-import 'package:coinllector_app/data/local/database/database_service.dart';
+import 'package:coinllector_app/data/datasources/local/database/database_service.dart';
 import 'package:coinllector_app/config/themes/colors.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
 import 'package:coinllector_app/shared/components/highest_coin_card.dart';

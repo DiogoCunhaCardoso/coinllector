@@ -2,29 +2,23 @@ import 'package:coinllector_app/domain/entities/country.dart';
 import 'package:coinllector_app/domain/interfaces/country_interface.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 import 'package:coinllector_app/utils/result.dart';
-import 'package:logging/logging.dart';
-import 'package:sqflite/sqflite.dart';
 import 'package:coinllector_app/data/models/country_model.dart';
-import '../local/database/database_tables.dart';
+import 'package:logging/logging.dart';
 
-class CountryRepository implements ICountryRepository {
-  final Database db;
+import '../datasources/remote/country_local_datasource.dart';
+
+class CountryRepositoryImpl implements ICountryRepository {
+  final CountryLocalDataSource dataSource;
   final _log = Logger('COUNTRY_REPOSITORY');
 
-  CountryRepository(this.db);
+  CountryRepositoryImpl(this.dataSource);
 
   @override
   Future<Result<List<Country>>> getCountries() async {
     try {
-      final data = await db.query(DatabaseTables.countries);
-      _log.info('Found ${data.length} countries');
-
-      final countries =
-          data.map((e) {
-            final countryModel = CountryModel.fromMap(e);
-            return countryModel.toEntity();
-          }).toList();
-
+      final models = await dataSource.getCountries();
+      final countries = models.map((e) => e.toEntity()).toList();
+      _log.info('Found ${models.length} countries');
       return Result.success(countries);
     } catch (e) {
       _log.severe('Error fetching countries: $e');
@@ -35,21 +29,14 @@ class CountryRepository implements ICountryRepository {
   @override
   Future<Result<Country?>> getCountryByEnum(CountryNames countryEnum) async {
     try {
-      final data = await db.query(
-        DatabaseTables.countries,
-        where: '${DatabaseTables.countryName} = ?',
-        whereArgs: [countryEnum.name],
-        limit: 1,
-      );
-
-      if (data.isEmpty) {
+      final model = await dataSource.getCountryByEnum(countryEnum);
+      if (model == null) {
         _log.warning('No country found for enum: $countryEnum');
         return Result.success(null);
       }
 
       _log.info('Found country: ${countryEnum.name}');
-      final countryModel = CountryModel.fromMap(data.first);
-      return Result.success(countryModel.toEntity());
+      return Result.success(model.toEntity());
     } catch (e) {
       _log.severe('Error fetching country by enum: $e');
       return Result.error(Exception('Failed to fetch country: $e'));
@@ -61,14 +48,7 @@ class CountryRepository implements ICountryRepository {
     List<CountryModel> countries,
   ) async {
     try {
-      for (var country in countries) {
-        await db.insert(
-          DatabaseTables.countries,
-          country.toMap(),
-          conflictAlgorithm: ConflictAlgorithm.replace,
-        );
-      }
-
+      await dataSource.insertInitialCountries(countries);
       _log.info('Successfully inserted all countries');
       return Result.success(null);
     } catch (e) {

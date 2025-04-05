@@ -1,4 +1,4 @@
-import 'package:coinllector_app/data/local/database/database_service.dart';
+import 'package:coinllector_app/data/datasources/local/database/database_service.dart';
 import 'package:coinllector_app/domain/entities/coin.dart';
 import 'package:coinllector_app/presentation/views/coins_filter_country/widgets/body/coins_filter_country_grid.dart';
 import 'package:coinllector_app/presentation/views/coins_filter_country/widgets/header/header.dart';

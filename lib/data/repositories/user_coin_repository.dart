@@ -3,20 +3,18 @@ import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 import 'package:coinllector_app/utils/result.dart';
 import 'package:logging/logging.dart';
-import 'package:sqflite/sqflite.dart';
-import '../local/database/database_tables.dart';
+import '../datasources/remote/user_coin_local_datasource.dart';
 
-class UserCoinRepository implements IUserCoinRepository {
-  final Database db;
+class UserCoinRepositoryImpl implements IUserCoinRepository {
   final _log = Logger('USER_COIN_REPOSITORY');
+  final UserCoinLocalDataSource dataSource;
 
-  UserCoinRepository(this.db);
+  UserCoinRepositoryImpl(this.dataSource);
+
   @override
   Future<Result<void>> addCoin(int coinId) async {
     try {
-      await db.insert(DatabaseTables.userCoins, {
-        DatabaseTables.userCoinId: coinId,
-      });
+      await dataSource.insertCoin(coinId);
       _log.info("Added coin $coinId");
       return Result.success(null);
     } catch (e) {
@@ -27,11 +25,7 @@ class UserCoinRepository implements IUserCoinRepository {
   @override
   Future<Result<void>> removeCoin(int coinId) async {
     try {
-      await db.delete(
-        DatabaseTables.userCoins,
-        where: '${DatabaseTables.userCoinId} = ?',
-        whereArgs: [coinId],
-      );
+      await dataSource.removeCoin(coinId);
       _log.info("Removed coin $coinId");
       return Result.success(null);
     } catch (e) {
@@ -42,12 +36,8 @@ class UserCoinRepository implements IUserCoinRepository {
   @override
   Future<Result<bool>> userOwnsCoin(int coinId) async {
     try {
-      final result = await db.query(
-        DatabaseTables.userCoins,
-        where: '${DatabaseTables.userCoinId} = ?',
-        whereArgs: [coinId],
-      );
-      return Result.success(result.isNotEmpty);
+      final owns = await dataSource.userOwnsCoin(coinId);
+      return Result.success(owns);
     } catch (e) {
       return Result.error(Exception('Failed to check if user owns coin: $e'));
     }
@@ -56,24 +46,18 @@ class UserCoinRepository implements IUserCoinRepository {
   @override
   Future<Result<List<int>>> getOwnedCoins() async {
     try {
-      final result = await db.query(DatabaseTables.userCoins);
-      final ownedCoins =
-          result.map((row) => row[DatabaseTables.userCoinId] as int).toList();
+      final ownedCoins = await dataSource.getOwnedCoins();
       return Result.success(ownedCoins);
     } catch (e) {
       return Result.error(Exception('Failed to fetch owned coins: $e'));
     }
   }
 
-  // COUNT ------------------------------------------------------
-
   @override
   Future<Result<int>> getOwnedCoinCount() async {
     try {
-      final result = await db.rawQuery(
-        'SELECT COUNT(*) FROM ${DatabaseTables.userCoins}',
-      );
-      return Result.success(Sqflite.firstIntValue(result) ?? 0);
+      final count = await dataSource.getOwnedCoinCount();
+      return Result.success(count);
     } catch (e) {
       return Result.error(Exception('Failed to fetch owned coin count: $e'));
     }
@@ -82,19 +66,11 @@ class UserCoinRepository implements IUserCoinRepository {
   @override
   Future<Result<Map<CoinType, int>>> getOwnedCoinsCountByType() async {
     try {
-      final result = await db.rawQuery('''
-        SELECT c.${DatabaseTables.type}, COUNT(*) as count 
-        FROM ${DatabaseTables.userCoins} uc
-        JOIN ${DatabaseTables.coins} c ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.id}
-        GROUP BY c.${DatabaseTables.type}
-      ''');
-
+      final result = await dataSource.getCountGroupedByType();
       final counts = {for (var type in CoinType.values) type: 0};
       for (var row in result) {
         try {
-          final type = CoinType.values.byName(
-            row[DatabaseTables.type] as String,
-          );
+          final type = CoinType.values.byName(row['type'] as String);
           counts[type] = row['count'] as int;
         } catch (e) {
           _log.warning('Error parsing coin type: $e');
@@ -109,19 +85,11 @@ class UserCoinRepository implements IUserCoinRepository {
   @override
   Future<Result<Map<CountryNames, int>>> getOwnedCoinsCountByCountry() async {
     try {
-      final result = await db.rawQuery('''
-        SELECT c.${DatabaseTables.country}, COUNT(*) as count 
-        FROM ${DatabaseTables.userCoins} uc
-        JOIN ${DatabaseTables.coins} c ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.id}
-        GROUP BY c.${DatabaseTables.country}
-      ''');
-
+      final result = await dataSource.getCountGroupedByCountry();
       final counts = {for (var country in CountryNames.values) country: 0};
       for (var row in result) {
         try {
-          final country = CountryNames.values.byName(
-            row[DatabaseTables.country] as String,
-          );
+          final country = CountryNames.values.byName(row['country'] as String);
           counts[country] = row['count'] as int;
         } catch (e) {
           _log.warning('Error parsing country: $e');

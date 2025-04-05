@@ -4,7 +4,7 @@ import 'package:coinllector_app/presentation/views/profile_statistics/components
 import 'package:coinllector_app/presentation/views/profile_statistics/statistics_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:coinllector_app/shared/components/custom_app_bar.dart';
-import 'package:coinllector_app/data/local/database/database_service.dart';
+import 'package:coinllector_app/data/datasources/local/database/database_service.dart';
 import 'package:logging/logging.dart';
 
 class ProfileStatisticsView extends StatefulWidget {

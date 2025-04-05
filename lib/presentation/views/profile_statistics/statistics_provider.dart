@@ -1,4 +1,4 @@
-import 'package:coinllector_app/data/local/database/database_service.dart';
+import 'package:coinllector_app/data/datasources/local/database/database_service.dart';
 import 'package:coinllector_app/domain/entities/coin.dart';
 import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';

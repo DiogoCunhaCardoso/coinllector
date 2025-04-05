@@ -6,7 +6,10 @@ import 'package:coinllector_app/utils/result.dart';
 
 abstract class ICoinRepository {
   Future<Result<List<Coin>>> getCoinsByType(CoinType type);
+
   Future<Result<List<Coin>>> getCoinsByCountry(CountryNames country);
+
   Future<Result<int>> getCoinCount();
+
   Future<Result<void>> insertInitialCoins(List<CoinModel> coins);
 }
