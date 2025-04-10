@@ -9,7 +9,7 @@ class CoinLocalDataSource {
 
   CoinLocalDataSource(this.db);
 
-  Future<List<Map<String, dynamic>>> getCoinsByType(CoinType type) {
+  Future<List<Map<String, dynamic>>> getAllCoinsByType(CoinType type) {
     return db.query(
       DatabaseTables.coins,
       where: '${DatabaseTables.type} = ?',
@@ -17,7 +17,9 @@ class CoinLocalDataSource {
     );
   }
 
-  Future<List<Map<String, dynamic>>> getCoinsByCountry(CountryNames country) {
+  Future<List<Map<String, dynamic>>> getAllCoinsByCountry(
+    CountryNames country,
+  ) {
     return db.query(
       DatabaseTables.coins,
       where: '${DatabaseTables.country} = ?',

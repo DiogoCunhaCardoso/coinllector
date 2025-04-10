@@ -14,7 +14,7 @@ class CountryRepositoryImpl implements ICountryRepository {
   CountryRepositoryImpl(this.dataSource);
 
   @override
-  Future<Result<List<Country>>> getCountries() async {
+  Future<Result<List<Country>>> getAllCountries() async {
     try {
       final models = await dataSource.getCountries();
       final countries = models.map((e) => e.toEntity()).toList();

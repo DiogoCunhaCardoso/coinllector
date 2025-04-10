@@ -1,15 +1,17 @@
 import 'package:coinllector_app/config/router/routes.dart';
-import 'package:coinllector_app/data/datasources/local/database/database_service.dart';
 import 'package:coinllector_app/config/themes/colors.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
+import 'package:coinllector_app/presentation/providers/coin_provider.dart';
+import 'package:coinllector_app/presentation/providers/user_coin_provider.dart';
 import 'package:coinllector_app/shared/components/highest_coin_card.dart';
 import 'package:coinllector_app/config/themes/typography.dart';
 import 'package:coinllector_app/presentation/views/profile/components/profile_header.dart';
 import 'package:coinllector_app/presentation/views/profile/components/profile_stats_card.dart';
-import 'package:coinllector_app/utils/result.dart';
+import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
+import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:logging/logging.dart';
+import 'package:provider/provider.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
@@ -19,65 +21,100 @@ class ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<ProfileView> {
-  final DatabaseService _databaseService = DatabaseService.instance;
-  final _log = Logger('PROFILE_VIEW');
-
-  int _ownedCoinCount = 0;
-  int _totalCoinCount = 0;
+  bool _isLoading = true;
+  List<MapEntry<CoinType, double>> _topTypePercentages = [];
+  List<MapEntry<CountryNames, double>> _topCountryPercentages = [];
+  bool _showTypes = true; // Toggle between showing types or countries
 
   @override
   void initState() {
     super.initState();
-    _getAllCoinsCount();
+    _loadTopPercentages();
   }
 
-  Future<void> _getAllCoinsCount() async {
-    final ownedCoinResult =
-        await _databaseService.userCoinRepository.getOwnedCoinCount();
-    final allCoinResult = await _databaseService.coinRepository.getCoinCount();
+  Future<void> _loadTopPercentages() async {
+    setState(() => _isLoading = true);
 
-    switch (ownedCoinResult) {
-      case Success<int>():
-        switch (allCoinResult) {
-          case Success<int>():
-            setState(() {
-              _ownedCoinCount = ownedCoinResult.value;
-              _totalCoinCount = allCoinResult.value;
-            });
-          case Error<int>():
-            _log.info(
-              'Error fetching total coin count: ${allCoinResult.error}',
-            );
+    try {
+      final coinProvider = Provider.of<CoinProvider>(context, listen: false);
+      final userCoinProvider = Provider.of<UserCoinProvider>(
+        context,
+        listen: false,
+      );
+
+      // Make sure providers are initialized
+      await coinProvider.init();
+      await userCoinProvider.init();
+
+      // Load all coins by type and country
+      final coinsByType = await coinProvider.loadAllCoinsByType();
+      final coinsByCountry = await coinProvider.loadAllCoinsByCountry();
+
+      // Calculate percentages for types
+      final typePercentages = <CoinType, double>{};
+      for (final type in CoinType.values) {
+        await userCoinProvider.loadCoinsByType(type);
+        final owned = userCoinProvider.coinsByFilterCount;
+        final total = coinsByType[type]?.length ?? 0;
+
+        if (total > 0) {
+          typePercentages[type] = (owned / total) * 100;
+        } else {
+          typePercentages[type] = 0;
         }
-      case Error<int>():
-        _log.info('Error fetching owned coin count: ${ownedCoinResult.error}');
+      }
+
+      // Calculate percentages for countries
+      final countryPercentages = <CountryNames, double>{};
+      final ownedByCountry = userCoinProvider.coinsByCountry;
+
+      for (final country in CountryNames.values) {
+        final owned = ownedByCountry[country] ?? 0;
+        final total = coinsByCountry[country]?.length ?? 0;
+
+        if (total > 0) {
+          countryPercentages[country] = (owned / total) * 100;
+        } else {
+          countryPercentages[country] = 0;
+        }
+      }
+
+      // Sort and get top 3
+      _topTypePercentages =
+          typePercentages.entries.toList()
+            ..sort((a, b) => b.value.compareTo(a.value));
+
+      _topCountryPercentages =
+          countryPercentages.entries.toList()
+            ..sort((a, b) => b.value.compareTo(a.value));
+
+      // Take only top 3
+      if (_topTypePercentages.length > 3) {
+        _topTypePercentages = _topTypePercentages.sublist(0, 3);
+      }
+
+      if (_topCountryPercentages.length > 3) {
+        _topCountryPercentages = _topCountryPercentages.sublist(0, 3);
+      }
+
+      setState(() => _isLoading = false);
+    } catch (e) {
+      print("Error loading top percentages: $e");
+      setState(() => _isLoading = false);
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final coinProvider = Provider.of<CoinProvider>(context);
+    final userCoinProvider = Provider.of<UserCoinProvider>(context);
+
     return Scaffold(
       body: Stack(
         children: [
           Column(
             children: [
-              Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(
-                    bottomRight: Radius.circular(16),
-                    bottomLeft: Radius.circular(16),
-                  ),
-                  gradient: AppColors.gradient,
-                ),
-                padding: const EdgeInsets.only(
-                  top: kToolbarHeight + 32,
-                  left: 24,
-                  right: 24,
-                  bottom: 24,
-                ),
-                child: const ProfileHeader(),
-              ),
+              const ProfileHeader(),
 
               Padding(
                 padding: const EdgeInsets.symmetric(
@@ -92,14 +129,41 @@ class _ProfileViewState extends State<ProfileView> {
                       SizedBox(height: AppSizes.p8),
                       ProfileStatsCard(
                         title: "Total Coins",
-                        coinsOwned: _ownedCoinCount.toString(),
-                        totalCoins: _totalCoinCount.toString(),
+                        coinsOwned: userCoinProvider.ownedCoinCount.toString(),
+                        totalCoins: coinProvider.totalCoinCount.toString(),
                       ),
                       SizedBox(height: AppSizes.p24),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("Highest", style: AppTextStyles.body),
+                          Row(
+                            children: [
+                              Text("Highest", style: AppTextStyles.body),
+                              SizedBox(width: AppSizes.p16),
+                              ToggleButtons(
+                                isSelected: [_showTypes, !_showTypes],
+                                onPressed: (index) {
+                                  setState(() {
+                                    _showTypes = index == 0;
+                                  });
+                                },
+                                children: const [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: AppSizes.p8,
+                                    ),
+                                    child: Text("Types"),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: AppSizes.p8,
+                                    ),
+                                    child: Text("Countries"),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                           TextButton(
                             onPressed:
                                 () => context.go(AppRoutes.profileStatistics()),
@@ -122,24 +186,13 @@ class _ProfileViewState extends State<ProfileView> {
                         ],
                       ),
 
-                      const HighestCoinCard(
-                        countryName: "France",
-                        coinsOwned: "20",
-                        totalCoins: "25",
-                        image:
-                            "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/1024px-Flag_of_France.svg.png",
-                      ),
-                      SizedBox(height: AppSizes.p8),
-                      /*          padding: EdgeInsets.only(
-                      top: index == 0 ? AppSizes.p24 : AppSizes.p8,
-                    ), */
-                      const HighestCoinCard(
-                        countryName: "France",
-                        coinsOwned: "20",
-                        totalCoins: "25",
-                        image:
-                            "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/1024px-Flag_of_France.svg.png",
-                      ),
+                      SizedBox(height: AppSizes.p16),
+
+                      _isLoading
+                          ? const Center(child: CircularProgressIndicator())
+                          : _showTypes
+                          ? _buildTopTypes(userCoinProvider, coinProvider)
+                          : _buildTopCountries(userCoinProvider, coinProvider),
                     ],
                   ),
                 ),
@@ -147,22 +200,81 @@ class _ProfileViewState extends State<ProfileView> {
             ],
           ),
 
-          // Transparent AppBar with Menu Button (Hamburger Icon)
+          // APP BAR -------------------------
           Positioned(
             top: 0,
             left: 0,
             right: 0,
             child: AppBar(
               leading: IconButton(
-                icon: const Icon(Icons.menu, color: AppColors.onSurface),
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                },
+                icon: const Icon(Icons.menu),
+                onPressed: () => Scaffold.of(context).openDrawer(),
               ),
             ),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildTopTypes(
+    UserCoinProvider userCoinProvider,
+    CoinProvider coinProvider,
+  ) {
+    if (_topTypePercentages.isEmpty) {
+      return const Center(child: Text("No coin type data available"));
+    }
+
+    return Column(
+      children:
+          _topTypePercentages.map((entry) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: AppSizes.p8),
+              child: FutureBuilder(
+                future: userCoinProvider.loadCoinsByType(entry.key),
+                builder: (context, snapshot) {
+                  return HighestCoinCard(
+                    countryName: entry.key.name,
+                    coinsOwned: userCoinProvider.coinsByFilterCount.toString(),
+                    totalCoins:
+                        coinProvider.allCoinsByType[entry.key]?.length
+                            .toString() ??
+                        "0",
+                    // You can add appropriate images for coin types
+                    image: "assets/value/value-${entry.key}.png",
+                  );
+                },
+              ),
+            );
+          }).toList(),
+    );
+  }
+
+  Widget _buildTopCountries(
+    UserCoinProvider userCoinProvider,
+    CoinProvider coinProvider,
+  ) {
+    if (_topCountryPercentages.isEmpty) {
+      return const Center(child: Text("No country data available"));
+    }
+
+    return Column(
+      children:
+          _topCountryPercentages.map((entry) {
+            final owned = userCoinProvider.coinsByCountry[entry.key] ?? 0;
+            final total =
+                coinProvider.allCoinsByCountry[entry.key]?.length ?? 0;
+
+            return Padding(
+              padding: const EdgeInsets.only(bottom: AppSizes.p8),
+              child: HighestCoinCard(
+                countryName: entry.key.name,
+                coinsOwned: owned.toString(),
+                totalCoins: total.toString(),
+                image: "assets/country/${entry.key}-flag.png",
+              ),
+            );
+          }).toList(),
     );
   }
 }

@@ -81,7 +81,7 @@ class CoinProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-      final result = await _coinRepository.getCoinsByType(type);
+      final result = await _coinRepository.getAllCoinsByType(type);
 
       switch (result) {
         case Success(value: final coins):

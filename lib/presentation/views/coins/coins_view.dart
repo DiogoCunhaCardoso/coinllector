@@ -28,9 +28,18 @@ class _CoinsViewContentState extends State<_CoinsViewContent> {
 
   @override
   Widget build(BuildContext context) {
-    final coinProvider = context.watch<CoinProvider>();
-    final userCoinProvider = context.watch<UserCoinProvider>();
-    final countryProvider = context.watch<CountryProvider>();
+    // PROVIDERS -----------------------------------------------------------------------
+
+    final coinProvider = Provider.of<CoinProvider>(context);
+    final userCoinProvider = Provider.of<UserCoinProvider>(context);
+    final countryProvider = Provider.of<CountryProvider>(context);
+
+    // TAB CONTENT ---------------------------------------------------------------------
+
+    final coinTypesFuture = Future.value(coinProvider.coinsByValue);
+    final countriesFuture = countryProvider.getCountries();
+
+    // CONTENT ------------------------------------------------------------------------
 
     return Scaffold(
       body: Stack(
@@ -44,19 +53,27 @@ class _CoinsViewContentState extends State<_CoinsViewContent> {
                 onTabChanged: (index) => setState(() => _selectedIndex = index),
               ),
               Expanded(
-                child:
-                    coinProvider.isLoading
-                        ? const Center(child: CircularProgressIndicator())
-                        : IndexedStack(
-                          index: _selectedIndex,
-                          children: [
-                            CoinsViewGrid(items: CoinDisplayData.coinTypes),
-                            CoinsViewGrid(items: countryProvider.countries),
-                          ],
-                        ),
+                child: IndexedStack(
+                  index: _selectedIndex,
+                  children: [
+                    CoinsViewGrid(
+                      items: coinTypesFuture,
+                      initialItems: CoinDisplayData.coinTypes,
+                    ),
+                    CoinsViewGrid(
+                      items: countriesFuture,
+                      initialItems:
+                          countryProvider.isLoading
+                              ? null
+                              : countryProvider.countries,
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
+
+          // APP BAR--------------------------------------------------------------------
           Positioned(
             top: 0,
             left: 0,

@@ -41,6 +41,22 @@ class UserCoinLocalDataSource {
     return Sqflite.firstIntValue(result) ?? 0;
   }
 
+  Future<int> getOwnedCoinCountByType(String type) async {
+    final result = await db.rawQuery(
+      '''
+    SELECT COUNT(*) as count
+    FROM ${DatabaseTables.userCoins} uc
+    JOIN ${DatabaseTables.coins} c
+      ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.userCoinId}
+    WHERE c.${DatabaseTables.type} = ?
+  ''',
+      [type],
+    );
+
+    return Sqflite.firstIntValue(result) ?? 0;
+  }
+
+  //REMOVE
   Future<List<Map<String, Object?>>> getCountGroupedByType() async {
     return await db.rawQuery('''
       SELECT c.${DatabaseTables.type}, COUNT(*) as count 
@@ -50,6 +66,7 @@ class UserCoinLocalDataSource {
     ''');
   }
 
+  //REMOVE THIS AFTER
   Future<List<Map<String, Object?>>> getCountGroupedByCountry() async {
     return await db.rawQuery('''
       SELECT c.${DatabaseTables.country}, COUNT(*) as count 

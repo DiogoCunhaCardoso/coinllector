@@ -5,11 +5,21 @@ import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 import 'package:coinllector_app/utils/result.dart';
 
 abstract class ICoinRepository {
-  Future<Result<List<Coin>>> getCoinsByType(CoinType type);
+  /// Retrieves all coins of a specific type.
+  Future<Result<List<Coin>>> getAllCoinsByType(CoinType type);
 
-  Future<Result<List<Coin>>> getCoinsByCountry(CountryNames country);
+  /// Retrieves all coins from a specific country.
+  Future<Result<List<Coin>>> getAllCoinsByCountry(CountryNames country);
 
+  /// Retrieves all coins grouped by their type.
+  Future<Result<Map<CoinType, List<Coin>>>> getAllCoinsByTypeMap();
+
+  /// Retrieves all coins grouped by their country.
+  Future<Result<Map<CountryNames, List<Coin>>>> getAllCoinsByCountryMap();
+
+  /// Returns the total count of coins in the repository.
   Future<Result<int>> getCoinCount();
 
+  /// Inserts a list of initial coins into the repository.
   Future<Result<void>> insertInitialCoins(List<CoinModel> coins);
 }

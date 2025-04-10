@@ -3,17 +3,24 @@ import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 import 'package:coinllector_app/utils/result.dart';
 
 abstract class IUserCoinRepository {
+  /// Adds a coin to the user's collection.
   Future<Result<void>> addCoin(int coinId);
 
+  /// Removes a coin from the user's collection.
   Future<Result<void>> removeCoin(int coinId);
 
+  /// Checks if the user owns a specific coin.
   Future<Result<bool>> userOwnsCoin(int coinId);
 
+  /// Retrieves a list of all the coins (IDs) the user owns.
   Future<Result<List<int>>> getOwnedCoins();
 
-  Future<Result<int>> getOwnedCoinCount();
+  /// Returns the total count of coins the user owns.
+  Future<Result<int>> getOwnedCoinsCount();
 
-  Future<Result<Map<CoinType, int>>> getOwnedCoinsCountByType();
+  /// Returns the count of coins the user owns of a specific type.
+  Future<Result<int>> getUserCoinsByType(CoinType type);
 
-  Future<Result<Map<CountryNames, int>>> getOwnedCoinsCountByCountry();
+  /// Retrieves the count of coins the user owns, grouped by country.
+  Future<Result<Map<CountryNames, int>>> getUserCoinsByCountry();
 }

@@ -11,6 +11,6 @@ class GetOwnedCoinsByCountryUseCase
 
   @override
   Future<Result<Map<CountryNames, int>>> call(NoParams _) async {
-    return await repository.getOwnedCoinsCountByCountry();
+    return await repository.getUserCoinsByCountry();
   }
 }

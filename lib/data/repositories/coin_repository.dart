@@ -14,9 +14,9 @@ class CoinRepositoryImpl implements ICoinRepository {
   CoinRepositoryImpl(this.localDataSource);
 
   @override
-  Future<Result<List<Coin>>> getCoinsByType(CoinType type) async {
+  Future<Result<List<Coin>>> getAllCoinsByType(CoinType type) async {
     try {
-      final data = await localDataSource.getCoinsByType(type);
+      final data = await localDataSource.getAllCoinsByType(type);
       _log.info('Found ${data.length} coins matching type: ${type.name}');
       final coins = data.map((e) => CoinModel.fromMap(e).toEntity()).toList();
       return Result.success(coins);
@@ -26,14 +26,61 @@ class CoinRepositoryImpl implements ICoinRepository {
   }
 
   @override
-  Future<Result<List<Coin>>> getCoinsByCountry(CountryNames country) async {
+  Future<Result<List<Coin>>> getAllCoinsByCountry(CountryNames country) async {
     try {
-      final data = await localDataSource.getCoinsByCountry(country);
+      final data = await localDataSource.getAllCoinsByCountry(country);
       _log.info('Found ${data.length} coins matching country: ${country.name}');
       final coins = data.map((e) => CoinModel.fromMap(e).toEntity()).toList();
       return Result.success(coins);
     } catch (e) {
       return Result.error(Exception('Failed to fetch coins by country: $e'));
+    }
+  }
+
+  @override
+  Future<Result<Map<CoinType, List<Coin>>>> getAllCoinsByTypeMap() async {
+    try {
+      final Map<CoinType, List<Coin>> result = {};
+
+      for (final type in CoinType.values) {
+        final coinsResult = await getAllCoinsByType(type);
+        switch (coinsResult) {
+          case Success(value: final coins):
+            result[type] = coins;
+            break;
+          case Error(error: final e):
+            _log.warning('Error fetching coins by type: ${type.name}');
+            return Result.error(e);
+        }
+      }
+
+      return Result.success(result);
+    } catch (e) {
+      return Result.error(Exception('Failed to get coins by type map: $e'));
+    }
+  }
+
+  @override
+  Future<Result<Map<CountryNames, List<Coin>>>>
+  getAllCoinsByCountryMap() async {
+    try {
+      final Map<CountryNames, List<Coin>> result = {};
+
+      for (final country in CountryNames.values) {
+        final coinsResult = await getAllCoinsByCountry(country);
+        switch (coinsResult) {
+          case Success(value: final coins):
+            result[country] = coins;
+            break;
+          case Error(error: final e):
+            _log.warning('Error fetching coins by country: ${country.name}');
+            return Result.error(e);
+        }
+      }
+
+      return Result.success(result);
+    } catch (e) {
+      return Result.error(Exception('Failed to get coins by country map: $e'));
     }
   }
 

@@ -54,12 +54,22 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
   }
 
   @override
-  Future<Result<int>> getOwnedCoinCount() async {
+  Future<Result<int>> getOwnedCoinsCount() async {
     try {
       final count = await dataSource.getOwnedCoinCount();
       return Result.success(count);
     } catch (e) {
       return Result.error(Exception('Failed to fetch owned coin count: $e'));
+    }
+  }
+
+  @override
+  Future<Result<int>> getUserCoinsByType(CoinType type) async {
+    try {
+      final count = await dataSource.getOwnedCoinCountByType(type.name);
+      return Result.success(count);
+    } catch (e) {
+      return Result.error(Exception('Failed to fetch count for $type: $e'));
     }
   }
 
@@ -83,7 +93,7 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
   }
 
   @override
-  Future<Result<Map<CountryNames, int>>> getOwnedCoinsCountByCountry() async {
+  Future<Result<Map<CountryNames, int>>> getUserCoinsByCountry() async {
     try {
       final result = await dataSource.getCountGroupedByCountry();
       final counts = {for (var country in CountryNames.values) country: 0};

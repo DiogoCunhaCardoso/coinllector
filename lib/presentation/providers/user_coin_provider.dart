@@ -3,7 +3,7 @@ import 'package:coinllector_app/domain/usecases/user_coin/add_coin.dart';
 import 'package:coinllector_app/domain/usecases/user_coin/get_owned_coin_count.dart';
 import 'package:coinllector_app/domain/usecases/user_coin/get_owned_coins.dart';
 import 'package:coinllector_app/domain/usecases/user_coin/get_owned_coins_count_by_country.dart';
-import 'package:coinllector_app/domain/usecases/user_coin/get_owned_coins_count_by_type.dart';
+import 'package:coinllector_app/domain/usecases/user_coin/get_owned_coin_count_by_type.dart';
 import 'package:coinllector_app/domain/usecases/user_coin/remove_coin.dart';
 import 'package:coinllector_app/domain/usecases/user_coin/user_owns_coin.dart';
 import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
@@ -22,13 +22,13 @@ class UserCoinProvider extends ChangeNotifier {
   final GetOwnedCoinsUseCase _getOwnedCoinsUseCase;
   final GetOwnedCoinCountUseCase _getOwnedCoinCountUseCase;
   final UserOwnsCoinUseCase _userOwnsCoinUseCase;
-  final GetOwnedCoinsByTypeUseCase _getOwnedCoinsByTypeUseCase;
+  final GetOwnedCoinCountForTypeUseCase _getOwnedCoinsByTypeUseCase;
   final GetOwnedCoinsByCountryUseCase _getOwnedCoinsByCountryUseCase;
 
-  Set<int> _ownedCoins = {};
-  int _ownedCoinCount = 0;
+  Set<int> _ownedCoinsCount = {};
+
   bool _isLoading = false;
-  Map<CoinType, int> _coinsByType = {};
+
   Map<CountryNames, int> _coinsByCountry = {};
 
   UserCoinProvider({
@@ -37,24 +37,25 @@ class UserCoinProvider extends ChangeNotifier {
     required GetOwnedCoinsUseCase getOwnedCoinsUseCase,
     required GetOwnedCoinCountUseCase getOwnedCoinCountUseCase,
     required UserOwnsCoinUseCase userOwnsCoinUseCase,
-    required GetOwnedCoinsByTypeUseCase getOwnedCoinsByTypeUseCase,
+    required GetOwnedCoinCountForTypeUseCase getOwnedCoinsCountByTypeUseCase,
     required GetOwnedCoinsByCountryUseCase getOwnedCoinsByCountryUseCase,
   }) : _addCoinUseCase = addCoinUseCase,
        _removeCoinUseCase = removeCoinUseCase,
        _getOwnedCoinsUseCase = getOwnedCoinsUseCase,
        _getOwnedCoinCountUseCase = getOwnedCoinCountUseCase,
        _userOwnsCoinUseCase = userOwnsCoinUseCase,
-       _getOwnedCoinsByTypeUseCase = getOwnedCoinsByTypeUseCase,
+       _getOwnedCoinsByTypeUseCase = getOwnedCoinsCountByTypeUseCase,
        _getOwnedCoinsByCountryUseCase = getOwnedCoinsByCountryUseCase;
 
   // Getters ----------------------------------------------------------------------
-  Set<int> get ownedCoins => _ownedCoins;
-  int get ownedCoinCount => _ownedCoinCount;
+  Set<int> get ownedCoinsCount => _ownedCoinsCount;
+
   bool get isLoading => _isLoading;
-  Map<CoinType, int> get coinsByType => _coinsByType;
   Map<CountryNames, int> get coinsByCountry => _coinsByCountry;
 
-  bool isOwned(int coinId) => _ownedCoins.contains(coinId);
+  bool isOwned(int coinId) => _ownedCoinsCount.contains(coinId);
+
+  // ====================== PUBLIC METHODS ====================== //
 
   Future<void> init() async {
     _isLoading = true;
@@ -62,7 +63,6 @@ class UserCoinProvider extends ChangeNotifier {
 
     await _loadOwnedCoins();
     await _loadCoinCount();
-    await _loadCoinsByType();
     await _loadCoinsByCountry();
 
     _isLoading = false;
@@ -74,12 +74,17 @@ class UserCoinProvider extends ChangeNotifier {
 
     switch (result) {
       case Success(value: final coins):
-        _ownedCoins = coins.toSet();
-        _log.info('Loaded ${_ownedCoins.length} owned coins');
+        _ownedCoinsCount = coins.toSet();
+        _log.info('Loaded ${_ownedCoinsCount.length} owned coins');
       case Error(error: final e):
         _log.severe('Error loading owned coins: $e');
     }
   }
+
+  // ==== GET ALL OWNED COIN COUNT ==== // ✅
+
+  int _ownedCoinCount = 0;
+  int get ownedCoinCount => _ownedCoinCount;
 
   Future<void> _loadCoinCount() async {
     final result = await _getOwnedCoinCountUseCase(NoParams(null));
@@ -93,16 +98,23 @@ class UserCoinProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> _loadCoinsByType() async {
-    final result = await _getOwnedCoinsByTypeUseCase(NoParams(null));
+  // ==== GET OWNED COIN COUNT BY TYPE ==== //
+
+  int _coinsByFilterCount = 0;
+  int get coinsByFilterCount => _coinsByFilterCount;
+
+  Future<void> loadCoinsByType(CoinType type) async {
+    final result = await _getOwnedCoinsByTypeUseCase(Params(type));
 
     switch (result) {
-      case Success(value: final byType):
-        _coinsByType = byType;
-        _log.info('Loaded coins by type');
+      case Success(value: final count):
+        _coinsByFilterCount = count;
+        _log.info('Loaded count for ${type.name}: $count');
       case Error(error: final e):
-        _log.severe('Error loading coins by type: $e');
+        _coinsByFilterCount = 0;
+        _log.severe('Error loading count for ${type.name}', e);
     }
+    notifyListeners();
   }
 
   Future<void> _loadCoinsByCountry() async {
@@ -140,9 +152,9 @@ class UserCoinProvider extends ChangeNotifier {
     switch (result) {
       case Success():
         if (isOwned) {
-          _ownedCoins.remove(coinId);
+          _ownedCoinsCount.remove(coinId);
         } else {
-          _ownedCoins.add(coinId);
+          _ownedCoinsCount.add(coinId);
         }
         await refreshStatistics();
         return true;
@@ -152,10 +164,23 @@ class UserCoinProvider extends ChangeNotifier {
     }
   }
 
+  // Keep track of the current type being viewed
+  CoinType? _currentViewType;
+
+  // Method to set current view type
+  void setCurrentViewType(CoinType type) {
+    _currentViewType = type;
+  }
+
   Future<void> refreshStatistics() async {
     await _loadCoinCount();
-    await _loadCoinsByType();
     await _loadCoinsByCountry();
+
+    // Also refresh the current type count if one is set
+    if (_currentViewType != null) {
+      await loadCoinsByType(_currentViewType!);
+    }
+
     notifyListeners();
   }
 

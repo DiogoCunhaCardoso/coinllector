@@ -1,76 +1,55 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-class UserSettings {
-  // Keys
-  static const String _coinMintsKey = 'coin_mints';
-  static const String _showMicrostatesKey = 'show_microstates';
-  static const String _coinQualityKey = 'coin_quality';
-  static const String _removalConfirmationKey = 'removal_confirmation';
+class UserPreferences {
+  static final UserPreferences _instance = UserPreferences._constructor();
 
-  // Default
-  bool coinMints = false;
-  bool showMicrostates = true;
-  bool coinQuality = false;
-  bool removalConfirmation = false;
+  factory UserPreferences() => _instance;
 
-  Future<void> saveSettings() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setBool(_coinMintsKey, coinMints);
-    await prefs.setBool(_showMicrostatesKey, showMicrostates);
-    await prefs.setBool(_coinQualityKey, coinQuality);
-    await prefs.setBool(_removalConfirmationKey, removalConfirmation);
+  UserPreferences._constructor();
+
+  SharedPreferences? _prefs;
+
+  Future<void> init() async {
+    _prefs ??= await SharedPreferences.getInstance();
   }
 
-  // Load settings from SharedPreferences
-  Future<void> loadSettings() async {
-    final prefs = await SharedPreferences.getInstance();
-    coinMints = prefs.getBool(_coinMintsKey) ?? false;
-    showMicrostates = prefs.getBool(_showMicrostatesKey) ?? true;
-    coinQuality = prefs.getBool(_coinQualityKey) ?? false;
-    removalConfirmation = prefs.getBool(_removalConfirmationKey) ?? true;
+  // C O I N _ M I N T S
+
+  bool get coinMints {
+    return _prefs?.getBool("coinMints") ?? false;
   }
 
-  // GET VALUES ------------------------------------------------
-
-  Future<bool> getMints() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getBool(_coinMintsKey) ?? false;
+  set coinMints(bool value) {
+    _prefs?.setBool("coinMints", value);
   }
 
-  Future<bool> getMicrostates() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getBool(_showMicrostatesKey) ?? true;
+  // M I C R O _ S T A T E S
+
+  bool get microStates {
+    return _prefs?.getBool("microStates") ?? true;
   }
 
-  Future<bool> getCoinQuality() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getBool(_coinQualityKey) ?? false;
+  set microStates(bool value) {
+    _prefs?.setBool("microStates", value);
   }
 
-  Future<bool> getRemovalConfirmation() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getBool(_removalConfirmationKey) ?? true;
+  // C O I N _ Q U A L I T Y
+
+  bool get coinQuality {
+    return _prefs?.getBool("coinQuality") ?? false;
   }
 
-  // TOGGLE VALUES -----------------------------------------------
-
-  Future<void> toggleCoinMints() async {
-    coinMints = !coinMints;
-    await saveSettings();
+  set coinQuality(bool value) {
+    _prefs?.setBool("coinQuality", value);
   }
 
-  Future<void> toggleShowMicrostates() async {
-    showMicrostates = !showMicrostates;
-    await saveSettings();
+  // R E M O V A L _ C O N F I R M A T I O N
+
+  bool get removalConfirmation {
+    return _prefs?.getBool("removalConfirmation") ?? true;
   }
 
-  Future<void> toggleCoinQuality() async {
-    coinQuality = !coinQuality;
-    await saveSettings();
-  }
-
-  Future<void> toggleRemovalConfirmation() async {
-    removalConfirmation = !removalConfirmation;
-    await saveSettings();
+  set removalConfirmation(bool value) {
+    _prefs?.setBool("removalConfirmation", value);
   }
 }

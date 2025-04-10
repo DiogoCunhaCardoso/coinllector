@@ -9,6 +9,6 @@ class GetOwnedCoinCountUseCase implements UseCase<int, NoParams> {
 
   @override
   Future<Result<int>> call(NoParams _) async {
-    return await repository.getOwnedCoinCount();
+    return await repository.getOwnedCoinsCount();
   }
 }

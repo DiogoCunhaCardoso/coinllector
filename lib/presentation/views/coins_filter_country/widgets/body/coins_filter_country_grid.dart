@@ -1,4 +1,5 @@
 import 'package:coinllector_app/config/router/routes.dart';
+import 'package:coinllector_app/data/datasources/local/preferences/user_preferences.dart';
 import 'package:coinllector_app/domain/entities/coin.dart';
 import 'package:coinllector_app/shared/components/bottom_sheets/mints.dart';
 import 'package:coinllector_app/shared/components/coin_card_complex.dart';
@@ -55,7 +56,8 @@ class CoinsFilterCountryGrid extends StatelessWidget {
             onToggleCoin(coin.id);
 
             // If the country is GERMANY, show the modal
-            if (coin.country == CountryNames.GERMANY) {
+            if (coin.country == CountryNames.GERMANY &&
+                UserPreferences().coinMints) {
               showModalList(context);
             }
           },

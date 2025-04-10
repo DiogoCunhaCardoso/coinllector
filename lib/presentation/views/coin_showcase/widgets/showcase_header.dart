@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class ShowcaseHeader extends StatelessWidget {
   final Country? country;
   final bool isOwned;
-  final ValueChanged<bool>? onToggleOwnership;
+  final ValueChanged<bool> onToggleOwnership;
 
   const ShowcaseHeader({
     super.key,
@@ -43,7 +43,7 @@ class ShowcaseHeader extends StatelessWidget {
               scale: 1.2,
               child: Checkbox(
                 value: isOwned,
-                onChanged: (value) => onToggleOwnership?.call(value ?? false),
+                onChanged: (value) => onToggleOwnership(value ?? false),
                 fillColor: WidgetStateProperty.resolveWith<Color>((states) {
                   return states.contains(WidgetState.selected)
                       ? AppColors.primary

@@ -16,8 +16,7 @@ void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
 
-  final userSettings = UserSettings();
-  await userSettings.loadSettings();
+  await UserPreferences().init(); // singleton
 
   await setupDependencies();
 

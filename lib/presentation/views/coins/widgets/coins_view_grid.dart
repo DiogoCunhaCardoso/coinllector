@@ -8,40 +8,76 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class CoinsViewGrid extends StatelessWidget {
-  final List<dynamic>
-  items; // Pode ser uma lista de ValueData ou Country // TODO: CoinDisplay in the future
+  final Future<List<dynamic>> items;
+  // Additional parameter for immediate display while loading
+  final List<dynamic>? initialItems; // TODO will be of CoinDisplay
 
-  const CoinsViewGrid({super.key, required this.items});
+  const CoinsViewGrid({super.key, required this.items, this.initialItems});
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        mainAxisExtent: 152,
-        crossAxisCount: 2,
-        crossAxisSpacing: AppSizes.p8,
-        mainAxisSpacing: AppSizes.p8,
-      ),
-      padding: const EdgeInsets.all(AppSizes.p16),
-      itemCount: items.length,
-      itemBuilder: (context, index) {
-        final coin = items[index];
-
-        if (coin is CoinDisplay) {
-          return CoinCard(
-            imageUrl: coin.image,
-            size: getItemSizeForCoinsView(coin),
-            onTap: () => context.go(AppRoutes.coinsWithValue(coin.type.name)),
-          );
-        } else if (coin is Country) {
-          return CoinCard(
-            imageUrl: coin.flagImage,
-            size: getItemSizeForCoinsView(coin),
-            onTap: () => context.go(AppRoutes.coinsWithCountry(coin.name.name)),
-          );
-        } else {
-          return Text("data");
+    return FutureBuilder<List<dynamic>>(
+      future: items,
+      initialData: initialItems,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting &&
+            initialItems == null) {
+          return const Center(child: CircularProgressIndicator());
         }
+
+        // Show error if loading failed
+        if (snapshot.hasError) {
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.error_outline, size: 48, color: Colors.red),
+                const SizedBox(height: AppSizes.p16),
+                Text('Failed to load data: ${snapshot.error}'),
+                const SizedBox(height: AppSizes.p16),
+              ],
+            ),
+          );
+        }
+
+        // Get data from snapshot or fallback to empty list
+        final coins = snapshot.data ?? [];
+
+        // If we have data, show the grid
+        return GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            mainAxisExtent: 152,
+            crossAxisCount: 2,
+            crossAxisSpacing: AppSizes.p8,
+            mainAxisSpacing: AppSizes.p8,
+          ),
+          padding: const EdgeInsets.all(AppSizes.p16),
+          itemCount: coins.length,
+          itemBuilder: (context, index) {
+            final item = coins[index];
+
+            if (item is CoinDisplay) {
+              return CoinCard(
+                imageUrl: item.image,
+                size: getItemSizeForCoinsView(item),
+                onTap:
+                    () => context.go(AppRoutes.coinsWithValue(item.type.name)),
+              );
+            } else if (item is Country) {
+              return CoinCard(
+                imageUrl: item.flagImage,
+                size: getItemSizeForCoinsView(item),
+                onTap:
+                    () =>
+                        context.go(AppRoutes.coinsWithCountry(item.name.name)),
+              );
+            } else {
+              return const Card(
+                child: Center(child: Text("Unknown item type")),
+              );
+            }
+          },
+        );
       },
     );
   }

@@ -36,7 +36,7 @@ class StatisticsProvider {
   Future<Map<CoinType, List<Coin>>> _fetchCoinsByType() async {
     final data = <CoinType, List<Coin>>{};
     for (final type in CoinType.values) {
-      final result = await _database.coinRepository.getCoinsByType(type);
+      final result = await _database.coinRepository.getAllCoinsByType(type);
       if (result is Success<List<Coin>>) {
         data[type] = result.value;
       } else if (result is Error<List<Coin>>) {
@@ -51,7 +51,9 @@ class StatisticsProvider {
   Future<Map<CountryNames, List<Coin>>> _fetchCoinsByCountry() async {
     final data = <CountryNames, List<Coin>>{};
     for (final country in CountryNames.values) {
-      final result = await _database.coinRepository.getCoinsByCountry(country);
+      final result = await _database.coinRepository.getAllCoinsByCountry(
+        country,
+      );
       if (result is Success<List<Coin>>) {
         data[country] = result.value;
       } else if (result is Error<List<Coin>>) {
@@ -75,8 +77,7 @@ class StatisticsProvider {
   }
 
   Future<Map<CountryNames, int>> _fetchOwnedCoinsByCountry() async {
-    final result =
-        await _database.userCoinRepository.getOwnedCoinsCountByCountry();
+    final result = await _database.userCoinRepository.getUserCoinsByCountry();
     if (result is Success<Map<CountryNames, int>>) {
       return result.value;
     } else if (result is Error<Map<CountryNames, int>>) {
