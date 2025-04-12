@@ -1,9 +1,10 @@
 import 'package:coinllector_app/domain/interfaces/user_coin_interface.dart';
 import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';
+import 'package:coinllector_app/shared/enums/coin_quality_enum.dart';
 import 'package:coinllector_app/utils/result.dart';
 import 'package:logging/logging.dart';
-import '../datasources/remote/user_coin_local_datasource.dart';
+import '../datasources/remote/user_coin_remote_datasource.dart';
 
 class UserCoinRepositoryImpl implements IUserCoinRepository {
   final _log = Logger('USER_COIN_REPOSITORY');
@@ -30,6 +31,55 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
       return Result.success(null);
     } catch (e) {
       return Result.error(Exception('Failed to remove coin: $e'));
+    }
+  }
+
+  @override
+  Future<Result<bool>> toggleCoinOwnership(int coinId) async {
+    try {
+      final ownershipResult = await userOwnsCoin(coinId);
+
+      if (ownershipResult is Error) {
+        return Result.error(Exception('Failed to check ownership'));
+      }
+
+      final isOwned = (ownershipResult as Success<bool>).value;
+
+      if (isOwned) {
+        final removeResult = await removeCoin(coinId);
+        if (removeResult is Error) {
+          return Result.error(
+            Exception('Failed to remove coin: ${removeResult.error}'),
+          );
+        }
+        _log.info("Toggled OFF (removed) coin $coinId");
+        return Result.success(false); // Coin was removed
+      } else {
+        final addResult = await addCoin(coinId);
+        if (addResult is Error) {
+          return Result.error(
+            Exception('Failed to add coin: ${addResult.error}'),
+          );
+        }
+        _log.info("Toggled ON (added) coin $coinId");
+        return Result.success(true); // Coin was added
+      }
+    } catch (e) {
+      return Result.error(Exception('Failed to toggle coin ownership: $e'));
+    }
+  }
+
+  @override
+  Future<Result<void>> updateCoinQuality(
+    int coinId,
+    CoinQuality quality,
+  ) async {
+    try {
+      await dataSource.updateCoinQuality(coinId, quality);
+      _log.info("Updated quality for coin $coinId to $quality");
+      return Result.success(null);
+    } catch (e) {
+      return Result.error(Exception('Failed to update coin quality: $e'));
     }
   }
 
@@ -73,7 +123,6 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
     }
   }
 
-  @override
   Future<Result<Map<CoinType, int>>> getOwnedCoinsCountByType() async {
     try {
       final result = await dataSource.getCountGroupedByType();

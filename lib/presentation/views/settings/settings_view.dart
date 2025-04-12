@@ -80,10 +80,7 @@ class _SettingsViewState extends State<SettingsView> {
                 _prefs.microStates = value;
 
                 countryProvider.refreshCountries();
-                final coinProvider = Provider.of<CoinProvider>(
-                  context,
-                  listen: false,
-                );
+
                 for (final type in CoinType.values) {
                   coinProvider.refreshCoinsByType(type);
                 }

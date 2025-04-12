@@ -1,6 +1,6 @@
-import 'package:coinllector_app/data/datasources/remote/coin_local_datasource.dart';
-import 'package:coinllector_app/data/datasources/remote/country_local_datasource.dart';
-import 'package:coinllector_app/data/datasources/remote/user_coin_local_datasource.dart';
+import 'package:coinllector_app/data/datasources/remote/coin_remote_datasource.dart';
+import 'package:coinllector_app/data/datasources/remote/country_remote_datasource.dart';
+import 'package:coinllector_app/data/datasources/remote/user_coin_remote_datasource.dart';
 import 'package:logging/logging.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';

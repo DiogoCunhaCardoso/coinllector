@@ -13,7 +13,7 @@ import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 import 'package:go_router/go_router.dart';
 
-// Routing Configuration
+/// Routing Configuration using Go Router
 final GoRouter router = GoRouter(
   initialLocation: AppRoutes.coinsView,
   debugLogDiagnostics: true,

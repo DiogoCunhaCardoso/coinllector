@@ -11,6 +11,7 @@ import 'package:coinllector_app/presentation/views/coin_showcase/widgets/showcas
 import 'package:coinllector_app/presentation/views/coin_showcase/widgets/showcase_quality_selector.dart';
 import 'package:coinllector_app/presentation/views/coin_showcase/widgets/showcase_stats.dart';
 import 'package:coinllector_app/shared/components/confirmation_dialog.dart';
+import 'package:coinllector_app/shared/enums/coin_quality_enum.dart';
 import 'package:coinllector_app/utils/text_display.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -37,6 +38,8 @@ class _CoinShowcaseState extends State<CoinShowcase> {
   final _log = Logger('COINS_SHOWCASE');
   int _selectedQualityIndex = -1;
 
+  // COIN NAVIGATION -------------------------------------------------------------------
+
   void _navigateToCoin(int newIndex) {
     if (newIndex < 0 || newIndex >= widget.coins.length) return;
 
@@ -49,6 +52,8 @@ class _CoinShowcaseState extends State<CoinShowcase> {
       },
     );
   }
+
+  // TOGGLE OWNERSHIP -------------------------------------------------------------------
 
   Future<void> _handleToggleOwnership() async {
     final userCoinProvider = Provider.of<UserCoinProvider>(
@@ -70,6 +75,8 @@ class _CoinShowcaseState extends State<CoinShowcase> {
     await userCoinProvider.toggleCoinOwnership(widget.coin.id);
   }
 
+  // SCREEN -----------------------------------------------------------------------------
+
   @override
   Widget build(BuildContext context) {
     final userCoinProvider = Provider.of<UserCoinProvider>(context);
@@ -79,6 +86,7 @@ class _CoinShowcaseState extends State<CoinShowcase> {
     );
 
     final isOwned = userCoinProvider.isOwned(widget.coin.id);
+
     final prefs = UserPreferences();
 
     return Scaffold(
@@ -116,10 +124,31 @@ class _CoinShowcaseState extends State<CoinShowcase> {
                                 ? [
                                   ShowcaseQualitySelector(
                                     selectedQualityIndex: _selectedQualityIndex,
-                                    onQualitySelected: (index) {
-                                      setState(
-                                        () => _selectedQualityIndex = index,
-                                      );
+                                    onQualitySelected: (index) async {
+                                      // Keep track of selected index
+                                      setState(() {
+                                        _selectedQualityIndex = index;
+                                      });
+
+                                      // Update quality in repository
+                                      final success = await userCoinProvider
+                                          .updateCoinQuality(
+                                            widget.coin.id,
+                                            CoinQuality.values[index],
+                                          );
+
+                                      // Optionally show feedback if update failed
+                                      if (!success && mounted) {
+                                        ScaffoldMessenger.of(
+                                          context,
+                                        ).showSnackBar(
+                                          const SnackBar(
+                                            content: Text(
+                                              'Failed to update coin quality',
+                                            ),
+                                          ),
+                                        );
+                                      }
                                     },
                                   ),
                                   const SizedBox(height: AppSizes.p24),

@@ -16,6 +16,7 @@ class DatabaseTables {
 
   // User Coins Columns
   static const String userCoinId = "coin_id";
+  static const String quality = "quality";
 
   // Countries Columns
   static const String countryName = "name";
@@ -39,6 +40,7 @@ class DatabaseTables {
   static const String createUserCoinsTable = '''
     CREATE TABLE $userCoins (
       $userCoinId INTEGER,
+      $quality TEXT DEFAULT NULL,
       FOREIGN KEY ($userCoinId) REFERENCES $coins($id)
     )
   ''';

@@ -5,7 +5,7 @@ import 'package:coinllector_app/utils/result.dart';
 import 'package:coinllector_app/data/models/country_model.dart';
 import 'package:logging/logging.dart';
 
-import '../datasources/remote/country_local_datasource.dart';
+import '../datasources/remote/country_remote_datasource.dart';
 
 class CountryRepositoryImpl implements ICountryRepository {
   final CountryLocalDataSource dataSource;

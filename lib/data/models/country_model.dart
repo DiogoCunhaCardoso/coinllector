@@ -4,6 +4,8 @@ import 'package:coinllector_app/data/datasources/local/database/database_tables.
 import 'package:coinllector_app/domain/entities/country.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 
+/// Country Model - Data
+/// Has Mappers
 class CountryModel {
   final CountryNames name;
   final String flagImage;

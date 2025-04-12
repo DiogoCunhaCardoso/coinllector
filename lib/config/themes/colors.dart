@@ -9,6 +9,7 @@ class AppColors {
 
   static const Color primary = Color(0xFF5581FF);
   static const Color secondary = Color(0xFFCCD9FF);
+  static const Color premium = Color(0xFFFFCF27);
 
   // Gradient
   static const Gradient gradient = LinearGradient(

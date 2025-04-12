@@ -1,4 +1,4 @@
-import 'package:coinllector_app/data/datasources/remote/coin_local_datasource.dart';
+import 'package:coinllector_app/data/datasources/remote/coin_remote_datasource.dart';
 import 'package:coinllector_app/domain/entities/coin.dart';
 import 'package:coinllector_app/domain/interfaces/coin_interface.dart';
 import 'package:coinllector_app/shared/enums/coin_types_enum.dart';

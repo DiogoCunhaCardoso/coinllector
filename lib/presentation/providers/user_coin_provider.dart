@@ -1,13 +1,14 @@
 // lib/presentation/providers/user_coin_provider.dart
-import 'package:coinllector_app/domain/usecases/user_coin/add_coin.dart';
 import 'package:coinllector_app/domain/usecases/user_coin/get_owned_coin_count.dart';
 import 'package:coinllector_app/domain/usecases/user_coin/get_owned_coins.dart';
 import 'package:coinllector_app/domain/usecases/user_coin/get_owned_coins_count_by_country.dart';
 import 'package:coinllector_app/domain/usecases/user_coin/get_owned_coin_count_by_type.dart';
-import 'package:coinllector_app/domain/usecases/user_coin/remove_coin.dart';
-import 'package:coinllector_app/domain/usecases/user_coin/user_owns_coin.dart';
+import 'package:coinllector_app/domain/usecases/user_coin/check_if_user_owns_coin.dart';
+import 'package:coinllector_app/domain/usecases/user_coin/toggle_coin_ownership.dart';
+import 'package:coinllector_app/domain/usecases/user_coin/update_quality_of_owned_coin.dart';
 import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';
+import 'package:coinllector_app/shared/enums/coin_quality_enum.dart';
 import 'package:coinllector_app/utils/result.dart';
 import 'package:coinllector_app/utils/use_case.dart';
 import 'package:flutter/foundation.dart';
@@ -17,11 +18,12 @@ class UserCoinProvider extends ChangeNotifier {
   final _log = Logger("USER_COIN_PROVIDER");
 
   // USE CASES --------------------------------------
-  final AddCoinUseCase _addCoinUseCase;
-  final RemoveCoinUseCase _removeCoinUseCase;
+
+  final ToggleCoinOwnershipUseCase _toggleCoinOwnershipUseCase;
+  final UpdateQualityOfOwnedCoinUseCase _updateQualityOfOwnedCoinUseCase;
   final GetOwnedCoinsUseCase _getOwnedCoinsUseCase;
   final GetOwnedCoinCountUseCase _getOwnedCoinCountUseCase;
-  final UserOwnsCoinUseCase _userOwnsCoinUseCase;
+  final CheckIfUserOwnsCoinUseCase _userOwnsCoinUseCase;
   final GetOwnedCoinCountForTypeUseCase _getOwnedCoinsByTypeUseCase;
   final GetOwnedCoinsByCountryUseCase _getOwnedCoinsByCountryUseCase;
 
@@ -32,15 +34,15 @@ class UserCoinProvider extends ChangeNotifier {
   Map<CountryNames, int> _coinsByCountry = {};
 
   UserCoinProvider({
-    required AddCoinUseCase addCoinUseCase,
-    required RemoveCoinUseCase removeCoinUseCase,
+    required ToggleCoinOwnershipUseCase toggleCoinOwnershipUseCase,
+    required UpdateQualityOfOwnedCoinUseCase updateQualityOfOwnedCoinUseCase,
     required GetOwnedCoinsUseCase getOwnedCoinsUseCase,
     required GetOwnedCoinCountUseCase getOwnedCoinCountUseCase,
-    required UserOwnsCoinUseCase userOwnsCoinUseCase,
+    required CheckIfUserOwnsCoinUseCase userOwnsCoinUseCase,
     required GetOwnedCoinCountForTypeUseCase getOwnedCoinsCountByTypeUseCase,
     required GetOwnedCoinsByCountryUseCase getOwnedCoinsByCountryUseCase,
-  }) : _addCoinUseCase = addCoinUseCase,
-       _removeCoinUseCase = removeCoinUseCase,
+  }) : _toggleCoinOwnershipUseCase = toggleCoinOwnershipUseCase,
+       _updateQualityOfOwnedCoinUseCase = updateQualityOfOwnedCoinUseCase,
        _getOwnedCoinsUseCase = getOwnedCoinsUseCase,
        _getOwnedCoinCountUseCase = getOwnedCoinCountUseCase,
        _userOwnsCoinUseCase = userOwnsCoinUseCase,
@@ -130,36 +132,34 @@ class UserCoinProvider extends ChangeNotifier {
   }
 
   Future<bool> toggleCoinOwnership(int coinId) async {
-    final ownershipCheck = await _userOwnsCoinUseCase(Params(coinId));
-    bool isOwned;
+    final result = await _toggleCoinOwnershipUseCase(Params(coinId));
 
-    switch (ownershipCheck) {
-      case Success(value: final owned):
-        isOwned = owned;
+    switch (result) {
+      case Success(value: final isNowOwned):
+        // Update the local state based on the result
+        if (isNowOwned) {
+          _ownedCoinsCount.add(coinId);
+        } else {
+          _ownedCoinsCount.remove(coinId);
+        }
+        await refreshStatistics();
+        return true; // Operation succeeded
       case Error(error: final e):
-        _log.severe('Error checking coin ownership: $e');
-        return false;
+        _log.severe('Error toggling coin ownership: $e');
+        return false; // Operation failed
     }
+  }
 
-    Result result;
-
-    if (isOwned) {
-      result = await _removeCoinUseCase(Params(coinId));
-    } else {
-      result = await _addCoinUseCase(Params(coinId));
-    }
+  Future<bool> updateCoinQuality(int coinId, CoinQuality quality) async {
+    final updateParams = UpdateCoinQualityParams(coinId, quality);
+    final result = await _updateQualityOfOwnedCoinUseCase(Params(updateParams));
 
     switch (result) {
       case Success():
-        if (isOwned) {
-          _ownedCoinsCount.remove(coinId);
-        } else {
-          _ownedCoinsCount.add(coinId);
-        }
-        await refreshStatistics();
+        _log.info('Updated quality of coin $coinId to ${quality.name}');
         return true;
       case Error(error: final e):
-        _log.severe('Error toggling coin ownership: $e');
+        _log.severe('Error updating coin quality: $e');
         return false;
     }
   }

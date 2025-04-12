@@ -14,7 +14,9 @@ import 'package:coinllector_app/domain/usecases/user_coin/get_owned_coins.dart';
 import 'package:coinllector_app/domain/usecases/user_coin/get_owned_coins_count_by_country.dart';
 import 'package:coinllector_app/domain/usecases/user_coin/get_owned_coin_count_by_type.dart';
 import 'package:coinllector_app/domain/usecases/user_coin/remove_coin.dart';
-import 'package:coinllector_app/domain/usecases/user_coin/user_owns_coin.dart';
+import 'package:coinllector_app/domain/usecases/user_coin/check_if_user_owns_coin.dart';
+import 'package:coinllector_app/domain/usecases/user_coin/toggle_coin_ownership.dart';
+import 'package:coinllector_app/domain/usecases/user_coin/update_quality_of_owned_coin.dart';
 import 'package:coinllector_app/presentation/providers/coin_provider.dart';
 import 'package:coinllector_app/presentation/providers/country_provider.dart';
 import 'package:coinllector_app/presentation/providers/user_coin_provider.dart';
@@ -23,36 +25,14 @@ import 'package:get_it/get_it.dart';
 final GetIt serviceLocator = GetIt.instance;
 
 Future setupDependencies() async {
-  // Database Service
+  // Database Service Init
   final databaseService = DatabaseService.instance;
   await databaseService.database;
   serviceLocator.registerSingleton(databaseService);
 
-  //USE CASES -----------------------------------------------
-
-  serviceLocator.registerLazySingleton<GetCoinsByTypeUseCase>(
-    () => GetCoinsByTypeUseCase(serviceLocator<ICoinRepository>()),
-  );
-
-  serviceLocator.registerLazySingleton<GetCoinsByCountryUseCase>(
-    () => GetCoinsByCountryUseCase(serviceLocator<ICoinRepository>()),
-  );
-
-  serviceLocator.registerLazySingleton<GetTotalCoinCountUseCase>(
-    () => GetTotalCoinCountUseCase(serviceLocator<ICoinRepository>()),
-  );
-
-  //
-
-  serviceLocator.registerLazySingleton<GetCountriesUseCase>(
-    () => GetCountriesUseCase(serviceLocator<ICountryRepository>()),
-  );
-
-  serviceLocator.registerLazySingleton<GetCountryByEnumUseCase>(
-    () => GetCountryByEnumUseCase(serviceLocator<ICountryRepository>()),
-  );
-
-  //
+  // ==========================================================
+  // REPOSITORIES
+  // ==========================================================
 
   serviceLocator.registerLazySingleton<ICoinRepository>(
     () => databaseService.coinRepository,
@@ -66,13 +46,53 @@ Future setupDependencies() async {
     () => databaseService.countryRepository,
   );
 
-  // Use Cases
+  // ==========================================================
+  // COIN USE CASES
+  // ==========================================================
+
+  serviceLocator.registerLazySingleton<GetCoinsByTypeUseCase>(
+    () => GetCoinsByTypeUseCase(serviceLocator<ICoinRepository>()),
+  );
+
+  serviceLocator.registerLazySingleton<GetCoinsByCountryUseCase>(
+    () => GetCoinsByCountryUseCase(serviceLocator<ICoinRepository>()),
+  );
+
+  serviceLocator.registerLazySingleton<GetTotalCoinCountUseCase>(
+    () => GetTotalCoinCountUseCase(serviceLocator<ICoinRepository>()),
+  );
+
+  // ==========================================================
+  // COUNTRY USE CASES
+  // ==========================================================
+
+  serviceLocator.registerLazySingleton<GetCountriesUseCase>(
+    () => GetCountriesUseCase(serviceLocator<ICountryRepository>()),
+  );
+
+  serviceLocator.registerLazySingleton<GetCountryByEnumUseCase>(
+    () => GetCountryByEnumUseCase(serviceLocator<ICountryRepository>()),
+  );
+
+  // ==========================================================
+  // USER COIN USE CASES
+  // ==========================================================
+
   serviceLocator.registerLazySingleton<AddCoinUseCase>(
     () => AddCoinUseCase(serviceLocator<IUserCoinRepository>()),
   );
 
   serviceLocator.registerLazySingleton<RemoveCoinUseCase>(
     () => RemoveCoinUseCase(serviceLocator<IUserCoinRepository>()),
+  );
+
+  serviceLocator.registerLazySingleton<ToggleCoinOwnershipUseCase>(
+    () => ToggleCoinOwnershipUseCase(serviceLocator<IUserCoinRepository>()),
+  );
+
+  serviceLocator.registerLazySingleton<UpdateQualityOfOwnedCoinUseCase>(
+    () =>
+        UpdateQualityOfOwnedCoinUseCase(serviceLocator<IUserCoinRepository>()),
   );
 
   serviceLocator.registerLazySingleton<GetOwnedCoinsUseCase>(
@@ -83,8 +103,8 @@ Future setupDependencies() async {
     () => GetOwnedCoinCountUseCase(serviceLocator<IUserCoinRepository>()),
   );
 
-  serviceLocator.registerLazySingleton<UserOwnsCoinUseCase>(
-    () => UserOwnsCoinUseCase(serviceLocator<IUserCoinRepository>()),
+  serviceLocator.registerLazySingleton<CheckIfUserOwnsCoinUseCase>(
+    () => CheckIfUserOwnsCoinUseCase(serviceLocator<IUserCoinRepository>()),
   );
 
   serviceLocator.registerLazySingleton<GetOwnedCoinCountForTypeUseCase>(
@@ -96,8 +116,11 @@ Future setupDependencies() async {
     () => GetOwnedCoinsByCountryUseCase(serviceLocator<IUserCoinRepository>()),
   );
 
-  // Providers - Register as singletons so state is shared app-wide
+  // ==========================================================
+  // PROVIDERS
+  // ==========================================================
 
+  // Coin Provider
   serviceLocator.registerLazySingleton<CoinProvider>(
     () => CoinProvider(
       getCoinsByTypeUseCase: serviceLocator<GetCoinsByTypeUseCase>(),
@@ -106,28 +129,27 @@ Future setupDependencies() async {
     )..init(),
   );
 
-  //
-
-  serviceLocator.registerLazySingleton<UserCoinProvider>(
-    () => UserCoinProvider(
-      addCoinUseCase: serviceLocator<AddCoinUseCase>(),
-      removeCoinUseCase: serviceLocator<RemoveCoinUseCase>(),
-      getOwnedCoinsUseCase: serviceLocator<GetOwnedCoinsUseCase>(),
-      getOwnedCoinCountUseCase: serviceLocator<GetOwnedCoinCountUseCase>(),
-      userOwnsCoinUseCase: serviceLocator<UserOwnsCoinUseCase>(),
-      getOwnedCoinsCountByTypeUseCase:
-          serviceLocator<GetOwnedCoinCountForTypeUseCase>(),
-      getOwnedCoinsByCountryUseCase:
-          serviceLocator<GetOwnedCoinsByCountryUseCase>(),
-    )..init(),
-  );
-
-  //
-
+  // Country Provider
   serviceLocator.registerLazySingleton<CountryProvider>(
     () => CountryProvider(
       getCountriesUseCase: serviceLocator<GetCountriesUseCase>(),
       getCountryByEnumUseCase: serviceLocator<GetCountryByEnumUseCase>(),
+    )..init(),
+  );
+
+  // User Coin Provider
+  serviceLocator.registerLazySingleton<UserCoinProvider>(
+    () => UserCoinProvider(
+      toggleCoinOwnershipUseCase: serviceLocator<ToggleCoinOwnershipUseCase>(),
+      updateQualityOfOwnedCoinUseCase:
+          serviceLocator<UpdateQualityOfOwnedCoinUseCase>(),
+      getOwnedCoinsUseCase: serviceLocator<GetOwnedCoinsUseCase>(),
+      getOwnedCoinCountUseCase: serviceLocator<GetOwnedCoinCountUseCase>(),
+      userOwnsCoinUseCase: serviceLocator<CheckIfUserOwnsCoinUseCase>(),
+      getOwnedCoinsCountByTypeUseCase:
+          serviceLocator<GetOwnedCoinCountForTypeUseCase>(),
+      getOwnedCoinsByCountryUseCase:
+          serviceLocator<GetOwnedCoinsByCountryUseCase>(),
     )..init(),
   );
 }

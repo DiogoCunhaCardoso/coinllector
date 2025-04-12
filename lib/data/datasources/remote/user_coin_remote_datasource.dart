@@ -1,3 +1,4 @@
+import 'package:coinllector_app/shared/enums/coin_quality_enum.dart';
 import 'package:sqflite/sqflite.dart';
 import '../local/database/database_tables.dart';
 
@@ -15,6 +16,15 @@ class UserCoinLocalDataSource {
   Future<void> removeCoin(int coinId) async {
     await db.delete(
       DatabaseTables.userCoins,
+      where: '${DatabaseTables.userCoinId} = ?',
+      whereArgs: [coinId],
+    );
+  }
+
+  Future<void> updateCoinQuality(int coinId, CoinQuality quality) async {
+    await db.update(
+      DatabaseTables.userCoins,
+      {DatabaseTables.quality: quality.name},
       where: '${DatabaseTables.userCoinId} = ?',
       whereArgs: [coinId],
     );
