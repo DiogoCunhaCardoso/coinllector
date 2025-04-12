@@ -1,16 +1,32 @@
-# coinllector_app
+# Coinllector App
 
-A new Flutter project.
+A Euro coin collection manager with statistics and more.
 
-## Getting Started
+## ✨ Features
 
-This project is a starting point for a Flutter application.
+- **Collection Tracking** - Mark owned coins
+- **Advanced Statistics** - View percentages by country or coin type
+- **Premium Grading** - (Paid) Coin quality assessment
+- **Settings** - Personalize app (mints, microstates & more)
 
-A few resources to get you started if this is your first Flutter project:
+## 🏗️ Architecture
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Follows [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html).
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Clean Arquitecture](https://github.com/user-attachments/assets/10c1aa03-ba88-4476-a8d9-e0b6c68fda59)
+
+## 🚀 Getting Started
+
+### Installation
+
+```bash
+git clone https://github.com/DiogoCunhaCardoso/coinllector.git
+cd coinllector
+flutter pub get
+```
+
+### Running
+
+```bash
+flutter run
+```
