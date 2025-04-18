@@ -1,6 +1,5 @@
 import 'package:coinllector_app/config/themes/colors.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
-import 'package:coinllector_app/config/themes/typography.dart';
 import 'package:flutter/material.dart';
 
 class ProfileHeader extends StatelessWidget {
@@ -8,6 +7,9 @@ class ProfileHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -15,7 +17,7 @@ class ProfileHeader extends StatelessWidget {
           bottomRight: Radius.circular(AppSizes.r16),
           bottomLeft: Radius.circular(AppSizes.r16),
         ),
-        gradient: AppColors.gradient,
+        gradient: colorScheme.gradient,
       ),
       padding: const EdgeInsets.only(
         top: kToolbarHeight + 32,
@@ -50,17 +52,13 @@ class ProfileHeader extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child: const Icon(
-                    Icons.edit,
-                    size: 16,
-                    color: AppColors.surface,
-                  ),
+                  child: Icon(Icons.edit, size: 16, color: colorScheme.surface),
                 ),
               ),
             ],
           ),
           const SizedBox(height: AppSizes.p16),
-          const Text("@diog.cardoso", style: AppTextStyles.body),
+          Text("@diog.cardoso", style: textTheme.bodyMedium),
         ],
       ),
     );

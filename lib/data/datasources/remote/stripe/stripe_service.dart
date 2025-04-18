@@ -1,7 +1,12 @@
-import 'package:dio/dio.dart';
+// UNCOMMENT WHEN I ADD PAID FEAUTRES (IF)
+
+/* import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:logging/logging.dart';
+
+// I'm not doing the whole StripeApiDataSource -> PaymentRepositoryImpl -> IPaymentRepository -> ProcessPaymentUseCase -> PaymentProvider
+// Service is more then enough
 
 class StripeService {
   StripeService._();
@@ -78,3 +83,4 @@ class StripeService {
     return calculatedAmount.toString();
   }
 }
+ */

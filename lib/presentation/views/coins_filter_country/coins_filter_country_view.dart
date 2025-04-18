@@ -150,7 +150,7 @@ class _CountriesFilterViewState extends State<CountriesFilterView> {
               backgroundColor: Colors.transparent,
               elevation: 0,
               leading: IconButton(
-                icon: const Icon(Icons.arrow_back),
+                icon: Icon(Icons.adaptive.arrow_back),
                 onPressed: () => context.pop(),
               ),
             ),

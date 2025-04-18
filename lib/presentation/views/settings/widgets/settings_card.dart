@@ -1,4 +1,3 @@
-import 'package:coinllector_app/config/themes/colors.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
 import 'package:flutter/material.dart';
 
@@ -20,6 +19,8 @@ class SettingsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return SizedBox(
       height: 72,
       child: Card(
@@ -35,16 +36,16 @@ class SettingsCard extends StatelessWidget {
                 if (hasSwitch)
                   Transform.scale(
                     scale: 0.9,
-                    child: Switch(
+                    child: Switch.adaptive(
                       value: value ?? false,
                       onChanged: onChanged,
-                      activeColor: AppColors.primary,
+                      activeColor: colorScheme.primary,
                     ),
                   )
                 else
-                  const Icon(
+                  Icon(
                     Icons.chevron_right,
-                    color: AppColors.onSurfaceVariant,
+                    color: colorScheme.onSurfaceVariant,
                   ),
               ],
             ),

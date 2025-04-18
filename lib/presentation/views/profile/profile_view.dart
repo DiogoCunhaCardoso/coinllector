@@ -1,10 +1,8 @@
 import 'package:coinllector_app/config/router/routes.dart';
-import 'package:coinllector_app/config/themes/colors.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
 import 'package:coinllector_app/presentation/providers/coin_provider.dart';
 import 'package:coinllector_app/presentation/providers/user_coin_provider.dart';
 import 'package:coinllector_app/shared/components/highest_coin_card.dart';
-import 'package:coinllector_app/config/themes/typography.dart';
 import 'package:coinllector_app/presentation/views/profile/components/profile_header.dart';
 import 'package:coinllector_app/presentation/views/profile/components/profile_stats_card.dart';
 import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
@@ -99,13 +97,15 @@ class _ProfileViewState extends State<ProfileView> {
 
       setState(() => _isLoading = false);
     } catch (e) {
-      print("Error loading top percentages: $e");
       setState(() => _isLoading = false);
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     final coinProvider = Provider.of<CoinProvider>(context);
     final userCoinProvider = Provider.of<UserCoinProvider>(context);
 
@@ -125,7 +125,7 @@ class _ProfileViewState extends State<ProfileView> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Total", style: AppTextStyles.body),
+                      Text("Total", style: textTheme.bodyMedium),
                       SizedBox(height: AppSizes.p8),
                       ProfileStatsCard(
                         title: "Total Coins",
@@ -138,7 +138,7 @@ class _ProfileViewState extends State<ProfileView> {
                         children: [
                           Row(
                             children: [
-                              Text("Highest", style: AppTextStyles.body),
+                              Text("Highest", style: textTheme.bodyMedium),
                               SizedBox(width: AppSizes.p16),
                               ToggleButtons(
                                 isSelected: [_showTypes, !_showTypes],
@@ -168,17 +168,17 @@ class _ProfileViewState extends State<ProfileView> {
                             onPressed:
                                 () => context.go(AppRoutes.profileStatistics()),
                             style: TextButton.styleFrom(
-                              foregroundColor: AppColors.onSurface,
+                              foregroundColor: colorScheme.onSurface,
                             ),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                Text("See All", style: AppTextStyles.label),
+                                Text("See All", style: textTheme.labelMedium),
                                 const SizedBox(width: AppSizes.p8),
                                 Icon(
-                                  Icons.arrow_forward,
+                                  Icons.adaptive.arrow_forward,
                                   size: 16,
-                                  color: AppColors.onSurface,
+                                  color: colorScheme.onSurface,
                                 ),
                               ],
                             ),

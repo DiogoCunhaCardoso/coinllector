@@ -1,6 +1,4 @@
-import 'package:coinllector_app/config/themes/colors.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
-import 'package:coinllector_app/config/themes/typography.dart';
 import 'package:flutter/material.dart';
 
 class ProfileStatsCard extends StatelessWidget {
@@ -17,6 +15,9 @@ class ProfileStatsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     final double percentage =
         double.parse(coinsOwned) / double.parse(totalCoins);
 
@@ -34,11 +35,11 @@ class ProfileStatsCard extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: AppTextStyles.label.copyWith(
-                    color: AppColors.onSurfaceVariant,
+                  style: textTheme.labelMedium!.copyWith(
+                    color: colorScheme.onSurfaceVariant,
                   ),
                 ),
-                Text('$coinsOwned/$totalCoins', style: AppTextStyles.body),
+                Text('$coinsOwned/$totalCoins', style: textTheme.bodyMedium),
               ],
             ),
             SizedBox(
@@ -51,16 +52,16 @@ class ProfileStatsCard extends StatelessWidget {
                     scale: 2,
                     child: CircularProgressIndicator(
                       value: percentage,
-                      backgroundColor: AppColors.secondary,
+                      backgroundColor: colorScheme.secondary,
                       valueColor: AlwaysStoppedAnimation<Color>(
-                        AppColors.primary,
+                        colorScheme.primary,
                       ),
                       strokeWidth: 4,
                     ),
                   ),
                   Text(
                     "${(percentage * 100).toInt()}%",
-                    style: AppTextStyles.body,
+                    style: textTheme.bodyMedium,
                   ),
                 ],
               ),

@@ -8,7 +8,7 @@ import 'package:logging/logging.dart';
 import '../datasources/remote/country_remote_datasource.dart';
 
 class CountryRepositoryImpl implements ICountryRepository {
-  final CountryLocalDataSource dataSource;
+  final CountryRemoteDataSource dataSource;
   final _log = Logger('COUNTRY_REPOSITORY');
 
   CountryRepositoryImpl(this.dataSource);

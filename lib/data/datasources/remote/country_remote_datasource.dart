@@ -3,10 +3,10 @@ import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 import 'package:sqflite/sqflite.dart';
 import '../local/database/database_tables.dart';
 
-class CountryLocalDataSource {
+class CountryRemoteDataSource {
   final Database db;
 
-  CountryLocalDataSource(this.db);
+  CountryRemoteDataSource(this.db);
 
   Future<List<CountryModel>> getCountries() async {
     final data = await db.query(DatabaseTables.countries);

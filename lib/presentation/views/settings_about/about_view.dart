@@ -1,7 +1,5 @@
 import 'package:coinllector_app/shared/components/custom_app_bar.dart';
-import 'package:coinllector_app/config/themes/colors.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
-import 'package:coinllector_app/config/themes/typography.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -18,6 +16,9 @@ class ProfileSettingsAboutView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
       appBar: CustomAppBar(title: "About", scaffoldContext: context),
       body: Padding(
@@ -30,7 +31,7 @@ class ProfileSettingsAboutView extends StatelessWidget {
           children: [
             Text(
               "Designed & Developed",
-              style: AppTextStyles.body.copyWith(
+              style: textTheme.bodyMedium!.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
@@ -38,7 +39,7 @@ class ProfileSettingsAboutView extends StatelessWidget {
             const SizedBox(height: AppSizes.p8),
             RichText(
               text: TextSpan(
-                style: AppTextStyles.body.copyWith(
+                style: textTheme.bodyMedium!.copyWith(
                   fontWeight: FontWeight.normal,
                 ),
                 children: [
@@ -47,7 +48,7 @@ class ProfileSettingsAboutView extends StatelessWidget {
                     text: "Diogo Cardoso.",
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
-                      color: AppColors.primary,
+                      color: colorScheme.primary,
                       decoration: TextDecoration.underline,
                     ),
                     recognizer:
@@ -63,7 +64,7 @@ class ProfileSettingsAboutView extends StatelessWidget {
             const SizedBox(height: AppSizes.p24),
             Text(
               "Copyright",
-              style: AppTextStyles.body.copyWith(
+              style: textTheme.bodyMedium!.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
               ),
@@ -71,7 +72,7 @@ class ProfileSettingsAboutView extends StatelessWidget {
             const SizedBox(height: AppSizes.p8),
             RichText(
               text: TextSpan(
-                style: AppTextStyles.body.copyWith(
+                style: textTheme.bodyMedium!.copyWith(
                   fontWeight: FontWeight.normal,
                 ),
                 children: [
@@ -82,7 +83,7 @@ class ProfileSettingsAboutView extends StatelessWidget {
                   TextSpan(
                     text: "European Central Bank.",
                     style: TextStyle(
-                      color: AppColors.primary,
+                      color: colorScheme.primary,
                       decoration: TextDecoration.underline,
                     ),
                     recognizer:

@@ -33,7 +33,8 @@ class DatabaseTables {
       $periodStartDate TEXT NOT NULL,
       $periodEndDate TEXT,
       $description TEXT NOT NULL,
-      $country TEXT NOT NULL
+      $country TEXT NOT NULL,
+      FOREIGN KEY ($country) REFERENCES $countries($countryName)
     )
   ''';
 

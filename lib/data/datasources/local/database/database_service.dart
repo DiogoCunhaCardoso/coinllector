@@ -36,9 +36,9 @@ class DatabaseService {
     _db = await _initDatabase();
 
     // Initialize repositories
-    coinRepository = CoinRepositoryImpl(CoinLocalDataSource(_db!));
-    countryRepository = CountryRepositoryImpl(CountryLocalDataSource(_db!));
-    userCoinRepository = UserCoinRepositoryImpl(UserCoinLocalDataSource(_db!));
+    coinRepository = CoinRepositoryImpl(CoinRemoteDataSource(_db!));
+    countryRepository = CountryRepositoryImpl(CountryRemoteDataSource(_db!));
+    userCoinRepository = UserCoinRepositoryImpl(UserCoinRemoteDataSource(_db!));
 
     return _db!;
   }
@@ -65,8 +65,8 @@ class DatabaseService {
     await db.execute(DatabaseTables.createCountriesTable);
 
     // Initialize repositories for data insertion
-    final coinRepo = CoinRepositoryImpl(CoinLocalDataSource(db));
-    final countryRepo = CountryRepositoryImpl(CountryLocalDataSource(db));
+    final coinRepo = CoinRepositoryImpl(CoinRemoteDataSource(db));
+    final countryRepo = CountryRepositoryImpl(CountryRemoteDataSource(db));
 
     // Insert initial data
     await countryRepo.insertInitialCountries(countriesData);

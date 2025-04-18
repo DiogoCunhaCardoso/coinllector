@@ -1,6 +1,4 @@
-import 'package:coinllector_app/config/themes/colors.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
-import 'package:coinllector_app/config/themes/typography.dart';
 import 'package:flutter/material.dart';
 
 class ModalListTile extends StatelessWidget {
@@ -15,22 +13,25 @@ class ModalListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     return ListTile(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(AppSizes.r8)),
       ),
-      tileColor: AppColors.surfaceVariant,
+      tileColor: colorScheme.surfaceContainerHighest,
       leading: CircleAvatar(
         radius: 12,
         backgroundImage: AssetImage("assets/country/germany-flag.png"),
       ),
-      title: Text(title, style: AppTextStyles.labelSmall),
+      title: Text(title, style: textTheme.labelSmall),
       trailing:
           hasCheckbox
               ? Checkbox(
                 value: true,
                 onChanged: ((value) => false),
-                activeColor: AppColors.primary,
+                activeColor: colorScheme.primary,
               )
               : null, // If
     );

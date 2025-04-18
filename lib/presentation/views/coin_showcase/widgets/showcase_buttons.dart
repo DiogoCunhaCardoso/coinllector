@@ -1,4 +1,3 @@
-import 'package:coinllector_app/config/themes/colors.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
 import 'package:flutter/material.dart';
 
@@ -14,22 +13,24 @@ class ShowcaseButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Container(
       height: 72,
-      decoration: BoxDecoration(color: AppColors.surface),
+      decoration: BoxDecoration(color: colorScheme.surface),
       padding: const EdgeInsets.symmetric(horizontal: AppSizes.p16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           _ShowcaseButton(
             onPressed: onBackPressed,
-            icon: Icons.arrow_back,
+            icon: Icons.adaptive.arrow_back,
             label: "Back",
             iconFirst: true,
           ),
           _ShowcaseButton(
             onPressed: onNextPressed,
-            icon: Icons.arrow_forward,
+            icon: Icons.adaptive.arrow_forward,
             label: "Next",
             iconFirst: false,
           ),
@@ -54,10 +55,12 @@ class _ShowcaseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return TextButton(
       onPressed: onPressed, // Flutter's TextButton accepts nullable callbacks
       style: TextButton.styleFrom(
-        foregroundColor: AppColors.onSurface,
+        foregroundColor: colorScheme.onSurface,
         padding: const EdgeInsets.symmetric(horizontal: AppSizes.p16),
       ),
       child: Row(
@@ -67,7 +70,7 @@ class _ShowcaseButton extends StatelessWidget {
                 ? [
                   Icon(
                     icon,
-                    color: onPressed == null ? null : AppColors.onSurface,
+                    color: onPressed == null ? null : colorScheme.onSurface,
                   ),
                   const SizedBox(width: AppSizes.p8),
                   Text(
@@ -83,7 +86,7 @@ class _ShowcaseButton extends StatelessWidget {
                   const SizedBox(width: AppSizes.p8),
                   Icon(
                     icon,
-                    color: onPressed == null ? null : AppColors.onSurface,
+                    color: onPressed == null ? null : colorScheme.onSurface,
                   ),
                 ],
       ),

@@ -1,5 +1,4 @@
 import 'package:coinllector_app/shared/components/tab_button.dart';
-import 'package:coinllector_app/config/themes/colors.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
 import 'package:flutter/material.dart';
 
@@ -15,11 +14,13 @@ class ShowcaseQualitySelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Container(
       height: 48,
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
       decoration: BoxDecoration(
-        color: AppColors.onSurfaceVariant,
+        color: colorScheme.onSurfaceVariant,
         borderRadius: BorderRadius.circular(AppSizes.r8),
       ),
       child: Row(

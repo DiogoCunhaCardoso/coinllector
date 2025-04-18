@@ -4,10 +4,10 @@ import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 import 'package:sqflite/sqflite.dart';
 
-class CoinLocalDataSource {
+class CoinRemoteDataSource {
   final Database db;
 
-  CoinLocalDataSource(this.db);
+  CoinRemoteDataSource(this.db);
 
   Future<List<Map<String, dynamic>>> getAllCoinsByType(CoinType type) {
     return db.query(

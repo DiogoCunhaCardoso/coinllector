@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:coinllector_app/shared/components/tab_button.dart';
 import 'package:coinllector_app/config/themes/colors.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
-import 'package:coinllector_app/config/themes/typography.dart';
 
 class CoinsHeader extends StatelessWidget {
   final int selectedIndex;
@@ -21,6 +20,9 @@ class CoinsHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -28,7 +30,7 @@ class CoinsHeader extends StatelessWidget {
           bottomRight: Radius.circular(AppSizes.r24),
           bottomLeft: Radius.circular(AppSizes.r24),
         ),
-        gradient: AppColors.gradient,
+        gradient: colorScheme.gradient,
       ),
       padding: const EdgeInsets.only(
         top: kToolbarHeight + 24,
@@ -41,11 +43,11 @@ class CoinsHeader extends StatelessWidget {
         children: [
           Image.asset("assets/logo.png"),
           const SizedBox(height: AppSizes.p24),
-          const Text("Total Coins", style: AppTextStyles.label),
+          Text("Total Coins", style: textTheme.labelMedium),
           const SizedBox(height: 4),
           RichText(
             text: TextSpan(
-              style: AppTextStyles.bodyLarge,
+              style: textTheme.bodyLarge,
               children: [
                 TextSpan(text: "${coinsOwned.toString()}/"),
                 TextSpan(text: totalCoins.toString()),
@@ -57,22 +59,26 @@ class CoinsHeader extends StatelessWidget {
             height: 52,
             padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
             decoration: BoxDecoration(
-              color: AppColors.onSurface.withValues(alpha: 0.6),
+              color: colorScheme.onSurface.withValues(alpha: 0.6),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                TabButton(
-                  text: "Value",
-                  isSelected: selectedIndex == 0,
-                  onPressed: () => onTabChanged(0),
+                Expanded(
+                  child: TabButton(
+                    text: "Value",
+                    isSelected: selectedIndex == 0,
+                    onPressed: () => onTabChanged(0),
+                  ),
                 ),
                 const SizedBox(width: AppSizes.p8),
-                TabButton(
-                  text: "Country",
-                  isSelected: selectedIndex == 1,
-                  onPressed: () => onTabChanged(1),
+                Expanded(
+                  child: TabButton(
+                    text: "Country",
+                    isSelected: selectedIndex == 1,
+                    onPressed: () => onTabChanged(1),
+                  ),
                 ),
               ],
             ),

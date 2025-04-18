@@ -1,18 +1,45 @@
+// material_theme.dart
+
+import 'package:coinllector_app/config/themes/common.dart';
+import 'package:coinllector_app/config/themes/typography.dart';
 import 'package:flutter/material.dart';
 
-class AppColors {
-  // Surfaces
-  static const Color surface = Color(0xFF000000);
-  static const Color surfaceVariant = Color(0xFF222227);
-  static const Color onSurface = Color(0xFFFFFFFF);
-  static const Color onSurfaceVariant = Color(0xBBBBBBBB);
+class MaterialTheme {
+  final TextTheme textTheme;
 
-  static const Color primary = Color(0xFF5581FF);
-  static const Color secondary = Color(0xFFCCD9FF);
-  static const Color premium = Color(0xFFFFCF27);
+  const MaterialTheme(this.textTheme);
+
+  // HERE IS MY DARK MODE (IN THE FUTURE MIGHT ADD A LIGHT MODE)
+
+  static ColorScheme darkScheme() {
+    return const ColorScheme.dark().copyWith(
+      surface: Color(0xFF000000),
+      surfaceContainerHighest: Color(0xFF222227), // deprecated, surfaceVariant
+      onSurface: Color(0xFFFFFFFF),
+      onSurfaceVariant: Color(0xBBBBBBBB),
+      primary: Color(0xFF5581FF),
+      secondary: Color(0xFFCCD9FF),
+      tertiary: Color(0xFFFFCF27), // premium color
+    );
+  }
+
+  ThemeData dark() {
+    return theme(darkScheme());
+  }
+
+  ThemeData theme(ColorScheme colorScheme) => ThemeData(
+    useMaterial3: true,
+    brightness: colorScheme.brightness,
+    colorScheme: colorScheme,
+    textTheme: createAppTextTheme(colorScheme),
+    scaffoldBackgroundColor: colorScheme.surface,
+    canvasColor: colorScheme.surface,
+    appBarTheme: CustomWidgetStyles.getAppBarTheme(colorScheme),
+    cardTheme: CustomWidgetStyles.getCardTheme(colorScheme),
+  );
 
   // Gradient
-  static const Gradient gradient = LinearGradient(
+  static LinearGradient get primaryGradient => const LinearGradient(
     begin: Alignment.bottomLeft,
     end: Alignment.topRight,
     colors: [
@@ -21,4 +48,12 @@ class AppColors {
       Color(0xFFA1A3F3), // 100%
     ],
   );
+}
+
+// Extension to easily access colors from Theme
+extension ColorSchemeExtension on ColorScheme {
+  Color get premium => tertiary;
+
+  // Access to gradient
+  LinearGradient get gradient => MaterialTheme.primaryGradient;
 }

@@ -8,7 +8,7 @@ import '../datasources/remote/user_coin_remote_datasource.dart';
 
 class UserCoinRepositoryImpl implements IUserCoinRepository {
   final _log = Logger('USER_COIN_REPOSITORY');
-  final UserCoinLocalDataSource dataSource;
+  final UserCoinRemoteDataSource dataSource;
 
   UserCoinRepositoryImpl(this.dataSource);
 
@@ -116,7 +116,7 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
   @override
   Future<Result<int>> getUserCoinsByType(CoinType type) async {
     try {
-      final count = await dataSource.getOwnedCoinCountByType(type.name);
+      final count = await dataSource.getOwnedCoinCountByType(type);
       return Result.success(count);
     } catch (e) {
       return Result.error(Exception('Failed to fetch count for $type: $e'));

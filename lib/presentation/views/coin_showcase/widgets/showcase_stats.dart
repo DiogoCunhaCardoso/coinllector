@@ -1,4 +1,3 @@
-import 'package:coinllector_app/config/themes/colors.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
 import 'package:coinllector_app/domain/entities/coin.dart';
 import 'package:coinllector_app/utils/text_display.dart';
@@ -11,6 +10,7 @@ class ShowcaseStats extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Center(
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -20,7 +20,7 @@ class ShowcaseStats extends StatelessWidget {
               children: [
                 Text(
                   coin.quantity.toString(),
-                  style: TextStyle(color: AppColors.onSurfaceVariant),
+                  style: TextStyle(color: colorScheme.onSurfaceVariant),
                 ),
                 const Text("Quantity"),
               ],
@@ -31,7 +31,7 @@ class ShowcaseStats extends StatelessWidget {
             children: [
               Text(
                 convertDate(coin.periodStartDate),
-                style: TextStyle(color: AppColors.onSurfaceVariant),
+                style: TextStyle(color: colorScheme.onSurfaceVariant),
               ),
               const Text("Release"),
             ],

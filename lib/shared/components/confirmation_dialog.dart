@@ -1,6 +1,4 @@
-import 'package:coinllector_app/config/themes/colors.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
-import 'package:coinllector_app/config/themes/typography.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmationDialog {
@@ -11,6 +9,9 @@ class ConfirmationDialog {
     String cancelText = 'Cancel',
     String confirmText = 'Confirm',
   }) async {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     final result = await showDialog<bool>(
       context: context,
       builder:
@@ -18,20 +19,22 @@ class ConfirmationDialog {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(AppSizes.r16),
             ),
-            backgroundColor: AppColors.surfaceVariant,
-            title: Text(title, style: AppTextStyles.bodyLarge),
+            backgroundColor: colorScheme.surfaceContainerHighest,
+            title: Text(title, style: textTheme.bodyLarge),
             content: Text(
               content,
-              style: AppTextStyles.body.copyWith(fontWeight: FontWeight.normal),
+              style: textTheme.bodyMedium!.copyWith(
+                fontWeight: FontWeight.normal,
+              ),
             ),
             actions: [
               TextButton(
                 onPressed: () => Navigator.of(ctx).pop(false),
-                child: Text(cancelText, style: AppTextStyles.label),
+                child: Text(cancelText, style: textTheme.labelMedium),
               ),
               TextButton(
                 onPressed: () => Navigator.of(ctx).pop(true),
-                child: Text(confirmText, style: AppTextStyles.label),
+                child: Text(confirmText, style: textTheme.labelMedium),
               ),
             ],
           ),

@@ -6,6 +6,10 @@ import 'package:coinllector_app/shared/enums/states_enum.dart';
 import 'package:coinllector_app/utils/result.dart';
 import 'package:coinllector_app/utils/use_case.dart';
 
+// Business Rules
+/// Gets all Coins by X Type.
+/// If User Preferences is set to not want microstates, then filter them.
+
 class GetCoinsByTypeUseCase implements UseCase<List<Coin>, Params<CoinType>> {
   final ICoinRepository repository;
 

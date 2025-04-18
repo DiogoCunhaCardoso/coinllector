@@ -19,6 +19,8 @@ class CoinBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -26,7 +28,7 @@ class CoinBanner extends StatelessWidget {
           bottomRight: Radius.circular(16),
           bottomLeft: Radius.circular(16),
         ),
-        gradient: AppColors.gradient,
+        gradient: colorScheme.gradient,
       ),
       padding: const EdgeInsets.only(
         top: kToolbarHeight + 24,

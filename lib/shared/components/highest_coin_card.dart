@@ -1,6 +1,4 @@
-import 'package:coinllector_app/config/themes/colors.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
-import 'package:coinllector_app/config/themes/typography.dart';
 import 'package:flutter/material.dart';
 
 class HighestCoinCard extends StatelessWidget {
@@ -19,6 +17,9 @@ class HighestCoinCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     final double owned = double.tryParse(coinsOwned) ?? 0;
     final double total =
         double.tryParse(totalCoins) ?? 1; // Prevent division by zero
@@ -42,11 +43,14 @@ class HighestCoinCard extends StatelessWidget {
                   children: [
                     Text(
                       countryName,
-                      style: AppTextStyles.label.copyWith(
-                        color: AppColors.onSurfaceVariant,
+                      style: textTheme.labelMedium!.copyWith(
+                        color: colorScheme.onSurfaceVariant,
                       ),
                     ),
-                    Text("$coinsOwned/$totalCoins", style: AppTextStyles.body),
+                    Text(
+                      "$coinsOwned/$totalCoins",
+                      style: textTheme.bodyMedium,
+                    ),
                   ],
                 ),
               ],
@@ -62,16 +66,16 @@ class HighestCoinCard extends StatelessWidget {
                     scale: 1.4,
                     child: CircularProgressIndicator(
                       value: percentage,
-                      backgroundColor: AppColors.secondary,
+                      backgroundColor: colorScheme.secondary,
                       valueColor: AlwaysStoppedAnimation<Color>(
-                        AppColors.primary,
+                        colorScheme.primary,
                       ),
                       strokeWidth: 4,
                     ),
                   ),
                   Text(
                     "${(percentage * 100).toInt()}%",
-                    style: AppTextStyles.labelSmall,
+                    style: textTheme.labelSmall,
                   ),
                 ],
               ),

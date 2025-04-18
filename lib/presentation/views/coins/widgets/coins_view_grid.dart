@@ -46,7 +46,7 @@ class CoinsViewGrid extends StatelessWidget {
         // If we have data, show the grid
         return GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            mainAxisExtent: 152,
+            mainAxisExtent: 156,
             crossAxisCount: 2,
             crossAxisSpacing: AppSizes.p8,
             mainAxisSpacing: AppSizes.p8,

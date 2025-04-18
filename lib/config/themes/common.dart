@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:coinllector_app/config/themes/colors.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
 
 class CustomWidgetStyles {
@@ -9,10 +8,10 @@ class CustomWidgetStyles {
       backgroundColor: Colors.transparent,
       elevation: 0,
       iconTheme: IconThemeData(
-        color: AppColors.onSurface, //change your color here
+        color: colorScheme.onSurface, //change your color here
       ),
       titleTextStyle: TextStyle(
-        color: AppColors.onSurface,
+        color: colorScheme.onSurface,
         fontSize: 20,
         fontWeight: FontWeight.bold,
       ),
@@ -22,7 +21,7 @@ class CustomWidgetStyles {
   static CardTheme getCardTheme(ColorScheme colorScheme) {
     return CardTheme().copyWith(
       elevation: 0,
-      color: AppColors.surfaceVariant,
+      color: colorScheme.surfaceContainerHighest,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(AppSizes.r8)),
       ),

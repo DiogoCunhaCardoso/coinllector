@@ -8,7 +8,7 @@ import 'package:logging/logging.dart';
 import 'package:coinllector_app/data/models/coin_model.dart';
 
 class CoinRepositoryImpl implements ICoinRepository {
-  final CoinLocalDataSource localDataSource;
+  final CoinRemoteDataSource localDataSource;
   final _log = Logger('COIN_REPOSITORY');
 
   CoinRepositoryImpl(this.localDataSource);

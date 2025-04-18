@@ -1,14 +1,14 @@
+import 'package:coinllector_app/config/themes/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:google_fonts/google_fonts.dart';
+/* import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_stripe/flutter_stripe.dart'; */
 import 'package:provider/provider.dart';
 import 'package:logging/logging.dart';
 
 // App-specific imports
 import 'package:coinllector_app/config/router/router.dart';
-import 'package:coinllector_app/config/themes/colors.dart';
-import 'package:coinllector_app/config/themes/common.dart';
+
 import 'package:coinllector_app/data/datasources/local/preferences/user_preferences.dart';
 import 'package:coinllector_app/presentation/providers/coin_provider.dart';
 import 'package:coinllector_app/presentation/providers/country_provider.dart';
@@ -23,13 +23,13 @@ void main() async {
   await UserPreferences().init();
   await setupDependencies();
 
-  // Stripe & dotenv
-  await dotenv.load();
+  // Stripe & dotenv (when/if I add premium fetures in the future)
+  /*   await dotenv.load();
   final publishableKey = dotenv.env["STRIPE_PUBLISHABLE_KEY"];
   if (publishableKey == null) {
     throw Exception("STRIPE_PUBLISHABLE_KEY is missing in .env");
   }
-  Stripe.publishableKey = publishableKey;
+  Stripe.publishableKey = publishableKey; */
 
   runApp(const MyApp());
 }
@@ -39,6 +39,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final materialTheme = MaterialTheme(GoogleFonts.openSansTextTheme());
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => serviceLocator<CoinProvider>()),
@@ -53,23 +54,8 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         routerConfig: router,
         title: 'Coinllector',
-        theme: _buildAppTheme(context),
+        theme: materialTheme.dark(),
       ),
-    );
-  }
-
-  ThemeData _buildAppTheme(BuildContext context) {
-    return ThemeData(
-      textTheme: GoogleFonts.openSansTextTheme().apply(
-        bodyColor: AppColors.onSurface,
-      ),
-      colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      useMaterial3: true,
-      appBarTheme: CustomWidgetStyles.getAppBarTheme(
-        Theme.of(context).colorScheme,
-      ),
-      cardTheme: CustomWidgetStyles.getCardTheme(Theme.of(context).colorScheme),
-      scaffoldBackgroundColor: AppColors.surface,
     );
   }
 }

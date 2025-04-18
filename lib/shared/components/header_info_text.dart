@@ -1,4 +1,3 @@
-import 'package:coinllector_app/config/themes/typography.dart';
 import 'package:flutter/material.dart';
 
 class HeaderInfoText extends StatelessWidget {
@@ -9,9 +8,11 @@ class HeaderInfoText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return RichText(
       text: TextSpan(
-        style: AppTextStyles.bodyMedium,
+        style: textTheme.bodyMedium,
         children: [TextSpan(text: "$owned/"), TextSpan(text: "$total")],
       ),
     );

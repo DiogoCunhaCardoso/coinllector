@@ -35,7 +35,7 @@ class CoinsFilterCountryGrid extends StatelessWidget {
 
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        mainAxisExtent: 152,
+        mainAxisExtent: 156,
         crossAxisCount: 2,
         crossAxisSpacing: AppSizes.p8,
         mainAxisSpacing: AppSizes.p8,

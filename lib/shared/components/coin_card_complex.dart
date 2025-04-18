@@ -1,5 +1,5 @@
-import 'package:coinllector_app/config/themes/colors.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
+import 'package:coinllector_app/shared/components/gradient_checkbox.dart';
 import 'package:flutter/material.dart';
 
 class CoinCardComplex extends StatelessWidget {
@@ -22,12 +22,13 @@ class CoinCardComplex extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return GestureDetector(
       onTap: onTap,
       child: Stack(
         children: [
           Card(
-            color: AppColors.surfaceVariant,
+            color: colorScheme.surfaceContainerHighest,
             child: Center(
               child: Image.asset(
                 imageUrl,
@@ -38,19 +39,11 @@ class CoinCardComplex extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: AppSizes.p8 - 6,
-            left: AppSizes.p8 - 6,
-            child: Transform.scale(
-              scale: 1.2,
-              child: Checkbox(
-                value: isSelected,
-                onChanged: (value) => onSelected(value ?? false),
-                fillColor: WidgetStateProperty.resolveWith<Color>((states) {
-                  return states.contains(WidgetState.selected)
-                      ? AppColors.primary
-                      : AppColors.onSurfaceVariant;
-                }),
-              ),
+            top: AppSizes.p12,
+            left: AppSizes.p12,
+            child: GradientCheckbox(
+              value: isSelected,
+              onChanged: (value) => onSelected(value),
             ),
           ),
           if (countryImage != null)
@@ -59,7 +52,7 @@ class CoinCardComplex extends StatelessWidget {
               right: AppSizes.p8 + 6,
               child: CircleAvatar(
                 radius: 12,
-                backgroundColor: AppColors.surface,
+                backgroundColor: colorScheme.surface,
                 backgroundImage: AssetImage(countryImage!),
               ),
             ),

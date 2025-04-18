@@ -1,11 +1,12 @@
 import 'package:coinllector_app/shared/enums/coin_quality_enum.dart';
+import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
 import 'package:sqflite/sqflite.dart';
 import '../local/database/database_tables.dart';
 
-class UserCoinLocalDataSource {
+class UserCoinRemoteDataSource {
   final Database db;
 
-  UserCoinLocalDataSource(this.db);
+  UserCoinRemoteDataSource(this.db);
 
   Future<void> insertCoin(int coinId) async {
     await db.insert(DatabaseTables.userCoins, {
@@ -51,7 +52,7 @@ class UserCoinLocalDataSource {
     return Sqflite.firstIntValue(result) ?? 0;
   }
 
-  Future<int> getOwnedCoinCountByType(String type) async {
+  Future<int> getOwnedCoinCountByType(CoinType type) async {
     final result = await db.rawQuery(
       '''
     SELECT COUNT(*) as count
@@ -60,7 +61,7 @@ class UserCoinLocalDataSource {
       ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.userCoinId}
     WHERE c.${DatabaseTables.type} = ?
   ''',
-      [type],
+      [type.name],
     );
 
     return Sqflite.firstIntValue(result) ?? 0;

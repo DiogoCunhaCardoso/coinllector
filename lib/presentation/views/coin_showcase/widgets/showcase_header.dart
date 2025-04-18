@@ -1,5 +1,5 @@
-import 'package:coinllector_app/config/themes/colors.dart';
 import 'package:coinllector_app/domain/entities/country.dart';
+import 'package:coinllector_app/shared/components/gradient_checkbox.dart';
 import 'package:flutter/material.dart';
 
 class ShowcaseHeader extends StatelessWidget {
@@ -16,6 +16,8 @@ class ShowcaseHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -23,7 +25,7 @@ class ShowcaseHeader extends StatelessWidget {
           bottomRight: Radius.circular(16),
           bottomLeft: Radius.circular(16),
         ),
-        gradient: AppColors.gradient,
+        color: colorScheme.surfaceContainerHighest,
       ),
       padding: const EdgeInsets.only(
         top: kToolbarHeight + 24,
@@ -39,17 +41,9 @@ class ShowcaseHeader extends StatelessWidget {
           SizedBox(
             width: 28,
             height: 28,
-            child: Transform.scale(
-              scale: 1.2,
-              child: Checkbox(
-                value: isOwned,
-                onChanged: (value) => onToggleOwnership(value ?? false),
-                fillColor: WidgetStateProperty.resolveWith<Color>((states) {
-                  return states.contains(WidgetState.selected)
-                      ? AppColors.primary
-                      : AppColors.onSurfaceVariant;
-                }),
-              ),
+            child: GradientCheckbox(
+              value: isOwned,
+              onChanged: (value) => onToggleOwnership(value),
             ),
           ),
           CircleAvatar(

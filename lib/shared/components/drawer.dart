@@ -1,7 +1,6 @@
 import 'package:coinllector_app/config/router/routes.dart';
 import 'package:coinllector_app/config/themes/colors.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
-import 'package:coinllector_app/data/datasources/remote/stripe/stripe_service.dart';
 import 'package:flutter/material.dart';
 
 class DrawerMenuItem extends StatelessWidget {
@@ -20,13 +19,15 @@ class DrawerMenuItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return GestureDetector(
       onTap: onTap,
       child: Container(
         decoration:
             isActive
                 ? BoxDecoration(
-                  gradient: AppColors.gradient, // Active item background
+                  gradient: colorScheme.gradient, // Active item background
                   borderRadius: BorderRadius.circular(AppSizes.p8),
                 )
                 : null,
@@ -38,13 +39,17 @@ class DrawerMenuItem extends StatelessWidget {
           leading: Icon(
             icon,
             color:
-                isActive ? Colors.white : Colors.white.withValues(alpha: 0.6),
+                isActive
+                    ? colorScheme.onSurface
+                    : colorScheme.onSurface.withValues(alpha: 0.6),
           ),
           title: Text(
             title,
             style: TextStyle(
               color:
-                  isActive ? Colors.white : Colors.white.withValues(alpha: 0.6),
+                  isActive
+                      ? colorScheme.onSurface
+                      : colorScheme.onSurface.withValues(alpha: 0.6),
             ),
           ),
           selected: isActive,
@@ -80,8 +85,10 @@ class AppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Drawer(
-      backgroundColor: AppColors.surface,
+      backgroundColor: colorScheme.surface,
       child: Padding(
         padding: const EdgeInsets.symmetric(
           vertical: AppSizes.p24,
@@ -119,14 +126,6 @@ class AppDrawer extends StatelessWidget {
                 onTap: () => onItemTapped(index),
               );
             }),
-            Spacer(),
-            OutlinedButton(
-              onPressed: () {
-                Navigator.pop(context);
-                StripeService.instance.makePayment();
-              },
-              child: Text("PRO"),
-            ),
           ],
         ),
       ),

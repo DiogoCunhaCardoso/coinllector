@@ -1,4 +1,3 @@
-import 'package:coinllector_app/config/themes/colors.dart';
 import 'package:flutter/material.dart';
 
 class CoinCard extends StatelessWidget {
@@ -15,11 +14,13 @@ class CoinCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
         child: Card(
-          color: AppColors.surfaceVariant,
+          color: colorScheme.surfaceContainerHighest,
           child: Center(
             child: Image.asset(
               imageUrl,
