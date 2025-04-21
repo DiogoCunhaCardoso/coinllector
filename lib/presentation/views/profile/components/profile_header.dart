@@ -1,9 +1,14 @@
+import 'dart:io';
+
 import 'package:coinllector_app/config/themes/colors.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
 import 'package:flutter/material.dart';
 
 class ProfileHeader extends StatelessWidget {
-  const ProfileHeader({super.key});
+  final VoidCallback onEditTap;
+  final File? pfp;
+
+  const ProfileHeader({super.key, required this.onEditTap, this.pfp});
 
   @override
   Widget build(BuildContext context) {
@@ -30,35 +35,47 @@ class ProfileHeader extends StatelessWidget {
           Stack(
             clipBehavior: Clip.none,
             children: [
-              const CircleAvatar(
+              CircleAvatar(
                 radius: 48,
-                backgroundImage: NetworkImage(
-                  'https://t3.ftcdn.net/jpg/02/36/99/22/360_F_236992283_sNOxCVQeFLd5pdqaKGh8DRGMZy7P4XKm.jpg',
-                ),
+                backgroundImage:
+                    pfp != null
+                        ? FileImage(pfp!)
+                        : const NetworkImage(
+                              'https://t3.ftcdn.net/jpg/02/36/99/22/360_F_236992283_sNOxCVQeFLd5pdqaKGh8DRGMZy7P4XKm.jpg',
+                            )
+                            as ImageProvider,
               ),
               Positioned(
-                top: 0,
-                right: 0,
-                child: Container(
-                  padding: const EdgeInsets.all(4),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withValues(alpha: 0.5),
-                        blurRadius: 2,
-                        offset: const Offset(0, 1),
-                      ),
-                    ],
+                top: 10,
+                right: 10,
+                child: GestureDetector(
+                  onTap: () => onEditTap(),
+
+                  child: Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      color: colorScheme.onSurface,
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withValues(alpha: 0.5),
+                          blurRadius: 2,
+                          offset: const Offset(0, 1),
+                        ),
+                      ],
+                    ),
+                    child: Icon(
+                      Icons.edit,
+                      size: 16,
+                      color: colorScheme.surface,
+                    ),
                   ),
-                  child: Icon(Icons.edit, size: 16, color: colorScheme.surface),
                 ),
               ),
             ],
           ),
           const SizedBox(height: AppSizes.p16),
-          Text("@diog.cardoso", style: textTheme.bodyMedium),
+          Text("Diogo Cardoso", style: textTheme.titleSmall),
         ],
       ),
     );

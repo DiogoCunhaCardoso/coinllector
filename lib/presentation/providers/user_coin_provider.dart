@@ -1,4 +1,5 @@
 // lib/presentation/providers/user_coin_provider.dart
+import 'package:coinllector_app/domain/usecases/user_coin/get_coin_quality.dart';
 import 'package:coinllector_app/domain/usecases/user_coin/get_owned_coin_count.dart';
 import 'package:coinllector_app/domain/usecases/user_coin/get_owned_coins.dart';
 import 'package:coinllector_app/domain/usecases/user_coin/get_owned_coins_count_by_country.dart';
@@ -20,6 +21,7 @@ class UserCoinProvider extends ChangeNotifier {
   // USE CASES --------------------------------------
 
   final ToggleCoinOwnershipUseCase _toggleCoinOwnershipUseCase;
+  final GetCoinQualityUseCase _getCoinQualityUseCase;
   final UpdateQualityOfOwnedCoinUseCase _updateQualityOfOwnedCoinUseCase;
   final GetOwnedCoinsUseCase _getOwnedCoinsUseCase;
   final GetOwnedCoinCountUseCase _getOwnedCoinCountUseCase;
@@ -35,6 +37,7 @@ class UserCoinProvider extends ChangeNotifier {
 
   UserCoinProvider({
     required ToggleCoinOwnershipUseCase toggleCoinOwnershipUseCase,
+    required GetCoinQualityUseCase getCoinQualityUseCase,
     required UpdateQualityOfOwnedCoinUseCase updateQualityOfOwnedCoinUseCase,
     required GetOwnedCoinsUseCase getOwnedCoinsUseCase,
     required GetOwnedCoinCountUseCase getOwnedCoinCountUseCase,
@@ -42,6 +45,7 @@ class UserCoinProvider extends ChangeNotifier {
     required GetOwnedCoinCountForTypeUseCase getOwnedCoinsCountByTypeUseCase,
     required GetOwnedCoinsByCountryUseCase getOwnedCoinsByCountryUseCase,
   }) : _toggleCoinOwnershipUseCase = toggleCoinOwnershipUseCase,
+       _getCoinQualityUseCase = getCoinQualityUseCase,
        _updateQualityOfOwnedCoinUseCase = updateQualityOfOwnedCoinUseCase,
        _getOwnedCoinsUseCase = getOwnedCoinsUseCase,
        _getOwnedCoinCountUseCase = getOwnedCoinCountUseCase,
@@ -150,6 +154,17 @@ class UserCoinProvider extends ChangeNotifier {
     }
   }
 
+  Future<CoinQuality?> getCoinQuality(int coinId) async {
+    final result = await _getCoinQualityUseCase(Params(coinId));
+
+    switch (result) {
+      case Success(value: final quality):
+        return quality;
+      case Error():
+        return null;
+    }
+  }
+
   Future<bool> updateCoinQuality(int coinId, CoinQuality quality) async {
     final updateParams = UpdateCoinQualityParams(coinId, quality);
     final result = await _updateQualityOfOwnedCoinUseCase(Params(updateParams));
@@ -157,6 +172,7 @@ class UserCoinProvider extends ChangeNotifier {
     switch (result) {
       case Success():
         _log.info('Updated quality of coin $coinId to ${quality.name}');
+        notifyListeners();
         return true;
       case Error(error: final e):
         _log.severe('Error updating coin quality: $e');

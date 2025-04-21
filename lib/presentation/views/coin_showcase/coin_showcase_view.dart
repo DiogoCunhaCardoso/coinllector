@@ -1,10 +1,10 @@
 import 'package:coinllector_app/config/router/routes.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
-import 'package:coinllector_app/data/datasources/local/preferences/user_preferences.dart';
 import 'package:coinllector_app/domain/entities/coin.dart';
 import 'package:coinllector_app/domain/entities/country.dart';
 import 'package:coinllector_app/presentation/providers/country_provider.dart';
 import 'package:coinllector_app/presentation/providers/user_coin_provider.dart';
+import 'package:coinllector_app/presentation/providers/user_prefs_provider.dart';
 import 'package:coinllector_app/presentation/views/coin_showcase/widgets/showcase_buttons.dart';
 import 'package:coinllector_app/presentation/views/coin_showcase/widgets/showcase_description.dart';
 import 'package:coinllector_app/presentation/views/coin_showcase/widgets/showcase_header.dart';
@@ -36,7 +36,6 @@ class CoinShowcase extends StatefulWidget {
 
 class _CoinShowcaseState extends State<CoinShowcase> {
   final _log = Logger('COINS_SHOWCASE');
-  int _selectedQualityIndex = -1;
 
   // COIN NAVIGATION -------------------------------------------------------------------
 
@@ -60,7 +59,7 @@ class _CoinShowcaseState extends State<CoinShowcase> {
       context,
       listen: false,
     );
-    final prefs = UserPreferences();
+    final prefs = context.read<UserPreferencesProvider>();
 
     final isOwned = await userCoinProvider.checkIfUserOwnsCoin(widget.coin.id);
 
@@ -79,15 +78,16 @@ class _CoinShowcaseState extends State<CoinShowcase> {
 
   @override
   Widget build(BuildContext context) {
+    // PROVIDERS ----------------------------------------
+
     final userCoinProvider = Provider.of<UserCoinProvider>(context);
     final countryProvider = Provider.of<CountryProvider>(
       context,
       listen: false,
     );
+    final userPrefsProvider = Provider.of<UserPreferencesProvider>(context);
 
     final isOwned = userCoinProvider.isOwned(widget.coin.id);
-
-    final prefs = UserPreferences();
 
     return Scaffold(
       body: Stack(
@@ -120,40 +120,59 @@ class _CoinShowcaseState extends State<CoinShowcase> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            ...prefs.coinQuality
-                                ? [
-                                  ShowcaseQualitySelector(
-                                    selectedQualityIndex: _selectedQualityIndex,
-                                    onQualitySelected: (index) async {
-                                      // Keep track of selected index
-                                      setState(() {
-                                        _selectedQualityIndex = index;
-                                      });
+                            if (userPrefsProvider.coinQuality)
+                              FutureBuilder<CoinQuality?>(
+                                future: userCoinProvider.getCoinQuality(
+                                  widget.coin.id,
+                                ),
+                                builder: (context, snapshot) {
+                                  if (snapshot.connectionState ==
+                                      ConnectionState.waiting) {
+                                    return const CircularProgressIndicator();
+                                  }
 
-                                      // Update quality in repository
-                                      final success = await userCoinProvider
-                                          .updateCoinQuality(
-                                            widget.coin.id,
-                                            CoinQuality.values[index],
-                                          );
+                                  final quality = snapshot.data;
+                                  final selectedIndex =
+                                      quality != null
+                                          ? CoinQuality.values.indexOf(quality)
+                                          : -1;
 
-                                      // Optionally show feedback if update failed
-                                      if (!success && mounted) {
-                                        ScaffoldMessenger.of(
-                                          context,
-                                        ).showSnackBar(
-                                          const SnackBar(
-                                            content: Text(
-                                              'Failed to update coin quality',
-                                            ),
-                                          ),
-                                        );
-                                      }
-                                    },
-                                  ),
-                                  const SizedBox(height: AppSizes.p24),
-                                ]
-                                : [],
+                                  return Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      ShowcaseQualitySelector(
+                                        selectedQualityIndex: selectedIndex,
+                                        isDisabled:
+                                            !isOwned, // Pass the 'isOwned' flag here
+                                        onQualitySelected: (index) async {
+                                          if (isOwned) {
+                                            final success =
+                                                await userCoinProvider
+                                                    .updateCoinQuality(
+                                                      widget.coin.id,
+                                                      CoinQuality.values[index],
+                                                    );
+
+                                            if (!success && context.mounted) {
+                                              ScaffoldMessenger.of(
+                                                context,
+                                              ).showSnackBar(
+                                                const SnackBar(
+                                                  content: Text(
+                                                    'Failed to update coin quality',
+                                                  ),
+                                                ),
+                                              );
+                                            }
+                                          }
+                                        },
+                                      ),
+                                      const SizedBox(height: AppSizes.p24),
+                                    ],
+                                  );
+                                },
+                              ),
                             const SizedBox(height: AppSizes.p24),
                             ShowcaseDescription(coin: widget.coin),
                           ],

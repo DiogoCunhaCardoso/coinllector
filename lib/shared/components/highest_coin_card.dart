@@ -49,7 +49,9 @@ class HighestCoinCard extends StatelessWidget {
                     ),
                     Text(
                       "$coinsOwned/$totalCoins",
-                      style: textTheme.bodyMedium,
+                      style: textTheme.bodyMedium!.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ],
                 ),

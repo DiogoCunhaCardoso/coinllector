@@ -12,7 +12,7 @@ class HeaderInfoText extends StatelessWidget {
 
     return RichText(
       text: TextSpan(
-        style: textTheme.bodyMedium,
+        style: textTheme.titleMedium,
         children: [TextSpan(text: "$owned/"), TextSpan(text: "$total")],
       ),
     );

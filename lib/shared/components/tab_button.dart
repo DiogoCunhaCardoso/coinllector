@@ -21,6 +21,7 @@ class TabButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return SizedBox(
       child: FilledButton(
@@ -44,7 +45,15 @@ class TabButton extends StatelessWidget {
             padding: const EdgeInsets.symmetric(
               vertical: 4,
             ), // Minimal vertical padding
-            child: Text(text),
+            child: Text(
+              text,
+              style: textTheme.labelLarge!.copyWith(
+                color:
+                    isSelected
+                        ? colorScheme.surface
+                        : colorScheme.onSurfaceVariant,
+              ),
+            ),
           ),
         ),
       ),

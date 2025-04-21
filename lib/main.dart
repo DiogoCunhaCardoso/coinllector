@@ -1,4 +1,5 @@
 import 'package:coinllector_app/config/themes/colors.dart';
+import 'package:coinllector_app/presentation/providers/user_prefs_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 /* import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -9,7 +10,6 @@ import 'package:logging/logging.dart';
 // App-specific imports
 import 'package:coinllector_app/config/router/router.dart';
 
-import 'package:coinllector_app/data/datasources/local/preferences/user_preferences.dart';
 import 'package:coinllector_app/presentation/providers/coin_provider.dart';
 import 'package:coinllector_app/presentation/providers/country_provider.dart';
 import 'package:coinllector_app/presentation/providers/user_coin_provider.dart';
@@ -19,8 +19,7 @@ void main() async {
   Logger.root.level = Level.ALL;
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Initialize preferences and dependencies
-  await UserPreferences().init();
+  // Initialize dependencies
   await setupDependencies();
 
   // Stripe & dotenv (when/if I add premium fetures in the future)
@@ -48,6 +47,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => serviceLocator<CountryProvider>(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => serviceLocator<UserPreferencesProvider>(),
         ),
       ],
       child: MaterialApp.router(

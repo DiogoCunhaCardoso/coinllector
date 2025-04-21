@@ -43,11 +43,16 @@ class CoinsHeader extends StatelessWidget {
         children: [
           Image.asset("assets/logo.png"),
           const SizedBox(height: AppSizes.p24),
-          Text("Total Coins", style: textTheme.labelMedium),
+          Text(
+            "Total Coins",
+            style: textTheme.labelLarge!.copyWith(
+              fontWeight: FontWeight.normal,
+            ),
+          ),
           const SizedBox(height: 4),
           RichText(
             text: TextSpan(
-              style: textTheme.bodyLarge,
+              style: textTheme.titleLarge,
               children: [
                 TextSpan(text: "${coinsOwned.toString()}/"),
                 TextSpan(text: totalCoins.toString()),
@@ -57,7 +62,10 @@ class CoinsHeader extends StatelessWidget {
           const SizedBox(height: 20),
           Container(
             height: 52,
-            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppSizes.p6,
+              vertical: AppSizes.p6,
+            ),
             decoration: BoxDecoration(
               color: colorScheme.onSurface.withValues(alpha: 0.6),
               borderRadius: BorderRadius.circular(12),

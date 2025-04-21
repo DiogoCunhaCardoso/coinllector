@@ -16,7 +16,7 @@ class MaterialTheme {
       surface: Color(0xFF000000),
       surfaceContainerHighest: Color(0xFF222227), // deprecated, surfaceVariant
       onSurface: Color(0xFFFFFFFF),
-      onSurfaceVariant: Color(0xBBBBBBBB),
+      onSurfaceVariant: Color(0xFF8C8D8E),
       primary: Color(0xFF5581FF),
       secondary: Color(0xFFCCD9FF),
       tertiary: Color(0xFFFFCF27), // premium color

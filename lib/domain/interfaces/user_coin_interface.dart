@@ -10,11 +10,14 @@ abstract class IUserCoinRepository {
   /// Removes a coin from the user's collection.
   Future<Result<void>> removeCoin(int coinId);
 
-  // Uses [addCoin] and [removeCoin] to toggle owership
+  /// Uses [addCoin] and [removeCoin] to toggle owership
   Future<Result<bool>> toggleCoinOwnership(int coinId);
 
+  /// Gets the quality of a specific coin in the user's collection
+  Future<Result<CoinQuality?>> getCoinQuality(int coinId);
+
   /// Updates a coin quality from an already added coin (pro user only)
-  Future<Result<void>> updateCoinQuality(int coinId, CoinQuality quality);
+  Future<Result<void>> updateCoinQuality(int coinId, CoinQuality? quality);
 
   /// Checks if the user owns a specific coin.
   Future<Result<bool>> userOwnsCoin(int coinId);

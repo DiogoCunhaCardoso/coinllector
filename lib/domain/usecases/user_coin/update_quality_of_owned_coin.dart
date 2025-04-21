@@ -13,8 +13,6 @@ class UpdateCoinQualityParams {
 
 // BUSINESS RULES: ---------------------------------------------------
 // 1. User must own the coin to update its quality.
-// 2. Only premium users can assign quality. (TODO: in future)
-// - (Free users can own coins but can't assign a quality.)
 
 class UpdateQualityOfOwnedCoinUseCase
     implements UseCase<void, Params<UpdateCoinQualityParams>> {

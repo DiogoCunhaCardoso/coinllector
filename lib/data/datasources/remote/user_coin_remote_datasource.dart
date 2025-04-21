@@ -22,10 +22,23 @@ class UserCoinRemoteDataSource {
     );
   }
 
-  Future<void> updateCoinQuality(int coinId, CoinQuality quality) async {
+  Future<String?> getCoinQuality(int coinId) async {
+    final result = await db.query(
+      DatabaseTables.userCoins,
+      columns: [DatabaseTables.quality],
+      where: '${DatabaseTables.userCoinId} = ?',
+      whereArgs: [coinId],
+      limit: 1,
+    );
+
+    if (result.isEmpty) return null;
+    return result.first[DatabaseTables.quality] as String?;
+  }
+
+  Future<void> updateCoinQuality(int coinId, CoinQuality? quality) async {
     await db.update(
       DatabaseTables.userCoins,
-      {DatabaseTables.quality: quality.name},
+      {DatabaseTables.quality: quality?.name},
       where: '${DatabaseTables.userCoinId} = ?',
       whereArgs: [coinId],
     );

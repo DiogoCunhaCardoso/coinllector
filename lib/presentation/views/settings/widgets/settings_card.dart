@@ -20,6 +20,7 @@ class SettingsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
 
     return SizedBox(
       height: 72,
@@ -32,7 +33,12 @@ class SettingsCard extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(title, style: Theme.of(context).textTheme.titleMedium),
+                Text(
+                  title,
+                  style: textTheme.bodyMedium!.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
                 if (hasSwitch)
                   Transform.scale(
                     scale: 0.9,

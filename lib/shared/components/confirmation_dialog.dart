@@ -20,7 +20,7 @@ class ConfirmationDialog {
               borderRadius: BorderRadius.circular(AppSizes.r16),
             ),
             backgroundColor: colorScheme.surfaceContainerHighest,
-            title: Text(title, style: textTheme.bodyLarge),
+            title: Text(title, style: textTheme.titleMedium),
             content: Text(
               content,
               style: textTheme.bodyMedium!.copyWith(
@@ -30,11 +30,11 @@ class ConfirmationDialog {
             actions: [
               TextButton(
                 onPressed: () => Navigator.of(ctx).pop(false),
-                child: Text(cancelText, style: textTheme.labelMedium),
+                child: Text(cancelText, style: textTheme.labelLarge),
               ),
               TextButton(
                 onPressed: () => Navigator.of(ctx).pop(true),
-                child: Text(confirmText, style: textTheme.labelMedium),
+                child: Text(confirmText, style: textTheme.labelLarge),
               ),
             ],
           ),

@@ -10,21 +10,21 @@ class ShowcaseDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           capitalizeFst(coin.country.name.toLowerCase()),
-          style: Theme.of(
-            context,
-          ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+          style: textTheme.titleMedium,
         ),
         if (coin.periodEndDate != null)
           Text(
             '${convertDateToYear(coin.periodStartDate)} - ${convertDateToYear(coin.periodEndDate!)}',
           ),
         const SizedBox(height: AppSizes.p12),
-        Text(coin.description),
+        Text(coin.description, style: textTheme.bodyMedium),
       ],
     );
   }

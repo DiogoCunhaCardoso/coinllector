@@ -39,7 +39,12 @@ class ProfileStatsCard extends StatelessWidget {
                     color: colorScheme.onSurfaceVariant,
                   ),
                 ),
-                Text('$coinsOwned/$totalCoins', style: textTheme.bodyMedium),
+                Text(
+                  '$coinsOwned/$totalCoins',
+                  style: textTheme.bodyMedium!.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
               ],
             ),
             SizedBox(
@@ -61,7 +66,9 @@ class ProfileStatsCard extends StatelessWidget {
                   ),
                   Text(
                     "${(percentage * 100).toInt()}%",
-                    style: textTheme.bodyMedium,
+                    style: textTheme.bodyMedium!.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ],
               ),

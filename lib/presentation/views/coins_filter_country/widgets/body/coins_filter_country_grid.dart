@@ -1,6 +1,6 @@
 import 'package:coinllector_app/config/router/routes.dart';
-import 'package:coinllector_app/data/datasources/local/preferences/user_preferences.dart';
 import 'package:coinllector_app/domain/entities/coin.dart';
+import 'package:coinllector_app/presentation/providers/user_prefs_provider.dart';
 import 'package:coinllector_app/shared/components/bottom_sheets/mints.dart';
 import 'package:coinllector_app/shared/components/coin_card_complex.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
@@ -8,6 +8,7 @@ import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 import 'package:coinllector_app/utils/get_coin_size.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class CoinsFilterCountryGrid extends StatelessWidget {
   final List<Coin>? coins;
@@ -23,6 +24,8 @@ class CoinsFilterCountryGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userPrefsProvider = Provider.of<UserPreferencesProvider>(context);
+
     // LOADING STATE
     if (coins == null) {
       return const Center(child: CircularProgressIndicator());
@@ -57,7 +60,7 @@ class CoinsFilterCountryGrid extends StatelessWidget {
 
             // If the country is GERMANY, show the modal
             if (coin.country == CountryNames.GERMANY &&
-                UserPreferences().coinMints) {
+                userPrefsProvider.coinMints) {
               showModalList(context);
             }
           },

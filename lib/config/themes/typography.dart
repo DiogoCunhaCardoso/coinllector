@@ -2,40 +2,57 @@ import 'package:flutter/material.dart';
 
 TextTheme createAppTextTheme(ColorScheme colorScheme) {
   return TextTheme(
-    bodySmall: TextStyle(
-      fontSize: 12,
-      fontWeight: FontWeight.w600,
-      color: colorScheme.onSurface,
-    ),
-    bodyMedium: TextStyle(
+    // TITLE --------------------------
+    titleSmall: TextStyle(
       fontSize: 16,
       fontWeight: FontWeight.w600,
       color: colorScheme.onSurface,
     ),
-    bodyLarge: TextStyle(
+
+    titleMedium: TextStyle(
       fontSize: 20,
       fontWeight: FontWeight.w600,
       color: colorScheme.onSurface,
     ),
-    labelSmall: TextStyle(
-      fontSize: 12,
+
+    titleLarge: TextStyle(
+      fontSize: 24,
       fontWeight: FontWeight.w600,
       color: colorScheme.onSurface,
     ),
-    labelMedium: TextStyle(
+
+    // BODY --------------------------
+    bodySmall: TextStyle(
       fontSize: 14,
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.normal,
       color: colorScheme.onSurface,
+      letterSpacing: 0.5,
     ),
-    labelLarge: TextStyle(
+
+    bodyMedium: TextStyle(
       fontSize: 16,
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.w300,
+      color: colorScheme.onSurface,
+      letterSpacing: 0.5,
+      height: 1.7,
+    ),
+
+    // LABEL --------------------------
+    labelSmall: TextStyle(
+      fontSize: 10,
+      fontWeight: FontWeight.normal,
       color: colorScheme.onSurface,
     ),
-    // Optionally extend with titles, headlines, etc.
-    titleSmall: TextStyle(
-      fontSize: 18,
-      fontWeight: FontWeight.w700,
+
+    labelMedium: TextStyle(
+      fontSize: 12,
+      fontWeight: FontWeight.normal,
+      color: colorScheme.onSurface,
+    ),
+
+    labelLarge: TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w600,
       color: colorScheme.onSurface,
     ),
   );

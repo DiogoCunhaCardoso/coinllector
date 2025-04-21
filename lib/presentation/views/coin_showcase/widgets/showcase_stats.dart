@@ -11,6 +11,8 @@ class ShowcaseStats extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     return Center(
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -22,7 +24,8 @@ class ShowcaseStats extends StatelessWidget {
                   coin.quantity.toString(),
                   style: TextStyle(color: colorScheme.onSurfaceVariant),
                 ),
-                const Text("Quantity"),
+                SizedBox(height: 4),
+                Text("Quantity", style: textTheme.bodySmall),
               ],
             ),
           if (coin.quantity != null && coin.quantity! > 0)
@@ -33,7 +36,13 @@ class ShowcaseStats extends StatelessWidget {
                 convertDate(coin.periodStartDate),
                 style: TextStyle(color: colorScheme.onSurfaceVariant),
               ),
-              const Text("Release"),
+              SizedBox(height: 4),
+              Text(
+                "Release",
+                style: textTheme.bodySmall!.copyWith(
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
             ],
           ),
         ],

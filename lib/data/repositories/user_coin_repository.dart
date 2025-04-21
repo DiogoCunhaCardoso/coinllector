@@ -12,6 +12,7 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
 
   UserCoinRepositoryImpl(this.dataSource);
 
+  /// Adds a coin to the user's collection.
   @override
   Future<Result<void>> addCoin(int coinId) async {
     try {
@@ -23,6 +24,7 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
     }
   }
 
+  /// Removes a coin from the user's collection.
   @override
   Future<Result<void>> removeCoin(int coinId) async {
     try {
@@ -34,6 +36,7 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
     }
   }
 
+  /// Uses [addCoin] and [removeCoin] to toggle owership
   @override
   Future<Result<bool>> toggleCoinOwnership(int coinId) async {
     try {
@@ -69,10 +72,36 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
     }
   }
 
+  /// Gets the quality of a specific coin in the user's collection
+  @override
+  Future<Result<CoinQuality?>> getCoinQuality(int coinId) async {
+    try {
+      final qualityString = await dataSource.getCoinQuality(coinId);
+
+      if (qualityString == null) {
+        return Result.success(null);
+      }
+
+      final quality = CoinQuality.values.firstWhere(
+        (e) => e.name == qualityString,
+        orElse: () => throw FormatException('Invalid quality value'),
+      );
+
+      return Result.success(quality);
+    } on FormatException catch (e) {
+      _log.warning('Invalid quality format for coin $coinId: ${e.message}');
+      return Result.error(Exception('Invalid quality data'));
+    } catch (e, stackTrace) {
+      _log.severe('Failed to fetch quality for coin $coinId', e, stackTrace);
+      return Result.error(Exception('Failed to retrieve quality'));
+    }
+  }
+
+  /// Updates a coin quality from an already added coin (pro user only)
   @override
   Future<Result<void>> updateCoinQuality(
     int coinId,
-    CoinQuality quality,
+    CoinQuality? quality,
   ) async {
     try {
       await dataSource.updateCoinQuality(coinId, quality);
@@ -83,6 +112,7 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
     }
   }
 
+  /// Checks if the user owns a specific coin.
   @override
   Future<Result<bool>> userOwnsCoin(int coinId) async {
     try {
@@ -93,6 +123,7 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
     }
   }
 
+  /// Retrieves a list of all the coins (IDs) the user owns.
   @override
   Future<Result<List<int>>> getOwnedCoins() async {
     try {
@@ -103,6 +134,7 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
     }
   }
 
+  /// Returns the total count of coins the user owns.
   @override
   Future<Result<int>> getOwnedCoinsCount() async {
     try {
@@ -113,6 +145,7 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
     }
   }
 
+  /// Returns the count of coins the user owns of a specific type.
   @override
   Future<Result<int>> getUserCoinsByType(CoinType type) async {
     try {
@@ -123,6 +156,7 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
     }
   }
 
+  /// Returns the count of coins the user owns of a specific type.
   Future<Result<Map<CoinType, int>>> getOwnedCoinsCountByType() async {
     try {
       final result = await dataSource.getCountGroupedByType();
@@ -141,6 +175,7 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
     }
   }
 
+  /// Retrieves the count of coins the user owns, grouped by country.
   @override
   Future<Result<Map<CountryNames, int>>> getUserCoinsByCountry() async {
     try {

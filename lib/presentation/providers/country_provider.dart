@@ -1,4 +1,3 @@
-import 'package:coinllector_app/data/datasources/local/preferences/user_preferences.dart';
 import 'package:coinllector_app/domain/usecases/country/get_countries.dart';
 import 'package:coinllector_app/domain/usecases/country/get_country_by_enum.dart';
 import 'package:coinllector_app/utils/result.dart';
@@ -15,13 +14,6 @@ class CountryProvider extends ChangeNotifier {
   // Dependencies (use cases)
   final GetCountriesUseCase _getCountriesUseCase;
   final GetCountryByEnumUseCase _getCountryByEnumUseCase;
-
-  final List<CountryNames> _microstatesToHide = [
-    CountryNames.ANDORRA,
-    CountryNames.MONACO,
-    CountryNames.SAN_MARINO,
-    CountryNames.VATICANO,
-  ];
 
   CountryProvider({
     required GetCountriesUseCase getCountriesUseCase,
@@ -98,28 +90,10 @@ class CountryProvider extends ChangeNotifier {
     final result = await _getCountriesUseCase(NoParams(null));
 
     switch (result) {
-      case Success(value: final allCountries):
-        _log.info('Successfully loaded ${allCountries.length} countries');
+      case Success(value: final countries):
+        _log.info('Successfully loaded ${countries.length} countries');
+        return countries;
 
-        // Check if microstates should be shown
-        final showMicrostates = UserPreferences().microStates;
-
-        if (!showMicrostates) {
-          _log.info('Filtering out microstates based on user preference');
-          final filteredCountries =
-              allCountries
-                  .where(
-                    (country) => !_microstatesToHide.contains(country.name),
-                  )
-                  .toList();
-
-          _log.info(
-            'Filtered countries: ${filteredCountries.length} (removed ${allCountries.length - filteredCountries.length} microstates)',
-          );
-          return filteredCountries;
-        }
-
-        return allCountries;
       case Error(error: final e):
         _log.severe('Failed to load countries', e);
         throw e;

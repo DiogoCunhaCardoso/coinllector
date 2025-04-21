@@ -1,7 +1,7 @@
 import 'package:coinllector_app/config/router/routes.dart';
-import 'package:coinllector_app/data/datasources/local/preferences/user_preferences.dart';
 import 'package:coinllector_app/presentation/providers/coin_provider.dart';
 import 'package:coinllector_app/presentation/providers/country_provider.dart';
+import 'package:coinllector_app/presentation/providers/user_prefs_provider.dart';
 import 'package:coinllector_app/presentation/views/settings/widgets/settings_card.dart';
 import 'package:coinllector_app/shared/components/custom_app_bar.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
@@ -10,44 +10,15 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-class SettingsView extends StatefulWidget {
+class SettingsView extends StatelessWidget {
   const SettingsView({super.key});
 
   @override
-  State<SettingsView> createState() => _SettingsViewState();
-}
-
-class _SettingsViewState extends State<SettingsView> {
-  // LOCAL STATE
-  final _prefs = UserPreferences();
-
-  late bool _coinMintsEnabled;
-  late bool _showMicrostatesEnabled;
-  late bool _coinQualityEnabled;
-  late bool _removalConfirmationEnabled;
-
-  // INIT SHARED PREFERENCES
-  @override
-  void initState() {
-    super.initState();
-
-    _coinMintsEnabled = _prefs.coinMints;
-    _showMicrostatesEnabled = _prefs.microStates;
-    _coinQualityEnabled = _prefs.coinQuality;
-    _removalConfirmationEnabled = _prefs.removalConfirmation;
-  }
-
-  @override
   Widget build(BuildContext context) {
-    // Providers
-    final countryProvider = Provider.of<CountryProvider>(
-      context,
-      listen: false,
-    );
+    final prefs = context.watch<UserPreferencesProvider>();
+    final countryProvider = context.read<CountryProvider>();
+    final coinProvider = context.read<CoinProvider>();
 
-    final coinProvider = Provider.of<CoinProvider>(context, listen: false);
-
-    //
     return Scaffold(
       appBar: CustomAppBar(
         title: "Settings",
@@ -64,23 +35,20 @@ class _SettingsViewState extends State<SettingsView> {
             SettingsCard(
               title: "Coin Mints",
               hasSwitch: true,
-              value: _coinMintsEnabled,
+              value: prefs.coinMints,
               onChanged: (value) {
-                setState(() => _coinMintsEnabled = value);
-                _prefs.coinMints = value;
+                prefs.updateCoinMints(value);
               },
             ),
             const SizedBox(height: AppSizes.p8),
             SettingsCard(
               title: "Show Microstates",
               hasSwitch: true,
-              value: _showMicrostatesEnabled,
+              value: prefs.microStates,
               onChanged: (value) {
-                setState(() => _showMicrostatesEnabled = value);
-                _prefs.microStates = value;
+                prefs.updateMicroStates(value);
 
                 countryProvider.refreshCountries();
-
                 for (final type in CoinType.values) {
                   coinProvider.refreshCoinsByType(type);
                 }
@@ -90,20 +58,18 @@ class _SettingsViewState extends State<SettingsView> {
             SettingsCard(
               title: "Coin Quality",
               hasSwitch: true,
-              value: _coinQualityEnabled,
+              value: prefs.coinQuality,
               onChanged: (value) {
-                setState(() => _coinQualityEnabled = value);
-                _prefs.coinQuality = value;
+                prefs.updateCoinQuality(value);
               },
             ),
             const SizedBox(height: AppSizes.p8),
             SettingsCard(
               title: "Removal Confirmation",
               hasSwitch: true,
-              value: _removalConfirmationEnabled,
+              value: prefs.removalConfirmation,
               onChanged: (value) {
-                setState(() => _removalConfirmationEnabled = value);
-                _prefs.removalConfirmation = value;
+                prefs.updateRemovalConfirmation(value);
               },
             ),
             const SizedBox(height: AppSizes.p8),

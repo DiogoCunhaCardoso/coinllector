@@ -1,7 +1,7 @@
-import 'package:coinllector_app/data/datasources/local/preferences/user_preferences.dart';
 import 'package:coinllector_app/domain/entities/coin.dart';
 import 'package:coinllector_app/presentation/providers/coin_provider.dart';
 import 'package:coinllector_app/presentation/providers/user_coin_provider.dart';
+import 'package:coinllector_app/presentation/providers/user_prefs_provider.dart';
 import 'package:coinllector_app/presentation/views/coins_filter_value/widgets/body/coins_filter_value_grid.dart';
 import 'package:coinllector_app/presentation/views/coins_filter_value/widgets/header/header.dart';
 import 'package:coinllector_app/shared/components/confirmation_dialog.dart';
@@ -47,11 +47,11 @@ class _CoinsFilterViewState extends State<CoinsFilterView> {
       context,
       listen: false,
     );
-    final prefs = UserPreferences();
+    final userPrefsProvider = Provider.of<UserPreferencesProvider>(context);
 
     final isOwned = await userCoinProvider.checkIfUserOwnsCoin(coinId);
 
-    if (isOwned && prefs.removalConfirmation) {
+    if (isOwned && userPrefsProvider.removalConfirmation) {
       if (!mounted) return;
 
       final confirmed = await ConfirmationDialog.show(context: context);
