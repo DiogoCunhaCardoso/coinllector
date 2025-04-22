@@ -1,11 +1,11 @@
 import 'package:coinllector_app/config/router/routes.dart';
-import 'package:coinllector_app/presentation/providers/coin_provider.dart';
+/* import 'package:coinllector_app/presentation/providers/coin_provider.dart'; */
 import 'package:coinllector_app/presentation/providers/country_provider.dart';
 import 'package:coinllector_app/presentation/providers/user_prefs_provider.dart';
 import 'package:coinllector_app/presentation/views/settings/widgets/settings_card.dart';
 import 'package:coinllector_app/shared/components/custom_app_bar.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
-import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
+/* import 'package:coinllector_app/shared/enums/coin_types_enum.dart'; */
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +17,7 @@ class SettingsView extends StatelessWidget {
   Widget build(BuildContext context) {
     final prefs = context.watch<UserPreferencesProvider>();
     final countryProvider = context.read<CountryProvider>();
-    final coinProvider = context.read<CoinProvider>();
+    /*     final coinProvider = context.read<CoinProvider>(); */
 
     return Scaffold(
       appBar: CustomAppBar(
@@ -49,9 +49,9 @@ class SettingsView extends StatelessWidget {
                 prefs.updateMicroStates(value);
 
                 countryProvider.refreshCountries();
-                for (final type in CoinType.values) {
+                /*   for (final type in CoinType.values) {
                   coinProvider.refreshCoinsByType(type);
-                }
+                } */
               },
             ),
             const SizedBox(height: AppSizes.p8),

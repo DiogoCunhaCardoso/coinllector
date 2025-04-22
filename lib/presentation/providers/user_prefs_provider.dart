@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'dart:io'; // Add at the top
 
 import 'package:coinllector_app/domain/usecases/user_prefs/get_coin_mints.dart';
 import 'package:coinllector_app/domain/usecases/user_prefs/get_coin_quality.dart';
@@ -14,6 +15,7 @@ import 'package:coinllector_app/domain/usecases/user_prefs/set_user_profile_imag
 import 'package:coinllector_app/utils/result.dart';
 import 'package:coinllector_app/utils/use_case.dart';
 
+/// Manages user preferences data and provides it to the Presentation Layer
 class UserPreferencesProvider extends ChangeNotifier {
   // Private Use Cases --------------------------------------------------------
 
@@ -30,11 +32,24 @@ class UserPreferencesProvider extends ChangeNotifier {
 
   // State --------------------------------------------------------------------
 
-  bool coinMints = false;
-  bool microStates = true;
-  bool coinQuality = false;
-  bool removalConfirmation = true;
-  String? profileImagePath;
+  bool _coinMints = false;
+  bool _microStates = true;
+  bool _coinQuality = false;
+  bool _removalConfirmation = true;
+  String? _profileImagePath;
+
+  // Getters -------------------------------------------------------------------
+
+  bool get coinMints => _coinMints;
+  bool get microStates => _microStates;
+  bool get coinQuality => _coinQuality;
+  bool get removalConfirmation => _removalConfirmation;
+
+  File? get profileImageFile {
+    final path = _profileImagePath;
+    if (path == null || path.isEmpty) return null;
+    return File(path);
+  }
 
   // Constructor (private fields) ----------------------------------------------
 
@@ -67,27 +82,27 @@ class UserPreferencesProvider extends ChangeNotifier {
     final coinMintsResult = await _getCoinMints(NoParams(null));
     switch (coinMintsResult) {
       case Success(value: final v):
-        coinMints = v;
+        _coinMints = v;
       case Error():
-        coinMints = false;
+        _coinMints = false;
     }
 
     // MICRO STATES
     final microStatesResult = await _getMicroStates(NoParams(null));
     switch (microStatesResult) {
       case Success(value: final v):
-        microStates = v;
+        _microStates = v;
       case Error():
-        microStates = true;
+        _microStates = true;
     }
 
     // COIN QUALITY
     final coinQualityResult = await _getCoinQuality(NoParams(null));
     switch (coinQualityResult) {
       case Success(value: final v):
-        coinQuality = v;
+        _coinQuality = v;
       case Error():
-        coinQuality = false;
+        _coinQuality = false;
     }
 
     // REMOVAL CONFIRMATION
@@ -96,18 +111,18 @@ class UserPreferencesProvider extends ChangeNotifier {
     );
     switch (removalConfirmationResult) {
       case Success(value: final v):
-        removalConfirmation = v;
+        _removalConfirmation = v;
       case Error():
-        removalConfirmation = true;
+        _removalConfirmation = true;
     }
 
     // PROFILE IMAGE
     final profileImageResult = await _getUserProfileImage(NoParams(null));
     switch (profileImageResult) {
       case Success(value: final v):
-        profileImagePath = v;
+        _profileImagePath = v;
       case Error():
-        profileImagePath = null;
+        _profileImagePath = null;
     }
 
     notifyListeners();
@@ -117,31 +132,31 @@ class UserPreferencesProvider extends ChangeNotifier {
 
   Future<void> updateCoinMints(bool value) async {
     await _setCoinMints(Params(value));
-    coinMints = value;
+    _coinMints = value;
     notifyListeners();
   }
 
   Future<void> updateMicroStates(bool value) async {
     await _setMicroStates(Params(value));
-    microStates = value;
+    _microStates = value;
     notifyListeners();
   }
 
   Future<void> updateCoinQuality(bool value) async {
     await _setCoinQuality(Params(value));
-    coinQuality = value;
+    _coinQuality = value;
     notifyListeners();
   }
 
   Future<void> updateRemovalConfirmation(bool value) async {
     await _setRemovalConfirmation(Params(value));
-    removalConfirmation = value;
+    _removalConfirmation = value;
     notifyListeners();
   }
 
   Future<void> updateProfileImage(String path) async {
     await _setUserProfileImage(Params(path));
-    profileImagePath = path;
+    _profileImagePath = path;
     notifyListeners();
   }
 }

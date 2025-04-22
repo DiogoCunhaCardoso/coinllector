@@ -47,7 +47,10 @@ class _CountriesFilterViewState extends State<CountriesFilterView> {
       context,
       listen: false,
     );
-    final userPrefsProvider = Provider.of<UserPreferencesProvider>(context);
+    final userPrefsProvider = Provider.of<UserPreferencesProvider>(
+      context,
+      listen: false,
+    );
 
     final isOwned = await userCoinProvider.checkIfUserOwnsCoin(coinId);
 
@@ -76,20 +79,23 @@ class _CountriesFilterViewState extends State<CountriesFilterView> {
                 future: _coinsFuture,
                 builder: (context, snapshot) {
                   final coins = snapshot.data ?? [];
-                  final ownedCoins =
-                      coins
-                          .where(
-                            (coin) => userCoinProvider.ownedCoinsCount.contains(
-                              coin.id,
-                            ),
-                          )
-                          .length;
                   final totalCoins = coins.length;
 
-                  return CoinBanner(
-                    name: widget.name,
-                    owned: ownedCoins,
-                    total: totalCoins,
+                  // Use FutureBuilder to get the owned count
+                  return FutureBuilder<int>(
+                    future: userCoinProvider.getOwnedCoinCountForCountry(
+                      widget.name,
+                    ),
+                    builder: (context, ownedSnapshot) {
+                      // Show loading indicator or count 0 if still fetching
+                      final ownedCoins = ownedSnapshot.data ?? 0;
+
+                      return CoinBanner(
+                        name: widget.name,
+                        owned: ownedCoins,
+                        total: totalCoins,
+                      );
+                    },
                   );
                 },
               ),
@@ -132,7 +138,7 @@ class _CountriesFilterViewState extends State<CountriesFilterView> {
 
                     return CoinsFilterCountryGrid(
                       coins: snapshot.data!,
-                      ownedCoins: userCoinProvider.ownedCoinsCount,
+                      ownedCoins: userCoinProvider.ownedCoinIds,
                       onToggleCoin: (coinId) => _handleToggleOwnership(coinId),
                     );
                   },

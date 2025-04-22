@@ -26,16 +26,20 @@ class StatisticsTabs extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          TabButton(
-            text: "Value",
-            isSelected: selectedIndex == 0,
-            onPressed: () => onTabChanged(0),
+          Expanded(
+            child: TabButton(
+              text: "Value",
+              isSelected: selectedIndex == 0,
+              onPressed: () => onTabChanged(0),
+            ),
           ),
           const SizedBox(width: AppSizes.p8),
-          TabButton(
-            text: "Country",
-            isSelected: selectedIndex == 1,
-            onPressed: () => onTabChanged(1),
+          Expanded(
+            child: TabButton(
+              text: "Country",
+              isSelected: selectedIndex == 1,
+              onPressed: () => onTabChanged(1),
+            ),
           ),
         ],
       ),

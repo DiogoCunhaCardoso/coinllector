@@ -33,4 +33,7 @@ abstract class IUserCoinRepository {
 
   /// Retrieves the count of coins the user owns, grouped by country.
   Future<Result<Map<CountryNames, int>>> getUserCoinsByCountry();
+
+  /// Returns the total count of coins the user owns of a specifed country.
+  Future<Result<int>> getUserCoinCountByCountry(CountryNames country);
 }

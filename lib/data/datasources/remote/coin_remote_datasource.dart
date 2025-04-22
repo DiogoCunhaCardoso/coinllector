@@ -27,12 +27,24 @@ class CoinRemoteDataSource {
     );
   }
 
+  // COUNT -------------------------------------------------------------------------
+
   Future<int> getCoinCount() async {
     final result = await db.rawQuery(
       'SELECT COUNT(*) FROM ${DatabaseTables.coins}',
     );
     return Sqflite.firstIntValue(result) ?? 0;
   }
+
+  Future<int> getCountryTotalCoinCount(CountryNames country) async {
+    final result = await db.rawQuery(
+      'SELECT COUNT(*) FROM ${DatabaseTables.coins} WHERE ${DatabaseTables.country} = ?',
+      [country.name],
+    );
+    return Sqflite.firstIntValue(result) ?? 0;
+  }
+
+  // ON INIT ------------------------------------------------------------------------
 
   Future<void> insertInitialCoins(List<CoinModel> coins) async {
     for (var coin in coins) {

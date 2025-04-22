@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:coinllector_app/config/router/routes.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
 import 'package:coinllector_app/presentation/providers/coin_provider.dart';
@@ -27,7 +25,6 @@ class _ProfileViewState extends State<ProfileView> {
   final _log = Logger("PROFILE_VIEW");
 
   final ImagePicker _picker = ImagePicker();
-  File? _selectedImage;
 
   void _showImagePickerSheet() {
     ImagePickerBottomSheet.show(
@@ -42,12 +39,9 @@ class _ProfileViewState extends State<ProfileView> {
       final pickedImage = await _picker.pickImage(source: source);
       if (pickedImage == null) return;
 
-      // Save to provider (this will notify listeners and rebuild)
+      // Save to provider
       if (mounted) {
-        final userPrefsProvider = Provider.of<UserPreferencesProvider>(
-          context,
-          listen: false,
-        );
+        final userPrefsProvider = Provider.of<UserPreferencesProvider>(context);
         await userPrefsProvider.updateProfileImage(pickedImage.path);
       }
     } on PlatformException catch (e) {
@@ -64,10 +58,7 @@ class _ProfileViewState extends State<ProfileView> {
     final userCoinProvider = Provider.of<UserCoinProvider>(context);
     final userPrefsProvider = Provider.of<UserPreferencesProvider>(context);
 
-    File? profileImage =
-        userPrefsProvider.profileImagePath != null
-            ? File(userPrefsProvider.profileImagePath!)
-            : _selectedImage;
+    final topStats = userCoinProvider.topCountryStats;
 
     return Scaffold(
       body: Stack(
@@ -76,7 +67,7 @@ class _ProfileViewState extends State<ProfileView> {
             children: [
               ProfileHeader(
                 onEditTap: _showImagePickerSheet,
-                pfp: profileImage,
+                pfp: userPrefsProvider.profileImageFile,
               ),
 
               Padding(
@@ -131,13 +122,18 @@ class _ProfileViewState extends State<ProfileView> {
                           ),
                         ],
                       ),
-
-                      HighestCoinCard(
-                        countryName: "zimbabwe",
-                        coinsOwned: "2",
-                        totalCoins: "5",
-                        image: "image",
-                      ),
+                      if (userCoinProvider.isLoading)
+                        const Center(child: CircularProgressIndicator())
+                      else if (topStats == null || topStats.isEmpty)
+                        const Text("No country stats available")
+                      else
+                        Column(
+                          children:
+                              topStats
+                                  .take(3)
+                                  .map((stats) => HighestCoinCard(stats: stats))
+                                  .toList(),
+                        ),
                     ],
                   ),
                 ),

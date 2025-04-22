@@ -17,8 +17,13 @@ abstract class ICoinRepository {
   /// Retrieves all coins grouped by their country.
   Future<Result<Map<CountryNames, List<Coin>>>> getAllCoinsByCountryMap();
 
+  // COUNT --------------------------------------------------------------------
+
   /// Returns the total count of coins in the repository.
   Future<Result<int>> getCoinCount();
+
+  /// Gets the total number of coins for a specific country
+  Future<Result<int>> getCountryTotalCoinCount(CountryNames country);
 
   /// Inserts a list of initial coins into the repository.
   Future<Result<void>> insertInitialCoins(List<CoinModel> coins);

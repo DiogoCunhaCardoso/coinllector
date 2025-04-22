@@ -1,29 +1,20 @@
+import 'package:coinllector_app/config/themes/sizes.dart';
 import 'package:coinllector_app/presentation/providers/coin_provider.dart';
 import 'package:coinllector_app/presentation/providers/country_provider.dart';
 import 'package:coinllector_app/presentation/providers/user_coin_provider.dart';
 import 'package:coinllector_app/presentation/views/coins/widgets/coins_header.dart';
 import 'package:coinllector_app/presentation/views/coins/widgets/coins_view_grid.dart';
-import 'package:coinllector_app/data/datasources/local/data/value_coins_data.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class CoinsView extends StatelessWidget {
+class CoinsView extends StatefulWidget {
   const CoinsView({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const _CoinsViewContent();
-  }
+  State<CoinsView> createState() => _CoinsViewState();
 }
 
-class _CoinsViewContent extends StatefulWidget {
-  const _CoinsViewContent();
-
-  @override
-  State<_CoinsViewContent> createState() => _CoinsViewContentState();
-}
-
-class _CoinsViewContentState extends State<_CoinsViewContent> {
+class _CoinsViewState extends State<CoinsView> {
   int _selectedIndex = 0;
 
   @override
@@ -36,10 +27,33 @@ class _CoinsViewContentState extends State<_CoinsViewContent> {
 
     // TAB CONTENT ---------------------------------------------------------------------
 
-    final coinTypesFuture = Future.value(coinProvider.coinsByValue);
-    final countriesFuture = countryProvider.getCountries();
+    final values = coinProvider.coinsByValue;
+    final countries = countryProvider.countries;
 
-    // CONTENT ------------------------------------------------------------------------
+    // UI ------------------------------------------------------------------------------
+
+    if (countryProvider.isLoading) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
+    //TODO create a global UI component for this
+    if (countryProvider.error != null) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.error_outline, size: 48, color: Colors.red),
+            const SizedBox(height: AppSizes.p16),
+            Text('Failed to load countries: ${countryProvider.error}'),
+            const SizedBox(height: AppSizes.p16),
+            ElevatedButton(
+              onPressed: () => countryProvider.init(),
+              child: const Text('Retry'),
+            ),
+          ],
+        ),
+      );
+    }
 
     return Scaffold(
       body: Stack(
@@ -56,31 +70,18 @@ class _CoinsViewContentState extends State<_CoinsViewContent> {
                 child: IndexedStack(
                   index: _selectedIndex,
                   children: [
-                    CoinsViewGrid(
-                      items: coinTypesFuture,
-                      initialItems: CoinDisplayData.coinTypes,
-                    ),
-                    CoinsViewGrid(
-                      items: countriesFuture,
-                      initialItems:
-                          countryProvider.isLoading
-                              ? null
-                              : countryProvider.countries,
-                    ),
+                    CoinsViewGrid(coins: values),
+                    CoinsViewGrid(coins: countries),
                   ],
                 ),
               ),
             ],
           ),
-
-          // APP BAR--------------------------------------------------------------------
           Positioned(
             top: 0,
             left: 0,
             right: 0,
             child: AppBar(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
               leading: IconButton(
                 icon: const Icon(Icons.menu),
                 onPressed: () => Scaffold.of(context).openDrawer(),

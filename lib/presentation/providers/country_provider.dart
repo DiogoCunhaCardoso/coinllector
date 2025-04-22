@@ -11,7 +11,8 @@ import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 class CountryProvider extends ChangeNotifier {
   final _log = Logger("COUNTRY_PROVIDER");
 
-  // Dependencies (use cases)
+  // Private Use Cases --------------------------------------------------------
+
   final GetCountriesUseCase _getCountriesUseCase;
   final GetCountryByEnumUseCase _getCountryByEnumUseCase;
 
@@ -21,50 +22,40 @@ class CountryProvider extends ChangeNotifier {
   }) : _getCountriesUseCase = getCountriesUseCase,
        _getCountryByEnumUseCase = getCountryByEnumUseCase;
 
-  // State
+  // State --------------------------------------------------------------------
+
   List<Country> _countries = [];
-  bool _isLoading = false;
-  Exception? _loadError;
-
-  // Cache
   final Map<CountryNames, Country> _countryCache = {};
-  Future<List<Country>>? _countriesFuture; // For FutureBuilder compatibility
+  bool _isLoading = false;
+  String? _error;
 
-  // Public getters
+  // Getters -------------------------------------------------------------------
+
   List<Country> get countries => _countries;
   bool get isLoading => _isLoading;
-  Exception? get error => _loadError;
+  String? get error => _error;
 
-  // ====================== PUBLIC METHODS ====================== //
+  // ============================ PUBLIC METHODS ============================ //
 
-  /// Initializes the provider by loading countries if not already loading
+  // Init ---------------------------------------------------------------------
+
   Future<void> init() async {
     if (_isLoading) return;
 
-    _startLoading();
+    _isLoading = true;
+    _error = null;
+    notifyListeners();
 
     try {
-      _countriesFuture = _fetchCountries();
-      _countries = await _countriesFuture!;
+      _countries = await _fetchCountries();
+      _error = null;
     } catch (e) {
-      _handleLoadError(e);
+      _error = e.toString();
+      _log.severe('Error initializing countries: $_error');
     } finally {
-      _stopLoading();
+      _isLoading = false;
+      notifyListeners();
     }
-  }
-
-  /// Loads countries, returns existing future if already loading
-  Future<List<Country>> getCountries() {
-    if (_countriesFuture != null) {
-      return _countriesFuture!;
-    }
-
-    if (!_isLoading && _countries.isEmpty) {
-      init();
-    }
-
-    _countriesFuture = _fetchCountries();
-    return _countriesFuture!;
   }
 
   /// Gets a country by enum, using cache if available
@@ -113,30 +104,12 @@ class CountryProvider extends ChangeNotifier {
     }
   }
 
+  /// Refetches countries - used when User Preference is changed
   void refreshCountries() {
     _log.info('Refreshing countries due to microstate preference change');
-    _countriesFuture = null;
     _countryCache.clear();
-    _countries = []; // This is important to clear the current list
-    notifyListeners(); // Notify immediately to update UI
-    init(); // Then reload data
-  }
-
-  // ====================== STATE MANAGEMENT ====================== //
-
-  void _startLoading() {
-    _isLoading = true;
-    _loadError = null;
+    _countries = [];
     notifyListeners();
-  }
-
-  void _stopLoading() {
-    _isLoading = false;
-    notifyListeners();
-  }
-
-  void _handleLoadError(dynamic error) {
-    _loadError = error is Exception ? error : Exception('Country load failed');
-    _log.severe('Country data initialization error', error);
+    init();
   }
 }

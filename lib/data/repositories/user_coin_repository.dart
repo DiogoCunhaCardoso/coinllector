@@ -29,7 +29,7 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
   Future<Result<void>> removeCoin(int coinId) async {
     try {
       await dataSource.removeCoin(coinId);
-      _log.info("Removed coin $coinId");
+      _log.info("Removed coin with ID: $coinId");
       return Result.success(null);
     } catch (e) {
       return Result.error(Exception('Failed to remove coin: $e'));
@@ -156,25 +156,6 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
     }
   }
 
-  /// Returns the count of coins the user owns of a specific type.
-  Future<Result<Map<CoinType, int>>> getOwnedCoinsCountByType() async {
-    try {
-      final result = await dataSource.getCountGroupedByType();
-      final counts = {for (var type in CoinType.values) type: 0};
-      for (var row in result) {
-        try {
-          final type = CoinType.values.byName(row['type'] as String);
-          counts[type] = row['count'] as int;
-        } catch (e) {
-          _log.warning('Error parsing coin type: $e');
-        }
-      }
-      return Result.success(counts);
-    } catch (e) {
-      return Result.error(Exception('Failed to fetch owned coins by type: $e'));
-    }
-  }
-
   /// Retrieves the count of coins the user owns, grouped by country.
   @override
   Future<Result<Map<CountryNames, int>>> getUserCoinsByCountry() async {
@@ -193,6 +174,20 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
     } catch (e) {
       return Result.error(
         Exception('Failed to fetch owned coins by country: $e'),
+      );
+    }
+  }
+
+  // COUNT -----------------------------------------------------------------------------------------------
+
+  @override
+  Future<Result<int>> getUserCoinCountByCountry(CountryNames country) async {
+    try {
+      final count = await dataSource.getOwnedCoinCountByCountry(country.name);
+      return Result.success(count);
+    } catch (e) {
+      return Result.error(
+        Exception('Failed to fetch coin count for country $country: $e'),
       );
     }
   }

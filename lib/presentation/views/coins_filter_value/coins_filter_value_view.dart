@@ -79,9 +79,8 @@ class _CoinsFilterViewState extends State<CoinsFilterView> {
                   final ownedCoins =
                       coins
                           .where(
-                            (coin) => userCoinProvider.ownedCoinsCount.contains(
-                              coin.id,
-                            ),
+                            (coin) =>
+                                userCoinProvider.ownedCoinIds.contains(coin.id),
                           )
                           .length;
                   final totalCoins = coins.length;
@@ -132,7 +131,7 @@ class _CoinsFilterViewState extends State<CoinsFilterView> {
 
                     return CoinsFilterValueGrid(
                       coins: snapshot.data!,
-                      ownedCoins: userCoinProvider.ownedCoinsCount,
+                      ownedCoins: userCoinProvider.ownedCoinIds,
                       onToggleCoin: (coinId) => _handleToggleOwnership(coinId),
                     );
                   },

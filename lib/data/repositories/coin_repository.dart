@@ -84,6 +84,8 @@ class CoinRepositoryImpl implements ICoinRepository {
     }
   }
 
+  // COUNT -------------------------------------------------------------------------
+
   @override
   Future<Result<int>> getCoinCount() async {
     try {
@@ -93,6 +95,19 @@ class CoinRepositoryImpl implements ICoinRepository {
       return Result.error(Exception('Failed to count coins: $e'));
     }
   }
+
+  @override
+  Future<Result<int>> getCountryTotalCoinCount(CountryNames country) async {
+    try {
+      final count = await localDataSource.getCountryTotalCoinCount(country);
+      _log.info('Found $count coins for country: ${country.name}');
+      return Result.success(count);
+    } catch (e) {
+      return Result.error(Exception('Failed to get country coin count: $e'));
+    }
+  }
+
+  // ON INIT ------------------------------------------------------------------------
 
   @override
   Future<Result<void>> insertInitialCoins(List<CoinModel> coins) async {

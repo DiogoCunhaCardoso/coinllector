@@ -13,9 +13,11 @@ import 'package:coinllector_app/domain/usecases/country/get_country_by_enum.dart
 import 'package:coinllector_app/domain/usecases/user_coin/add_coin.dart';
 import 'package:coinllector_app/domain/usecases/user_coin/get_coin_quality.dart';
 import 'package:coinllector_app/domain/usecases/user_coin/get_owned_coin_count.dart';
+import 'package:coinllector_app/domain/usecases/user_coin/get_owned_coin_count_by_country.dart';
 import 'package:coinllector_app/domain/usecases/user_coin/get_owned_coins.dart';
-import 'package:coinllector_app/domain/usecases/user_coin/get_owned_coins_count_by_country.dart';
+import 'package:coinllector_app/domain/usecases/user_coin/get_owned_coin_count_by_country_map.dart';
 import 'package:coinllector_app/domain/usecases/user_coin/get_owned_coin_count_by_type.dart';
+import 'package:coinllector_app/domain/usecases/user_coin/get_statistics_sorted_by_country.dart';
 import 'package:coinllector_app/domain/usecases/user_coin/remove_coin.dart';
 import 'package:coinllector_app/domain/usecases/user_coin/check_if_user_owns_coin.dart';
 import 'package:coinllector_app/domain/usecases/user_coin/toggle_coin_ownership.dart';
@@ -144,8 +146,22 @@ Future setupDependencies() async {
         GetOwnedCoinCountForTypeUseCase(serviceLocator<IUserCoinRepository>()),
   );
 
-  serviceLocator.registerLazySingleton<GetOwnedCoinsByCountryUseCase>(
-    () => GetOwnedCoinsByCountryUseCase(serviceLocator<IUserCoinRepository>()),
+  serviceLocator.registerLazySingleton<GetOwnedCoinsByCountryMapUseCase>(
+    () =>
+        GetOwnedCoinsByCountryMapUseCase(serviceLocator<IUserCoinRepository>()),
+  );
+
+  serviceLocator.registerLazySingleton<GetUserCoinCountByCountryUseCase>(
+    () =>
+        GetUserCoinCountByCountryUseCase(serviceLocator<IUserCoinRepository>()),
+  );
+
+  serviceLocator.registerLazySingleton(
+    () => GetStatisticsSortedByCountryUseCase(
+      serviceLocator<IUserCoinRepository>(),
+      serviceLocator<ICountryRepository>(),
+      serviceLocator<ICoinRepository>(),
+    ),
   );
 
   // ==========================================================
@@ -234,7 +250,11 @@ Future setupDependencies() async {
       getOwnedCoinsCountByTypeUseCase:
           serviceLocator<GetOwnedCoinCountForTypeUseCase>(),
       getOwnedCoinsByCountryUseCase:
-          serviceLocator<GetOwnedCoinsByCountryUseCase>(),
+          serviceLocator<GetOwnedCoinsByCountryMapUseCase>(),
+      getUserCoinCountByCountryUseCase:
+          serviceLocator<GetUserCoinCountByCountryUseCase>(),
+      getStatisticsSortedByCountryUseCase:
+          serviceLocator<GetStatisticsSortedByCountryUseCase>(),
     )..init(),
   );
 

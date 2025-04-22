@@ -1,28 +1,19 @@
 import 'package:coinllector_app/config/themes/sizes.dart';
+import 'package:coinllector_app/presentation/model/country_coin_stats.dart';
 import 'package:flutter/material.dart';
 
 class HighestCoinCard extends StatelessWidget {
-  final String countryName;
-  final String coinsOwned;
-  final String totalCoins;
-  final String image;
+  final CountryCoinStats stats;
 
-  const HighestCoinCard({
-    super.key,
-    required this.countryName,
-    required this.coinsOwned,
-    required this.totalCoins,
-    required this.image,
-  });
+  const HighestCoinCard({super.key, required this.stats});
 
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
-    final double owned = double.tryParse(coinsOwned) ?? 0;
-    final double total =
-        double.tryParse(totalCoins) ?? 1; // Prevent division by zero
+    final double owned = stats.coinsOwned.toDouble();
+    final double total = stats.totalCoins.toDouble();
     final double percentage = total > 0 ? owned / total : 0;
 
     return Card(
@@ -36,19 +27,22 @@ class HighestCoinCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                CircleAvatar(radius: 20, backgroundImage: AssetImage(image)),
+                CircleAvatar(
+                  radius: 20,
+                  backgroundImage: AssetImage(stats.flagImage),
+                ),
                 SizedBox(width: AppSizes.p16),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      countryName,
+                      stats.name.name,
                       style: textTheme.labelMedium!.copyWith(
                         color: colorScheme.onSurfaceVariant,
                       ),
                     ),
                     Text(
-                      "$coinsOwned/$totalCoins",
+                      "${stats.coinsOwned}/${stats.totalCoins}",
                       style: textTheme.bodyMedium!.copyWith(
                         fontWeight: FontWeight.w600,
                       ),

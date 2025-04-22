@@ -1,5 +1,7 @@
-import 'dart:async';
 import 'dart:collection';
+
+import 'package:flutter/material.dart';
+import 'package:logging/logging.dart';
 
 import 'package:coinllector_app/domain/entities/coin.dart';
 import 'package:coinllector_app/domain/usecases/coin/get_coins_by_country.dart';
@@ -9,17 +11,17 @@ import 'package:coinllector_app/domain/usecases/coin/get_total_coin_count.dart';
 import 'package:coinllector_app/presentation/model/coin_display.dart';
 import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';
+
 import 'package:coinllector_app/utils/result.dart';
 import 'package:coinllector_app/utils/use_case.dart';
 import 'package:coinllector_app/data/datasources/local/data/value_coins_data.dart';
-import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
 
 /// Manages coin data and provides it to the Presentation Layer
 class CoinProvider extends ChangeNotifier {
-  final Logger _log = Logger('CoinProvider');
+  final _log = Logger('COIN_PROVIDER');
 
-  // Dependencies (use cases)
+  // Private Use Cases --------------------------------------------------------
+
   final GetCoinsByTypeUseCase _getCoinsByTypeUseCase;
   final GetTotalCoinCountUseCase _getTotalCoinCountUseCase;
   final GetCoinsByCountryUseCase _getCoinsByCountryUseCase;
@@ -32,58 +34,56 @@ class CoinProvider extends ChangeNotifier {
        _getTotalCoinCountUseCase = getTotalCoinCountUseCase,
        _getCoinsByCountryUseCase = getCoinsByCountryUseCase;
 
-  // ====================== STATE ====================== //
+  // State --------------------------------------------------------------------
 
   bool _isLoading = false;
-  Exception? _loadError;
+  String? _error;
+
+  final Map<CoinType, List<Coin>> _coinsByType = {};
+  final Map<CountryNames, List<Coin>> _coinsByCountry = {};
+  final Map<CountryNames, int> _countryTotalCoinsCount = {};
+  int _totalCoinCount = 0;
+
+  // Getters ------------------------------------------------------------------
 
   bool get isLoading => _isLoading;
-  Exception? get error => _loadError;
-
-  // ====================== PUBLIC METHODS ====================== //
-
-  Future<void> init() async {
-    if (_isLoading) return;
-    _startLoading();
-    try {
-      await _loadTotalCoinCount();
-    } catch (e) {
-      _handleLoadError(e);
-    } finally {
-      _stopLoading();
-    }
-  }
-
-  // ==== FOR VALUE TAB ==== // ✅
-
-  final List<CoinDisplay> _valueCoins = CoinDisplayData.coinTypes;
-
-  UnmodifiableListView<CoinDisplay> get coinsByValue =>
-      UnmodifiableListView(_valueCoins);
-
-  // ==== FOR TOTAL COIN COUNT ==== // ✅
-
-  int _totalCoinCount = 0;
+  String? get error => _error;
 
   int get totalCoinCount => _totalCoinCount;
 
-  Future<void> _loadTotalCoinCount() async {
-    final result = await _getTotalCoinCountUseCase(NoParams(null));
+  Map<CoinType, List<Coin>> get allCoinsByType =>
+      Map.unmodifiable(_coinsByType);
 
-    switch (result) {
-      case Success(value: final count):
-        _totalCoinCount = count;
-        _log.info('Total coin count loaded: $count');
-      case Error(error: final exception):
-        _log.severe('Failed to load total coin count', exception);
-        throw exception;
+  Map<CountryNames, List<Coin>> get allCoinsByCountry =>
+      Map.unmodifiable(_coinsByCountry);
+
+  // For static display
+  UnmodifiableListView<CoinDisplay> get coinsByValue =>
+      UnmodifiableListView(CoinDisplayData.coinTypes);
+
+  // ============================ PUBLIC METHODS ============================ //
+
+  // Init ---------------------------------------------------------------------
+
+  Future<void> init() async {
+    if (_isLoading) return;
+
+    _isLoading = true;
+    _error = null;
+    notifyListeners();
+
+    try {
+      await _loadTotalCoinCount();
+    } catch (e) {
+      _error = e.toString();
+      _log.severe('Error initializing coin provider: $_error');
+    } finally {
+      _isLoading = false;
+      notifyListeners();
     }
   }
 
-  // ==== ARRAY OF COINS BY TYPE ==== //
-
-  final Map<CoinType, List<Coin>> _coinsByType = {};
-
+  /// Gets coins for a given [CoinType], caches and notifies
   Future<List<Coin>> getCoinsByType(CoinType type) async {
     if (_coinsByType.containsKey(type)) {
       return _coinsByType[type]!;
@@ -94,55 +94,33 @@ class CoinProvider extends ChangeNotifier {
 
     try {
       final result = await _getCoinsByTypeUseCase(Params(type));
-
       switch (result) {
         case Success(value: final coins):
           _coinsByType[type] = coins;
           _log.info('Loaded ${coins.length} coins for type: ${type.name}');
           notifyListeners();
           return coins;
-        case Error(error: final exception):
-          _log.severe('Failed to load coins for type ${type.name}', exception);
-          notifyListeners();
-          throw exception;
+        case Error(error: final e):
+          _log.severe('Failed to load coins for type ${type.name}', e);
+          throw e;
       }
     } catch (e) {
-      _log.severe('Unexpected error loading coins', e);
-      notifyListeners();
+      _log.severe('Unexpected error loading coins for type: ${type.name}', e);
       rethrow;
     }
   }
 
-  Future<void> refreshCoinsByType(CoinType type) async {
-    _coinsByType.remove(type);
-    notifyListeners();
-  }
-  // COINS BY COUNTRY (LAZY LOADING) ------------------------------------------
-
-  final Map<CountryNames, List<Coin>> _coinsByCountry = {};
-
-  Map<CoinType, List<Coin>> get allCoinsByType {
-    return Map.unmodifiable(_coinsByType);
-  }
-
-  Map<CountryNames, List<Coin>> get allCoinsByCountry {
-    return Map.unmodifiable(_coinsByCountry);
-  }
-
-  // Method to get coins by country
+  /// Gets coins for a given [CountryNames], caches and notifies
   Future<List<Coin>> getCoinsByCountry(CountryNames countryName) async {
-    // Return from cache if available
     if (_coinsByCountry.containsKey(countryName)) {
       return _coinsByCountry[countryName]!;
     }
 
-    // Initialize with empty list
     _coinsByCountry[countryName] = [];
     notifyListeners();
 
     try {
       final result = await _getCoinsByCountryUseCase(Params(countryName));
-
       switch (result) {
         case Success(value: final coins):
           _coinsByCountry[countryName] = coins;
@@ -151,72 +129,81 @@ class CoinProvider extends ChangeNotifier {
           );
           notifyListeners();
           return coins;
-        case Error(error: final exception):
+        case Error(error: final e):
           _log.severe(
             'Failed to load coins for country ${countryName.name}',
-            exception,
+            e,
           );
-          notifyListeners();
-          throw exception;
+          throw e;
       }
     } catch (e) {
-      _log.severe('Unexpected error loading coins for country', e);
-      notifyListeners();
+      _log.severe(
+        'Unexpected error loading coins for country: ${countryName.name}',
+        e,
+      );
       rethrow;
     }
   }
 
-  //
-  //
-  //
-
-  // Method to preload all coins by type
-  Future<Map<CoinType, List<Coin>>> loadAllCoinsByType() async {
-    for (final type in CoinType.values) {
-      if (!_coinsByType.containsKey(type)) {
-        try {
-          await getCoinsByType(type);
-        } catch (e) {
-          _log.severe('Failed to load coins for type ${type.name}', e);
-        }
-      }
+  /// Returns the total number of coins for a specific country
+  int getCountryTotalCoinCount(CountryNames countryName) {
+    // Use cache if available
+    if (_countryTotalCoinsCount.containsKey(countryName)) {
+      return _countryTotalCoinsCount[countryName]!;
     }
-    return allCoinsByType;
-  }
 
-  // Method to preload all coins by country
-  Future<Map<CountryNames, List<Coin>>> loadAllCoinsByCountry() async {
-    for (final country in CountryNames.values) {
-      if (!_coinsByCountry.containsKey(country)) {
-        try {
-          await getCoinsByCountry(country);
-        } catch (e) {
-          _log.severe('Failed to load coins for country ${country.name}', e);
-        }
-      }
+    // If loaded coins for this country, count them
+    if (_coinsByCountry.containsKey(countryName)) {
+      final count = _coinsByCountry[countryName]!.length;
+      _countryTotalCoinsCount[countryName] = count;
+      return count;
     }
-    return allCoinsByCountry;
+
+    // If we haven't loaded the coins yet, trigger loading and return a default
+    // This will be updated when getCoinsByCountry completes
+    getCoinsByCountry(countryName);
+    return 0; // Default value until data is loaded
   }
 
   //
   //
   //
   //
-  // UTILS
-
-  void _startLoading() {
-    _isLoading = true;
-    _loadError = null;
+  /// Refreshes coins by type - used when User Preference is changed
+  void refreshCoinsByType(CoinType type) {
+    _log.info('Refreshing coins for type: ${type.name}');
+    _coinsByType.remove(type);
     notifyListeners();
+    getCoinsByType(type);
   }
 
-  void _stopLoading() {
-    _isLoading = false;
+  /// Refreshes entire coin count and type caches
+  void refreshAll() {
+    _log.info('Refreshing all coin data');
+    _coinsByType.clear();
+    _coinsByCountry.clear();
+    _totalCoinCount = 0;
     notifyListeners();
+    init(); // Re-fetch total count
   }
 
-  void _handleLoadError(dynamic error) {
-    _loadError = error is Exception ? error : Exception('Coin load failed');
-    _log.severe('Coin data initialization error', error);
+  // COIN COUNTS -------------------------------------------------------------------
+
+  // ADD HERE THE COUNT FOR EACH COUNTRY.
+  // i think it is basically a getCoinsByType but .length isnt it?
+
+  // ============================ PRIVATE METHODS ============================ //
+
+  /// Internal loader for total coin count
+  Future<void> _loadTotalCoinCount() async {
+    final result = await _getTotalCoinCountUseCase(NoParams(null));
+    switch (result) {
+      case Success(value: final count):
+        _totalCoinCount = count;
+        _log.info('Total coin count loaded: $count');
+      case Error(error: final e):
+        _log.severe('Failed to load total coin count', e);
+        throw e;
+    }
   }
 }

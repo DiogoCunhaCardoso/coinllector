@@ -51,7 +51,7 @@ class TabButton extends StatelessWidget {
                 color:
                     isSelected
                         ? colorScheme.surface
-                        : colorScheme.onSurfaceVariant,
+                        : colorScheme.surface.withValues(alpha: 0.5),
               ),
             ),
           ),

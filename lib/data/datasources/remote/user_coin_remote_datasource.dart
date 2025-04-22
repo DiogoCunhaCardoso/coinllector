@@ -81,16 +81,16 @@ class UserCoinRemoteDataSource {
   }
 
   //REMOVE
-  Future<List<Map<String, Object?>>> getCountGroupedByType() async {
+  /*   Future<List<Map<String, Object?>>> getCountGroupedByType() async {
     return await db.rawQuery('''
       SELECT c.${DatabaseTables.type}, COUNT(*) as count 
       FROM ${DatabaseTables.userCoins} uc
       JOIN ${DatabaseTables.coins} c ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.id}
       GROUP BY c.${DatabaseTables.type}
     ''');
-  }
+  } */
 
-  //REMOVE THIS AFTER
+  //REMOVE THIS AFTER //TODO
   Future<List<Map<String, Object?>>> getCountGroupedByCountry() async {
     return await db.rawQuery('''
       SELECT c.${DatabaseTables.country}, COUNT(*) as count 
@@ -98,5 +98,22 @@ class UserCoinRemoteDataSource {
       JOIN ${DatabaseTables.coins} c ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.id}
       GROUP BY c.${DatabaseTables.country}
     ''');
+  }
+
+  // COUNT -----------------------------------------------------------------------------------------------
+
+  Future<int> getOwnedCoinCountByCountry(String country) async {
+    final result = await db.rawQuery(
+      '''
+    SELECT COUNT(*) as count
+    FROM ${DatabaseTables.userCoins} uc
+    JOIN ${DatabaseTables.coins} c
+      ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.id}
+    WHERE c.${DatabaseTables.country} = ?
+    ''',
+      [country],
+    );
+
+    return Sqflite.firstIntValue(result) ?? 0;
   }
 }
