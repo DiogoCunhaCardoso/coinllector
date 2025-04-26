@@ -59,6 +59,7 @@ class _CoinShowcaseState extends State<CoinShowcase> {
       context,
       listen: false,
     );
+
     final prefs = context.read<UserPreferencesProvider>();
 
     final isOwned = await userCoinProvider.checkIfUserOwnsCoin(widget.coin.id);

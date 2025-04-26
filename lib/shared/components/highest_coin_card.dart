@@ -1,9 +1,9 @@
 import 'package:coinllector_app/config/themes/sizes.dart';
-import 'package:coinllector_app/presentation/model/country_coin_stats.dart';
+import 'package:coinllector_app/presentation/model/coin_stats.dart';
 import 'package:flutter/material.dart';
 
 class HighestCoinCard extends StatelessWidget {
-  final CountryCoinStats stats;
+  final CoinStats stats;
 
   const HighestCoinCard({super.key, required this.stats});
 
@@ -11,10 +11,6 @@ class HighestCoinCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
-
-    final double owned = stats.coinsOwned.toDouble();
-    final double total = stats.totalCoins.toDouble();
-    final double percentage = total > 0 ? owned / total : 0;
 
     return Card(
       child: Padding(
@@ -29,14 +25,14 @@ class HighestCoinCard extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 20,
-                  backgroundImage: AssetImage(stats.flagImage),
+                  backgroundImage: AssetImage(stats.image),
                 ),
                 SizedBox(width: AppSizes.p16),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      stats.name.name,
+                      stats.label,
                       style: textTheme.labelMedium!.copyWith(
                         color: colorScheme.onSurfaceVariant,
                       ),
@@ -51,7 +47,6 @@ class HighestCoinCard extends StatelessWidget {
                 ),
               ],
             ),
-            // Simplified circular progress with percentage
             SizedBox(
               width: 52,
               height: 52,
@@ -61,7 +56,7 @@ class HighestCoinCard extends StatelessWidget {
                   Transform.scale(
                     scale: 1.4,
                     child: CircularProgressIndicator(
-                      value: percentage,
+                      value: stats.collectionPercentage,
                       backgroundColor: colorScheme.secondary,
                       valueColor: AlwaysStoppedAnimation<Color>(
                         colorScheme.primary,
@@ -70,7 +65,7 @@ class HighestCoinCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "${(percentage * 100).toInt()}%",
+                    "${(stats.collectionPercentage * 100).toInt()}%",
                     style: textTheme.labelSmall,
                   ),
                 ],

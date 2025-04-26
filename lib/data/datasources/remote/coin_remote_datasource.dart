@@ -44,6 +44,14 @@ class CoinRemoteDataSource {
     return Sqflite.firstIntValue(result) ?? 0;
   }
 
+  Future<int> getTypeTotalCoinCount(CoinType type) async {
+    final result = await db.rawQuery(
+      'SELECT COUNT(*) FROM ${DatabaseTables.coins} WHERE ${DatabaseTables.type} = ?',
+      [type.name],
+    );
+    return Sqflite.firstIntValue(result) ?? 0;
+  }
+
   // ON INIT ------------------------------------------------------------------------
 
   Future<void> insertInitialCoins(List<CoinModel> coins) async {

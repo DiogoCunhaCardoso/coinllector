@@ -1,4 +1,3 @@
-import 'package:coinllector_app/domain/entities/country.dart';
 import 'package:coinllector_app/presentation/model/coin_display.dart';
 import 'package:coinllector_app/config/router/routes.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
@@ -9,9 +8,10 @@ import 'package:go_router/go_router.dart';
 
 // coins_view_grid.dart
 class CoinsViewGrid extends StatelessWidget {
-  final List<dynamic> coins; // TODO will be of CoinDisplay
+  final List<CoinDisplay> coins;
+  final bool isCountry;
 
-  const CoinsViewGrid({super.key, required this.coins});
+  const CoinsViewGrid({super.key, required this.coins, this.isCountry = false});
 
   @override
   Widget build(BuildContext context) {
@@ -31,21 +31,18 @@ class CoinsViewGrid extends StatelessWidget {
       itemBuilder: (context, index) {
         final item = coins[index];
 
-        if (item is CoinDisplay) {
-          return CoinCard(
-            imageUrl: item.image,
-            size: getItemSizeForCoinsView(item),
-            onTap: () => context.go(AppRoutes.coinsWithValue(item.type.name)),
-          );
-        } else if (item is Country) {
-          return CoinCard(
-            imageUrl: item.flagImage,
-            size: getItemSizeForCoinsView(item),
-            onTap: () => context.go(AppRoutes.coinsWithCountry(item.name.name)),
-          );
-        } else {
-          return const Card(child: Center(child: Text("Unknown item type")));
-        }
+        return CoinCard(
+          imageUrl: item.image,
+          size: getItemSizeForCoinsView(item),
+          onTap: () {
+            final route =
+                isCountry
+                    ? AppRoutes.coinsWithCountry(item.label)
+                    : AppRoutes.coinsWithValue(item.label);
+
+            context.go(route);
+          },
+        );
       },
     );
   }

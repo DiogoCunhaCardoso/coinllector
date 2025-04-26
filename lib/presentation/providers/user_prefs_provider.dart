@@ -17,7 +17,9 @@ import 'package:coinllector_app/utils/use_case.dart';
 
 /// Manages user preferences data and provides it to the Presentation Layer
 class UserPreferencesProvider extends ChangeNotifier {
-  // Private Use Cases --------------------------------------------------------
+  // ---------------------------------------------------------------------------
+  // Private Use Cases
+  // ---------------------------------------------------------------------------
 
   final GetCoinMintsPrefsUseCase _getCoinMints;
   final SetCoinMintsPrefsUseCase _setCoinMints;
@@ -29,29 +31,6 @@ class UserPreferencesProvider extends ChangeNotifier {
   final SetRemovalConfirmationPrefsUseCase _setRemovalConfirmation;
   final GetUserProfileImagePrefsUseCase _getUserProfileImage;
   final SetUserProfileImagePrefsUseCase _setUserProfileImage;
-
-  // State --------------------------------------------------------------------
-
-  bool _coinMints = false;
-  bool _microStates = true;
-  bool _coinQuality = false;
-  bool _removalConfirmation = true;
-  String? _profileImagePath;
-
-  // Getters -------------------------------------------------------------------
-
-  bool get coinMints => _coinMints;
-  bool get microStates => _microStates;
-  bool get coinQuality => _coinQuality;
-  bool get removalConfirmation => _removalConfirmation;
-
-  File? get profileImageFile {
-    final path = _profileImagePath;
-    if (path == null || path.isEmpty) return null;
-    return File(path);
-  }
-
-  // Constructor (private fields) ----------------------------------------------
 
   UserPreferencesProvider({
     required GetCoinMintsPrefsUseCase getCoinMints,
@@ -75,7 +54,34 @@ class UserPreferencesProvider extends ChangeNotifier {
        _getUserProfileImage = getUserProfileImage,
        _setUserProfileImage = setUserProfileImage;
 
-  // Init ---------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
+  // State
+  // ---------------------------------------------------------------------------
+
+  bool _coinMints = false;
+  bool _microStates = true;
+  bool _coinQuality = false;
+  bool _removalConfirmation = true;
+  String? _profileImagePath;
+
+  // ---------------------------------------------------------------------------
+  // Getters
+  // ---------------------------------------------------------------------------
+
+  bool get coinMints => _coinMints;
+  bool get microStates => _microStates;
+  bool get coinQuality => _coinQuality;
+  bool get removalConfirmation => _removalConfirmation;
+
+  File? get profileImageFile {
+    final path = _profileImagePath;
+    if (path == null || path.isEmpty) return null;
+    return File(path);
+  }
+
+  // ---------------------------------------------------------------------------
+  // Init
+  // ---------------------------------------------------------------------------
 
   Future<void> init() async {
     // COIN MINTS
@@ -128,7 +134,9 @@ class UserPreferencesProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Updates ------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
+  // Updates
+  // ---------------------------------------------------------------------------
 
   Future<void> updateCoinMints(bool value) async {
     await _setCoinMints(Params(value));

@@ -19,10 +19,13 @@ class _ProfileStatisticsViewState extends State<ProfileStatisticsView> {
 
   @override
   Widget build(BuildContext context) {
-    // PROVIDER --------------------------------------------------------------
     final userCoinProvider = Provider.of<UserCoinProvider>(context);
 
-    // CONTENT ---------------------------------------------------------------
+    final statsList =
+        _selectedIndex == 0
+            ? userCoinProvider.topTypeStats
+            : userCoinProvider.topCountryStats;
+
     return Scaffold(
       appBar: CustomAppBar(title: "Statistics", scaffoldContext: context),
       body: Padding(
@@ -41,15 +44,13 @@ class _ProfileStatisticsViewState extends State<ProfileStatisticsView> {
             // Display Highest Coin Cards
             if (userCoinProvider.isLoading)
               const Center(child: CircularProgressIndicator())
-            else if (userCoinProvider.topCountryStats == null ||
-                userCoinProvider.topCountryStats!.isEmpty)
-              const Center(child: Text("No country stats available"))
+            else if (statsList == null || statsList.isEmpty)
+              const Center(child: Text("No statistics available"))
             else
-              // Display full list of Highest Coin Cards
               Expanded(
                 child: ListView(
                   children:
-                      userCoinProvider.topCountryStats!
+                      statsList
                           .map((stats) => HighestCoinCard(stats: stats))
                           .toList(),
                 ),

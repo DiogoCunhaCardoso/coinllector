@@ -5,12 +5,12 @@ import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
 import 'package:coinllector_app/shared/components/header_info_text.dart';
 import 'package:flutter/material.dart';
 
-class CoinBanner extends StatelessWidget {
+class CoinTypeBanner extends StatelessWidget {
   final CoinType type;
   final int owned;
   final int total;
 
-  const CoinBanner({
+  const CoinTypeBanner({
     super.key,
     required this.type,
     required this.owned,

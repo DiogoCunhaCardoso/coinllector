@@ -70,8 +70,11 @@ class _CoinsViewState extends State<CoinsView> {
                 child: IndexedStack(
                   index: _selectedIndex,
                   children: [
-                    CoinsViewGrid(coins: values),
-                    CoinsViewGrid(coins: countries),
+                    CoinsViewGrid(coins: values), // Coin values
+                    CoinsViewGrid(
+                      coins: countries,
+                      isCountry: true,
+                    ), // Countries
                   ],
                 ),
               ),

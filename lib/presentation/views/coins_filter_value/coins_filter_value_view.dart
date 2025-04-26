@@ -47,7 +47,10 @@ class _CoinsFilterViewState extends State<CoinsFilterView> {
       context,
       listen: false,
     );
-    final userPrefsProvider = Provider.of<UserPreferencesProvider>(context);
+    final userPrefsProvider = Provider.of<UserPreferencesProvider>(
+      context,
+      listen: false,
+    );
 
     final isOwned = await userCoinProvider.checkIfUserOwnsCoin(coinId);
 
@@ -64,6 +67,7 @@ class _CoinsFilterViewState extends State<CoinsFilterView> {
 
   @override
   Widget build(BuildContext context) {
+    final coinProvider = context.watch<CoinProvider>();
     final userCoinProvider = context.watch<UserCoinProvider>();
 
     return Scaffold(
@@ -75,20 +79,26 @@ class _CoinsFilterViewState extends State<CoinsFilterView> {
               FutureBuilder<List<Coin>>(
                 future: _coinsFuture,
                 builder: (context, snapshot) {
-                  final coins = snapshot.data ?? [];
-                  final ownedCoins =
-                      coins
-                          .where(
-                            (coin) =>
-                                userCoinProvider.ownedCoinIds.contains(coin.id),
-                          )
-                          .length;
-                  final totalCoins = coins.length;
+                  return FutureBuilder<int>(
+                    future: coinProvider.getTypeCoinCount(widget.type),
+                    builder: (context, totalSnapshot) {
+                      final totalCoins = totalSnapshot.data ?? 0;
 
-                  return CoinBanner(
-                    type: widget.type,
-                    owned: ownedCoins,
-                    total: totalCoins,
+                      return FutureBuilder<int>(
+                        future: userCoinProvider.getOwnedCoinCountForType(
+                          widget.type,
+                        ),
+                        builder: (context, ownedSnapshot) {
+                          final ownedCoins = ownedSnapshot.data ?? 0;
+
+                          return CoinTypeBanner(
+                            type: widget.type,
+                            owned: ownedCoins,
+                            total: totalCoins,
+                          );
+                        },
+                      );
+                    },
                   );
                 },
               ),

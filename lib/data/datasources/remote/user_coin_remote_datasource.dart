@@ -1,5 +1,6 @@
 import 'package:coinllector_app/shared/enums/coin_quality_enum.dart';
 import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
+import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 import 'package:sqflite/sqflite.dart';
 import '../local/database/database_tables.dart';
 
@@ -65,30 +66,14 @@ class UserCoinRemoteDataSource {
     return Sqflite.firstIntValue(result) ?? 0;
   }
 
-  Future<int> getOwnedCoinCountByType(CoinType type) async {
-    final result = await db.rawQuery(
-      '''
-    SELECT COUNT(*) as count
-    FROM ${DatabaseTables.userCoins} uc
-    JOIN ${DatabaseTables.coins} c
-      ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.userCoinId}
-    WHERE c.${DatabaseTables.type} = ?
-  ''',
-      [type.name],
-    );
-
-    return Sqflite.firstIntValue(result) ?? 0;
-  }
-
-  //REMOVE
-  /*   Future<List<Map<String, Object?>>> getCountGroupedByType() async {
+  Future<List<Map<String, Object?>>> getCountGroupedByType() async {
     return await db.rawQuery('''
-      SELECT c.${DatabaseTables.type}, COUNT(*) as count 
-      FROM ${DatabaseTables.userCoins} uc
-      JOIN ${DatabaseTables.coins} c ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.id}
-      GROUP BY c.${DatabaseTables.type}
-    ''');
-  } */
+    SELECT c.${DatabaseTables.type}, COUNT(*) as count 
+    FROM ${DatabaseTables.userCoins} uc
+    JOIN ${DatabaseTables.coins} c ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.id}
+    GROUP BY c.${DatabaseTables.type}
+  ''');
+  }
 
   //REMOVE THIS AFTER //TODO
   Future<List<Map<String, Object?>>> getCountGroupedByCountry() async {
@@ -102,7 +87,7 @@ class UserCoinRemoteDataSource {
 
   // COUNT -----------------------------------------------------------------------------------------------
 
-  Future<int> getOwnedCoinCountByCountry(String country) async {
+  Future<int> getOwnedCoinCountByCountry(CountryNames country) async {
     final result = await db.rawQuery(
       '''
     SELECT COUNT(*) as count
@@ -111,9 +96,23 @@ class UserCoinRemoteDataSource {
       ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.id}
     WHERE c.${DatabaseTables.country} = ?
     ''',
-      [country],
+      [country.name],
     );
 
+    return Sqflite.firstIntValue(result) ?? 0;
+  }
+
+  Future<int> getOwnedCoinCountByType(CoinType type) async {
+    final result = await db.rawQuery(
+      '''
+    SELECT COUNT(*) as count
+    FROM ${DatabaseTables.userCoins} uc
+    JOIN ${DatabaseTables.coins} c
+      ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.id}
+    WHERE c.${DatabaseTables.type} = ?
+  ''',
+      [type.name],
+    );
     return Sqflite.firstIntValue(result) ?? 0;
   }
 }

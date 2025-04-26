@@ -1,8 +1,9 @@
 // lib/domain/usecases/user_coin/get_statistics_sorted_by_country.dart
 import 'package:coinllector_app/domain/interfaces/coin_interface.dart';
-import 'package:coinllector_app/domain/interfaces/country_interface.dart';
 import 'package:coinllector_app/domain/interfaces/user_coin_interface.dart';
-import 'package:coinllector_app/presentation/model/country_coin_stats.dart';
+import 'package:coinllector_app/domain/usecases/coin/get_coin_count_by_country.dart';
+import 'package:coinllector_app/domain/usecases/country/get_countries.dart';
+import 'package:coinllector_app/presentation/model/coin_stats.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 import 'package:coinllector_app/utils/result.dart';
 import 'package:coinllector_app/utils/use_case.dart';
@@ -16,22 +17,24 @@ import 'package:coinllector_app/utils/use_case.dart';
 //    - Secondary: Highest collection percentage (owned/total)
 
 class GetStatisticsSortedByCountryUseCase
-    implements UseCase<List<CountryCoinStats>, NoParams> {
+    implements UseCase<List<CoinStats>, NoParams> {
   final IUserCoinRepository userCoinRepository;
-  final ICountryRepository countryRepository;
+  final GetCountriesUseCase getCountriesUseCase;
+  final GetCountryCoinCountUseCase getCountryCoinCountUseCase;
   final ICoinRepository coinRepository;
 
   GetStatisticsSortedByCountryUseCase(
     this.userCoinRepository,
-    this.countryRepository,
+    this.getCountriesUseCase,
+    this.getCountryCoinCountUseCase,
     this.coinRepository,
   );
 
   @override
-  Future<Result<List<CountryCoinStats>>> call(NoParams _) async {
+  Future<Result<List<CoinStats>>> call(NoParams _) async {
     try {
-      // Fetch all countries
-      final countriesResult = await countryRepository.getAllCountries();
+      // Fetch countries
+      final countriesResult = await getCountriesUseCase(NoParams(null));
       final List countries;
       switch (countriesResult) {
         case Success(value: final data):
@@ -52,14 +55,14 @@ class GetStatisticsSortedByCountryUseCase
       }
 
       // Build stats for all countries
-      final List<CountryCoinStats> allStats = [];
+      final List<CoinStats> allStats = [];
       for (final country in countries) {
         final countryEnum = country.name;
         final ownedCount = coinsByCountry[countryEnum] ?? 0;
 
         // Get total coins count for the country
-        final totalCountResult = await coinRepository.getCountryTotalCoinCount(
-          countryEnum,
+        final totalCountResult = await getCountryCoinCountUseCase.call(
+          Params(countryEnum),
         );
         final int totalCount;
         switch (totalCountResult) {
@@ -71,14 +74,7 @@ class GetStatisticsSortedByCountryUseCase
             );
         }
 
-        allStats.add(
-          CountryCoinStats(
-            name: countryEnum,
-            coinsOwned: ownedCount,
-            totalCoins: totalCount,
-            flagImage: country.flagImage,
-          ),
-        );
+        allStats.add(CoinStats.fromCountry(country, ownedCount, totalCount));
       }
 
       // Sort countries by owned coins and collection percentage
@@ -86,12 +82,10 @@ class GetStatisticsSortedByCountryUseCase
         final ownedComparison = b.coinsOwned.compareTo(a.coinsOwned);
         if (ownedComparison != 0) return ownedComparison;
 
-        final aPercentage = a.totalCoins > 0 ? a.coinsOwned / a.totalCoins : 0;
-        final bPercentage = b.totalCoins > 0 ? b.coinsOwned / b.totalCoins : 0;
-        return bPercentage.compareTo(aPercentage);
+        return b.collectionPercentage.compareTo(a.collectionPercentage);
       });
 
-      return Result.success(allStats); // Return all stats
+      return Result.success(allStats);
     } catch (e) {
       return Result.error(Exception('Failed to get country statistics: $e'));
     }

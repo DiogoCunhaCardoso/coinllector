@@ -1,5 +1,8 @@
+import 'dart:collection';
+
 import 'package:coinllector_app/domain/usecases/country/get_countries.dart';
 import 'package:coinllector_app/domain/usecases/country/get_country_by_enum.dart';
+import 'package:coinllector_app/presentation/model/coin_display.dart';
 import 'package:coinllector_app/utils/result.dart';
 import 'package:coinllector_app/utils/use_case.dart';
 import 'package:flutter/foundation.dart';
@@ -11,7 +14,9 @@ import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 class CountryProvider extends ChangeNotifier {
   final _log = Logger("COUNTRY_PROVIDER");
 
-  // Private Use Cases --------------------------------------------------------
+  // ---------------------------------------------------------------------------
+  // Private Use Cases
+  // ---------------------------------------------------------------------------
 
   final GetCountriesUseCase _getCountriesUseCase;
   final GetCountryByEnumUseCase _getCountryByEnumUseCase;
@@ -22,16 +27,23 @@ class CountryProvider extends ChangeNotifier {
   }) : _getCountriesUseCase = getCountriesUseCase,
        _getCountryByEnumUseCase = getCountryByEnumUseCase;
 
-  // State --------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
+  // State
+  // ---------------------------------------------------------------------------
 
-  List<Country> _countries = [];
-  final Map<CountryNames, Country> _countryCache = {};
   bool _isLoading = false;
   String? _error;
 
-  // Getters -------------------------------------------------------------------
+  List<Country> _countries = [];
 
-  List<Country> get countries => _countries;
+  // ---------------------------------------------------------------------------
+  // Getters
+  // ---------------------------------------------------------------------------
+
+  UnmodifiableListView<CoinDisplay> get countries => UnmodifiableListView(
+    _countries.map((country) => CoinDisplay.fromCountry(country)).toList(),
+  );
+
   bool get isLoading => _isLoading;
   String? get error => _error;
 
@@ -60,18 +72,7 @@ class CountryProvider extends ChangeNotifier {
 
   /// Gets a country by enum, using cache if available
   Future<Country?> getCountry(CountryNames countryEnum) async {
-    // Return cached country if available
-    if (_countryCache.containsKey(countryEnum)) {
-      return _countryCache[countryEnum];
-    }
-
-    // Fetch and cache the country
-    final country = await _fetchCountryByEnum(countryEnum);
-    if (country != null) {
-      _countryCache[countryEnum] = country;
-    }
-
-    return country;
+    return await _fetchCountryByEnum(countryEnum);
   }
 
   // ====================== PRIVATE METHODS ====================== //
@@ -107,7 +108,6 @@ class CountryProvider extends ChangeNotifier {
   /// Refetches countries - used when User Preference is changed
   void refreshCountries() {
     _log.info('Refreshing countries due to microstate preference change');
-    _countryCache.clear();
     _countries = [];
     notifyListeners();
     init();

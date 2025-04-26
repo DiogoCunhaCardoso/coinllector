@@ -49,7 +49,6 @@ class ProfileSettingsAboutView extends StatelessWidget {
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       color: colorScheme.primary,
-                      decoration: TextDecoration.underline,
                     ),
                     recognizer:
                         TapGestureRecognizer()
@@ -82,10 +81,7 @@ class ProfileSettingsAboutView extends StatelessWidget {
                   ),
                   TextSpan(
                     text: "European Central Bank.",
-                    style: TextStyle(
-                      color: colorScheme.primary,
-                      decoration: TextDecoration.underline,
-                    ),
+                    style: TextStyle(color: colorScheme.primary),
                     recognizer:
                         TapGestureRecognizer()
                           ..onTap =

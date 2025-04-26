@@ -13,16 +13,18 @@ class CountryRepositoryImpl implements ICountryRepository {
 
   CountryRepositoryImpl(this.dataSource);
 
+  // GET ---------------------------------------------------------------------------
+
   @override
   Future<Result<List<Country>>> getAllCountries() async {
     try {
       final models = await dataSource.getCountries();
-      final countries = models.map((e) => e.toEntity()).toList();
+      final countries = models.map((el) => el.toEntity()).toList();
       _log.info('Found ${models.length} countries');
       return Result.success(countries);
-    } catch (e) {
-      _log.severe('Error fetching countries: $e');
-      return Result.error(Exception('Failed to fetch countries: $e'));
+    } catch (e, stackTrace) {
+      _log.severe('Error fetching getAllCountries', e, stackTrace);
+      return Result.error(Exception('Failed to fetch countries.'));
     }
   }
 
@@ -37,11 +39,13 @@ class CountryRepositoryImpl implements ICountryRepository {
 
       _log.info('Found country: ${countryEnum.name}');
       return Result.success(model.toEntity());
-    } catch (e) {
-      _log.severe('Error fetching country by enum: $e');
-      return Result.error(Exception('Failed to fetch country: $e'));
+    } catch (e, stackTrace) {
+      _log.severe('Error fetching getCountryByEnum', e, stackTrace);
+      return Result.error(Exception('Failed to fetch country.'));
     }
   }
+
+  // ON INIT ------------------------------------------------------------------------
 
   @override
   Future<Result<void>> insertInitialCountries(
@@ -51,9 +55,9 @@ class CountryRepositoryImpl implements ICountryRepository {
       await dataSource.insertInitialCountries(countries);
       _log.info('Successfully inserted all countries');
       return Result.success(null);
-    } catch (e) {
-      _log.severe('Error inserting countries: $e');
-      return Result.error(Exception('Failed to insert countries: $e'));
+    } catch (e, stackTrace) {
+      _log.severe('Error loading insertInitialCountries', e, stackTrace);
+      return Result.error(Exception('Failed to insert countries.'));
     }
   }
 }

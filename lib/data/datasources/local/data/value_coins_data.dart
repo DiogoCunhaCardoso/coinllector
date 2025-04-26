@@ -5,39 +5,39 @@ class CoinDisplayData {
   static final List<CoinDisplay> coinTypes = [
     CoinDisplay(
       image: "assets/value/value-commemorative.png",
-      type: CoinType.COMMEMORATIVE,
+      label: CoinType.COMMEMORATIVE.name,
     ),
     CoinDisplay(
       image: "assets/value/value-two_euro.png",
-      type: CoinType.TWO_EURO,
+      label: CoinType.TWO_EURO.name,
     ),
     CoinDisplay(
       image: "assets/value/value-one_euro.png",
-      type: CoinType.ONE_EURO,
+      label: CoinType.ONE_EURO.name,
     ),
     CoinDisplay(
       image: "assets/value/value-fifty_cent.png",
-      type: CoinType.FIFTY_CENT,
+      label: CoinType.FIFTY_CENT.name,
     ),
     CoinDisplay(
       image: "assets/value/value-twenty_cent.png",
-      type: CoinType.TWENTY_CENT,
+      label: CoinType.TWENTY_CENT.name,
     ),
     CoinDisplay(
       image: "assets/value/value-ten_cent.png",
-      type: CoinType.TEN_CENT,
+      label: CoinType.TEN_CENT.name,
     ),
     CoinDisplay(
       image: "assets/value/value-five_cent.png",
-      type: CoinType.FIVE_CENT,
+      label: CoinType.FIVE_CENT.name,
     ),
     CoinDisplay(
       image: "assets/value/value-two_cent.png",
-      type: CoinType.TWO_CENT,
+      label: CoinType.TWO_CENT.name,
     ),
     CoinDisplay(
       image: "assets/value/value-one_cent.png",
-      type: CoinType.ONE_CENT,
+      label: CoinType.ONE_CENT.name,
     ),
   ];
 }

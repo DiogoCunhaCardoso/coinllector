@@ -19,8 +19,9 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
       await dataSource.insertCoin(coinId);
       _log.info("Added coin $coinId");
       return Result.success(null);
-    } catch (e) {
-      return Result.error(Exception('Failed to add coin: $e'));
+    } catch (e, stackTrace) {
+      _log.severe('Error Adding Coin', e, stackTrace);
+      return Result.error(Exception('Failed to add coin.'));
     }
   }
 
@@ -31,12 +32,14 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
       await dataSource.removeCoin(coinId);
       _log.info("Removed coin with ID: $coinId");
       return Result.success(null);
-    } catch (e) {
-      return Result.error(Exception('Failed to remove coin: $e'));
+    } catch (e, stackTrace) {
+      _log.severe('Error Removing Coin', e, stackTrace);
+      return Result.error(Exception('Failed to remove coin.'));
     }
   }
 
   /// Uses [addCoin] and [removeCoin] to toggle owership
+  /// //TODO: should not be here I think
   @override
   Future<Result<bool>> toggleCoinOwnership(int coinId) async {
     try {
@@ -67,8 +70,9 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
         _log.info("Toggled ON (added) coin $coinId");
         return Result.success(true); // Coin was added
       }
-    } catch (e) {
-      return Result.error(Exception('Failed to toggle coin ownership: $e'));
+    } catch (e, stackTrace) {
+      _log.severe('Error Toggling Coin Ownership', e, stackTrace);
+      return Result.error(Exception('Failed to toggle coin ownership.'));
     }
   }
 
@@ -107,8 +111,9 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
       await dataSource.updateCoinQuality(coinId, quality);
       _log.info("Updated quality for coin $coinId to $quality");
       return Result.success(null);
-    } catch (e) {
-      return Result.error(Exception('Failed to update coin quality: $e'));
+    } catch (e, stackTrace) {
+      _log.severe('Error Updating Coin Quality', e, stackTrace);
+      return Result.error(Exception('Failed to update coin quality.'));
     }
   }
 
@@ -118,8 +123,9 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
     try {
       final owns = await dataSource.userOwnsCoin(coinId);
       return Result.success(owns);
-    } catch (e) {
-      return Result.error(Exception('Failed to check if user owns coin: $e'));
+    } catch (e, stackTrace) {
+      _log.severe('Error Checking If User Owns Coin', e, stackTrace);
+      return Result.error(Exception('Failed to check if user owns coin.'));
     }
   }
 
@@ -129,8 +135,9 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
     try {
       final ownedCoins = await dataSource.getOwnedCoins();
       return Result.success(ownedCoins);
-    } catch (e) {
-      return Result.error(Exception('Failed to fetch owned coins: $e'));
+    } catch (e, stackTrace) {
+      _log.severe('Error Getting Owned Coins', e, stackTrace);
+      return Result.error(Exception('Failed to fetch owned coins.'));
     }
   }
 
@@ -140,19 +147,30 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
     try {
       final count = await dataSource.getOwnedCoinCount();
       return Result.success(count);
-    } catch (e) {
-      return Result.error(Exception('Failed to fetch owned coin count: $e'));
+    } catch (e, stackTrace) {
+      _log.severe('Error Getting Owned Coin Count', e, stackTrace);
+      return Result.error(Exception('Failed to fetch owned coin count.'));
     }
   }
 
   /// Returns the count of coins the user owns of a specific type.
   @override
-  Future<Result<int>> getUserCoinsByType(CoinType type) async {
+  Future<Result<Map<CoinType, int>>> getUserCoinsByType() async {
     try {
-      final count = await dataSource.getOwnedCoinCountByType(type);
-      return Result.success(count);
-    } catch (e) {
-      return Result.error(Exception('Failed to fetch count for $type: $e'));
+      final result = await dataSource.getCountGroupedByType();
+      final counts = {for (var type in CoinType.values) type: 0};
+      for (var row in result) {
+        try {
+          final type = CoinType.values.byName(row['type'] as String);
+          counts[type] = row['count'] as int;
+        } catch (e) {
+          _log.warning('Error parsing coin type: $e');
+        }
+      }
+      return Result.success(counts);
+    } catch (e, stackTrace) {
+      _log.severe('Error Getting User Coins By Type', e, stackTrace);
+      return Result.error(Exception('Failed to fetch owned coins by type.'));
     }
   }
 
@@ -171,10 +189,9 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
         }
       }
       return Result.success(counts);
-    } catch (e) {
-      return Result.error(
-        Exception('Failed to fetch owned coins by country: $e'),
-      );
+    } catch (e, stackTrace) {
+      _log.severe('Error Getting User Coins By Country', e, stackTrace);
+      return Result.error(Exception('Failed to fetch owned coins by country.'));
     }
   }
 
@@ -183,11 +200,25 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
   @override
   Future<Result<int>> getUserCoinCountByCountry(CountryNames country) async {
     try {
-      final count = await dataSource.getOwnedCoinCountByCountry(country.name);
+      final count = await dataSource.getOwnedCoinCountByCountry(country);
       return Result.success(count);
-    } catch (e) {
+    } catch (e, stackTrace) {
+      _log.severe('Error Getting User Coin Count By Country', e, stackTrace);
       return Result.error(
-        Exception('Failed to fetch coin count for country $country: $e'),
+        Exception('Failed to fetch coin count for country $country.'),
+      );
+    }
+  }
+
+  @override
+  Future<Result<int>> getUserCoinCountByType(CoinType type) async {
+    try {
+      final count = await dataSource.getOwnedCoinCountByType(type);
+      return Result.success(count);
+    } catch (e, stackTrace) {
+      _log.severe('Error Getting User Coin Count By Type', e, stackTrace);
+      return Result.error(
+        Exception('Failed to fetch coin count for type $type.'),
       );
     }
   }

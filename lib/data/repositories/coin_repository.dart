@@ -13,15 +13,18 @@ class CoinRepositoryImpl implements ICoinRepository {
 
   CoinRepositoryImpl(this.localDataSource);
 
+  // GET ---------------------------------------------------------------------------
+
   @override
   Future<Result<List<Coin>>> getAllCoinsByType(CoinType type) async {
     try {
       final data = await localDataSource.getAllCoinsByType(type);
       _log.info('Found ${data.length} coins matching type: ${type.name}');
-      final coins = data.map((e) => CoinModel.fromMap(e).toEntity()).toList();
+      final coins = data.map((el) => CoinModel.fromMap(el).toEntity()).toList();
       return Result.success(coins);
-    } catch (e) {
-      return Result.error(Exception('Failed to fetch coins by type: $e'));
+    } catch (e, stackTrace) {
+      _log.severe('Error loading getAllCoinsByType', e, stackTrace);
+      return Result.error(Exception('Failed to fetch coins by type.'));
     }
   }
 
@@ -30,69 +33,24 @@ class CoinRepositoryImpl implements ICoinRepository {
     try {
       final data = await localDataSource.getAllCoinsByCountry(country);
       _log.info('Found ${data.length} coins matching country: ${country.name}');
-      final coins = data.map((e) => CoinModel.fromMap(e).toEntity()).toList();
+      final coins = data.map((el) => CoinModel.fromMap(el).toEntity()).toList();
       return Result.success(coins);
-    } catch (e) {
-      return Result.error(Exception('Failed to fetch coins by country: $e'));
-    }
-  }
-
-  @override
-  Future<Result<Map<CoinType, List<Coin>>>> getAllCoinsByTypeMap() async {
-    try {
-      final Map<CoinType, List<Coin>> result = {};
-
-      for (final type in CoinType.values) {
-        final coinsResult = await getAllCoinsByType(type);
-        switch (coinsResult) {
-          case Success(value: final coins):
-            result[type] = coins;
-            break;
-          case Error(error: final e):
-            _log.warning('Error fetching coins by type: ${type.name}');
-            return Result.error(e);
-        }
-      }
-
-      return Result.success(result);
-    } catch (e) {
-      return Result.error(Exception('Failed to get coins by type map: $e'));
-    }
-  }
-
-  @override
-  Future<Result<Map<CountryNames, List<Coin>>>>
-  getAllCoinsByCountryMap() async {
-    try {
-      final Map<CountryNames, List<Coin>> result = {};
-
-      for (final country in CountryNames.values) {
-        final coinsResult = await getAllCoinsByCountry(country);
-        switch (coinsResult) {
-          case Success(value: final coins):
-            result[country] = coins;
-            break;
-          case Error(error: final e):
-            _log.warning('Error fetching coins by country: ${country.name}');
-            return Result.error(e);
-        }
-      }
-
-      return Result.success(result);
-    } catch (e) {
-      return Result.error(Exception('Failed to get coins by country map: $e'));
+    } catch (e, stackTrace) {
+      _log.severe('Error loading getAllCoinsByCountry', e, stackTrace);
+      return Result.error(Exception('Failed to fetch coins by country.'));
     }
   }
 
   // COUNT -------------------------------------------------------------------------
 
   @override
-  Future<Result<int>> getCoinCount() async {
+  Future<Result<int>> getTotalCoinCount() async {
     try {
       final count = await localDataSource.getCoinCount();
       return Result.success(count);
-    } catch (e) {
-      return Result.error(Exception('Failed to count coins: $e'));
+    } catch (e, stackTrace) {
+      _log.severe('Error loading getTotalCoinCount', e, stackTrace);
+      return Result.error(Exception('Failed to count coins.'));
     }
   }
 
@@ -102,8 +60,21 @@ class CoinRepositoryImpl implements ICoinRepository {
       final count = await localDataSource.getCountryTotalCoinCount(country);
       _log.info('Found $count coins for country: ${country.name}');
       return Result.success(count);
-    } catch (e) {
-      return Result.error(Exception('Failed to get country coin count: $e'));
+    } catch (e, stackTrace) {
+      _log.severe('Error loading getCountryTotalCoinCount', e, stackTrace);
+      return Result.error(Exception('Failed to get country coin count.'));
+    }
+  }
+
+  @override
+  Future<Result<int>> getTypeTotalCoinCount(CoinType type) async {
+    try {
+      final count = await localDataSource.getTypeTotalCoinCount(type);
+      _log.info('Found $count coins for type: ${type.name}');
+      return Result.success(count);
+    } catch (e, stackTrace) {
+      _log.severe('Error loading getTypeTotalCoinCount', e, stackTrace);
+      return Result.error(Exception('Failed to get type coin count.'));
     }
   }
 
@@ -114,8 +85,9 @@ class CoinRepositoryImpl implements ICoinRepository {
     try {
       await localDataSource.insertInitialCoins(coins);
       return Result.success(null);
-    } catch (e) {
-      return Result.error(Exception('Failed to insert initial coins: $e'));
+    } catch (e, stackTrace) {
+      _log.severe('Error loading insertInitialCoins', e, stackTrace);
+      return Result.error(Exception('Failed to insert initial coins.'));
     }
   }
 }

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 
 import 'package:coinllector_app/domain/entities/coin.dart';
+import 'package:coinllector_app/domain/usecases/coin/get_coin_count_by_country.dart';
+import 'package:coinllector_app/domain/usecases/coin/get_coin_count_by_type.dart';
 import 'package:coinllector_app/domain/usecases/coin/get_coins_by_country.dart';
 import 'package:coinllector_app/domain/usecases/coin/get_coins_by_type.dart';
 import 'package:coinllector_app/domain/usecases/coin/get_total_coin_count.dart';
@@ -20,31 +22,42 @@ import 'package:coinllector_app/data/datasources/local/data/value_coins_data.dar
 class CoinProvider extends ChangeNotifier {
   final _log = Logger('COIN_PROVIDER');
 
-  // Private Use Cases --------------------------------------------------------
+  // ---------------------------------------------------------------------------
+  // Private Use Cases
+  // ---------------------------------------------------------------------------
 
   final GetCoinsByTypeUseCase _getCoinsByTypeUseCase;
-  final GetTotalCoinCountUseCase _getTotalCoinCountUseCase;
   final GetCoinsByCountryUseCase _getCoinsByCountryUseCase;
+  final GetTotalCoinCountUseCase _getTotalCoinCountUseCase;
+  final GetTypeCoinCountUseCase _getTypeTotalCoinCount;
+  final GetCountryCoinCountUseCase _getCountryTotalCoinCount;
 
   CoinProvider({
     required GetCoinsByTypeUseCase getCoinsByTypeUseCase,
-    required GetTotalCoinCountUseCase getTotalCoinCountUseCase,
     required GetCoinsByCountryUseCase getCoinsByCountryUseCase,
+    required GetTotalCoinCountUseCase getTotalCoinCountUseCase,
+    required GetTypeCoinCountUseCase getTypeTotalCoinCount,
+    required GetCountryCoinCountUseCase getCountryTotalCoinCount,
   }) : _getCoinsByTypeUseCase = getCoinsByTypeUseCase,
+       _getCoinsByCountryUseCase = getCoinsByCountryUseCase,
        _getTotalCoinCountUseCase = getTotalCoinCountUseCase,
-       _getCoinsByCountryUseCase = getCoinsByCountryUseCase;
+       _getTypeTotalCoinCount = getTypeTotalCoinCount,
+       _getCountryTotalCoinCount = getCountryTotalCoinCount;
 
-  // State --------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
+  // State
+  // ---------------------------------------------------------------------------
 
   bool _isLoading = false;
   String? _error;
 
   final Map<CoinType, List<Coin>> _coinsByType = {};
   final Map<CountryNames, List<Coin>> _coinsByCountry = {};
-  final Map<CountryNames, int> _countryTotalCoinsCount = {};
   int _totalCoinCount = 0;
 
-  // Getters ------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
+  // Getters
+  // ---------------------------------------------------------------------------
 
   bool get isLoading => _isLoading;
   String? get error => _error;
@@ -57,13 +70,12 @@ class CoinProvider extends ChangeNotifier {
   Map<CountryNames, List<Coin>> get allCoinsByCountry =>
       Map.unmodifiable(_coinsByCountry);
 
-  // For static display
   UnmodifiableListView<CoinDisplay> get coinsByValue =>
       UnmodifiableListView(CoinDisplayData.coinTypes);
 
-  // ============================ PUBLIC METHODS ============================ //
-
-  // Init ---------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
+  // Init
+  // ---------------------------------------------------------------------------
 
   Future<void> init() async {
     if (_isLoading) return;
@@ -83,14 +95,14 @@ class CoinProvider extends ChangeNotifier {
     }
   }
 
-  /// Gets coins for a given [CoinType], caches and notifies
+  // ---------------------------------------------------------------------------
+  // Coin Fetching
+  // ---------------------------------------------------------------------------
+
   Future<List<Coin>> getCoinsByType(CoinType type) async {
     if (_coinsByType.containsKey(type)) {
       return _coinsByType[type]!;
     }
-
-    _coinsByType[type] = [];
-    notifyListeners();
 
     try {
       final result = await _getCoinsByTypeUseCase(Params(type));
@@ -110,14 +122,10 @@ class CoinProvider extends ChangeNotifier {
     }
   }
 
-  /// Gets coins for a given [CountryNames], caches and notifies
   Future<List<Coin>> getCoinsByCountry(CountryNames countryName) async {
     if (_coinsByCountry.containsKey(countryName)) {
       return _coinsByCountry[countryName]!;
     }
-
-    _coinsByCountry[countryName] = [];
-    notifyListeners();
 
     try {
       final result = await _getCoinsByCountryUseCase(Params(countryName));
@@ -145,31 +153,39 @@ class CoinProvider extends ChangeNotifier {
     }
   }
 
-  /// Returns the total number of coins for a specific country
-  int getCountryTotalCoinCount(CountryNames countryName) {
-    // Use cache if available
-    if (_countryTotalCoinsCount.containsKey(countryName)) {
-      return _countryTotalCoinsCount[countryName]!;
-    }
+  // ---------------------------------------------------------------------------
+  // Count Fetching
+  // ---------------------------------------------------------------------------
 
-    // If loaded coins for this country, count them
-    if (_coinsByCountry.containsKey(countryName)) {
-      final count = _coinsByCountry[countryName]!.length;
-      _countryTotalCoinsCount[countryName] = count;
-      return count;
-    }
-
-    // If we haven't loaded the coins yet, trigger loading and return a default
-    // This will be updated when getCoinsByCountry completes
-    getCoinsByCountry(countryName);
-    return 0; // Default value until data is loaded
+  Future<int> getCountryCoinCount(CountryNames countryName) async {
+    final result = await _getCountryTotalCoinCount(Params(countryName));
+    return switch (result) {
+      Success(value: final count) => count,
+      Error(error: final e) => _logAndReturnZero(
+        'country',
+        countryName.name,
+        e,
+      ),
+    };
   }
 
-  //
-  //
-  //
-  //
-  /// Refreshes coins by type - used when User Preference is changed
+  Future<int> getTypeCoinCount(CoinType type) async {
+    final result = await _getTypeTotalCoinCount(Params(type));
+    return switch (result) {
+      Success(value: final count) => count,
+      Error(error: final e) => _logAndReturnZero('type', type.name, e),
+    };
+  }
+
+  int _logAndReturnZero(String label, String value, Object e) {
+    _log.warning('Failed to get coin count for $label $value', e);
+    return 0;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Refreshers
+  // ---------------------------------------------------------------------------
+
   void refreshCoinsByType(CoinType type) {
     _log.info('Refreshing coins for type: ${type.name}');
     _coinsByType.remove(type);
@@ -177,24 +193,19 @@ class CoinProvider extends ChangeNotifier {
     getCoinsByType(type);
   }
 
-  /// Refreshes entire coin count and type caches
   void refreshAll() {
     _log.info('Refreshing all coin data');
     _coinsByType.clear();
     _coinsByCountry.clear();
     _totalCoinCount = 0;
     notifyListeners();
-    init(); // Re-fetch total count
+    init();
   }
 
-  // COIN COUNTS -------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
+  // Private
+  // ---------------------------------------------------------------------------
 
-  // ADD HERE THE COUNT FOR EACH COUNTRY.
-  // i think it is basically a getCoinsByType but .length isnt it?
-
-  // ============================ PRIVATE METHODS ============================ //
-
-  /// Internal loader for total coin count
   Future<void> _loadTotalCoinCount() async {
     final result = await _getTotalCoinCountUseCase(NoParams(null));
     switch (result) {

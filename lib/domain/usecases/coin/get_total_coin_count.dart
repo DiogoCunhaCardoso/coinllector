@@ -9,6 +9,6 @@ class GetTotalCoinCountUseCase implements UseCase<int, NoParams> {
 
   @override
   Future<Result<int>> call(NoParams _) {
-    return repository.getCoinCount();
+    return repository.getTotalCoinCount();
   }
 }

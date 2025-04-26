@@ -12,8 +12,10 @@ import 'package:coinllector_app/presentation/views/profile_statistics/profile_st
 import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 import 'package:go_router/go_router.dart';
+/* import 'package:logging/logging.dart'; */
 
 /// Routing Configuration using Go Router
+/* Logger _log = Logger("ROUTER"); */
 final GoRouter router = GoRouter(
   initialLocation: AppRoutes.coinsView,
   debugLogDiagnostics: true,
@@ -51,8 +53,8 @@ final GoRouter router = GoRouter(
             GoRoute(
               path: '/country/:name',
               builder: (context, state) {
-                final typeStr = state.pathParameters['name']!;
-                final name = CountryNames.values.byName(typeStr);
+                final nameStr = state.pathParameters['name']!;
+                final name = CountryNames.values.byName(nameStr);
                 return CountriesFilterView(name: name);
               },
               routes: [

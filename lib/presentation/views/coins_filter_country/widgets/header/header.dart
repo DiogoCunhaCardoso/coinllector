@@ -5,12 +5,12 @@ import 'package:coinllector_app/shared/components/header_info_text.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 import 'package:flutter/material.dart';
 
-class CoinBanner extends StatelessWidget {
+class CoinCountryBanner extends StatelessWidget {
   final CountryNames name;
   final int owned;
   final int total;
 
-  const CoinBanner({
+  const CoinCountryBanner({
     super.key,
     required this.name,
     required this.owned,
