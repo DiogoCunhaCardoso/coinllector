@@ -80,13 +80,33 @@ flutter:
   uses-material-design: true
 
   assets:
-    - .env
     - assets/logo.png
     - assets/value/
     - assets/country/
     - assets/coins/andorra/models/
     - assets/coins/austria/models/
     - assets/coins/belgium/models/
+    - assets/coins/croatia/models/
+    - assets/coins/cyprus/models/
+    - assets/coins/estonia/models/
+    - assets/coins/finland/models/
+    - assets/coins/france/models/
+    - assets/coins/germany/models/
+    - assets/coins/greece/models/
+    - assets/coins/ireland/models/
+    - assets/coins/italy/models/
+    - assets/coins/latvia/models/
+    - assets/coins/lithuania/models/
+    - assets/coins/luxembourg/models/
+    - assets/coins/malta/models/
+    - assets/coins/monaco/models/
+    - assets/coins/netherlands/models/
+    - assets/coins/portugal/models/
+    - assets/coins/san_marino/models/
+    - assets/coins/slovakia/models/
+    - assets/coins/slovenia/models/
+    - assets/coins/spain/models/
+    - assets/coins/vatican/models/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

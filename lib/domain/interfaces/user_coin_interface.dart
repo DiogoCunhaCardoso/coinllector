@@ -33,7 +33,6 @@ abstract class IUserCoinRepository {
 
   /// Returns the total count of coins the user owns.
   Future<Result<int>> getOwnedCoinsCount();
-
   // FILTERED STATS -----------------------------------------------------------
 
   /// Retrieves the count of coins the user owns, grouped by type.

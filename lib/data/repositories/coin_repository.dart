@@ -1,4 +1,5 @@
 import 'package:coinllector_app/data/datasources/remote/coin_remote_datasource.dart';
+import 'package:coinllector_app/data/mappers/coin_mapper.dart';
 import 'package:coinllector_app/domain/entities/coin.dart';
 import 'package:coinllector_app/domain/interfaces/coin_interface.dart';
 import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
@@ -20,7 +21,7 @@ class CoinRepositoryImpl implements ICoinRepository {
     try {
       final data = await localDataSource.getAllCoinsByType(type);
       _log.info('Found ${data.length} coins matching type: ${type.name}');
-      final coins = data.map((el) => CoinModel.fromMap(el).toEntity()).toList();
+      final coins = data.map((el) => CoinMapper.toEntity(el)).toList();
       return Result.success(coins);
     } catch (e, stackTrace) {
       _log.severe('Error loading getAllCoinsByType', e, stackTrace);
@@ -33,7 +34,7 @@ class CoinRepositoryImpl implements ICoinRepository {
     try {
       final data = await localDataSource.getAllCoinsByCountry(country);
       _log.info('Found ${data.length} coins matching country: ${country.name}');
-      final coins = data.map((el) => CoinModel.fromMap(el).toEntity()).toList();
+      final coins = data.map((el) => CoinMapper.toEntity(el)).toList();
       return Result.success(coins);
     } catch (e, stackTrace) {
       _log.severe('Error loading getAllCoinsByCountry', e, stackTrace);

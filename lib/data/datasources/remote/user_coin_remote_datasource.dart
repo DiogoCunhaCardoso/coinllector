@@ -59,13 +59,6 @@ class UserCoinRemoteDataSource {
     return result.map((row) => row[DatabaseTables.userCoinId] as int).toList();
   }
 
-  Future<int> getOwnedCoinCount() async {
-    final result = await db.rawQuery(
-      'SELECT COUNT(*) FROM ${DatabaseTables.userCoins}',
-    );
-    return Sqflite.firstIntValue(result) ?? 0;
-  }
-
   Future<List<Map<String, Object?>>> getCountGroupedByType() async {
     return await db.rawQuery('''
     SELECT c.${DatabaseTables.type}, COUNT(*) as count 
@@ -86,6 +79,13 @@ class UserCoinRemoteDataSource {
   }
 
   // COUNT -----------------------------------------------------------------------------------------------
+
+  Future<int> getOwnedCoinCount() async {
+    final result = await db.rawQuery(
+      'SELECT COUNT(*) FROM ${DatabaseTables.userCoins}',
+    );
+    return Sqflite.firstIntValue(result) ?? 0;
+  }
 
   Future<int> getOwnedCoinCountByCountry(CountryNames country) async {
     final result = await db.rawQuery(

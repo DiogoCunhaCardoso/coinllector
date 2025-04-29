@@ -1,6 +1,8 @@
+import 'package:coinllector_app/data/datasources/remote/coin_mint_remote_datasource.dart';
 import 'package:coinllector_app/data/datasources/remote/coin_remote_datasource.dart';
 import 'package:coinllector_app/data/datasources/remote/country_remote_datasource.dart';
 import 'package:coinllector_app/data/datasources/remote/user_coin_remote_datasource.dart';
+import 'package:coinllector_app/data/repositories/coin_mint_repository.dart';
 import 'package:logging/logging.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -26,6 +28,7 @@ class DatabaseService {
   final _log = Logger('DATABASE_SERVICE');
 
   late final CoinRepositoryImpl coinRepository;
+  late final CoinMintRepositoryImpl coinMintRepository;
   late final CountryRepositoryImpl countryRepository;
   late final UserCoinRepositoryImpl userCoinRepository;
 
@@ -37,6 +40,7 @@ class DatabaseService {
 
     // Initialize repositories
     coinRepository = CoinRepositoryImpl(CoinRemoteDataSource(_db!));
+    coinMintRepository = CoinMintRepositoryImpl(CoinMintRemoteDataSource(_db!));
     countryRepository = CountryRepositoryImpl(CountryRemoteDataSource(_db!));
     userCoinRepository = UserCoinRepositoryImpl(UserCoinRemoteDataSource(_db!));
 
@@ -62,6 +66,7 @@ class DatabaseService {
     // Create tables
     await db.execute(DatabaseTables.createCoinsTable);
     await db.execute(DatabaseTables.createUserCoinsTable);
+    await db.execute(DatabaseTables.createCoinMintsTable);
     await db.execute(DatabaseTables.createCountriesTable);
 
     // Initialize repositories for data insertion

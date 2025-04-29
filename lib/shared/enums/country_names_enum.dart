@@ -25,5 +25,5 @@ enum CountryNames {
   SLOVAKIA,
   SLOVENIA,
   SPAIN,
-  VATICANO,
+  VATICAN,
 }

@@ -1,3 +1,4 @@
+import 'package:coinllector_app/data/mappers/country_mapper.dart';
 import 'package:coinllector_app/data/models/country_model.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 import 'package:sqflite/sqflite.dart';
@@ -10,7 +11,7 @@ class CountryRemoteDataSource {
 
   Future<List<CountryModel>> getCountries() async {
     final data = await db.query(DatabaseTables.countries);
-    return data.map((e) => CountryModel.fromMap(e)).toList();
+    return data.map((el) => CountryMapper.fromMap(el)).toList();
   }
 
   Future<CountryModel?> getCountryByEnum(CountryNames countryEnum) async {
@@ -22,14 +23,14 @@ class CountryRemoteDataSource {
     );
 
     if (data.isEmpty) return null;
-    return CountryModel.fromMap(data.first);
+    return CountryMapper.fromMap(data.first);
   }
 
   Future<void> insertInitialCountries(List<CountryModel> countries) async {
     for (var country in countries) {
       await db.insert(
         DatabaseTables.countries,
-        country.toMap(),
+        CountryMapper.toMap(country),
         conflictAlgorithm: ConflictAlgorithm.replace,
       );
     }

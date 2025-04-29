@@ -1,4 +1,5 @@
 import 'package:coinllector_app/domain/entities/coin.dart';
+import 'package:coinllector_app/presentation/providers/coin_mint_provider.dart';
 import 'package:coinllector_app/presentation/providers/coin_provider.dart';
 import 'package:coinllector_app/presentation/providers/user_coin_provider.dart';
 import 'package:coinllector_app/presentation/providers/user_prefs_provider.dart';
@@ -34,6 +35,7 @@ class _CountriesFilterViewState extends State<CountriesFilterView> {
   Future<({List<Coin> coinsFiltered, int coinCount})>
   _loadCoinsAndOwnedCount() async {
     final coinProvider = Provider.of<CoinProvider>(context, listen: false);
+
     final userCoinProvider = Provider.of<UserCoinProvider>(
       context,
       listen: false,
@@ -77,6 +79,10 @@ class _CountriesFilterViewState extends State<CountriesFilterView> {
   @override
   Widget build(BuildContext context) {
     final userCoinProvider = context.watch<UserCoinProvider>();
+    final coinMintProvider = Provider.of<CoinMintProvider>(
+      context,
+      listen: false,
+    );
 
     return Scaffold(
       body: Stack(
@@ -126,6 +132,9 @@ class _CountriesFilterViewState extends State<CountriesFilterView> {
                       coins: coins,
                       ownedCoins: userCoinProvider.ownedCoinIds,
                       onToggleCoin: (coinId) => _handleToggleOwnership(coinId),
+                      onToggleMintMark:
+                          (coinId, mintMark) =>
+                              coinMintProvider.toggleMintMark(coinId, mintMark),
                     ),
                   ),
                 ],

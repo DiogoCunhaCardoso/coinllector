@@ -1,3 +1,4 @@
+import 'package:coinllector_app/data/mappers/country_mapper.dart';
 import 'package:coinllector_app/domain/entities/country.dart';
 import 'package:coinllector_app/domain/interfaces/country_interface.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';
@@ -18,9 +19,9 @@ class CountryRepositoryImpl implements ICountryRepository {
   @override
   Future<Result<List<Country>>> getAllCountries() async {
     try {
-      final models = await dataSource.getCountries();
-      final countries = models.map((el) => el.toEntity()).toList();
-      _log.info('Found ${models.length} countries');
+      final model = await dataSource.getCountries();
+      final countries = model.map((el) => CountryMapper.toEntity(el)).toList();
+      _log.info('Found ${model.length} countries');
       return Result.success(countries);
     } catch (e, stackTrace) {
       _log.severe('Error fetching getAllCountries', e, stackTrace);
@@ -38,7 +39,7 @@ class CountryRepositoryImpl implements ICountryRepository {
       }
 
       _log.info('Found country: ${countryEnum.name}');
-      return Result.success(model.toEntity());
+      return Result.success(CountryMapper.toEntity(model));
     } catch (e, stackTrace) {
       _log.severe('Error fetching getCountryByEnum', e, stackTrace);
       return Result.error(Exception('Failed to fetch country.'));

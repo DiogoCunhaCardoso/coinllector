@@ -23,6 +23,11 @@ class DatabaseTables {
   static const String flagImage = "flagImage";
   static const String joinedOn = "joinedOn";
 
+  // Mint Columms
+  static const String coinMints = "coinMints";
+  static const String mintId = "mintId";
+  static const String mintMark = "mint_mark";
+
   // Table Creation Statements
   static const String createCoinsTable = '''
     CREATE TABLE $coins (
@@ -43,6 +48,17 @@ class DatabaseTables {
       $userCoinId INTEGER,
       $quality TEXT DEFAULT NULL,
       FOREIGN KEY ($userCoinId) REFERENCES $coins($id)
+    )
+  ''';
+
+  static const String createCoinMintsTable = '''
+    CREATE TABLE $coinMints (
+      $mintId INTEGER PRIMARY KEY AUTOINCREMENT,
+      $userCoinId INTEGER NOT NULL,
+      $mintMark TEXT NOT NULL,
+      FOREIGN KEY ($userCoinId) 
+        REFERENCES $userCoins($userCoinId),
+      UNIQUE ($userCoinId, $mintMark)
     )
   ''';
 

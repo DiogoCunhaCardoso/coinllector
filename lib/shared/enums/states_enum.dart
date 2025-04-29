@@ -5,6 +5,6 @@ class Microstates {
     CountryNames.ANDORRA,
     CountryNames.MONACO,
     CountryNames.SAN_MARINO,
-    CountryNames.VATICANO,
+    CountryNames.VATICAN,
   ];
 }

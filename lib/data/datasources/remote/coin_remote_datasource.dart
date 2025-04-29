@@ -1,4 +1,5 @@
 import 'package:coinllector_app/data/datasources/local/database/database_tables.dart';
+import 'package:coinllector_app/data/mappers/coin_mapper.dart';
 import 'package:coinllector_app/data/models/coin_model.dart';
 import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';
@@ -9,22 +10,26 @@ class CoinRemoteDataSource {
 
   CoinRemoteDataSource(this.db);
 
-  Future<List<Map<String, dynamic>>> getAllCoinsByType(CoinType type) {
-    return db.query(
+  // GET --------------------------------------------------------------------------
+
+  Future<List<CoinModel>> getAllCoinsByType(CoinType type) async {
+    final data = await db.query(
       DatabaseTables.coins,
       where: '${DatabaseTables.type} = ?',
       whereArgs: [type.name],
     );
+
+    return data.map((el) => CoinMapper.fromMap(el)).toList();
   }
 
-  Future<List<Map<String, dynamic>>> getAllCoinsByCountry(
-    CountryNames country,
-  ) {
-    return db.query(
+  Future<List<CoinModel>> getAllCoinsByCountry(CountryNames country) async {
+    final data = await db.query(
       DatabaseTables.coins,
       where: '${DatabaseTables.country} = ?',
       whereArgs: [country.name],
     );
+
+    return data.map((el) => CoinMapper.fromMap(el)).toList();
   }
 
   // COUNT -------------------------------------------------------------------------
@@ -56,16 +61,7 @@ class CoinRemoteDataSource {
 
   Future<void> insertInitialCoins(List<CoinModel> coins) async {
     for (var coin in coins) {
-      final Map<String, dynamic> coinMap = {
-        DatabaseTables.id: coin.id,
-        DatabaseTables.type: coin.type.name,
-        DatabaseTables.image: coin.image,
-        DatabaseTables.quantity: coin.quantity,
-        DatabaseTables.periodStartDate: coin.periodStartDate,
-        DatabaseTables.periodEndDate: coin.periodEndDate,
-        DatabaseTables.description: coin.description,
-        DatabaseTables.country: coin.country.name,
-      };
+      final coinMap = CoinMapper.toMap(coin);
       await db.insert(DatabaseTables.coins, coinMap);
     }
   }
