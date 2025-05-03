@@ -24,7 +24,11 @@ class ShowcaseDescription extends StatelessWidget {
             '${convertDateToYear(coin.periodStartDate)} - ${convertDateToYear(coin.periodEndDate!)}',
           ),
         const SizedBox(height: AppSizes.p12),
-        Text(coin.description, style: textTheme.bodyMedium),
+        Container(
+          width: double.infinity,
+          alignment: Alignment.centerLeft,
+          child: Text(coin.description, style: textTheme.bodyMedium),
+        ),
       ],
     );
   }

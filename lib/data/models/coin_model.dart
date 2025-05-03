@@ -3,7 +3,7 @@ import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 
 /// Data Layer
 class CoinModel {
-  final int id;
+  final int? id; // optional because DB adds it with Auto Increment
   final CoinType type;
   final String image;
   final int? quantity;
@@ -13,7 +13,7 @@ class CoinModel {
   final CountryNames country;
 
   CoinModel({
-    required this.id,
+    this.id,
     required this.type,
     required this.image,
     this.quantity,

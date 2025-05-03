@@ -1,3 +1,4 @@
+import 'package:coinllector_app/data/datasources/local/data/coin_data_commemoratives.dart';
 import 'package:coinllector_app/data/models/coin_model.dart';
 import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';
@@ -5,7 +6,6 @@ import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 final List<CoinModel> coinsData = [
   // ANDORRA
   CoinModel(
-    id: 1,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/andorra/models/two_euro.png',
     periodStartDate: '2013-06-01',
@@ -14,7 +14,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
-    id: 2,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/andorra/models/one_euro.png',
     periodStartDate: '2013-06-01',
@@ -23,7 +22,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
-    id: 3,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/andorra/models/fifty_cent.png',
     periodStartDate: '2013-06-01',
@@ -32,7 +30,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
-    id: 4,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/andorra/models/twenty_cent.png',
     periodStartDate: '2013-06-01',
@@ -41,7 +38,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
-    id: 5,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/andorra/models/ten_cent.png',
     periodStartDate: '2013-06-01',
@@ -50,7 +46,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
-    id: 6,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/andorra/models/five_cent.png',
     periodStartDate: '2013-06-01',
@@ -59,7 +54,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
-    id: 7,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/andorra/models/two_cent.png',
     periodStartDate: '2013-06-01',
@@ -68,7 +62,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
-    id: 8,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/andorra/models/one_cent.png',
     periodStartDate: '2013-06-01',
@@ -79,7 +72,6 @@ final List<CoinModel> coinsData = [
 
   // AUSTRIA
   CoinModel(
-    id: 9,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/austria/models/two_euro.png',
     periodStartDate: '1999-01-01',
@@ -88,7 +80,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.AUSTRIA,
   ),
   CoinModel(
-    id: 10,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/austria/models/one_euro.png',
     periodStartDate: '1999-01-01',
@@ -97,7 +88,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.AUSTRIA,
   ),
   CoinModel(
-    id: 11,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/austria/models/fifty_cent.png',
     periodStartDate: '1999-01-01',
@@ -106,7 +96,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.AUSTRIA,
   ),
   CoinModel(
-    id: 12,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/austria/models/twenty_cent.png',
     periodStartDate: '1999-01-01',
@@ -115,7 +104,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.AUSTRIA,
   ),
   CoinModel(
-    id: 13,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/austria/models/ten_cent.png',
     periodStartDate: '1999-01-01',
@@ -124,7 +112,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.AUSTRIA,
   ),
   CoinModel(
-    id: 14,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/austria/models/five_cent.png',
     periodStartDate: '1999-01-01',
@@ -133,7 +120,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.AUSTRIA,
   ),
   CoinModel(
-    id: 15,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/austria/models/two_cent.png',
     periodStartDate: '1999-01-01',
@@ -142,7 +128,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.AUSTRIA,
   ),
   CoinModel(
-    id: 16,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/austria/models/one_cent.png',
     periodStartDate: '1999-01-01',
@@ -155,7 +140,6 @@ final List<CoinModel> coinsData = [
 
   // BELGIUM - 2 Euro coins
   CoinModel(
-    id: 17,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/belgium/models/two_euro.png',
     periodStartDate: '1999-01-01',
@@ -165,7 +149,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
-    id: 18,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/belgium/models/two_euro_v2.png',
     periodStartDate: '2008-01-01',
@@ -175,7 +158,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
-    id: 19,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/belgium/models/two_euro_v3.png',
     periodStartDate: '2014-01-01',
@@ -186,7 +168,6 @@ final List<CoinModel> coinsData = [
 
   // BELGIUM - 1 Euro coins
   CoinModel(
-    id: 20,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/belgium/models/one_euro.png',
     periodStartDate: '1999-01-01',
@@ -196,7 +177,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
-    id: 21,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/belgium/models/one_euro_v2.png',
     periodStartDate: '2008-01-01',
@@ -206,7 +186,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
-    id: 22,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/belgium/models/one_euro_v3.png',
     periodStartDate: '2014-01-01',
@@ -217,7 +196,6 @@ final List<CoinModel> coinsData = [
 
   // BELGIUM - 50 Cent coins
   CoinModel(
-    id: 23,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/belgium/models/fifty_cent.png',
     periodStartDate: '1999-01-01',
@@ -227,7 +205,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
-    id: 24,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/belgium/models/fifty_cent_v2.png',
     periodStartDate: '2008-01-01',
@@ -237,7 +214,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
-    id: 25,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/belgium/models/fifty_cent_v3.png',
     periodStartDate: '2014-01-01',
@@ -248,7 +224,6 @@ final List<CoinModel> coinsData = [
 
   // BELGIUM - 20 Cent coins
   CoinModel(
-    id: 26,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/belgium/models/twenty_cent.png',
     periodStartDate: '1999-01-01',
@@ -258,7 +233,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
-    id: 27,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/belgium/models/twenty_cent_v2.png',
     periodStartDate: '2008-01-01',
@@ -268,7 +242,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
-    id: 28,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/belgium/models/twenty_cent_v3.png',
     periodStartDate: '2014-01-01',
@@ -279,7 +252,6 @@ final List<CoinModel> coinsData = [
 
   // BELGIUM - 10 Cent coins
   CoinModel(
-    id: 29,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/belgium/models/ten_cent.png',
     periodStartDate: '1999-01-01',
@@ -289,7 +261,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
-    id: 30,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/belgium/models/ten_cent_v2.png',
     periodStartDate: '2008-01-01',
@@ -299,7 +270,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
-    id: 31,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/belgium/models/ten_cent_v3.png',
     periodStartDate: '2014-01-01',
@@ -310,7 +280,6 @@ final List<CoinModel> coinsData = [
 
   // BELGIUM - 5 Cent coins
   CoinModel(
-    id: 32,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/belgium/models/five_cent.png',
     periodStartDate: '1999-01-01',
@@ -320,7 +289,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
-    id: 33,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/belgium/models/five_cent_v2.png',
     periodStartDate: '2008-01-01',
@@ -330,7 +298,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
-    id: 34,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/belgium/models/five_cent_v3.png',
     periodStartDate: '2014-01-01',
@@ -341,7 +308,6 @@ final List<CoinModel> coinsData = [
 
   // BELGIUM - 2 Cent coins
   CoinModel(
-    id: 35,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/belgium/models/two_cent.png',
     periodStartDate: '1999-01-01',
@@ -351,7 +317,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
-    id: 36,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/belgium/models/two_cent_v2.png',
     periodStartDate: '2008-01-01',
@@ -361,7 +326,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
-    id: 37,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/belgium/models/two_cent_v3.png',
     periodStartDate: '2014-01-01',
@@ -372,7 +336,6 @@ final List<CoinModel> coinsData = [
 
   // BELGIUM - 1 Cent coins
   CoinModel(
-    id: 38,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/belgium/models/one_cent.png',
     periodStartDate: '1999-01-01',
@@ -382,7 +345,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
-    id: 39,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/belgium/models/one_cent_v2.png',
     periodStartDate: '2008-01-01',
@@ -392,7 +354,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
-    id: 40,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/belgium/models/one_cent_v3.png',
     periodStartDate: '2014-01-01',
@@ -403,7 +364,6 @@ final List<CoinModel> coinsData = [
 
   // CROATIA
   CoinModel(
-    id: 41,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/croatia/models/two_euro.png',
     periodStartDate: '2023-01-01',
@@ -412,7 +372,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.CROATIA,
   ),
   CoinModel(
-    id: 42,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/croatia/models/one_euro.png',
     periodStartDate: '2023-01-01',
@@ -421,7 +380,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.CROATIA,
   ),
   CoinModel(
-    id: 43,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/croatia/models/fifty_cent.png',
     periodStartDate: '2023-01-01',
@@ -430,7 +388,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.CROATIA,
   ),
   CoinModel(
-    id: 44,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/croatia/models/twenty_cent.png',
     periodStartDate: '2023-01-01',
@@ -439,7 +396,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.CROATIA,
   ),
   CoinModel(
-    id: 45,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/croatia/models/ten_cent.png',
     periodStartDate: '2023-01-01',
@@ -448,7 +404,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.CROATIA,
   ),
   CoinModel(
-    id: 46,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/croatia/models/five_cent.png',
     periodStartDate: '2023-01-01',
@@ -457,7 +412,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.CROATIA,
   ),
   CoinModel(
-    id: 47,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/croatia/models/two_cent.png',
     periodStartDate: '2023-01-01',
@@ -466,7 +420,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.CROATIA,
   ),
   CoinModel(
-    id: 48,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/croatia/models/one_cent.png',
     periodStartDate: '2023-01-01',
@@ -477,7 +430,6 @@ final List<CoinModel> coinsData = [
 
   // CYPRUS
   CoinModel(
-    id: 49,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/cyprus/models/two_euro.png',
     periodStartDate: '2008-01-01',
@@ -486,7 +438,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.CYPRUS,
   ),
   CoinModel(
-    id: 50,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/cyprus/models/one_euro.png',
     periodStartDate: '2008-01-01',
@@ -495,7 +446,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.CYPRUS,
   ),
   CoinModel(
-    id: 51,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/cyprus/models/fifty_cent.png',
     periodStartDate: '2008-01-01',
@@ -504,7 +454,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.CYPRUS,
   ),
   CoinModel(
-    id: 52,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/cyprus/models/twenty_cent.png',
     periodStartDate: '2008-01-01',
@@ -513,7 +462,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.CYPRUS,
   ),
   CoinModel(
-    id: 53,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/cyprus/models/ten_cent.png',
     periodStartDate: '2008-01-01',
@@ -522,7 +470,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.CYPRUS,
   ),
   CoinModel(
-    id: 54,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/cyprus/models/five_cent.png',
     periodStartDate: '2008-01-01',
@@ -531,7 +478,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.CYPRUS,
   ),
   CoinModel(
-    id: 55,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/cyprus/models/two_cent.png',
     periodStartDate: '2008-01-01',
@@ -540,7 +486,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.CYPRUS,
   ),
   CoinModel(
-    id: 56,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/cyprus/models/one_cent.png',
     periodStartDate: '2008-01-01',
@@ -551,7 +496,6 @@ final List<CoinModel> coinsData = [
 
   // ESTONIA
   CoinModel(
-    id: 57,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/estonia/models/two_euro.png',
     periodStartDate: '2011-01-01',
@@ -560,7 +504,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.ESTONIA,
   ),
   CoinModel(
-    id: 58,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/estonia/models/one_euro.png',
     periodStartDate: '2011-01-01',
@@ -569,7 +512,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.ESTONIA,
   ),
   CoinModel(
-    id: 59,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/estonia/models/fifty_cent.png',
     periodStartDate: '2011-01-01',
@@ -578,7 +520,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.ESTONIA,
   ),
   CoinModel(
-    id: 60,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/estonia/models/twenty_cent.png',
     periodStartDate: '2011-01-01',
@@ -587,7 +528,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.ESTONIA,
   ),
   CoinModel(
-    id: 61,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/estonia/models/ten_cent.png',
     periodStartDate: '2011-01-01',
@@ -596,7 +536,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.ESTONIA,
   ),
   CoinModel(
-    id: 62,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/estonia/models/five_cent.png',
     periodStartDate: '2011-01-01',
@@ -605,7 +544,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.ESTONIA,
   ),
   CoinModel(
-    id: 63,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/estonia/models/two_cent.png',
     periodStartDate: '2011-01-01',
@@ -614,7 +552,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.ESTONIA,
   ),
   CoinModel(
-    id: 64,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/estonia/models/one_cent.png',
     periodStartDate: '2011-01-01',
@@ -625,7 +562,6 @@ final List<CoinModel> coinsData = [
 
   // FINLAND
   CoinModel(
-    id: 65,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/finland/models/two_euro.png',
     periodStartDate: '1999-01-01',
@@ -634,7 +570,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
-    id: 66,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/finland/models/one_euro.png',
     periodStartDate: '1999-01-01',
@@ -643,7 +578,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
-    id: 67,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/finland/models/fifty_cent.png',
     periodStartDate: '1999-01-01',
@@ -652,7 +586,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
-    id: 68,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/finland/models/twenty_cent.png',
     periodStartDate: '1999-01-01',
@@ -661,7 +594,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
-    id: 69,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/finland/models/ten_cent.png',
     periodStartDate: '1999-01-01',
@@ -670,7 +602,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
-    id: 70,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/finland/models/five_cent.png',
     periodStartDate: '1999-01-01',
@@ -679,7 +610,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
-    id: 71,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/finland/models/two_cent.png',
     periodStartDate: '1999-01-01',
@@ -688,7 +618,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
-    id: 72,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/finland/models/one_cent.png',
     periodStartDate: '1999-01-01',
@@ -699,7 +628,6 @@ final List<CoinModel> coinsData = [
 
   // FRANCE
   CoinModel(
-    id: 73,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/france/models/two_euro.png',
     periodStartDate: '1999-01-01',
@@ -709,7 +637,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
-    id: 74,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/france/models/two_euro_v2.png',
     periodStartDate: '2022-01-01',
@@ -718,7 +645,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
-    id: 75,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/france/models/one_euro.png',
     periodStartDate: '1999-01-01',
@@ -728,7 +654,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
-    id: 76,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/france/models/one_euro_v2.png',
     periodStartDate: '2022-01-01',
@@ -737,7 +662,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
-    id: 77,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/france/models/fifty_cent.png',
     periodStartDate: '1999-01-01',
@@ -746,7 +670,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
-    id: 78,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/france/models/twenty_cent.png',
     periodStartDate: '1999-01-01',
@@ -755,7 +678,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
-    id: 79,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/france/models/ten_cent.png',
     periodStartDate: '1999-01-01',
@@ -764,7 +686,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
-    id: 80,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/france/models/five_cent.png',
     periodStartDate: '1999-01-01',
@@ -773,7 +694,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
-    id: 81,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/france/models/two_cent.png',
     periodStartDate: '1999-01-01',
@@ -782,7 +702,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
-    id: 82,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/france/models/one_cent.png',
     periodStartDate: '1999-01-01',
@@ -793,7 +712,6 @@ final List<CoinModel> coinsData = [
 
   // GERMANY
   CoinModel(
-    id: 83,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/germany/models/two_euro.png',
     periodStartDate: '1999-01-01',
@@ -802,7 +720,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.GERMANY,
   ),
   CoinModel(
-    id: 84,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/germany/models/one_euro.png',
     periodStartDate: '1999-01-01',
@@ -811,7 +728,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.GERMANY,
   ),
   CoinModel(
-    id: 85,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/germany/models/fifty_cent.png',
     periodStartDate: '1999-01-01',
@@ -820,7 +736,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.GERMANY,
   ),
   CoinModel(
-    id: 86,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/germany/models/twenty_cent.png',
     periodStartDate: '1999-01-01',
@@ -829,7 +744,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.GERMANY,
   ),
   CoinModel(
-    id: 87,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/germany/models/ten_cent.png',
     periodStartDate: '1999-01-01',
@@ -838,7 +752,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.GERMANY,
   ),
   CoinModel(
-    id: 88,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/germany/models/five_cent.png',
     periodStartDate: '1999-01-01',
@@ -847,7 +760,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.GERMANY,
   ),
   CoinModel(
-    id: 89,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/germany/models/two_cent.png',
     periodStartDate: '1999-01-01',
@@ -856,7 +768,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.GERMANY,
   ),
   CoinModel(
-    id: 90,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/germany/models/one_cent.png',
     periodStartDate: '1999-01-01',
@@ -867,7 +778,6 @@ final List<CoinModel> coinsData = [
 
   // GREECE
   CoinModel(
-    id: 91,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/greece/models/two_euro.png',
     periodStartDate: '2002-01-01',
@@ -876,7 +786,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
-    id: 92,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/greece/models/one_euro.png',
     periodStartDate: '2002-01-01',
@@ -885,7 +794,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
-    id: 93,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/greece/models/fifty_cent.png',
     periodStartDate: '2002-01-01',
@@ -894,7 +802,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
-    id: 94,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/greece/models/twenty_cent.png',
     periodStartDate: '2002-01-01',
@@ -903,7 +810,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
-    id: 95,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/greece/models/ten_cent.png',
     periodStartDate: '2002-01-01',
@@ -912,7 +818,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
-    id: 96,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/greece/models/five_cent.png',
     periodStartDate: '2002-01-01',
@@ -921,7 +826,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
-    id: 97,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/greece/models/two_cent.png',
     periodStartDate: '2002-01-01',
@@ -930,7 +834,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
-    id: 98,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/greece/models/one_cent.png',
     periodStartDate: '2002-01-01',
@@ -941,7 +844,6 @@ final List<CoinModel> coinsData = [
 
   // IRELAND
   CoinModel(
-    id: 99,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/ireland/models/two_euro.png',
     periodStartDate: '1999-01-01',
@@ -950,7 +852,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.IRELAND,
   ),
   CoinModel(
-    id: 100,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/ireland/models/one_euro.png',
     periodStartDate: '1999-01-01',
@@ -959,7 +860,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.IRELAND,
   ),
   CoinModel(
-    id: 101,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/ireland/models/fifty_cent.png',
     periodStartDate: '1999-01-01',
@@ -968,7 +868,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.IRELAND,
   ),
   CoinModel(
-    id: 102,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/ireland/models/twenty_cent.png',
     periodStartDate: '1999-01-01',
@@ -977,7 +876,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.IRELAND,
   ),
   CoinModel(
-    id: 103,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/ireland/models/ten_cent.png',
     periodStartDate: '1999-01-01',
@@ -986,7 +884,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.IRELAND,
   ),
   CoinModel(
-    id: 104,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/ireland/models/five_cent.png',
     periodStartDate: '1999-01-01',
@@ -995,7 +892,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.IRELAND,
   ),
   CoinModel(
-    id: 105,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/ireland/models/two_cent.png',
     periodStartDate: '1999-01-01',
@@ -1004,7 +900,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.IRELAND,
   ),
   CoinModel(
-    id: 106,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/ireland/models/one_cent.png',
     periodStartDate: '1999-01-01',
@@ -1015,7 +910,6 @@ final List<CoinModel> coinsData = [
 
   // ITALY
   CoinModel(
-    id: 107,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/italy/models/two_euro.png',
     periodStartDate: '1999-01-01',
@@ -1024,7 +918,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
-    id: 108,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/italy/models/one_euro.png',
     periodStartDate: '1999-01-01',
@@ -1033,7 +926,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
-    id: 109,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/italy/models/fifty_cent.png',
     periodStartDate: '1999-01-01',
@@ -1042,7 +934,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
-    id: 110,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/italy/models/twenty_cent.png',
     periodStartDate: '1999-01-01',
@@ -1051,7 +942,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
-    id: 111,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/italy/models/ten_cent.png',
     periodStartDate: '1999-01-01',
@@ -1060,7 +950,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
-    id: 112,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/italy/models/five_cent.png',
     periodStartDate: '1999-01-01',
@@ -1069,7 +958,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
-    id: 113,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/italy/models/two_cent.png',
     periodStartDate: '1999-01-01',
@@ -1078,7 +966,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
-    id: 114,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/italy/models/one_cent.png',
     periodStartDate: '1999-01-01',
@@ -1088,7 +975,6 @@ final List<CoinModel> coinsData = [
 
   // LATVIA
   CoinModel(
-    id: 115,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/latvia/models/two_euro.png',
     periodStartDate: '2014-01-01',
@@ -1097,7 +983,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.LATVIA,
   ),
   CoinModel(
-    id: 116,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/latvia/models/one_euro.png',
     periodStartDate: '2014-01-01',
@@ -1106,7 +991,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.LATVIA,
   ),
   CoinModel(
-    id: 117,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/latvia/models/fifty_cent.png',
     periodStartDate: '2014-01-01',
@@ -1115,7 +999,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.LATVIA,
   ),
   CoinModel(
-    id: 118,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/latvia/models/twenty_cent.png',
     periodStartDate: '2014-01-01',
@@ -1124,7 +1007,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.LATVIA,
   ),
   CoinModel(
-    id: 119,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/latvia/models/ten_cent.png',
     periodStartDate: '2014-01-01',
@@ -1133,7 +1015,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.LATVIA,
   ),
   CoinModel(
-    id: 120,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/latvia/models/five_cent.png',
     periodStartDate: '2014-01-01',
@@ -1142,7 +1023,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.LATVIA,
   ),
   CoinModel(
-    id: 121,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/latvia/models/two_cent.png',
     periodStartDate: '2014-01-01',
@@ -1151,7 +1031,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.LATVIA,
   ),
   CoinModel(
-    id: 122,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/latvia/models/one_cent.png',
     periodStartDate: '2014-01-01',
@@ -1162,7 +1041,6 @@ final List<CoinModel> coinsData = [
 
   // LITHUANIA
   CoinModel(
-    id: 123,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/lithuania/models/two_euro.png',
     periodStartDate: '2015-01-01',
@@ -1171,7 +1049,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.LITHUANIA,
   ),
   CoinModel(
-    id: 124,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/lithuania/models/one_euro.png',
     periodStartDate: '2015-01-01',
@@ -1180,7 +1057,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.LITHUANIA,
   ),
   CoinModel(
-    id: 125,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/lithuania/models/fifty_cent.png',
     periodStartDate: '2015-01-01',
@@ -1189,7 +1065,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.LITHUANIA,
   ),
   CoinModel(
-    id: 126,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/lithuania/models/twenty_cent.png',
     periodStartDate: '2015-01-01',
@@ -1198,7 +1073,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.LITHUANIA,
   ),
   CoinModel(
-    id: 127,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/lithuania/models/ten_cent.png',
     periodStartDate: '2015-01-01',
@@ -1207,7 +1081,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.LITHUANIA,
   ),
   CoinModel(
-    id: 128,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/lithuania/models/five_cent.png',
     periodStartDate: '2015-01-01',
@@ -1216,7 +1089,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.LITHUANIA,
   ),
   CoinModel(
-    id: 129,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/lithuania/models/two_cent.png',
     periodStartDate: '2015-01-01',
@@ -1225,7 +1097,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.LITHUANIA,
   ),
   CoinModel(
-    id: 130,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/lithuania/models/one_cent.png',
     periodStartDate: '2015-01-01',
@@ -1236,7 +1107,6 @@ final List<CoinModel> coinsData = [
 
   // LUXEMBOURG
   CoinModel(
-    id: 131,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/luxembourg/models/two_euro.png',
     periodStartDate: '1999-01-01',
@@ -1245,7 +1115,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
-    id: 132,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/luxembourg/models/one_euro.png',
     periodStartDate: '1999-01-01',
@@ -1254,7 +1123,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
-    id: 133,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/luxembourg/models/fifty_cent.png',
     periodStartDate: '1999-01-01',
@@ -1263,7 +1131,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
-    id: 134,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/luxembourg/models/twenty_cent.png',
     periodStartDate: '1999-01-01',
@@ -1272,7 +1139,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
-    id: 135,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/luxembourg/models/ten_cent.png',
     periodStartDate: '1999-01-01',
@@ -1281,7 +1147,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
-    id: 136,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/luxembourg/models/five_cent.png',
     periodStartDate: '1999-01-01',
@@ -1290,7 +1155,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
-    id: 137,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/luxembourg/models/two_cent.png',
     periodStartDate: '1999-01-01',
@@ -1299,7 +1163,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
-    id: 138,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/luxembourg/models/one_cent.png',
     periodStartDate: '1999-01-01',
@@ -1310,7 +1173,6 @@ final List<CoinModel> coinsData = [
 
   // MALTA
   CoinModel(
-    id: 139,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/malta/models/two_euro.png',
     periodStartDate: '2008-01-01',
@@ -1319,7 +1181,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
-    id: 140,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/malta/models/one_euro.png',
     periodStartDate: '2008-01-01',
@@ -1328,7 +1189,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
-    id: 141,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/malta/models/fifty_cent.png',
     periodStartDate: '2008-01-01',
@@ -1337,7 +1197,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
-    id: 142,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/malta/models/twenty_cent.png',
     periodStartDate: '2008-01-01',
@@ -1346,7 +1205,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
-    id: 143,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/malta/models/ten_cent.png',
     periodStartDate: '2008-01-01',
@@ -1355,7 +1213,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
-    id: 144,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/malta/models/five_cent.png',
     periodStartDate: '2008-01-01',
@@ -1364,7 +1221,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
-    id: 145,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/malta/models/two_cent.png',
     periodStartDate: '2008-01-01',
@@ -1373,7 +1229,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
-    id: 146,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/malta/models/one_cent.png',
     periodStartDate: '2008-01-01',
@@ -1383,7 +1238,6 @@ final List<CoinModel> coinsData = [
   ),
 
   CoinModel(
-    id: 147,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/monaco/models/two_euro.png',
     periodStartDate: '2001-01-01',
@@ -1393,7 +1247,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.MONACO,
   ),
   CoinModel(
-    id: 148,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/monaco/models/two_euro_v2.png',
     periodStartDate: '2006-01-01',
@@ -1404,7 +1257,6 @@ final List<CoinModel> coinsData = [
 
   // MONACO - 1 Euro coins
   CoinModel(
-    id: 149,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/monaco/models/one_euro.png',
     periodStartDate: '2001-01-01',
@@ -1414,7 +1266,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.MONACO,
   ),
   CoinModel(
-    id: 150,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/monaco/models/one_euro_v2.png',
     periodStartDate: '2006-01-01',
@@ -1425,7 +1276,6 @@ final List<CoinModel> coinsData = [
 
   // MONACO - 50 Cent coins
   CoinModel(
-    id: 151,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/monaco/models/fifty_cent.png',
     periodStartDate: '2001-01-01',
@@ -1434,7 +1284,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.MONACO,
   ),
   CoinModel(
-    id: 152,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/monaco/models/fifty_cent_v2.png',
     periodStartDate: '2006-01-01',
@@ -1445,7 +1294,6 @@ final List<CoinModel> coinsData = [
 
   // MONACO - 20 Cent coins
   CoinModel(
-    id: 153,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/monaco/models/twenty_cent.png',
     periodStartDate: '2001-01-01',
@@ -1454,7 +1302,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.MONACO,
   ),
   CoinModel(
-    id: 154,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/monaco/models/twenty_cent_v2.png',
     periodStartDate: '2006-01-01',
@@ -1465,7 +1312,6 @@ final List<CoinModel> coinsData = [
 
   // MONACO - 10 Cent coins
   CoinModel(
-    id: 155,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/monaco/models/ten_cent.png',
     periodStartDate: '2001-01-01',
@@ -1476,7 +1322,6 @@ final List<CoinModel> coinsData = [
             .MALTA, // You might want to correct this to CountryNames.MONACO
   ),
   CoinModel(
-    id: 156,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/monaco/models/ten_cent_v2.png',
     periodStartDate: '2006-01-01',
@@ -1487,7 +1332,6 @@ final List<CoinModel> coinsData = [
 
   // MONACO - 5 Cent coins
   CoinModel(
-    id: 157,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/monaco/models/five_cent.png',
     periodStartDate: '2001-01-01',
@@ -1497,7 +1341,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.MONACO,
   ),
   CoinModel(
-    id: 158,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/monaco/models/five_cent_v2.png',
     periodStartDate: '2006-01-01',
@@ -1508,7 +1351,6 @@ final List<CoinModel> coinsData = [
 
   // MONACO - 2 Cent coins
   CoinModel(
-    id: 159,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/monaco/models/two_cent.png',
     periodStartDate: '2001-01-01',
@@ -1518,7 +1360,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.MONACO,
   ),
   CoinModel(
-    id: 160,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/monaco/models/two_cent_v2.png',
     periodStartDate: '2006-01-01',
@@ -1529,7 +1370,6 @@ final List<CoinModel> coinsData = [
 
   // MONACO - 1 Cent coins
   CoinModel(
-    id: 161,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/monaco/models/one_cent.png',
     periodStartDate: '2001-01-01',
@@ -1539,7 +1379,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.MONACO,
   ),
   CoinModel(
-    id: 162,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/monaco/models/one_cent_v2.png',
     periodStartDate: '2006-01-01',
@@ -1552,7 +1391,6 @@ final List<CoinModel> coinsData = [
 
   // NETHERLANDS - 2 Euro coins
   CoinModel(
-    id: 163,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/netherlands/models/two_euro.png',
     periodStartDate: '2001-01-01',
@@ -1562,7 +1400,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.NETHERLANDS,
   ),
   CoinModel(
-    id: 164,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/netherlands/models/two_euro_v2.png',
     periodStartDate: '2014-01-01',
@@ -1573,7 +1410,6 @@ final List<CoinModel> coinsData = [
 
   // NETHERLANDS - 1 Euro coins
   CoinModel(
-    id: 165,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/netherlands/models/one_euro.png',
     periodStartDate: '2001-01-01',
@@ -1583,7 +1419,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.NETHERLANDS,
   ),
   CoinModel(
-    id: 166,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/netherlands/models/one_euro_v2.png',
     periodStartDate: '2014-01-01',
@@ -1594,7 +1429,6 @@ final List<CoinModel> coinsData = [
 
   // NETHERLANDS - 50 Cent coins
   CoinModel(
-    id: 167,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/netherlands/models/fifty_cent.png',
     periodStartDate: '2001-01-01',
@@ -1604,7 +1438,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.NETHERLANDS,
   ),
   CoinModel(
-    id: 168,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/netherlands/models/fifty_cent_v2.png',
     periodStartDate: '2014-01-01',
@@ -1615,7 +1448,6 @@ final List<CoinModel> coinsData = [
 
   // NETHERLANDS - 20 Cent coins
   CoinModel(
-    id: 169,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/netherlands/models/twenty_cent.png',
     periodStartDate: '2001-01-01',
@@ -1625,7 +1457,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.NETHERLANDS,
   ),
   CoinModel(
-    id: 170,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/netherlands/models/twenty_cent_v2.png',
     periodStartDate: '2014-01-01',
@@ -1636,7 +1467,6 @@ final List<CoinModel> coinsData = [
 
   // NETHERLANDS - 10 Cent coins
   CoinModel(
-    id: 171,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/netherlands/models/ten_cent.png',
     periodStartDate: '2001-01-01',
@@ -1646,7 +1476,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.NETHERLANDS,
   ),
   CoinModel(
-    id: 172,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/netherlands/models/ten_cent_v2.png',
     periodStartDate: '2014-01-01',
@@ -1657,7 +1486,6 @@ final List<CoinModel> coinsData = [
 
   // NETHERLANDS - 5 Cent coins
   CoinModel(
-    id: 173,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/netherlands/models/five_cent.png',
     periodStartDate: '2001-01-01',
@@ -1667,7 +1495,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.NETHERLANDS,
   ),
   CoinModel(
-    id: 174,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/netherlands/models/five_cent_v2.png',
     periodStartDate: '2014-01-01',
@@ -1678,7 +1505,6 @@ final List<CoinModel> coinsData = [
 
   // NETHERLANDS - 2 Cent coins
   CoinModel(
-    id: 175,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/netherlands/models/two_cent.png',
     periodStartDate: '2001-01-01',
@@ -1688,7 +1514,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.NETHERLANDS,
   ),
   CoinModel(
-    id: 176,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/netherlands/models/two_cent_v2.png',
     periodStartDate: '2014-01-01',
@@ -1699,7 +1524,6 @@ final List<CoinModel> coinsData = [
 
   // NETHERLANDS - 1 Cent coins
   CoinModel(
-    id: 177,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/netherlands/models/one_cent.png',
     periodStartDate: '2001-01-01',
@@ -1709,7 +1533,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.NETHERLANDS,
   ),
   CoinModel(
-    id: 178,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/netherlands/models/one_cent_v2.png',
     periodStartDate: '2014-01-01',
@@ -1720,7 +1543,6 @@ final List<CoinModel> coinsData = [
 
   // PORTUGAL
   CoinModel(
-    id: 179,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/portugal/models/two_euro.png',
     periodStartDate: '1999-01-01',
@@ -1729,7 +1551,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
-    id: 180,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/portugal/models/one_euro.png',
     periodStartDate: '1999-01-01',
@@ -1738,7 +1559,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
-    id: 181,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/portugal/models/fifty_cent.png',
     periodStartDate: '1999-01-01',
@@ -1747,7 +1567,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
-    id: 182,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/portugal/models/twenty_cent.png',
     periodStartDate: '1999-01-01',
@@ -1756,7 +1575,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
-    id: 183,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/portugal/models/ten_cent.png',
     periodStartDate: '1999-01-01',
@@ -1765,7 +1583,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
-    id: 184,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/portugal/models/five_cent.png',
     periodStartDate: '1999-01-01',
@@ -1774,7 +1591,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
-    id: 185,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/portugal/models/two_cent.png',
     periodStartDate: '1999-01-01',
@@ -1783,7 +1599,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
-    id: 186,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/portugal/models/one_cent.png',
     periodStartDate: '1999-01-01',
@@ -1796,7 +1611,6 @@ final List<CoinModel> coinsData = [
 
   // SAN MARINO - 2 Euro coins
   CoinModel(
-    id: 187,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/san_marino/models/two_euro.png',
     periodStartDate: '2002-01-01',
@@ -1806,7 +1620,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
-    id: 188,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/san_marino/models/two_euro_v2.png',
     periodStartDate: '2017-01-01',
@@ -1817,7 +1630,6 @@ final List<CoinModel> coinsData = [
 
   // SAN MARINO - 1 Euro coins
   CoinModel(
-    id: 189,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/san_marino/models/one_euro.png',
     periodStartDate: '2002-01-01',
@@ -1827,7 +1639,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
-    id: 190,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/san_marino/models/one_euro_v2.png',
     periodStartDate: '2002-01-01',
@@ -1837,7 +1648,6 @@ final List<CoinModel> coinsData = [
 
   // SAN MARINO - 50 Cent coins
   CoinModel(
-    id: 191,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/san_marino/models/fifty_cent.png',
     periodStartDate: '2002-01-01',
@@ -1847,7 +1657,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
-    id: 192,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/san_marino/models/fifty_cent_v2.png',
     periodStartDate: '2017-01-01',
@@ -1858,7 +1667,6 @@ final List<CoinModel> coinsData = [
 
   // SAN MARINO - 20 Cent coins
   CoinModel(
-    id: 193,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/san_marino/models/twenty_cent.png',
     periodStartDate: '2002-01-01',
@@ -1868,7 +1676,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
-    id: 194,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/san_marino/models/twenty_cent_v2.png',
     periodStartDate: '2017-01-01',
@@ -1879,7 +1686,6 @@ final List<CoinModel> coinsData = [
 
   // SAN MARINO - 10 Cent coins
   CoinModel(
-    id: 195,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/san_marino/models/ten_cent.png',
     periodStartDate: '2002-01-01',
@@ -1889,7 +1695,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
-    id: 196,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/san_marino/models/ten_cent_v2.png',
     periodStartDate: '2017-01-01',
@@ -1900,7 +1705,6 @@ final List<CoinModel> coinsData = [
 
   // SAN MARINO - 5 Cent coins
   CoinModel(
-    id: 197,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/san_marino/models/five_cent.png',
     periodStartDate: '2002-01-01',
@@ -1909,7 +1713,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
-    id: 198,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/san_marino/models/five_cent_v2.png',
     periodStartDate: '2017-01-01',
@@ -1920,7 +1723,6 @@ final List<CoinModel> coinsData = [
 
   // SAN MARINO - 2 Cent coins
   CoinModel(
-    id: 199,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/san_marino/models/two_cent.png',
     periodStartDate: '2002-01-01',
@@ -1929,7 +1731,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
-    id: 200,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/san_marino/models/two_cent_v2.png',
     periodStartDate: '2017-01-01',
@@ -1939,7 +1740,6 @@ final List<CoinModel> coinsData = [
 
   // SAN MARINO - 1 Cent coins
   CoinModel(
-    id: 201,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/san_marino/models/one_cent.png',
     periodStartDate: '2002-01-01',
@@ -1949,7 +1749,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
-    id: 202,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/san_marino/models/one_cent_v2.png',
     periodStartDate: '2017-01-01',
@@ -1960,7 +1759,6 @@ final List<CoinModel> coinsData = [
 
   // SLOVAKIA
   CoinModel(
-    id: 203,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/slovakia/models/two_euro.png',
     periodStartDate: '2009-01-01',
@@ -1969,7 +1767,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SLOVAKIA,
   ),
   CoinModel(
-    id: 204,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/slovakia/models/one_euro.png',
     periodStartDate: '2009-01-01',
@@ -1978,7 +1775,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SLOVAKIA,
   ),
   CoinModel(
-    id: 205,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/slovakia/models/fifty_cent.png',
     periodStartDate: '2009-01-01',
@@ -1987,7 +1783,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SLOVAKIA,
   ),
   CoinModel(
-    id: 206,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/slovakia/models/twenty_cent.png',
     periodStartDate: '2009-01-01',
@@ -1996,7 +1791,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SLOVAKIA,
   ),
   CoinModel(
-    id: 207,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/slovakia/models/ten_cent.png',
     periodStartDate: '2009-01-01',
@@ -2005,7 +1799,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SLOVAKIA,
   ),
   CoinModel(
-    id: 208,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/slovakia/models/five_cent.png',
     periodStartDate: '2009-01-01',
@@ -2014,7 +1807,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SLOVAKIA,
   ),
   CoinModel(
-    id: 209,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/slovakia/models/two_cent.png',
     periodStartDate: '2009-01-01',
@@ -2023,7 +1815,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SLOVAKIA,
   ),
   CoinModel(
-    id: 210,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/slovakia/models/one_cent.png',
     periodStartDate: '2009-01-01',
@@ -2034,7 +1825,6 @@ final List<CoinModel> coinsData = [
 
   // SLOVENIA
   CoinModel(
-    id: 211,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/slovenia/models/two_euro.png',
     periodStartDate: '2007-01-01',
@@ -2043,7 +1833,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SLOVENIA,
   ),
   CoinModel(
-    id: 212,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/slovenia/models/one_euro.png',
     periodStartDate: '2007-01-01',
@@ -2052,7 +1841,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SLOVENIA,
   ),
   CoinModel(
-    id: 213,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/slovenia/models/fifty_cent.png',
     periodStartDate: '2007-01-01',
@@ -2060,7 +1848,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SLOVENIA,
   ),
   CoinModel(
-    id: 214,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/slovenia/models/twenty_cent.png',
     periodStartDate: '2007-01-01',
@@ -2068,7 +1855,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SLOVENIA,
   ),
   CoinModel(
-    id: 215,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/slovenia/models/ten_cent.png',
     periodStartDate: '2007-01-01',
@@ -2077,7 +1863,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SLOVENIA,
   ),
   CoinModel(
-    id: 216,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/slovenia/models/five_cent.png',
     periodStartDate: '2007-01-01',
@@ -2085,7 +1870,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SLOVENIA,
   ),
   CoinModel(
-    id: 217,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/slovenia/models/two_cent.png',
     periodStartDate: '2007-01-01',
@@ -2093,7 +1877,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SLOVENIA,
   ),
   CoinModel(
-    id: 218,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/slovenia/models/one_cent.png',
     periodStartDate: '2007-01-01',
@@ -2104,7 +1887,6 @@ final List<CoinModel> coinsData = [
   // SPAIN
   // SPAIN - 2 Euro coins
   CoinModel(
-    id: 219,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/spain/models/two_euro.png',
     periodStartDate: '2002-01-01',
@@ -2114,7 +1896,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
-    id: 220,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/spain/models/two_euro_v2.png',
     periodStartDate: '2010-01-01',
@@ -2124,7 +1905,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
-    id: 221,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/spain/models/two_euro_v3.png',
     periodStartDate: '2015-01-01',
@@ -2135,7 +1915,6 @@ final List<CoinModel> coinsData = [
 
   // SPAIN - 1 Euro coins
   CoinModel(
-    id: 222,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/spain/models/one_euro.png',
     periodStartDate: '2002-01-01',
@@ -2145,7 +1924,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
-    id: 223,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/spain/models/one_euro_v2.png',
     periodStartDate: '2010-01-01',
@@ -2155,7 +1933,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
-    id: 224,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/spain/models/one_euro_v3.png',
     periodStartDate: '2015-01-01',
@@ -2166,7 +1943,6 @@ final List<CoinModel> coinsData = [
 
   // SPAIN - 50 Cent coins
   CoinModel(
-    id: 225,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/spain/models/fifty_cent.png',
     periodStartDate: '2002-01-01',
@@ -2176,7 +1952,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
-    id: 226,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/spain/models/fifty_cent_v2.png',
     periodStartDate: '2010-01-01',
@@ -2188,7 +1963,6 @@ final List<CoinModel> coinsData = [
 
   // SPAIN - 20 Cent coins
   CoinModel(
-    id: 227,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/spain/models/twenty_cent.png',
     periodStartDate: '2002-01-01',
@@ -2198,7 +1972,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
-    id: 228,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/spain/models/twenty_cent_v2.png',
     periodStartDate: '2010-01-01',
@@ -2210,7 +1983,6 @@ final List<CoinModel> coinsData = [
 
   // SPAIN - 10 Cent coins
   CoinModel(
-    id: 229,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/spain/models/ten_cent.png',
     periodStartDate: '2002-01-01',
@@ -2220,7 +1992,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
-    id: 230,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/spain/models/ten_cent_v2.png',
     periodStartDate: '2010-01-01',
@@ -2232,7 +2003,6 @@ final List<CoinModel> coinsData = [
 
   // SPAIN - 5 Cent coins
   CoinModel(
-    id: 231,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/spain/models/five_cent.png',
     periodStartDate: '2002-01-01',
@@ -2242,7 +2012,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
-    id: 232,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/spain/models/five_cent_v2.png',
     periodStartDate: '2010-01-01',
@@ -2254,7 +2023,6 @@ final List<CoinModel> coinsData = [
 
   // SPAIN - 2 Cent coins
   CoinModel(
-    id: 233,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/spain/models/two_cent.png',
     periodStartDate: '2002-01-01',
@@ -2264,7 +2032,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
-    id: 234,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/spain/models/two_cent_v2.png',
     periodStartDate: '2010-01-01',
@@ -2276,7 +2043,6 @@ final List<CoinModel> coinsData = [
 
   // SPAIN - 1 Cent coins
   CoinModel(
-    id: 235,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/spain/models/one_cent.png',
     periodStartDate: '2002-01-01',
@@ -2286,7 +2052,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
-    id: 236,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/spain/models/one_cent_v2.png',
     periodStartDate: '2010-01-01',
@@ -2299,7 +2064,6 @@ final List<CoinModel> coinsData = [
   // VATICAN
   // Vatican - TWO_EURO
   CoinModel(
-    id: 237,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/vatican/models/two_euro.png',
     periodStartDate: '2002-01-01',
@@ -2308,7 +2072,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 238,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/vatican/models/two_euro_v2.png',
     periodStartDate: '2005-01-01',
@@ -2318,7 +2081,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 239,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/vatican/models/two_euro_v3.png',
     periodStartDate: '2006-01-01',
@@ -2328,7 +2090,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 240,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/vatican/models/two_euro_v4.png',
     periodStartDate: '2014-01-01',
@@ -2338,7 +2099,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 241,
     type: CoinType.TWO_EURO,
     image: 'assets/coins/vatican/models/two_euro_v5.png',
     periodStartDate: '2017-01-01',
@@ -2349,7 +2109,6 @@ final List<CoinModel> coinsData = [
 
   // ONE_EURO
   CoinModel(
-    id: 242,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/vatican/models/one_euro.png',
     periodStartDate: '2002-01-01',
@@ -2358,7 +2117,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 243,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/vatican/models/one_euro_v2.png',
     periodStartDate: '2005-01-01',
@@ -2368,7 +2126,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 244,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/vatican/models/one_euro_v3.png',
     periodStartDate: '2006-01-01',
@@ -2378,7 +2135,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 245,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/vatican/models/one_euro_v4.png',
     periodStartDate: '2014-01-01',
@@ -2388,7 +2144,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 246,
     type: CoinType.ONE_EURO,
     image: 'assets/coins/vatican/models/one_euro_v5.png',
     periodStartDate: '2017-01-01',
@@ -2399,7 +2154,6 @@ final List<CoinModel> coinsData = [
 
   // FIFTY_CENT
   CoinModel(
-    id: 247,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/vatican/models/fifty_cent.png',
     periodStartDate: '2002-01-01',
@@ -2408,7 +2162,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 248,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/vatican/models/fifty_cent_v2.png',
     periodStartDate: '2005-01-01',
@@ -2418,7 +2171,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 249,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/vatican/models/fifty_cent_v3.png',
     periodStartDate: '2006-01-01',
@@ -2428,7 +2180,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 250,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/vatican/models/fifty_cent_v4.png',
     periodStartDate: '2014-01-01',
@@ -2438,7 +2189,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 251,
     type: CoinType.FIFTY_CENT,
     image: 'assets/coins/vatican/models/fifty_cent_v5.png',
     periodStartDate: '2017-01-01',
@@ -2449,7 +2199,6 @@ final List<CoinModel> coinsData = [
 
   // TWENTY_CENT
   CoinModel(
-    id: 252,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/vatican/models/twenty_cent.png',
     periodStartDate: '2002-01-01',
@@ -2458,7 +2207,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 253,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/vatican/models/twenty_cent_v2.png',
     periodStartDate: '2005-01-01',
@@ -2468,7 +2216,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 254,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/vatican/models/twenty_cent_v3.png',
     periodStartDate: '2006-01-01',
@@ -2478,7 +2225,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 255,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/vatican/models/twenty_cent_v4.png',
     periodStartDate: '2014-01-01',
@@ -2488,7 +2234,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 256,
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/vatican/models/twenty_cent_v5.png',
     periodStartDate: '2017-01-01',
@@ -2499,7 +2244,6 @@ final List<CoinModel> coinsData = [
 
   // TEN_CENT
   CoinModel(
-    id: 257,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/vatican/models/ten_cent.png',
     periodStartDate: '2002-01-01',
@@ -2508,7 +2252,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 258,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/vatican/models/ten_cent_v2.png',
     periodStartDate: '2005-01-01',
@@ -2518,7 +2261,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 259,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/vatican/models/ten_cent_v3.png',
     periodStartDate: '2006-01-01',
@@ -2528,7 +2270,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 260,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/vatican/models/ten_cent_v4.png',
     periodStartDate: '2014-01-01',
@@ -2538,7 +2279,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 261,
     type: CoinType.TEN_CENT,
     image: 'assets/coins/vatican/models/ten_cent_v5.png',
     periodStartDate: '2017-01-01',
@@ -2549,7 +2289,6 @@ final List<CoinModel> coinsData = [
 
   // FIVE_CENT
   CoinModel(
-    id: 262,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/vatican/models/five_cent.png',
     periodStartDate: '2002-01-01',
@@ -2558,7 +2297,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 263,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/vatican/models/five_cent_v2.png',
     periodStartDate: '2005-01-01',
@@ -2568,7 +2306,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 264,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/vatican/models/five_cent_v3.png',
     periodStartDate: '2006-01-01',
@@ -2578,7 +2315,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 265,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/vatican/models/five_cent_v4.png',
     periodStartDate: '2014-01-01',
@@ -2588,7 +2324,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 266,
     type: CoinType.FIVE_CENT,
     image: 'assets/coins/vatican/models/five_cent_v5.png',
     periodStartDate: '2017-01-01',
@@ -2599,7 +2334,6 @@ final List<CoinModel> coinsData = [
 
   // TWO_CENT
   CoinModel(
-    id: 267,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/vatican/models/two_cent.png',
     periodStartDate: '2002-01-01',
@@ -2608,7 +2342,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 268,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/vatican/models/two_cent_v2.png',
     periodStartDate: '2005-01-01',
@@ -2618,7 +2351,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 269,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/vatican/models/two_cent_v3.png',
     periodStartDate: '2006-01-01',
@@ -2628,7 +2360,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 270,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/vatican/models/two_cent_v4.png',
     periodStartDate: '2014-01-01',
@@ -2638,7 +2369,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 271,
     type: CoinType.TWO_CENT,
     image: 'assets/coins/vatican/models/two_cent_v5.png',
     periodStartDate: '2017-01-01',
@@ -2649,7 +2379,6 @@ final List<CoinModel> coinsData = [
 
   // ONE_CENT
   CoinModel(
-    id: 272,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/vatican/models/one_cent.png',
     periodStartDate: '2002-01-01',
@@ -2658,7 +2387,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 273,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/vatican/models/one_cent_v2.png',
     periodStartDate: '2005-01-01',
@@ -2668,7 +2396,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 274,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/vatican/models/one_cent_v3.png',
     periodStartDate: '2006-01-01',
@@ -2678,7 +2405,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 275,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/vatican/models/one_cent_v4.png',
     periodStartDate: '2014-01-01',
@@ -2688,7 +2414,6 @@ final List<CoinModel> coinsData = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
-    id: 276,
     type: CoinType.ONE_CENT,
     image: 'assets/coins/vatican/models/one_cent_v5.png',
     periodStartDate: '2017-01-01',
@@ -2696,4 +2421,6 @@ final List<CoinModel> coinsData = [
         'The fifth series, first issued in March 2017, shows the coat of arms of the Sovereign of the Vatican City State, Pope Francis.',
     country: CountryNames.VATICAN,
   ),
+
+  ...coinDataCommemoratives,
 ];

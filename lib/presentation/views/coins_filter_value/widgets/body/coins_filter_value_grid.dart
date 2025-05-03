@@ -45,7 +45,7 @@ class CoinsFilterValueGrid extends StatelessWidget {
           imageUrl: coin.image,
           size: getItemSizeForFilterView(coin.type),
           isSelected: isOwned,
-          onSelected: (selected) => onToggleCoin(coin.id),
+          onSelected: (selected) => onToggleCoin(coin.id!),
           countryImage:
               "assets/country/${coin.country.name.toLowerCase()}-flag.png",
           onTap: () async {
@@ -55,7 +55,7 @@ class CoinsFilterValueGrid extends StatelessWidget {
             );
 
             if (result is bool && result != isOwned) {
-              onToggleCoin(coin.id);
+              onToggleCoin(coin.id!);
             }
           },
         );

@@ -5,7 +5,7 @@ class DatabaseTables {
   static const String countries = "countries";
 
   // Coins Columns
-  static const String id = "id";
+  static const String coinId = "id";
   static const String type = "type";
   static const String image = "image";
   static const String quantity = "quantity";
@@ -31,7 +31,7 @@ class DatabaseTables {
   // Table Creation Statements
   static const String createCoinsTable = '''
     CREATE TABLE $coins (
-      $id INTEGER PRIMARY KEY,
+      $coinId INTEGER PRIMARY KEY AUTOINCREMENT,
       $type TEXT NOT NULL,
       $image TEXT,
       $quantity INTEGER,
@@ -47,7 +47,7 @@ class DatabaseTables {
     CREATE TABLE $userCoins (
       $userCoinId INTEGER,
       $quality TEXT DEFAULT NULL,
-      FOREIGN KEY ($userCoinId) REFERENCES $coins($id)
+      FOREIGN KEY ($userCoinId) REFERENCES $coins($coinId)
     )
   ''';
 

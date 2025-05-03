@@ -64,7 +64,7 @@ class CoinsFilterCountryGrid extends StatelessWidget {
                 userPrefsProvider.coinMints) {
               await _handleGermanCoin(context, coinMintProvider, coin);
             } else {
-              onToggleCoin(coin.id);
+              onToggleCoin(coin.id!);
             }
           },
           size: getItemSizeForFilterView(coin.type),
@@ -75,7 +75,7 @@ class CoinsFilterCountryGrid extends StatelessWidget {
             );
 
             if (result is bool && result != isOwned) {
-              onToggleCoin(coin.id);
+              onToggleCoin(coin.id!);
             }
           },
         );
@@ -89,13 +89,13 @@ class CoinsFilterCountryGrid extends StatelessWidget {
     Coin coin,
   ) async {
     // Get current mint marks for the coin
-    final mints = await coinMintProvider.getMintMarksForCoin(coin.id);
+    final mints = await coinMintProvider.getMintMarksForCoin(coin.id!);
     final currentMints = mints.map((m) => m.mintMark).toList();
 
     // Show mint selection modal
     final selectedMints = await showMintSelectionModal(
       context,
-      coin.id,
+      coin.id!,
       currentMints,
     );
 
@@ -107,20 +107,20 @@ class CoinsFilterCountryGrid extends StatelessWidget {
 
         if (hadMintBefore && !hasNow) {
           // Remove mint mark
-          await coinMintProvider.removeMintMark(coin.id, mintMark);
+          await coinMintProvider.removeMintMark(coin.id!, mintMark);
         } else if (!hadMintBefore && hasNow) {
           // Add mint mark
-          await coinMintProvider.addMintMark(coin.id, mintMark);
+          await coinMintProvider.addMintMark(coin.id!, mintMark);
         }
       }
 
       // If no mints are selected, remove the coin
       if (selectedMints.isEmpty && ownedCoins.contains(coin.id)) {
-        onToggleCoin(coin.id);
+        onToggleCoin(coin.id!);
       }
       // If any mint is selected, ensure the coin is owned
       else if (selectedMints.isNotEmpty && !ownedCoins.contains(coin.id)) {
-        onToggleCoin(coin.id);
+        onToggleCoin(coin.id!);
       }
     }
   }

@@ -44,7 +44,7 @@ class CoinMapper {
     final countryEnum = CountryNames.values.byName(map[DatabaseTables.country]);
 
     return CoinModel(
-      id: map[DatabaseTables.id] as int,
+      id: map[DatabaseTables.coinId] as int,
       type: coinType,
       image: map[DatabaseTables.image] as String,
       quantity: map[DatabaseTables.quantity] as int?,
@@ -59,7 +59,6 @@ class CoinMapper {
 
   static Map<String, dynamic> toMap(CoinModel model) {
     return {
-      DatabaseTables.id: model.id,
       DatabaseTables.type: model.type.name,
       DatabaseTables.image: model.image,
       DatabaseTables.quantity: model.quantity,

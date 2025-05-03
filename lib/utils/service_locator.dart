@@ -99,7 +99,10 @@ Future setupDependencies() async {
   );
 
   serviceLocator.registerLazySingleton<GetTotalCoinCountUseCase>(
-    () => GetTotalCoinCountUseCase(serviceLocator<ICoinRepository>()),
+    () => GetTotalCoinCountUseCase(
+      serviceLocator<ICoinRepository>(),
+      serviceLocator<IUserPreferencesRepository>(),
+    ),
   );
 
   serviceLocator.registerLazySingleton<GetTypeCoinCountUseCase>(

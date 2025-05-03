@@ -107,6 +107,27 @@ flutter:
     - assets/coins/slovenia/models/
     - assets/coins/spain/models/
     - assets/coins/vatican/models/
+    - assets/coins/_commemoratives/2004/
+    - assets/coins/_commemoratives/2005/
+    - assets/coins/_commemoratives/2006/
+    - assets/coins/_commemoratives/2007/
+    - assets/coins/_commemoratives/2008/
+    - assets/coins/_commemoratives/2009/
+    - assets/coins/_commemoratives/2010/
+    - assets/coins/_commemoratives/2011/
+    - assets/coins/_commemoratives/2012/
+    - assets/coins/_commemoratives/2013/
+    - assets/coins/_commemoratives/2014/
+    - assets/coins/_commemoratives/2015/
+    - assets/coins/_commemoratives/2016/
+    - assets/coins/_commemoratives/2017/
+    - assets/coins/_commemoratives/2018/
+    - assets/coins/_commemoratives/2019/
+    - assets/coins/_commemoratives/2020/
+    - assets/coins/_commemoratives/2021/
+    - assets/coins/_commemoratives/2022/
+    - assets/coins/_commemoratives/2023/
+    - assets/coins/_commemoratives/2024/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

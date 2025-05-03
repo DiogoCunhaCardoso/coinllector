@@ -63,7 +63,7 @@ class UserCoinRemoteDataSource {
     return await db.rawQuery('''
     SELECT c.${DatabaseTables.type}, COUNT(*) as count 
     FROM ${DatabaseTables.userCoins} uc
-    JOIN ${DatabaseTables.coins} c ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.id}
+    JOIN ${DatabaseTables.coins} c ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.coinId}
     GROUP BY c.${DatabaseTables.type}
   ''');
   }
@@ -73,7 +73,7 @@ class UserCoinRemoteDataSource {
     return await db.rawQuery('''
       SELECT c.${DatabaseTables.country}, COUNT(*) as count 
       FROM ${DatabaseTables.userCoins} uc
-      JOIN ${DatabaseTables.coins} c ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.id}
+      JOIN ${DatabaseTables.coins} c ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.coinId}
       GROUP BY c.${DatabaseTables.country}
     ''');
   }
@@ -93,7 +93,7 @@ class UserCoinRemoteDataSource {
     SELECT COUNT(*) as count
     FROM ${DatabaseTables.userCoins} uc
     JOIN ${DatabaseTables.coins} c
-      ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.id}
+      ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.coinId}
     WHERE c.${DatabaseTables.country} = ?
     ''',
       [country.name],
@@ -108,7 +108,7 @@ class UserCoinRemoteDataSource {
     SELECT COUNT(*) as count
     FROM ${DatabaseTables.userCoins} uc
     JOIN ${DatabaseTables.coins} c
-      ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.id}
+      ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.coinId}
     WHERE c.${DatabaseTables.type} = ?
   ''',
       [type.name],

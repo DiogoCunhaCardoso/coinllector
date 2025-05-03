@@ -62,7 +62,7 @@ class _CoinShowcaseState extends State<CoinShowcase> {
 
     final prefs = context.read<UserPreferencesProvider>();
 
-    final isOwned = await userCoinProvider.checkIfUserOwnsCoin(widget.coin.id);
+    final isOwned = await userCoinProvider.checkIfUserOwnsCoin(widget.coin.id!);
 
     if (isOwned && prefs.removalConfirmation) {
       if (!mounted) return;
@@ -72,7 +72,7 @@ class _CoinShowcaseState extends State<CoinShowcase> {
       if (!confirmed) return;
     }
 
-    await userCoinProvider.toggleCoinOwnership(widget.coin.id);
+    await userCoinProvider.toggleCoinOwnership(widget.coin.id!);
   }
 
   // SCREEN -----------------------------------------------------------------------------
@@ -88,7 +88,7 @@ class _CoinShowcaseState extends State<CoinShowcase> {
     );
     final userPrefsProvider = Provider.of<UserPreferencesProvider>(context);
 
-    final isOwned = userCoinProvider.isOwned(widget.coin.id);
+    final isOwned = userCoinProvider.isOwned(widget.coin.id!);
 
     return Scaffold(
       body: Stack(
@@ -124,7 +124,7 @@ class _CoinShowcaseState extends State<CoinShowcase> {
                             if (userPrefsProvider.coinQuality)
                               FutureBuilder<CoinQuality?>(
                                 future: userCoinProvider.getCoinQuality(
-                                  widget.coin.id,
+                                  widget.coin.id!,
                                 ),
                                 builder: (context, snapshot) {
                                   if (snapshot.connectionState ==
@@ -151,7 +151,7 @@ class _CoinShowcaseState extends State<CoinShowcase> {
                                             final success =
                                                 await userCoinProvider
                                                     .updateCoinQuality(
-                                                      widget.coin.id,
+                                                      widget.coin.id!,
                                                       CoinQuality.values[index],
                                                     );
 

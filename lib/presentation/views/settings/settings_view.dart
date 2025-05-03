@@ -1,4 +1,5 @@
 import 'package:coinllector_app/config/router/routes.dart';
+import 'package:coinllector_app/presentation/providers/coin_provider.dart';
 /* import 'package:coinllector_app/presentation/providers/coin_provider.dart'; */
 import 'package:coinllector_app/presentation/providers/country_provider.dart';
 import 'package:coinllector_app/presentation/providers/user_coin_provider.dart';
@@ -19,7 +20,7 @@ class SettingsView extends StatelessWidget {
     final prefs = context.watch<UserPreferencesProvider>();
     final countryProvider = context.read<CountryProvider>();
     final userCoinProvider = context.read<UserCoinProvider>();
-    /*     final coinProvider = context.read<CoinProvider>(); */
+    final coinProvider = context.read<CoinProvider>();
 
     return Scaffold(
       appBar: CustomAppBar(
@@ -52,9 +53,7 @@ class SettingsView extends StatelessWidget {
 
                 countryProvider.refreshCountries();
                 userCoinProvider.refreshStatistics();
-                /*   for (final type in CoinType.values) {
-                  coinProvider.refreshCoinsByType(type);
-                } */
+                coinProvider.refreshAll();
               },
             ),
             const SizedBox(height: AppSizes.p8),

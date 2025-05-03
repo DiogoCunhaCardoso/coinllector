@@ -2,7 +2,7 @@ import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 
 class Coin {
-  final int id;
+  final int? id;
   final CoinType type;
   final String image;
   final int? quantity;
@@ -12,7 +12,7 @@ class Coin {
   final CountryNames country;
 
   Coin({
-    required this.id,
+    this.id,
     required this.type,
     required this.image,
     this.quantity,

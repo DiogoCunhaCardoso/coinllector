@@ -5,7 +5,7 @@ final List<CountryModel> countriesData = [
   CountryModel(
     name: CountryNames.EU,
     flagImage: "assets/country/eu-flag.png",
-    joinedOn: "01-01-01",
+    joinedOn: "0001-01-01",
   ),
   CountryModel(
     name: CountryNames.ANDORRA,
@@ -15,7 +15,7 @@ final List<CountryModel> countriesData = [
   CountryModel(
     name: CountryNames.AUSTRIA,
     flagImage: "assets/country/austria-flag.png",
-    joinedOn: "199-01-01",
+    joinedOn: "1999-01-01",
   ),
   CountryModel(
     name: CountryNames.BELGIUM,
