@@ -34,7 +34,7 @@ final GoRouter router = GoRouter(
               builder: (context, state) {
                 final typeStr = state.pathParameters['type']!;
                 final type = CoinType.values.byName(typeStr);
-                return CoinsFilterView(type: type);
+                return ValueFilterView(type: type);
               },
               routes: [
                 GoRoute(

@@ -10,17 +10,31 @@ class CoinRemoteDataSource {
 
   CoinRemoteDataSource(this.db);
 
-  // GET --------------------------------------------------------------------------
+  // GET (with optional filter) ------------------------------------------------------
 
-  Future<List<CoinModel>> getAllCoinsByType(CoinType type) async {
+  Future<List<CoinModel>> getAllCoinsByType(
+    CoinType type, {
+    String? startDate, // Just the year, e.g., "2007"
+  }) async {
+    final where = '${DatabaseTables.type} = ?';
+    final whereArgs = <dynamic>[type.name];
+
+    String fullQuery = where;
+    if (startDate != null) {
+      fullQuery += ' AND ${DatabaseTables.periodStartDate} LIKE ?';
+      whereArgs.add('$startDate%'); // Matches dates starting with the year
+    }
+
     final data = await db.query(
       DatabaseTables.coins,
-      where: '${DatabaseTables.type} = ?',
-      whereArgs: [type.name],
+      where: fullQuery,
+      whereArgs: whereArgs,
     );
 
     return data.map((el) => CoinMapper.fromMap(el)).toList();
   }
+
+  //
 
   Future<List<CoinModel>> getAllCoinsByCountry(CountryNames country) async {
     final data = await db.query(
@@ -41,6 +55,8 @@ class CoinRemoteDataSource {
     return Sqflite.firstIntValue(result) ?? 0;
   }
 
+  //
+
   Future<int> getCountryTotalCoinCount(CountryNames country) async {
     final result = await db.rawQuery(
       'SELECT COUNT(*) FROM ${DatabaseTables.coins} WHERE ${DatabaseTables.country} = ?',
@@ -48,6 +64,8 @@ class CoinRemoteDataSource {
     );
     return Sqflite.firstIntValue(result) ?? 0;
   }
+
+  //
 
   Future<int> getTypeTotalCoinCount(CoinType type) async {
     final result = await db.rawQuery(

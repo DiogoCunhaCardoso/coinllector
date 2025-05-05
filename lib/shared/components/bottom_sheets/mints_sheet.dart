@@ -1,4 +1,4 @@
-import 'package:coinllector_app/shared/components/bottom_sheets/sheet_tile.dart';
+import 'package:coinllector_app/shared/components/bottom_sheets/mint_sheet_tile.dart';
 import 'package:coinllector_app/shared/enums/mint.dart';
 import 'package:flutter/material.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
@@ -40,7 +40,7 @@ Future<List<MintMark>?> showMintSelectionModal(
                     final isSelected = selectedMints.contains(mint);
                     return Column(
                       children: [
-                        SheetTile(
+                        MintSheetTile(
                           mintMark: mint,
                           isSelected: isSelected,
                           onSelected: (selected) {

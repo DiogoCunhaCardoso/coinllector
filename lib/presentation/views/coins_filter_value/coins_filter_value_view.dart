@@ -1,44 +1,93 @@
+import 'package:coinllector_app/config/themes/sizes.dart';
 import 'package:coinllector_app/domain/entities/coin.dart';
 import 'package:coinllector_app/presentation/providers/coin_provider.dart';
 import 'package:coinllector_app/presentation/providers/user_coin_provider.dart';
 import 'package:coinllector_app/presentation/providers/user_prefs_provider.dart';
 import 'package:coinllector_app/presentation/views/coins_filter_value/widgets/body/coins_filter_value_grid.dart';
 import 'package:coinllector_app/presentation/views/coins_filter_value/widgets/header/header.dart';
+import 'package:coinllector_app/shared/components/bottom_sheets/year_sheet.dart';
 import 'package:coinllector_app/shared/components/confirmation_dialog.dart';
 import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
+import 'package:coinllector_app/shared/enums/years_enum.dart';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
 
-class CoinsFilterView extends StatefulWidget {
-  const CoinsFilterView({super.key, required this.type});
+class ValueFilterView extends StatefulWidget {
+  const ValueFilterView({super.key, required this.type});
 
   final CoinType type;
 
   @override
-  State<CoinsFilterView> createState() => _CoinsFilterViewState();
+  State<ValueFilterView> createState() => _ValueFilterViewState();
 }
 
-class _CoinsFilterViewState extends State<CoinsFilterView> {
+class _ValueFilterViewState extends State<ValueFilterView> {
   final _log = Logger('COINS_BY_TYPE_VIEW');
+
   late Future<List<Coin>> _coinsFuture;
+
+  String? _selectedYear;
 
   @override
   void initState() {
     super.initState();
-    _coinsFuture = _loadCoinsForType();
+
+    _selectedYear = "2004";
+
+    // Load coins with the default year
+    _coinsFuture =
+        widget.type == CoinType.COMMEMORATIVE
+            ? _loadCoinsForTypeWithFilter("2004")
+            : _loadCoinsForType();
   }
 
   Future<List<Coin>> _loadCoinsForType() async {
     final coinProvider = Provider.of<CoinProvider>(context, listen: false);
-
     try {
       _log.info('Loading coins for type: ${widget.type}');
       return await coinProvider.getCoinsByType(widget.type);
-    } catch (e) {
-      _log.severe('Error loading coins for type', e);
+    } catch (e, s) {
+      _log.severe('Error loading coins for type ${widget.type}', e, s);
       rethrow;
+    }
+  }
+
+  Future<List<Coin>> _loadCoinsForTypeWithFilter(String year) async {
+    final coinProvider = Provider.of<CoinProvider>(context, listen: false);
+    try {
+      _log.info('Loading coins for type: ${widget.type}, year: $year');
+      return await coinProvider.getCoinsByType(widget.type, year: year);
+    } catch (e, s) {
+      _log.severe(
+        'Error loading coins for type ${widget.type}, year $year',
+        e,
+        s,
+      );
+      rethrow;
+    }
+  }
+
+  void _openYearSelectionModal() async {
+    try {
+      final CoinYear? selectedYear = await showYearSelectionModal(context);
+
+      if (selectedYear != null) {
+        final yearString = selectedYear.name.substring(1);
+        setState(() {
+          _selectedYear = yearString;
+          _coinsFuture = _loadCoinsForTypeWithFilter(yearString);
+        });
+      }
+    } catch (e, s) {
+      _log.severe('Error opening year selection modal', e, s);
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error opening year list: ${e.toString()}')),
+        );
+      }
     }
   }
 
@@ -52,18 +101,29 @@ class _CoinsFilterViewState extends State<CoinsFilterView> {
       listen: false,
     );
 
-    final isOwned = await userCoinProvider.checkIfUserOwnsCoin(coinId);
+    try {
+      final isOwned = await userCoinProvider.checkIfUserOwnsCoin(coinId);
 
-    if (isOwned && userPrefsProvider.removalConfirmation) {
-      if (!mounted) return;
+      if (isOwned && userPrefsProvider.removalConfirmation) {
+        if (!mounted) return;
+        final confirmed = await ConfirmationDialog.show(context: context);
+        if (!confirmed) return;
+      }
 
-      final confirmed = await ConfirmationDialog.show(context: context);
-
-      if (!confirmed) return;
+      await userCoinProvider.toggleCoinOwnership(coinId);
+    } catch (e, s) {
+      _log.severe('Error toggling coin ownership for coinId $coinId', e, s);
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error updating coin status: ${e.toString()}'),
+          ),
+        );
+      }
     }
-
-    await userCoinProvider.toggleCoinOwnership(coinId);
   }
+
+  // UI ------------------------------------------------------------------------
 
   @override
   Widget build(BuildContext context) {
@@ -75,89 +135,45 @@ class _CoinsFilterViewState extends State<CoinsFilterView> {
         children: [
           Column(
             children: [
-              // Header banner
-              FutureBuilder<List<Coin>>(
-                future: _coinsFuture,
-                builder: (context, snapshot) {
+              // HEADER BANNER
+              FutureBuilder<int>(
+                future: coinProvider.getTypeCoinCount(widget.type),
+                builder: (context, totalSnapshot) {
+                  final totalCoins = totalSnapshot.data ?? 0;
                   return FutureBuilder<int>(
-                    future: coinProvider.getTypeCoinCount(widget.type),
-                    builder: (context, totalSnapshot) {
-                      final totalCoins = totalSnapshot.data ?? 0;
-
-                      return FutureBuilder<int>(
-                        future: userCoinProvider.getOwnedCoinCountForType(
-                          widget.type,
-                        ),
-                        builder: (context, ownedSnapshot) {
-                          final ownedCoins = ownedSnapshot.data ?? 0;
-
-                          return CoinTypeBanner(
-                            type: widget.type,
-                            owned: ownedCoins,
-                            total: totalCoins,
-                          );
-                        },
+                    future: userCoinProvider.getOwnedCoinCountForType(
+                      widget.type,
+                    ),
+                    builder: (context, ownedSnapshot) {
+                      final ownedCoins = ownedSnapshot.data ?? 0;
+                      return CoinTypeBanner(
+                        type: widget.type,
+                        owned: ownedCoins,
+                        total: totalCoins,
+                        isCommemorative: widget.type == CoinType.COMMEMORATIVE,
+                        onCommemorativeButtonPressed: _openYearSelectionModal,
                       );
                     },
                   );
                 },
               ),
 
-              // Main content
+              // GRID (BODY)
               Expanded(
-                child: FutureBuilder<List<Coin>>(
-                  future: _coinsFuture,
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(child: CircularProgressIndicator());
-                    }
-
-                    if (snapshot.hasError) {
-                      _log.severe('Error loading coins', snapshot.error);
-                      return Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Icon(
-                              Icons.error_outline,
-                              size: 48,
-                              color: Colors.red,
-                            ),
-                            const SizedBox(height: 16),
-                            Text('Failed to load coins: ${snapshot.error}'),
-                            const SizedBox(height: 16),
-                            ElevatedButton(
-                              onPressed: () {
-                                setState(() {
-                                  _coinsFuture = _loadCoinsForType();
-                                });
-                              },
-                              child: const Text('Retry'),
-                            ),
-                          ],
-                        ),
-                      );
-                    }
-
-                    return CoinsFilterValueGrid(
-                      coins: snapshot.data!,
-                      ownedCoins: userCoinProvider.ownedCoinIds,
-                      onToggleCoin: (coinId) => _handleToggleOwnership(coinId),
-                    );
-                  },
-                ),
+                child:
+                    widget.type == CoinType.COMMEMORATIVE
+                        ? _buildCommemorativeList(userCoinProvider.ownedCoinIds)
+                        : _buildStandardGrid(userCoinProvider.ownedCoinIds),
               ),
             ],
           ),
 
-          // App bar
+          // APP BAR
           Positioned(
             top: 0,
             left: 0,
             right: 0,
             child: AppBar(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
               leading: IconButton(
                 icon: Icon(Icons.adaptive.arrow_back),
                 onPressed: () => context.pop(),
@@ -166,6 +182,85 @@ class _CoinsFilterViewState extends State<CoinsFilterView> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildStandardGrid(Set<int> ownedCoinIds) {
+    return FutureBuilder<List<Coin>>(
+      future: _coinsFuture,
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          _log.severe(
+            'Error loading coins in _buildStandardGrid',
+            snapshot.error,
+          );
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.error_outline, size: 48, color: Colors.red),
+                const SizedBox(height: 16),
+                Text('Failed to load coins: ${snapshot.error}'),
+              ],
+            ),
+          );
+        }
+
+        return CoinsFilterValueGrid(
+          coins: snapshot.data,
+          ownedCoins: ownedCoinIds,
+          onToggleCoin: _handleToggleOwnership,
+        );
+      },
+    );
+  }
+
+  Widget _buildCommemorativeList(Set<int> ownedCoinIds) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (_selectedYear != null)
+          Padding(
+            padding: const EdgeInsets.only(
+              left: AppSizes.p16,
+              top: AppSizes.p16,
+              bottom: AppSizes.p16,
+            ),
+            child: Text(
+              _selectedYear!,
+              style: textTheme.bodyMedium?.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+        Expanded(
+          child: FutureBuilder<List<Coin>>(
+            future: _coinsFuture,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              }
+
+              if (snapshot.hasError) {
+                return Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: AppSizes.p16),
+                    child: Text('Could not load coins for $_selectedYear.'),
+                  ),
+                );
+              }
+
+              return CoinsFilterValueGrid(
+                coins: snapshot.data,
+                ownedCoins: ownedCoinIds,
+                onToggleCoin: _handleToggleOwnership,
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 }

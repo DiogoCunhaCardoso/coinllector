@@ -3315,7 +3315,7 @@ final List<CoinModel> coinDataCommemoratives = [
   // 2020 -------------------------------------------------------------
   CoinModel(
     type: CoinType.COMMEMORATIVE,
-    image: 'assets/coins/_commemoratives/2020/2020_prince_charles.png',
+    image: 'assets/coins/_commemoratives/2020/2020_01-min.png',
     periodStartDate: '2020-12-01',
     quantity: 500_000,
     description:
@@ -3324,7 +3324,7 @@ final List<CoinModel> coinDataCommemoratives = [
   ),
   CoinModel(
     type: CoinType.COMMEMORATIVE,
-    image: 'assets/coins/_commemoratives/2020/2020_university_coimbra.png',
+    image: 'assets/coins/_commemoratives/2020/2020_02-min.png',
     periodStartDate: '2020-11-01',
     quantity: 360_000,
     description:
@@ -3333,7 +3333,7 @@ final List<CoinModel> coinDataCommemoratives = [
   ),
   CoinModel(
     type: CoinType.COMMEMORATIVE,
-    image: 'assets/coins/_commemoratives/2020/2020_oecd.png',
+    image: 'assets/coins/_commemoratives/2020/2020_03-min.png',
     periodStartDate: '2020-11-01',
     quantity: 1_000_000,
     description:
@@ -3342,7 +3342,7 @@ final List<CoinModel> coinDataCommemoratives = [
   ),
   CoinModel(
     type: CoinType.COMMEMORATIVE,
-    image: 'assets/coins/_commemoratives/2020/2020_cyprus_institute.png',
+    image: 'assets/coins/_commemoratives/2020/2020_04-min.png',
     periodStartDate: '2020-10-01',
     quantity: 412_000,
     description:
@@ -3351,7 +3351,7 @@ final List<CoinModel> coinDataCommemoratives = [
   ),
   CoinModel(
     type: CoinType.COMMEMORATIVE,
-    image: 'assets/coins/_commemoratives/2020/2020_kryziu_kalnas.png',
+    image: 'assets/coins/_commemoratives/2020/2020_05-min.png',
     periodStartDate: '2020-10-01',
     quantity: 500_000,
     description:
@@ -3360,7 +3360,7 @@ final List<CoinModel> coinDataCommemoratives = [
   ),
   CoinModel(
     type: CoinType.COMMEMORATIVE,
-    image: 'assets/coins/_commemoratives/2020/2020_vaino_linna.png',
+    image: 'assets/coins/_commemoratives/2020/2020_06-min.png',
     periodStartDate: '2020-09-01',
     quantity: 800_000,
     description:
@@ -3369,7 +3369,7 @@ final List<CoinModel> coinDataCommemoratives = [
   ),
   CoinModel(
     type: CoinType.COMMEMORATIVE,
-    image: 'assets/coins/_commemoratives/2020/2020_maltese_games.png',
+    image: 'assets/coins/_commemoratives/2020/2020_07-min.png',
     periodStartDate: '2020-10-01',
     quantity: 220_000,
     description:
@@ -3378,7 +3378,7 @@ final List<CoinModel> coinDataCommemoratives = [
   ),
   CoinModel(
     type: CoinType.COMMEMORATIVE,
-    image: 'assets/coins/_commemoratives/2020/2020_willy_brandt.png',
+    image: 'assets/coins/_commemoratives/2020/2020_08-min.png',
     periodStartDate: '2020-10-01',
     quantity: 30_000_000,
     description:
@@ -3387,7 +3387,7 @@ final List<CoinModel> coinDataCommemoratives = [
   ),
   CoinModel(
     type: CoinType.COMMEMORATIVE,
-    image: 'assets/coins/_commemoratives/2020/2020_medical_research.png',
+    image: 'assets/coins/_commemoratives/2020/2020_09-min.png',
     periodStartDate: '2020-10-01',
     quantity: 300_000,
     description:
@@ -3396,7 +3396,7 @@ final List<CoinModel> coinDataCommemoratives = [
   ),
   CoinModel(
     type: CoinType.COMMEMORATIVE,
-    image: 'assets/coins/_commemoratives/2020/2020_raphael.png',
+    image: 'assets/coins/_commemoratives/2020/2020_10-min.png',
     periodStartDate: '2020-10-01',
     quantity: 101_000,
     description:
@@ -3405,7 +3405,7 @@ final List<CoinModel> coinDataCommemoratives = [
   ),
   CoinModel(
     type: CoinType.COMMEMORATIVE,
-    image: 'assets/coins/_commemoratives/2020/2020_tiepolo.png',
+    image: 'assets/coins/_commemoratives/2020/2020_11-min.png',
     periodStartDate: '2020-08-01',
     quantity: 54_000,
     description:
@@ -3414,7 +3414,7 @@ final List<CoinModel> coinDataCommemoratives = [
   ),
   CoinModel(
     type: CoinType.COMMEMORATIVE,
-    image: 'assets/coins/_commemoratives/2020/2020_university_turku.png',
+    image: 'assets/coins/_commemoratives/2020/2020_12-min.png',
     periodStartDate: '2020-06-01',
     quantity: 800_000,
     description:
@@ -3423,7 +3423,7 @@ final List<CoinModel> coinDataCommemoratives = [
   ),
   CoinModel(
     type: CoinType.COMMEMORATIVE,
-    image: 'assets/coins/_commemoratives/2020/2020_women_suffrage.png',
+    image: 'assets/coins/_commemoratives/2020/2020_13-minpng',
     periodStartDate: '2020-06-01',
     quantity: 60_000,
     description:

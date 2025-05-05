@@ -6,19 +6,28 @@ import 'package:coinllector_app/shared/enums/states_enum.dart';
 import 'package:coinllector_app/utils/result.dart';
 import 'package:coinllector_app/utils/use_case.dart';
 
+class CoinsByTypeParams {
+  final CoinType type;
+  final String? year;
+
+  CoinsByTypeParams(this.type, {this.year});
+}
+
 // Business Rules
 /// Gets all Coins by X Type.
 /// If User Preferences is set to not want microstates, then filter them.
-
-class GetCoinsByTypeUseCase implements UseCase<List<Coin>, Params<CoinType>> {
+class GetCoinsByTypeUseCase implements UseCase<List<Coin>, CoinsByTypeParams> {
   final ICoinRepository repository;
   final IUserPreferencesRepository prefsRepository;
 
   GetCoinsByTypeUseCase(this.repository, this.prefsRepository);
 
   @override
-  Future<Result<List<Coin>>> call(Params<CoinType> params) async {
-    final result = await repository.getAllCoinsByType(params.data);
+  Future<Result<List<Coin>>> call(CoinsByTypeParams params) async {
+    final result = await repository.getAllCoinsByType(
+      params.type,
+      startDate: params.year,
+    );
 
     switch (result) {
       case Success(value: final coins):
@@ -33,7 +42,6 @@ class GetCoinsByTypeUseCase implements UseCase<List<Coin>, Params<CoinType>> {
                   .toList();
           return Result.success(filtered);
         }
-
         return result;
 
       case Error(error: final e):

@@ -10,6 +10,7 @@ class CoinsFilterValueGrid extends StatelessWidget {
   final List<Coin>? coins;
   final Set<int> ownedCoins;
   final ValueChanged<int> onToggleCoin;
+  // For commemorative list
 
   const CoinsFilterValueGrid({
     super.key,
@@ -20,22 +21,26 @@ class CoinsFilterValueGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // NULL
     if (coins == null) {
       return const Center(child: CircularProgressIndicator());
     }
 
+    // EMPTY
     if (coins!.isEmpty) {
       return const Center(child: Text('No coins available'));
     }
 
+    // UUI
     return GridView.builder(
+      shrinkWrap: true,
+      padding: const EdgeInsets.all(AppSizes.p16),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         mainAxisExtent: 156,
         crossAxisCount: 2,
         crossAxisSpacing: AppSizes.p8,
         mainAxisSpacing: AppSizes.p8,
       ),
-      padding: const EdgeInsets.all(AppSizes.p16),
       itemCount: coins!.length,
       itemBuilder: (context, index) {
         final coin = coins![index];
@@ -54,6 +59,7 @@ class CoinsFilterValueGrid extends StatelessWidget {
               extra: {'coin': coin, 'coins': coins, 'currentIndex': index},
             );
 
+            // Handle ownership change from showcase screen
             if (result is bool && result != isOwned) {
               onToggleCoin(coin.id!);
             }

@@ -36,13 +36,12 @@ class ProfileHeader extends StatelessWidget {
             clipBehavior: Clip.none,
             children: [
               CircleAvatar(
+                backgroundColor: colorScheme.onPrimary,
                 radius: 48,
                 backgroundImage:
                     pfp != null
                         ? FileImage(pfp!)
-                        : const NetworkImage(
-                              'https://t3.ftcdn.net/jpg/02/36/99/22/360_F_236992283_sNOxCVQeFLd5pdqaKGh8DRGMZy7P4XKm.jpg',
-                            )
+                        : const AssetImage('assets/icon/pfp_default.jpg')
                             as ImageProvider,
               ),
               Positioned(

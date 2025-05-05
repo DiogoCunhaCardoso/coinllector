@@ -33,7 +33,7 @@ class ShowcaseStats extends StatelessWidget {
                 Column(
                   children: [
                     Text(
-                      coin.quantity.toString(),
+                      formatCompactNumber(coin.quantity!),
                       style: TextStyle(color: colorScheme.onSurfaceVariant),
                     ),
                     SizedBox(height: 4),

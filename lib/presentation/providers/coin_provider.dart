@@ -99,25 +99,39 @@ class CoinProvider extends ChangeNotifier {
   // Coin Fetching
   // ---------------------------------------------------------------------------
 
-  Future<List<Coin>> getCoinsByType(CoinType type) async {
+  Future<List<Coin>> getCoinsByType(CoinType type, {String? year}) async {
     if (_coinsByType.containsKey(type)) {
       return _coinsByType[type]!;
     }
 
     try {
-      final result = await _getCoinsByTypeUseCase(Params(type));
+      final result = await _getCoinsByTypeUseCase(
+        CoinsByTypeParams(type, year: year),
+      );
+
       switch (result) {
         case Success(value: final coins):
-          _coinsByType[type] = coins;
-          _log.info('Loaded ${coins.length} coins for type: ${type.name}');
+          _log.info(
+            'Loaded ${coins.length} coins for type: ${type.name}'
+            '${year != null ? ' from year $year' : ''}',
+          );
           notifyListeners();
           return coins;
+
         case Error(error: final e):
-          _log.severe('Failed to load coins for type ${type.name}', e);
+          _log.severe(
+            'Failed to load coins for type ${type.name}'
+            '${year != null ? ' year $year' : ''}',
+            e,
+          );
           throw e;
       }
     } catch (e) {
-      _log.severe('Unexpected error loading coins for type: ${type.name}', e);
+      _log.severe(
+        'Unexpected error loading coins for type: ${type.name}'
+        '${year != null ? ' year $year' : ''}',
+        e,
+      );
       rethrow;
     }
   }

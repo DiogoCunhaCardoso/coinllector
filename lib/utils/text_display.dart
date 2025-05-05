@@ -46,3 +46,7 @@ String convertDateToYear(String dateStr) {
     return 'Invalid date format';
   }
 }
+
+String formatCompactNumber(num number) {
+  return NumberFormat.compact().format(number);
+}

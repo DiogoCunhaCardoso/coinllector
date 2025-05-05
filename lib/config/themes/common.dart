@@ -7,14 +7,13 @@ class CustomWidgetStyles {
       centerTitle: true,
       backgroundColor: Colors.transparent,
       elevation: 0,
-      iconTheme: IconThemeData(
-        color: colorScheme.onSurface, //change your color here
-      ),
+      iconTheme: IconThemeData(color: colorScheme.onSurface),
       titleTextStyle: TextStyle(
         color: colorScheme.onSurface,
         fontSize: 20,
         fontWeight: FontWeight.bold,
       ),
+      scrolledUnderElevation: 0,
     );
   }
 

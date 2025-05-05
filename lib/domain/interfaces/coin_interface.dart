@@ -7,8 +7,11 @@ import 'package:coinllector_app/utils/result.dart';
 abstract class ICoinRepository {
   // GET --------------------------------------------------------------------
 
-  /// Retrieves all coins of a specific type.
-  Future<Result<List<Coin>>> getAllCoinsByType(CoinType type);
+  /// Retrieves all coins of a specific type. (has a filter by year)
+  Future<Result<List<Coin>>> getAllCoinsByType(
+    CoinType type, {
+    String? startDate,
+  });
 
   /// Retrieves all coins from a specific country.
   Future<Result<List<Coin>>> getAllCoinsByCountry(CountryNames country);

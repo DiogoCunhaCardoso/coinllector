@@ -17,10 +17,21 @@ class CoinRepositoryImpl implements ICoinRepository {
   // GET ---------------------------------------------------------------------------
 
   @override
-  Future<Result<List<Coin>>> getAllCoinsByType(CoinType type) async {
+  Future<Result<List<Coin>>> getAllCoinsByType(
+    CoinType type, {
+    String? startDate,
+  }) async {
     try {
-      final data = await localDataSource.getAllCoinsByType(type);
-      _log.info('Found ${data.length} coins matching type: ${type.name}');
+      final data = await localDataSource.getAllCoinsByType(
+        type,
+        startDate: startDate,
+      );
+
+      _log.info(
+        'Found ${data.length} coins matching type: ${type.name}'
+        '${startDate != null ? ' from year $startDate' : ''}',
+      );
+
       final coins = data.map((el) => CoinMapper.toEntity(el)).toList();
       return Result.success(coins);
     } catch (e, stackTrace) {

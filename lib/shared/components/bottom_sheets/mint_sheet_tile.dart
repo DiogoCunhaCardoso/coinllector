@@ -3,8 +3,8 @@ import 'package:coinllector_app/shared/components/gradient_checkbox.dart';
 import 'package:coinllector_app/shared/enums/mint.dart';
 import 'package:flutter/material.dart';
 
-class SheetTile extends StatelessWidget {
-  const SheetTile({
+class MintSheetTile extends StatelessWidget {
+  const MintSheetTile({
     super.key,
     required this.mintMark,
     required this.isSelected,
