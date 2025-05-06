@@ -4,6 +4,8 @@ import 'package:coinllector_app/presentation/providers/coin_provider.dart';
 import 'package:coinllector_app/presentation/providers/country_provider.dart';
 import 'package:coinllector_app/presentation/providers/user_coin_provider.dart';
 import 'package:coinllector_app/presentation/providers/user_prefs_provider.dart';
+import 'package:coinllector_app/presentation/views/settings/widgets/microstates_info_dialog.dart';
+import 'package:coinllector_app/presentation/views/settings/widgets/mint_info_dialog.dart';
 import 'package:coinllector_app/presentation/views/settings/widgets/settings_card.dart';
 import 'package:coinllector_app/shared/components/custom_app_bar.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
@@ -38,6 +40,7 @@ class SettingsView extends StatelessWidget {
             SettingsCard(
               title: "Coin Mints",
               hasSwitch: true,
+              info: () => showMintInfoDialog(context),
               value: prefs.coinMints,
               onChanged: (value) {
                 prefs.updateCoinMints(value);
@@ -47,6 +50,7 @@ class SettingsView extends StatelessWidget {
             SettingsCard(
               title: "Show Microstates",
               hasSwitch: true,
+              info: () => showMicrostatesInfoDialog(context),
               value: prefs.microStates,
               onChanged: (value) {
                 prefs.updateMicroStates(value);
@@ -75,15 +79,15 @@ class SettingsView extends StatelessWidget {
               },
             ),
             const SizedBox(height: AppSizes.p8),
-            SettingsCard(title: "Language", hasSwitch: false),
-            const SizedBox(height: AppSizes.p8),
+            /*  SettingsCard(title: "Language", hasSwitch: false),
+            const SizedBox(height: AppSizes.p8), */
             SettingsCard(
               title: "About",
               hasSwitch: false,
               onTap: () => context.go(AppRoutes.settingsAbout()),
             ),
-            const SizedBox(height: AppSizes.p8),
-            SettingsCard(title: "Terms of Service", hasSwitch: false),
+            /* const SizedBox(height: AppSizes.p8),
+            SettingsCard(title: "Terms of Service", hasSwitch: false), */
           ],
         ),
       ),

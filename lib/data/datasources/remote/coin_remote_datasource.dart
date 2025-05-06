@@ -10,7 +10,7 @@ class CoinRemoteDataSource {
 
   CoinRemoteDataSource(this.db);
 
-  // GET (with optional filter) ------------------------------------------------------
+  // GET (with optional filter to filter by year) -----------------------------------------
 
   Future<List<CoinModel>> getAllCoinsByType(
     CoinType type, {
@@ -46,12 +46,25 @@ class CoinRemoteDataSource {
     return data.map((el) => CoinMapper.fromMap(el)).toList();
   }
 
-  // COUNT -------------------------------------------------------------------------
+  // COUNT (with optional filter to remove certain countries (microstates)) ----------------
 
-  Future<int> getCoinCount() async {
-    final result = await db.rawQuery(
-      'SELECT COUNT(*) FROM ${DatabaseTables.coins}',
-    );
+  Future<int> getCoinCount({List<CountryNames>? excludeCountries}) async {
+    String query = 'SELECT COUNT(*) FROM ${DatabaseTables.coins}';
+    List<Object?>? whereArgs;
+
+    // Add WHERE clause to exclude specific countries if needed
+    if (excludeCountries != null && excludeCountries.isNotEmpty) {
+      // enum -> string
+      final countryNames = excludeCountries.map((c) => c.name).toList();
+
+      // Placehold string for SQL query (?, ?, ?, etc.)
+      final placeholders = List.filled(countryNames.length, '?').join(', ');
+
+      query += ' WHERE ${DatabaseTables.country} NOT IN ($placeholders)';
+      whereArgs = countryNames;
+    }
+
+    final result = await db.rawQuery(query, whereArgs);
     return Sqflite.firstIntValue(result) ?? 0;
   }
 
@@ -75,7 +88,7 @@ class CoinRemoteDataSource {
     return Sqflite.firstIntValue(result) ?? 0;
   }
 
-  // ON INIT ------------------------------------------------------------------------
+  // ON INIT ------------------------------------------------------------------------------
 
   Future<void> insertInitialCoins(List<CoinModel> coins) async {
     for (var coin in coins) {

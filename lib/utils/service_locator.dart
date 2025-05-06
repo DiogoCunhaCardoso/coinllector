@@ -106,7 +106,10 @@ Future setupDependencies() async {
   );
 
   serviceLocator.registerLazySingleton<GetTypeCoinCountUseCase>(
-    () => GetTypeCoinCountUseCase(serviceLocator<ICoinRepository>()),
+    () => GetTypeCoinCountUseCase(
+      serviceLocator<ICoinRepository>(),
+      serviceLocator<IUserPreferencesRepository>(),
+    ),
   );
 
   serviceLocator.registerLazySingleton<GetCountryCoinCountUseCase>(
@@ -174,7 +177,10 @@ Future setupDependencies() async {
   );
 
   serviceLocator.registerLazySingleton<GetOwnedCoinCountUseCase>(
-    () => GetOwnedCoinCountUseCase(serviceLocator<IUserCoinRepository>()),
+    () => GetOwnedCoinCountUseCase(
+      serviceLocator<IUserCoinRepository>(),
+      serviceLocator<IUserPreferencesRepository>(),
+    ),
   );
 
   serviceLocator.registerLazySingleton<CheckIfUserOwnsCoinUseCase>(
@@ -196,7 +202,10 @@ Future setupDependencies() async {
   );
 
   serviceLocator.registerLazySingleton<GetUserCoinCountByTypeUseCase>(
-    () => GetUserCoinCountByTypeUseCase(serviceLocator<IUserCoinRepository>()),
+    () => GetUserCoinCountByTypeUseCase(
+      serviceLocator<IUserCoinRepository>(),
+      serviceLocator<IUserPreferencesRepository>(),
+    ),
   );
 
   serviceLocator.registerLazySingleton(
@@ -289,7 +298,7 @@ Future setupDependencies() async {
       removeMintMarkUseCase: serviceLocator<RemoveMintMarkUseCase>(),
       getMintMarksForCoinUseCase: serviceLocator<GetMintMarksForCoinUseCase>(),
       userCoinProvider: serviceLocator<UserCoinProvider>(),
-    ), // TODO: maybe init after if i need something
+    ),
   );
 
   // Country Provider

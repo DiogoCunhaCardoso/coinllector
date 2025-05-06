@@ -56,9 +56,13 @@ class CoinRepositoryImpl implements ICoinRepository {
   // COUNT -------------------------------------------------------------------------
 
   @override
-  Future<Result<int>> getTotalCoinCount() async {
+  Future<Result<int>> getTotalCoinCount({
+    List<CountryNames>? excludeCountries,
+  }) async {
     try {
-      final count = await localDataSource.getCoinCount();
+      final count = await localDataSource.getCoinCount(
+        excludeCountries: excludeCountries,
+      );
       return Result.success(count);
     } catch (e, stackTrace) {
       _log.severe('Error loading getTotalCoinCount', e, stackTrace);

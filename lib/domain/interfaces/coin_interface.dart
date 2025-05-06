@@ -19,7 +19,7 @@ abstract class ICoinRepository {
   // COUNT --------------------------------------------------------------------
 
   /// Returns the total count of coins in the repository.
-  Future<Result<int>> getTotalCoinCount();
+  Future<Result<int>> getTotalCoinCount({List<CountryNames>? excludeCountries});
 
   /// Gets the total number of coins for a specific type
   Future<Result<int>> getTypeTotalCoinCount(CoinType data);

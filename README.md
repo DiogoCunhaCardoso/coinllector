@@ -1,13 +1,15 @@
 # Coinllector App
 
-A Euro coin collection manager with statistics and more.
+A Euro coin collection manager app - Collect your coins!.
 
 ## ✨ Features
 
 - **Collection Tracking** - Mark owned coins
 - **Advanced Statistics** - View percentages by country or coin type
-- **Premium Grading** - (Paid) Coin quality assessment
+- **Coin Grading** - Coin quality assessment
 - **Settings** - Personalize app (mints, microstates & more)
+- **Overall Features** - Camera & Gallery Photos. Filtering & Sorting.
+- **Tech** - Flutter + Sqflite + GetIt + Provider + GoRouter & many others.
 
 ## 🏗️ Architecture
 

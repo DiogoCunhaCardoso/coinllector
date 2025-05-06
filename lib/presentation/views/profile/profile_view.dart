@@ -41,7 +41,10 @@ class _ProfileViewState extends State<ProfileView> {
 
       // Save to provider
       if (mounted) {
-        final userPrefsProvider = Provider.of<UserPreferencesProvider>(context);
+        final userPrefsProvider = Provider.of<UserPreferencesProvider>(
+          context,
+          listen: false,
+        );
         await userPrefsProvider.updateProfileImage(pickedImage.path);
       }
     } on PlatformException catch (e) {
@@ -56,7 +59,10 @@ class _ProfileViewState extends State<ProfileView> {
 
     final coinProvider = Provider.of<CoinProvider>(context);
     final userCoinProvider = Provider.of<UserCoinProvider>(context);
-    final userPrefsProvider = Provider.of<UserPreferencesProvider>(context);
+    final userPrefsProvider = Provider.of<UserPreferencesProvider>(
+      context,
+      listen: false,
+    );
 
     final topStats = userCoinProvider.topCountryStats;
 

@@ -143,9 +143,13 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
 
   /// Returns the total count of coins the user owns.
   @override
-  Future<Result<int>> getOwnedCoinsCount() async {
+  Future<Result<int>> getOwnedCoinsCount({
+    List<CountryNames>? excludeCountries,
+  }) async {
     try {
-      final count = await dataSource.getOwnedCoinCount();
+      final count = await dataSource.getOwnedCoinCount(
+        excludeCountries: excludeCountries,
+      );
       return Result.success(count);
     } catch (e, stackTrace) {
       _log.severe('Error Getting Owned Coin Count', e, stackTrace);
@@ -211,9 +215,15 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
   }
 
   @override
-  Future<Result<int>> getUserCoinCountByType(CoinType type) async {
+  Future<Result<int>> getUserCoinCountByType(
+    CoinType type, {
+    List<CountryNames>? excludeCountries,
+  }) async {
     try {
-      final count = await dataSource.getOwnedCoinCountByType(type);
+      final count = await dataSource.getOwnedCoinCountByType(
+        type,
+        excludeCountries: excludeCountries,
+      );
       return Result.success(count);
     } catch (e, stackTrace) {
       _log.severe('Error Getting User Coin Count By Type', e, stackTrace);

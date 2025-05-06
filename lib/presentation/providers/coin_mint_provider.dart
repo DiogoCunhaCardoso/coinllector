@@ -1,4 +1,4 @@
-import 'package:coinllector_app/data/models/coin_mint_model.dart';
+import 'package:coinllector_app/domain/entities/coin_mint.dart';
 import 'package:coinllector_app/domain/usecases/coin_mint/add_mint_mark.dart';
 import 'package:coinllector_app/domain/usecases/coin_mint/get_mint_marks_for_coin.dart';
 import 'package:coinllector_app/domain/usecases/coin_mint/remove_mint_mark.dart';
@@ -75,7 +75,7 @@ class CoinMintProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<List<CoinMintModel>> getMintMarksForCoin(int coinId) async {
+  Future<List<CoinMint>> getMintMarksForCoin(int coinId) async {
     final result = await _getMintMarksForCoinUseCase(Params(coinId));
 
     switch (result) {

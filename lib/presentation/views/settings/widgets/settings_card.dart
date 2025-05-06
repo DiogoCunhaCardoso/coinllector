@@ -7,6 +7,7 @@ class SettingsCard extends StatelessWidget {
   final bool? value;
   final ValueChanged<bool>? onChanged;
   final VoidCallback? onTap;
+  final VoidCallback? info;
 
   const SettingsCard({
     super.key,
@@ -15,6 +16,7 @@ class SettingsCard extends StatelessWidget {
     this.value,
     this.onChanged,
     this.onTap,
+    this.info,
   });
 
   @override
@@ -33,12 +35,28 @@ class SettingsCard extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  title,
-                  style: textTheme.bodyMedium!.copyWith(
-                    fontWeight: FontWeight.w600,
-                  ),
+                Row(
+                  children: [
+                    Text(
+                      title,
+                      style: textTheme.bodyMedium!.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    if (info != null)
+                      IconButton(
+                        icon: Icon(
+                          Icons.info_outline,
+                          size: 20,
+                          color: colorScheme.primary,
+                        ),
+                        onPressed: info,
+                        tooltip: 'More info',
+                        splashRadius: 20,
+                      ),
+                  ],
                 ),
+
                 if (hasSwitch)
                   Transform.scale(
                     scale: 0.9,

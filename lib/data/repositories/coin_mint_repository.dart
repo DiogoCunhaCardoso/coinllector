@@ -1,5 +1,6 @@
 import 'package:coinllector_app/data/datasources/remote/coin_mint_remote_datasource.dart';
-import 'package:coinllector_app/data/models/coin_mint_model.dart';
+import 'package:coinllector_app/data/mappers/coin_mint_mapper.dart';
+import 'package:coinllector_app/domain/entities/coin_mint.dart';
 import 'package:coinllector_app/domain/interfaces/coin_mint_interface.dart';
 import 'package:coinllector_app/shared/enums/mint.dart';
 import 'package:coinllector_app/utils/result.dart';
@@ -38,12 +39,14 @@ class CoinMintRepositoryImpl implements ICoinMintRepository {
   }
 
   @override
-  //TODO change to CoinMint not CoinMintModel. Should use a mapper
-  Future<Result<List<CoinMintModel>>> getMintMarksForCoin(int coinId) async {
+  Future<Result<List<CoinMint>>> getMintMarksForCoin(int coinId) async {
     try {
       final mints = await dataSource.getMintMarksForCoin(coinId);
       _log.info('Found ${mints.length} mint marks for coin $coinId');
-      return Result.success(mints);
+
+      final mintMarks = mints.map((el) => CoinMintMapper.toEntity(el)).toList();
+
+      return Result.success(mintMarks);
     } catch (e, stackTrace) {
       _log.severe('Error getting mint marks', e, stackTrace);
       return Result.error(Exception('Failed to get mint marks'));

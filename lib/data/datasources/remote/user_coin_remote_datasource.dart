@@ -15,6 +15,8 @@ class UserCoinRemoteDataSource {
     });
   }
 
+  //
+
   Future<void> removeCoin(int coinId) async {
     await db.delete(
       DatabaseTables.userCoins,
@@ -22,6 +24,8 @@ class UserCoinRemoteDataSource {
       whereArgs: [coinId],
     );
   }
+
+  //
 
   Future<String?> getCoinQuality(int coinId) async {
     final result = await db.query(
@@ -36,6 +40,8 @@ class UserCoinRemoteDataSource {
     return result.first[DatabaseTables.quality] as String?;
   }
 
+  //
+
   Future<void> updateCoinQuality(int coinId, CoinQuality? quality) async {
     await db.update(
       DatabaseTables.userCoins,
@@ -44,6 +50,8 @@ class UserCoinRemoteDataSource {
       whereArgs: [coinId],
     );
   }
+
+  //
 
   Future<bool> userOwnsCoin(int coinId) async {
     final result = await db.query(
@@ -54,10 +62,14 @@ class UserCoinRemoteDataSource {
     return result.isNotEmpty;
   }
 
+  //
+
   Future<List<int>> getOwnedCoins() async {
     final result = await db.query(DatabaseTables.userCoins);
     return result.map((row) => row[DatabaseTables.userCoinId] as int).toList();
   }
+
+  //
 
   Future<List<Map<String, Object?>>> getCountGroupedByType() async {
     return await db.rawQuery('''
@@ -68,7 +80,9 @@ class UserCoinRemoteDataSource {
   ''');
   }
 
-  //REMOVE THIS AFTER //TODO
+  //
+
+  //REMOVE THIS AFTER //TODO (MAYBE?)
   Future<List<Map<String, Object?>>> getCountGroupedByCountry() async {
     return await db.rawQuery('''
       SELECT c.${DatabaseTables.country}, COUNT(*) as count 
@@ -80,12 +94,33 @@ class UserCoinRemoteDataSource {
 
   // COUNT -----------------------------------------------------------------------------------------------
 
-  Future<int> getOwnedCoinCount() async {
-    final result = await db.rawQuery(
-      'SELECT COUNT(*) FROM ${DatabaseTables.userCoins}',
-    );
-    return Sqflite.firstIntValue(result) ?? 0;
+  Future<int> getOwnedCoinCount({List<CountryNames>? excludeCountries}) async {
+    if (excludeCountries == null || excludeCountries.isEmpty) {
+      //
+      // Original query
+      final result = await db.rawQuery(
+        'SELECT COUNT(*) FROM ${DatabaseTables.userCoins}',
+      );
+      return Sqflite.firstIntValue(result) ?? 0;
+    } else {
+      //
+      // Query with exclusions
+      final countryNames = excludeCountries.map((c) => c.name).toList();
+      final placeholders = List.filled(countryNames.length, '?').join(', ');
+
+      final result = await db.rawQuery('''
+        SELECT COUNT(*) as count
+        FROM ${DatabaseTables.userCoins} uc
+        JOIN ${DatabaseTables.coins} c 
+          ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.coinId}
+        WHERE c.${DatabaseTables.country} NOT IN ($placeholders)
+      ''', countryNames);
+
+      return Sqflite.firstIntValue(result) ?? 0;
+    }
   }
+
+  //
 
   Future<int> getOwnedCoinCountByCountry(CountryNames country) async {
     final result = await db.rawQuery(
@@ -102,17 +137,43 @@ class UserCoinRemoteDataSource {
     return Sqflite.firstIntValue(result) ?? 0;
   }
 
-  Future<int> getOwnedCoinCountByType(CoinType type) async {
-    final result = await db.rawQuery(
-      '''
-    SELECT COUNT(*) as count
-    FROM ${DatabaseTables.userCoins} uc
-    JOIN ${DatabaseTables.coins} c
-      ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.coinId}
-    WHERE c.${DatabaseTables.type} = ?
-  ''',
-      [type.name],
-    );
-    return Sqflite.firstIntValue(result) ?? 0;
+  //
+
+  Future<int> getOwnedCoinCountByType(
+    CoinType type, {
+    List<CountryNames>? excludeCountries,
+  }) async {
+    if (excludeCountries == null || excludeCountries.isEmpty) {
+      //
+      // Original query
+      final result = await db.rawQuery(
+        '''
+        SELECT COUNT(*) as count
+        FROM ${DatabaseTables.userCoins} uc
+        JOIN ${DatabaseTables.coins} c
+          ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.coinId}
+        WHERE c.${DatabaseTables.type} = ?
+        ''',
+        [type.name],
+      );
+      return Sqflite.firstIntValue(result) ?? 0;
+    } else {
+      //
+      // Query with exclusions
+      final countryNames = excludeCountries.map((c) => c.name).toList();
+      final placeholders = List.filled(countryNames.length, '?').join(', ');
+
+      final queryArgs = [type.name, ...countryNames];
+
+      final result = await db.rawQuery('''
+        SELECT COUNT(*) as count
+        FROM ${DatabaseTables.userCoins} uc
+        JOIN ${DatabaseTables.coins} c
+          ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.coinId}
+        WHERE c.${DatabaseTables.type} = ?
+        AND c.${DatabaseTables.country} NOT IN ($placeholders)
+        ''', queryArgs);
+      return Sqflite.firstIntValue(result) ?? 0;
+    }
   }
 }

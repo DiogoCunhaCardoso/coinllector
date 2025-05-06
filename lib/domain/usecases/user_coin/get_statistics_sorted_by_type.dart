@@ -72,5 +72,5 @@ class GetStatisticsSortedByTypeUseCase
   }
 }
 
-// I know according to clean arquitecture I should retrun a domain model for this and then convert that domain model into the presnettaion model.
-// But I just did the presenttaion directly here. This I already did this with another domain models, so I already understand it.
+// I know according to clean arquitecture I should retrun a domain model for this and then convert that domain model into the presentation model.
+// But I just did the presentation directly here. This I already did this with another domain models, so I already understand it.

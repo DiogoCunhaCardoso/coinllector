@@ -31,19 +31,25 @@ abstract class IUserCoinRepository {
   /// Retrieves a list of all the coins (IDs) the user owns.
   Future<Result<List<int>>> getOwnedCoins();
 
+  // COUNT QUERIES ------------------------------------------------------------
+
   /// Returns the total count of coins the user owns.
-  Future<Result<int>> getOwnedCoinsCount();
-  // FILTERED STATS -----------------------------------------------------------
+  Future<Result<int>> getOwnedCoinsCount({
+    List<CountryNames>? excludeCountries,
+  });
+
+  /// Returns the total count of coins the user owns of a specifed country.
+  Future<Result<int>> getUserCoinCountByCountry(CountryNames country);
+
+  /// Returns the total count of coins the user owns of a specifed type.
+  Future<Result<int>> getUserCoinCountByType(
+    CoinType type, {
+    List<CountryNames>? excludeCountries,
+  });
 
   /// Retrieves the count of coins the user owns, grouped by type.
   Future<Result<Map<CoinType, int>>> getUserCoinsByType();
 
   /// Retrieves the count of coins the user owns, grouped by country.
   Future<Result<Map<CountryNames, int>>> getUserCoinsByCountry();
-
-  /// Returns the total count of coins the user owns of a specifed country.
-  Future<Result<int>> getUserCoinCountByCountry(CountryNames country);
-
-  /// Returns the total count of coins the user owns of a specifed type.
-  Future<Result<int>> getUserCoinCountByType(CoinType type);
 }

@@ -1,6 +1,7 @@
 import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 
+/// Domain Layer
 class Coin {
   final int? id;
   final CoinType type;
