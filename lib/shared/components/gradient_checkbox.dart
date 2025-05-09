@@ -41,11 +41,7 @@ class GradientCheckbox extends StatelessWidget {
         child:
             value
                 ? const Center(
-                  child: Icon(
-                    Icons.check,
-                    size: 18, // Adjust based on your checkbox size
-                    color: Colors.white,
-                  ),
+                  child: Icon(Icons.check, size: 18, color: Colors.white),
                 )
                 : null,
       ),

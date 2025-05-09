@@ -16,13 +16,16 @@ abstract class ICoinRepository {
   /// Retrieves all coins from a specific country.
   Future<Result<List<Coin>>> getAllCoinsByCountry(CountryNames country);
 
+  // Gets a coin by ID
+  Future<Result<Coin?>> getCoinById(int id);
+
   // COUNT --------------------------------------------------------------------
 
   /// Returns the total count of coins in the repository.
   Future<Result<int>> getTotalCoinCount({List<CountryNames>? excludeCountries});
 
-  /// Gets the total number of coins for a specific type
-  Future<Result<int>> getTypeTotalCoinCount(CoinType data);
+  /// Gets the total number of coins for a specific type (has a filter by year)
+  Future<Result<int>> getTypeTotalCoinCount(CoinType type, {String? startDate});
 
   /// Gets the total number of coins for a specific country
   Future<Result<int>> getCountryTotalCoinCount(CountryNames country);

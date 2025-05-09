@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class ShowcaseQualitySelector extends StatelessWidget {
   final int selectedQualityIndex;
   final Function(int) onQualitySelected;
-  final bool isDisabled; // New parameter to track disabled state
+  final bool isDisabled;
 
   const ShowcaseQualitySelector({
     super.key,
@@ -18,7 +18,8 @@ class ShowcaseQualitySelector extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
-    return Opacity(
+    return AnimatedOpacity(
+      duration: Durations.medium1,
       opacity: isDisabled ? 0.6 : 1.0,
       child: Container(
         height: 48,
@@ -37,10 +38,23 @@ class ShowcaseQualitySelector extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.only(left: index == 0 ? 0 : AppSizes.p8),
                 child: TabButton(
+                  isUnselectedOnShowcase: true,
                   text: ["Poor", "Average", "Good"][index],
                   isSelected: selectedQualityIndex == index,
-                  onPressed:
-                      isDisabled ? () {} : () => onQualitySelected(index),
+                  onPressed: () {
+                    if (isDisabled) {
+                      ScaffoldMessenger.of(context).clearSnackBars();
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text(
+                            'Please add the coin first to set its quality.',
+                          ),
+                        ),
+                      );
+                    } else {
+                      onQualitySelected(index);
+                    }
+                  },
                 ),
               ),
             ),

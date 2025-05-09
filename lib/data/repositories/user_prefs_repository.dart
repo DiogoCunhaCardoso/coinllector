@@ -60,4 +60,15 @@ class UserPreferencesRepositoryImpl implements IUserPreferencesRepository {
   Future<void> saveUserProfileImage(String imagePath) async {
     await _sharedPreferences.setString("user_profile_image", imagePath);
   }
+
+  // Username
+  @override
+  Future<String?> getUsername() async {
+    return _sharedPreferences.getString("username");
+  }
+
+  @override
+  Future<void> setUsername(String value) async {
+    await _sharedPreferences.setString("username", value);
+  }
 }

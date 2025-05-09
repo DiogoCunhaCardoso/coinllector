@@ -71,18 +71,34 @@ class UserCoinRemoteDataSource {
 
   //
 
-  Future<List<Map<String, Object?>>> getCountGroupedByType() async {
-    return await db.rawQuery('''
-    SELECT c.${DatabaseTables.type}, COUNT(*) as count 
-    FROM ${DatabaseTables.userCoins} uc
-    JOIN ${DatabaseTables.coins} c ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.coinId}
-    GROUP BY c.${DatabaseTables.type}
-  ''');
+  Future<List<Map<String, Object?>>> getCountGroupedByType({
+    List<CountryNames>? excludeCountries,
+  }) async {
+    if (excludeCountries == null || excludeCountries.isEmpty) {
+      // Original query without exclusions
+      return await db.rawQuery('''
+        SELECT c.${DatabaseTables.type}, COUNT(*) as count 
+        FROM ${DatabaseTables.userCoins} uc
+        JOIN ${DatabaseTables.coins} c ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.coinId}
+        GROUP BY c.${DatabaseTables.type}
+      ''');
+    } else {
+      // Query with country exclusions
+      final countryNames = excludeCountries.map((c) => c.name).toList();
+      final placeholders = List.filled(countryNames.length, '?').join(', ');
+
+      return await db.rawQuery('''
+        SELECT c.${DatabaseTables.type}, COUNT(*) as count 
+        FROM ${DatabaseTables.userCoins} uc
+        JOIN ${DatabaseTables.coins} c ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.coinId}
+        WHERE c.${DatabaseTables.country} NOT IN ($placeholders)
+        GROUP BY c.${DatabaseTables.type}
+      ''', countryNames);
+    }
   }
 
   //
 
-  //REMOVE THIS AFTER //TODO (MAYBE?)
   Future<List<Map<String, Object?>>> getCountGroupedByCountry() async {
     return await db.rawQuery('''
       SELECT c.${DatabaseTables.country}, COUNT(*) as count 
@@ -142,38 +158,38 @@ class UserCoinRemoteDataSource {
   Future<int> getOwnedCoinCountByType(
     CoinType type, {
     List<CountryNames>? excludeCountries,
+    String? startDate,
   }) async {
-    if (excludeCountries == null || excludeCountries.isEmpty) {
-      //
-      // Original query
-      final result = await db.rawQuery(
-        '''
-        SELECT COUNT(*) as count
-        FROM ${DatabaseTables.userCoins} uc
-        JOIN ${DatabaseTables.coins} c
-          ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.coinId}
-        WHERE c.${DatabaseTables.type} = ?
-        ''',
-        [type.name],
-      );
-      return Sqflite.firstIntValue(result) ?? 0;
-    } else {
-      //
-      // Query with exclusions
-      final countryNames = excludeCountries.map((c) => c.name).toList();
-      final placeholders = List.filled(countryNames.length, '?').join(', ');
+    final List<String> whereClauses = ['c.${DatabaseTables.type} = ?'];
+    final List<dynamic> queryArgs = [type.name];
 
-      final queryArgs = [type.name, ...countryNames];
-
-      final result = await db.rawQuery('''
-        SELECT COUNT(*) as count
-        FROM ${DatabaseTables.userCoins} uc
-        JOIN ${DatabaseTables.coins} c
-          ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.coinId}
-        WHERE c.${DatabaseTables.type} = ?
-        AND c.${DatabaseTables.country} NOT IN ($placeholders)
-        ''', queryArgs);
-      return Sqflite.firstIntValue(result) ?? 0;
+    // Filter by year if provided
+    if (startDate != null) {
+      whereClauses.add('c.${DatabaseTables.periodStartDate} LIKE ?');
+      queryArgs.add('$startDate%');
     }
+
+    // Country exclusions
+    if (excludeCountries != null && excludeCountries.isNotEmpty) {
+      final countryPlaceholders = List.filled(
+        excludeCountries.length,
+        '?',
+      ).join(', ');
+      whereClauses.add(
+        'c.${DatabaseTables.country} NOT IN ($countryPlaceholders)',
+      );
+      queryArgs.addAll(excludeCountries.map((c) => c.name));
+    }
+
+    final query = '''
+    SELECT COUNT(*) as count
+    FROM ${DatabaseTables.userCoins} uc
+    JOIN ${DatabaseTables.coins} c
+      ON uc.${DatabaseTables.userCoinId} = c.${DatabaseTables.coinId}
+    WHERE ${whereClauses.join(' AND ')}
+  ''';
+
+    final result = await db.rawQuery(query, queryArgs);
+    return Sqflite.firstIntValue(result) ?? 0;
   }
 }

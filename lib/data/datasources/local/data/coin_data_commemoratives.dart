@@ -660,7 +660,7 @@ final List<CoinModel> coinDataCommemoratives = [
     periodStartDate: '2009-01-01',
     quantity: 5_313_500,
     description:
-        'Netherland Version. 10th anniversary of Economic and Monetary Union. The coin shows a stick figure which merges into the € symbol. It seeks to convey the idea of the single currency and, by extension, Economic and Monetary Union (EMU) being the latest step in Europe’s long history of trade and economic integration. The coin is issued by each euro area country and shows the name of the country as well as the legend ‘EMU 1999-2009’ in the respective language(s). The design was chosen out of a shortlist of five by members of the public across the European Union voting online. It was created by George Stamatopoulos, a sculptor from the Minting department at the Bank of Greece. The coin’s outer ring bears the 12 stars of the European Union.',
+        'Netherlands Version. 10th anniversary of Economic and Monetary Union. The coin shows a stick figure which merges into the € symbol. It seeks to convey the idea of the single currency and, by extension, Economic and Monetary Union (EMU) being the latest step in Europe’s long history of trade and economic integration. The coin is issued by each euro area country and shows the name of the country as well as the legend ‘EMU 1999-2009’ in the respective language(s). The design was chosen out of a shortlist of five by members of the public across the European Union voting online. It was created by George Stamatopoulos, a sculptor from the Minting department at the Bank of Greece. The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.EU,
   ),
   CoinModel(
@@ -3423,7 +3423,7 @@ final List<CoinModel> coinDataCommemoratives = [
   ),
   CoinModel(
     type: CoinType.COMMEMORATIVE,
-    image: 'assets/coins/_commemoratives/2020/2020_13-minpng',
+    image: 'assets/coins/_commemoratives/2020/2020_13-min.png',
     periodStartDate: '2020-06-01',
     quantity: 60_000,
     description:
@@ -4124,7 +4124,7 @@ final List<CoinModel> coinDataCommemoratives = [
     periodStartDate: '2022-07-01',
     quantity: 300_000,
     description:
-        'Lithuania ersion. 35 years of the Erasmus programme. The design is a mix of two major elements of the Erasmus programme: the original intellectual inspiration, Erasmus himself, and the allegory of its influence over Europe. The first one is symbolised by one of the most known depiction of Erasmus. The second one is symbolised by a beam of links going across the coin from a beacon to another, representing the numerous intellectual and human exchanges between the European students. As a reference to Europe, some of these links form other stars, born from the synergy between the countries. The figure 35, for 35th anniversary comes out from the stars in a contemporary graphical style. The coin’s outer ring bears the 12 stars of the European flag.',
+        'Lithuania version. 35 years of the Erasmus programme. The design is a mix of two major elements of the Erasmus programme: the original intellectual inspiration, Erasmus himself, and the allegory of its influence over Europe. The first one is symbolised by one of the most known depiction of Erasmus. The second one is symbolised by a beam of links going across the coin from a beacon to another, representing the numerous intellectual and human exchanges between the European students. As a reference to Europe, some of these links form other stars, born from the synergy between the countries. The figure 35, for 35th anniversary comes out from the stars in a contemporary graphical style. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.EU,
   ),
   CoinModel(
@@ -4151,7 +4151,7 @@ final List<CoinModel> coinDataCommemoratives = [
     periodStartDate: '2022-07-01',
     quantity: 570_000,
     description:
-        'Netherlads Version. 35 years of the Erasmus programme. The design is a mix of two major elements of the Erasmus programme: the original intellectual inspiration, Erasmus himself, and the allegory of its influence over Europe. The first one is symbolised by one of the most known depiction of Erasmus. The second one is symbolised by a beam of links going across the coin from a beacon to another, representing the numerous intellectual and human exchanges between the European students. As a reference to Europe, some of these links form other stars, born from the synergy between the countries. The figure 35, for 35th anniversary comes out from the stars in a contemporary graphical style. The coin’s outer ring bears the 12 stars of the European flag.',
+        'Netherlands Version. 35 years of the Erasmus programme. The design is a mix of two major elements of the Erasmus programme: the original intellectual inspiration, Erasmus himself, and the allegory of its influence over Europe. The first one is symbolised by one of the most known depiction of Erasmus. The second one is symbolised by a beam of links going across the coin from a beacon to another, representing the numerous intellectual and human exchanges between the European students. As a reference to Europe, some of these links form other stars, born from the synergy between the countries. The figure 35, for 35th anniversary comes out from the stars in a contemporary graphical style. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.EU,
   ),
   CoinModel(

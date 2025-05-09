@@ -24,32 +24,22 @@ class CountriesFilterView extends StatefulWidget {
 class _CountriesFilterViewState extends State<CountriesFilterView> {
   final _log = Logger('COUNTRIES_BY_TYPE_VIEW');
 
-  late Future<({List<Coin> coinsFiltered, int coinCount})> _futureData;
+  late Future<List<Coin>> _coinsFuture;
 
   @override
   void initState() {
     super.initState();
-    _futureData = _loadCoinsAndOwnedCount();
+    _coinsFuture = _loadCoinsForCountry();
   }
 
-  Future<({List<Coin> coinsFiltered, int coinCount})>
-  _loadCoinsAndOwnedCount() async {
+  Future<List<Coin>> _loadCoinsForCountry() async {
     final coinProvider = Provider.of<CoinProvider>(context, listen: false);
 
-    final userCoinProvider = Provider.of<UserCoinProvider>(
-      context,
-      listen: false,
-    );
-
     try {
-      _log.info('Loading coins and owned count for country: ${widget.name}');
-      final coins = await coinProvider.getCoinsByCountry(widget.name);
-      final owned = await userCoinProvider.getOwnedCoinCountForCountry(
-        widget.name,
-      );
-      return (coinsFiltered: coins, coinCount: owned);
-    } catch (e) {
-      _log.severe('Error loading coins or owned count', e);
+      _log.info('Loading coins for country: ${widget.name}');
+      return await coinProvider.getCoinsByCountry(widget.name);
+    } catch (e, s) {
+      _log.severe('Error loading coins for country ${widget.name}', e, s);
       rethrow;
     }
   }
@@ -63,17 +53,46 @@ class _CountriesFilterViewState extends State<CountriesFilterView> {
       context,
       listen: false,
     );
+    final coinProvider = Provider.of<CoinProvider>(context, listen: false);
 
-    final isOwned = await userCoinProvider.checkIfUserOwnsCoin(coinId);
+    try {
+      final isOwned = await userCoinProvider.checkIfUserOwnsCoin(coinId);
 
-    if (isOwned && userPrefsProvider.removalConfirmation) {
-      if (!mounted) return;
+      // Only show confirmation dialog if needed
+      if (isOwned && userPrefsProvider.removalConfirmation) {
+        try {
+          // Get the coin to check its country
+          final coin = await coinProvider.getCoinById(coinId);
 
-      final confirmed = await ConfirmationDialog.show(context: context);
-      if (!confirmed) return;
+          // Skip confirmation for German coins
+          if (coin.country != CountryNames.GERMANY) {
+            if (!mounted) return;
+            final confirmed = await ConfirmationDialog.show(context: context);
+            if (!confirmed) return;
+          }
+        } catch (e) {
+          _log.warning(
+            'Error fetching coin details, showing confirmation dialog as fallback',
+            e,
+          );
+          // If there's any error fetching the coin, fall back to showing the dialog
+          if (!mounted) return;
+          final confirmed = await ConfirmationDialog.show(context: context);
+          if (!confirmed) return;
+        }
+      }
+
+      await userCoinProvider.toggleCoinOwnership(coinId);
+    } catch (e, s) {
+      _log.severe('Error toggling coin ownership for coinId $coinId', e, s);
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error updating coin status: ${e.toString()}'),
+          ),
+        );
+      }
     }
-
-    await userCoinProvider.toggleCoinOwnership(coinId);
   }
 
   @override
@@ -87,59 +106,39 @@ class _CountriesFilterViewState extends State<CountriesFilterView> {
     return Scaffold(
       body: Stack(
         children: [
-          FutureBuilder<({List<Coin> coinsFiltered, int coinCount})>(
-            future: _futureData,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(child: CircularProgressIndicator());
-              }
+          Column(
+            children: [
+              // HEADER BANNER
+              FutureBuilder<List<Coin>>(
+                future: _coinsFuture,
+                builder: (context, coinsSnapshot) {
+                  final totalCoins = coinsSnapshot.data?.length ?? 0;
 
-              if (snapshot.hasError) {
-                _log.severe(
-                  'Error loading coins and owned count',
-                  snapshot.error,
-                );
-
-                return Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(
-                        Icons.error_outline,
-                        size: 48,
-                        color: Colors.red,
-                      ),
-                      const SizedBox(height: 16),
-                      Text('Failed to load data: ${snapshot.error}'),
-                    ],
-                  ),
-                );
-              }
-
-              final data = snapshot.data!;
-              final coins = data.coinsFiltered;
-              final ownedCoins = data.coinCount;
-
-              return Column(
-                children: [
-                  CoinCountryBanner(
-                    name: widget.name,
-                    owned: ownedCoins,
-                    total: coins.length,
-                  ),
-                  Expanded(
-                    child: CoinsFilterCountryGrid(
-                      coins: coins,
-                      ownedCoins: userCoinProvider.ownedCoinIds,
-                      onToggleCoin: (coinId) => _handleToggleOwnership(coinId),
-                      onToggleMintMark:
-                          (coinId, mintMark) =>
-                              coinMintProvider.toggleMintMark(coinId, mintMark),
+                  return FutureBuilder<int>(
+                    future: userCoinProvider.getOwnedCoinCountForCountry(
+                      widget.name,
                     ),
-                  ),
-                ],
-              );
-            },
+                    builder: (context, ownedSnapshot) {
+                      final ownedCoins = ownedSnapshot.data ?? 0;
+
+                      return CoinCountryBanner(
+                        name: widget.name,
+                        owned: ownedCoins,
+                        total: totalCoins,
+                      );
+                    },
+                  );
+                },
+              ),
+
+              // GRID (BODY)
+              Expanded(
+                child: _buildCountryGrid(
+                  userCoinProvider.ownedCoinIds,
+                  coinMintProvider,
+                ),
+              ),
+            ],
           ),
 
           // App bar
@@ -158,6 +157,48 @@ class _CountriesFilterViewState extends State<CountriesFilterView> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildCountryGrid(
+    Set<int> ownedCoinIds,
+    CoinMintProvider coinMintProvider,
+  ) {
+    return FutureBuilder<List<Coin>>(
+      future: _coinsFuture,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        if (snapshot.hasError) {
+          _log.severe(
+            'Error loading coins in _buildCountryGrid',
+            snapshot.error,
+          );
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.error_outline, size: 48, color: Colors.red),
+                const SizedBox(height: 16),
+                Text('Failed to load coins: ${snapshot.error}'),
+              ],
+            ),
+          );
+        }
+
+        final coins = snapshot.data ?? [];
+
+        return CoinsFilterCountryGrid(
+          coins: coins,
+          ownedCoins: ownedCoinIds,
+          onToggleCoin: _handleToggleOwnership,
+          onToggleMintMark:
+              (coinId, mintMark) =>
+                  coinMintProvider.toggleMintMark(coinId, mintMark),
+        );
+      },
     );
   }
 }

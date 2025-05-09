@@ -1,3 +1,5 @@
+import 'package:coinllector_app/domain/usecases/user_prefs/get_username.dart';
+import 'package:coinllector_app/domain/usecases/user_prefs/set_username.dart';
 import 'package:flutter/foundation.dart';
 import 'dart:io';
 
@@ -31,6 +33,8 @@ class UserPreferencesProvider extends ChangeNotifier {
   final SetRemovalConfirmationPrefsUseCase _setRemovalConfirmation;
   final GetUserProfileImagePrefsUseCase _getUserProfileImage;
   final SetUserProfileImagePrefsUseCase _setUserProfileImage;
+  final GetUsernamePrefsUseCase _getUsername;
+  final SetUsernamePrefsUseCase _setUsername;
 
   UserPreferencesProvider({
     required GetCoinMintsPrefsUseCase getCoinMints,
@@ -43,6 +47,8 @@ class UserPreferencesProvider extends ChangeNotifier {
     required SetRemovalConfirmationPrefsUseCase setRemovalConfirmation,
     required GetUserProfileImagePrefsUseCase getUserProfileImage,
     required SetUserProfileImagePrefsUseCase setUserProfileImage,
+    required GetUsernamePrefsUseCase getUsername,
+    required SetUsernamePrefsUseCase setUsername,
   }) : _getCoinMints = getCoinMints,
        _setCoinMints = setCoinMints,
        _getMicroStates = getMicroStates,
@@ -52,7 +58,9 @@ class UserPreferencesProvider extends ChangeNotifier {
        _getRemovalConfirmation = getRemovalConfirmation,
        _setRemovalConfirmation = setRemovalConfirmation,
        _getUserProfileImage = getUserProfileImage,
-       _setUserProfileImage = setUserProfileImage;
+       _setUserProfileImage = setUserProfileImage,
+       _getUsername = getUsername,
+       _setUsername = setUsername;
 
   // ---------------------------------------------------------------------------
   // State
@@ -63,6 +71,7 @@ class UserPreferencesProvider extends ChangeNotifier {
   bool _coinQuality = false;
   bool _removalConfirmation = true;
   String? _profileImagePath;
+  String? _username;
 
   // ---------------------------------------------------------------------------
   // Getters
@@ -78,6 +87,8 @@ class UserPreferencesProvider extends ChangeNotifier {
     if (path == null || path.isEmpty) return null;
     return File(path);
   }
+
+  String? get username => _username;
 
   // ---------------------------------------------------------------------------
   // Init
@@ -131,6 +142,15 @@ class UserPreferencesProvider extends ChangeNotifier {
         _profileImagePath = null;
     }
 
+    // USERNAME
+    final usernameResult = await _getUsername(NoParams(null));
+    switch (usernameResult) {
+      case Success(value: final v):
+        _username = v;
+      case Error():
+        _username = null;
+    }
+
     notifyListeners();
   }
 
@@ -165,6 +185,12 @@ class UserPreferencesProvider extends ChangeNotifier {
   Future<void> updateProfileImage(String path) async {
     await _setUserProfileImage(Params(path));
     _profileImagePath = path;
+    notifyListeners();
+  }
+
+  Future<void> updateUsername(String value) async {
+    await _setUsername(Params(value));
+    _username = value;
     notifyListeners();
   }
 }

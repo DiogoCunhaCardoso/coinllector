@@ -8,6 +8,7 @@ class TabButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   final Color unselectedColor;
+  final bool isUnselectedOnShowcase;
 
   const TabButton({
     super.key,
@@ -16,6 +17,7 @@ class TabButton extends StatelessWidget {
     required this.onPressed,
 
     this.unselectedColor = Colors.transparent,
+    this.isUnselectedOnShowcase = false,
   });
 
   @override
@@ -51,6 +53,8 @@ class TabButton extends StatelessWidget {
                 color:
                     isSelected
                         ? colorScheme.surface
+                        : isUnselectedOnShowcase
+                        ? colorScheme.onSurface.withValues(alpha: 0.5)
                         : colorScheme.surface.withValues(alpha: 0.5),
               ),
             ),

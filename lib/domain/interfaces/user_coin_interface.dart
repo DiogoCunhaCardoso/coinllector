@@ -45,10 +45,13 @@ abstract class IUserCoinRepository {
   Future<Result<int>> getUserCoinCountByType(
     CoinType type, {
     List<CountryNames>? excludeCountries,
+    String? startDate,
   });
 
   /// Retrieves the count of coins the user owns, grouped by type.
-  Future<Result<Map<CoinType, int>>> getUserCoinsByType();
+  Future<Result<Map<CoinType, int>>> getUserCoinsByType({
+    List<CountryNames>? excludeCountries,
+  });
 
   /// Retrieves the count of coins the user owns, grouped by country.
   Future<Result<Map<CountryNames, int>>> getUserCoinsByCountry();

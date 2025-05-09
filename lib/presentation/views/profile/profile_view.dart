@@ -52,6 +52,47 @@ class _ProfileViewState extends State<ProfileView> {
     }
   }
 
+  Future<void> _showUsernameDialog() async {
+    final userPrefsProvider = Provider.of<UserPreferencesProvider>(
+      context,
+      listen: false,
+    );
+    final currentName = userPrefsProvider.username;
+    final textController = TextEditingController(text: currentName);
+
+    final newName = await showDialog<String>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Edit Name'),
+          content: TextField(
+            controller: textController,
+            maxLength: 16,
+            decoration: const InputDecoration(hintText: 'Enter your name'),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                if (textController.text.trim().isNotEmpty) {
+                  Navigator.pop(context, textController.text.trim());
+                }
+              },
+              child: const Text('Save'),
+            ),
+          ],
+        );
+      },
+    );
+
+    if (newName != null && newName != currentName) {
+      await userPrefsProvider.updateUsername(newName);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
@@ -59,10 +100,7 @@ class _ProfileViewState extends State<ProfileView> {
 
     final coinProvider = Provider.of<CoinProvider>(context);
     final userCoinProvider = Provider.of<UserCoinProvider>(context);
-    final userPrefsProvider = Provider.of<UserPreferencesProvider>(
-      context,
-      listen: false,
-    );
+    final userPrefsProvider = Provider.of<UserPreferencesProvider>(context);
 
     final topStats = userCoinProvider.topCountryStats;
 
@@ -73,7 +111,9 @@ class _ProfileViewState extends State<ProfileView> {
             children: [
               ProfileHeader(
                 onEditTap: _showImagePickerSheet,
+                onUsernameEdit: _showUsernameDialog,
                 pfp: userPrefsProvider.profileImageFile,
+                username: userPrefsProvider.username,
               ),
 
               Padding(

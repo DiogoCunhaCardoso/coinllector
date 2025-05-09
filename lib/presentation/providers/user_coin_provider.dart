@@ -229,8 +229,13 @@ class UserCoinProvider extends ChangeNotifier {
 
   //       BY TYPE ----------------------------------------------------------------------
 
-  Future<int> getOwnedCoinCountForType(CoinType type) async {
-    final result = await _getUserCoinCountByTypeUseCase(Params(type));
+  Future<int> getOwnedCoinCountForType(
+    CoinType type, {
+    String? startDate,
+  }) async {
+    final result = await _getUserCoinCountByTypeUseCase(
+      UserCoinCountParams(type, startDate: startDate),
+    );
 
     switch (result) {
       case Success(value: final count):

@@ -19,20 +19,29 @@ class YearSheetTile extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
-    return ListTile(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(AppSizes.r8)),
+    return Container(
+      decoration: BoxDecoration(
+        color: colorScheme.surfaceContainerHighest,
+        borderRadius: BorderRadius.circular(8),
       ),
-      tileColor: colorScheme.surfaceContainerHighest,
-      title: Text(
-        year.name.substring(1), // Removes the underscore from the CoinYear enum
-        style: textTheme.labelLarge?.copyWith(
-          color: isSelected ? colorScheme.primary : colorScheme.onSurface,
+      child: ListTile(
+        selectedTileColor: colorScheme.surfaceContainerHighest,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(AppSizes.r8)),
         ),
+
+        title: Text(
+          year.name.substring(
+            1,
+          ), // Removes the underscore from the CoinYear enum
+          style: textTheme.labelLarge?.copyWith(
+            color: isSelected ? colorScheme.primary : colorScheme.onSurface,
+          ),
+        ),
+        onTap: () {
+          onSelected(!isSelected);
+        },
       ),
-      onTap: () {
-        onSelected(!isSelected);
-      },
     );
   }
 }

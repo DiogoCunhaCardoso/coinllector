@@ -46,6 +46,19 @@ class CoinRemoteDataSource {
     return data.map((el) => CoinMapper.fromMap(el)).toList();
   }
 
+  //
+  Future<CoinModel?> getCoinById(int id) async {
+    final result = await db.query(
+      DatabaseTables.coins,
+      where: '${DatabaseTables.coinId} = ?',
+      whereArgs: [id],
+      limit: 1,
+    );
+
+    if (result.isEmpty) return null;
+
+    return CoinMapper.fromMap(result.first);
+  }
   // COUNT (with optional filter to remove certain countries (microstates)) ----------------
 
   Future<int> getCoinCount({List<CountryNames>? excludeCountries}) async {
@@ -80,11 +93,17 @@ class CoinRemoteDataSource {
 
   //
 
-  Future<int> getTypeTotalCoinCount(CoinType type) async {
-    final result = await db.rawQuery(
-      'SELECT COUNT(*) FROM ${DatabaseTables.coins} WHERE ${DatabaseTables.type} = ?',
-      [type.name],
-    );
+  Future<int> getTypeTotalCoinCount(CoinType type, {String? startDate}) async {
+    String query =
+        'SELECT COUNT(*) FROM ${DatabaseTables.coins} WHERE ${DatabaseTables.type} = ?';
+    List<dynamic> args = [type.name];
+
+    if (startDate != null) {
+      query += ' AND ${DatabaseTables.periodStartDate} LIKE ?';
+      args.add('$startDate%'); // Matches dates starting with the year
+    }
+
+    final result = await db.rawQuery(query, args);
     return Sqflite.firstIntValue(result) ?? 0;
   }
 

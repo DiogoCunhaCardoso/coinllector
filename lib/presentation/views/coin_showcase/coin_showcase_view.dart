@@ -12,6 +12,7 @@ import 'package:coinllector_app/presentation/views/coin_showcase/widgets/showcas
 import 'package:coinllector_app/presentation/views/coin_showcase/widgets/showcase_stats.dart';
 import 'package:coinllector_app/shared/components/confirmation_dialog.dart';
 import 'package:coinllector_app/shared/enums/coin_quality_enum.dart';
+import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 import 'package:coinllector_app/utils/text_display.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -54,7 +55,7 @@ class _CoinShowcaseState extends State<CoinShowcase> {
 
   // TOGGLE OWNERSHIP -------------------------------------------------------------------
 
-  Future<void> _handleToggleOwnership() async {
+  Future<void> _handleToggleOwnership(bool value) async {
     final userCoinProvider = Provider.of<UserCoinProvider>(
       context,
       listen: false,
@@ -64,12 +65,15 @@ class _CoinShowcaseState extends State<CoinShowcase> {
 
     final isOwned = await userCoinProvider.checkIfUserOwnsCoin(widget.coin.id!);
 
-    if (isOwned && prefs.removalConfirmation) {
-      if (!mounted) return;
+    if (isOwned && prefs.removalConfirmation && !value) {
+      // Skip confirmation for German coins
+      if (widget.coin.country != CountryNames.GERMANY) {
+        if (!mounted) return;
 
-      final confirmed = await ConfirmationDialog.show(context: context);
+        final confirmed = await ConfirmationDialog.show(context: context);
 
-      if (!confirmed) return;
+        if (!confirmed) return;
+      }
     }
 
     await userCoinProvider.toggleCoinOwnership(widget.coin.id!);
@@ -102,7 +106,8 @@ class _CoinShowcaseState extends State<CoinShowcase> {
                   return ShowcaseHeader(
                     country: country,
                     isOwned: isOwned,
-                    onToggleOwnership: (_) => _handleToggleOwnership(),
+                    onToggleOwnership: _handleToggleOwnership,
+                    coinId: widget.coin.id!,
                   );
                 },
               ),
@@ -121,17 +126,15 @@ class _CoinShowcaseState extends State<CoinShowcase> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            if (userPrefsProvider.coinQuality)
+                            if (userPrefsProvider.coinQuality &&
+                                !(userPrefsProvider.coinMints &&
+                                    widget.coin.country ==
+                                        CountryNames.GERMANY))
                               FutureBuilder<CoinQuality?>(
                                 future: userCoinProvider.getCoinQuality(
                                   widget.coin.id!,
                                 ),
                                 builder: (context, snapshot) {
-                                  if (snapshot.connectionState ==
-                                      ConnectionState.waiting) {
-                                    return const CircularProgressIndicator();
-                                  }
-
                                   final quality = snapshot.data;
                                   final selectedIndex =
                                       quality != null
@@ -144,8 +147,7 @@ class _CoinShowcaseState extends State<CoinShowcase> {
                                     children: [
                                       ShowcaseQualitySelector(
                                         selectedQualityIndex: selectedIndex,
-                                        isDisabled:
-                                            !isOwned, // Pass the 'isOwned' flag here
+                                        isDisabled: !isOwned,
                                         onQualitySelected: (index) async {
                                           if (isOwned) {
                                             final success =

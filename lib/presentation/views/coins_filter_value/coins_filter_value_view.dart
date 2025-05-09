@@ -8,6 +8,7 @@ import 'package:coinllector_app/presentation/views/coins_filter_value/widgets/he
 import 'package:coinllector_app/shared/components/bottom_sheets/year_sheet.dart';
 import 'package:coinllector_app/shared/components/confirmation_dialog.dart';
 import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
+import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 import 'package:coinllector_app/shared/enums/years_enum.dart';
 
 import 'package:flutter/material.dart';
@@ -28,6 +29,8 @@ class _ValueFilterViewState extends State<ValueFilterView> {
   final _log = Logger('COINS_BY_TYPE_VIEW');
 
   late Future<List<Coin>> _coinsFuture;
+  late Future<int> _totalYearCountFuture;
+  late Future<int> _ownedYearCountFuture;
 
   String? _selectedYear;
 
@@ -42,6 +45,13 @@ class _ValueFilterViewState extends State<ValueFilterView> {
         widget.type == CoinType.COMMEMORATIVE
             ? _loadCoinsForTypeWithFilter("2004")
             : _loadCoinsForType();
+
+    _totalYearCountFuture =
+        widget.type == CoinType.COMMEMORATIVE
+            ? _loadCoinCountForTypeWithFilter("2004")
+            : _loadCoinCountForType();
+
+    _ownedYearCountFuture = _loadOwnedCoinCountForYear("2004");
   }
 
   Future<List<Coin>> _loadCoinsForType() async {
@@ -70,6 +80,55 @@ class _ValueFilterViewState extends State<ValueFilterView> {
     }
   }
 
+  Future<int> _loadCoinCountForTypeWithFilter(String year) async {
+    final coinProvider = Provider.of<CoinProvider>(context, listen: false);
+    try {
+      _log.info('Loading coin count for type: ${widget.type}, year: $year');
+      return await coinProvider.getTypeCoinCount(widget.type, startDate: year);
+    } catch (e, s) {
+      _log.severe(
+        'Error loading coin count for type ${widget.type}, year $year',
+        e,
+        s,
+      );
+      rethrow;
+    }
+  }
+
+  Future<int> _loadCoinCountForType() async {
+    final coinProvider = Provider.of<CoinProvider>(context, listen: false);
+    try {
+      _log.info('Loading coin count for type: ${widget.type}');
+      return await coinProvider.getTypeCoinCount(widget.type);
+    } catch (e, s) {
+      _log.severe('Error loading coin count for type ${widget.type}', e, s);
+      rethrow;
+    }
+  }
+
+  Future<int> _loadOwnedCoinCountForYear(String year) async {
+    if (widget.type != CoinType.COMMEMORATIVE) return 0;
+
+    final userCoinProvider = Provider.of<UserCoinProvider>(
+      context,
+      listen: false,
+    );
+    try {
+      _log.info('Loading coin count for type: ${widget.type}, year: $year');
+      return await userCoinProvider.getOwnedCoinCountForType(
+        widget.type,
+        startDate: year,
+      );
+    } catch (e, s) {
+      _log.severe(
+        ' Error loading total coin count for type ${widget.type}, year $year,',
+        e,
+        s,
+      );
+      return 5; // Default fallback
+    }
+  }
+
   void _openYearSelectionModal() async {
     try {
       final CoinYear? selectedYear = await showYearSelectionModal(context);
@@ -79,6 +138,8 @@ class _ValueFilterViewState extends State<ValueFilterView> {
         setState(() {
           _selectedYear = yearString;
           _coinsFuture = _loadCoinsForTypeWithFilter(yearString);
+          _totalYearCountFuture = _loadCoinCountForTypeWithFilter(yearString);
+          _ownedYearCountFuture = _loadOwnedCoinCountForYear(yearString);
         });
       }
     } catch (e, s) {
@@ -91,7 +152,7 @@ class _ValueFilterViewState extends State<ValueFilterView> {
     }
   }
 
-  Future<void> _handleToggleOwnership(int coinId) async {
+  Future _handleToggleOwnership(int coinId) async {
     final userCoinProvider = Provider.of<UserCoinProvider>(
       context,
       listen: false,
@@ -100,17 +161,43 @@ class _ValueFilterViewState extends State<ValueFilterView> {
       context,
       listen: false,
     );
+    final coinProvider = Provider.of<CoinProvider>(context, listen: false);
 
     try {
       final isOwned = await userCoinProvider.checkIfUserOwnsCoin(coinId);
 
+      // Only show confirmation dialog if needed
       if (isOwned && userPrefsProvider.removalConfirmation) {
-        if (!mounted) return;
-        final confirmed = await ConfirmationDialog.show(context: context);
-        if (!confirmed) return;
+        try {
+          // Get the coin to check its country
+          final coin = await coinProvider.getCoinById(coinId);
+
+          // Skip confirmation for German coins
+          if (coin.country != CountryNames.GERMANY) {
+            if (!mounted) return;
+            final confirmed = await ConfirmationDialog.show(context: context);
+            if (!confirmed) return;
+          }
+        } catch (e) {
+          _log.warning(
+            'Error fetching coin details, showing confirmation dialog as fallback',
+            e,
+          );
+          // If there's any error fetching the coin, fall back to showing the dialog
+          if (!mounted) return;
+          final confirmed = await ConfirmationDialog.show(context: context);
+          if (!confirmed) return;
+        }
       }
 
       await userCoinProvider.toggleCoinOwnership(coinId);
+
+      // Update the year count if needed (from your second example)
+      if (_selectedYear != null && widget.type == CoinType.COMMEMORATIVE) {
+        setState(() {
+          _ownedYearCountFuture = _loadOwnedCoinCountForYear(_selectedYear!);
+        });
+      }
     } catch (e, s) {
       _log.severe('Error toggling coin ownership for coinId $coinId', e, s);
       if (mounted) {
@@ -122,7 +209,6 @@ class _ValueFilterViewState extends State<ValueFilterView> {
       }
     }
   }
-
   // UI ------------------------------------------------------------------------
 
   @override
@@ -144,6 +230,7 @@ class _ValueFilterViewState extends State<ValueFilterView> {
                     future: userCoinProvider.getOwnedCoinCountForType(
                       widget.type,
                     ),
+
                     builder: (context, ownedSnapshot) {
                       final ownedCoins = ownedSnapshot.data ?? 0;
                       return CoinTypeBanner(
@@ -228,11 +315,36 @@ class _ValueFilterViewState extends State<ValueFilterView> {
               top: AppSizes.p16,
               bottom: AppSizes.p16,
             ),
-            child: Text(
-              _selectedYear!,
-              style: textTheme.bodyMedium?.copyWith(
-                fontWeight: FontWeight.w600,
-              ),
+            child: Row(
+              children: [
+                Text(
+                  _selectedYear!,
+                  style: textTheme.bodyMedium?.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                SizedBox(width: AppSizes.p8),
+                FutureBuilder<int>(
+                  future: _totalYearCountFuture,
+                  builder: (context, countSnapshot) {
+                    final totalCount = countSnapshot.data ?? 0;
+
+                    return FutureBuilder<int>(
+                      future: _ownedYearCountFuture,
+                      builder: (context, ownedSnapshot) {
+                        final owned = ownedSnapshot.data;
+
+                        return Text(
+                          "$owned/$totalCount",
+                          style: textTheme.bodyMedium?.copyWith(
+                            fontWeight: FontWeight.w300,
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
+              ],
             ),
           ),
         Expanded(

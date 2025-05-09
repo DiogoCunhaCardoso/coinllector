@@ -17,7 +17,7 @@ class ShowcaseDescription extends StatelessWidget {
     final formattedCountryName =
         countryName == CountryNames.EU
             ? countryName.name
-            : capitalizeFst(countryName.name.toLowerCase());
+            : capitalizeFst(countryName.name);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

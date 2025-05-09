@@ -28,6 +28,8 @@ class CoinMintProvider extends ChangeNotifier {
        _getMintMarksForCoinUseCase = getMintMarksForCoinUseCase,
        _userCoinProvider = userCoinProvider;
 
+  List<CoinMint> _mintMarks = [];
+
   Future<bool> addMintMark(int coinId, MintMark mintMark) async {
     final result = await _addMintMarkUseCase(
       AddMintMarkParams(coinId, mintMark),
@@ -110,6 +112,23 @@ class CoinMintProvider extends ChangeNotifier {
       case Error(error: final e):
         _log.severe('Error checking mint marks: $e');
         return false;
+    }
+  }
+
+  Future<int> getOwnedMintCount(int coinId) async {
+    // First check local cache
+    final localCount =
+        _mintMarks.where((mint) => mint.userCoinId == coinId).length;
+    if (localCount > 0) return localCount;
+
+    // Fetch from database if not in cache
+    final result = await _getMintMarksForCoinUseCase(Params(coinId));
+
+    switch (result) {
+      case Success(value: final mints):
+        return mints.length;
+      case Error():
+        return 0;
     }
   }
 }

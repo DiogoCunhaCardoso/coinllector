@@ -26,4 +26,16 @@ class CustomWidgetStyles {
       ),
     );
   }
+
+  static SnackBarThemeData getSnackBarTheme(
+    ColorScheme colorScheme,
+    TextTheme textTheme,
+  ) {
+    return SnackBarThemeData(
+      backgroundColor: colorScheme.surfaceContainerHighest,
+      contentTextStyle: textTheme.bodyMedium!.copyWith(
+        color: colorScheme.onSurface,
+      ),
+    );
+  }
 }

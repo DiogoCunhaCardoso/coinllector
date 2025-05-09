@@ -5,21 +5,32 @@ import 'package:coinllector_app/shared/enums/states_enum.dart';
 import 'package:coinllector_app/utils/result.dart';
 import 'package:coinllector_app/utils/use_case.dart';
 
+/// Parameters for GetTypeCoinCountUseCase
+class TypeCoinCountParams {
+  final CoinType type;
+  final String? startDate;
+
+  TypeCoinCountParams(this.type, {this.startDate});
+}
+
 /// Count Coins By Type
 /// Remove Microstates If On SharedPreferences
-class GetTypeCoinCountUseCase implements UseCase<int, Params<CoinType>> {
+class GetTypeCoinCountUseCase implements UseCase<int, TypeCoinCountParams> {
   final ICoinRepository repository;
   final IUserPreferencesRepository prefsRepository;
 
   GetTypeCoinCountUseCase(this.repository, this.prefsRepository);
 
   @override
-  Future<Result<int>> call(Params<CoinType> params) async {
+  Future<Result<int>> call(TypeCoinCountParams params) async {
     final showMicroStates = await prefsRepository.getMicroStates();
 
     // Remove Microstates
     if (!showMicroStates) {
-      final result = await repository.getAllCoinsByType(params.data);
+      final result = await repository.getAllCoinsByType(
+        params.type,
+        startDate: params.startDate,
+      );
 
       switch (result) {
         case Success(value: final coins):
@@ -37,6 +48,9 @@ class GetTypeCoinCountUseCase implements UseCase<int, Params<CoinType>> {
     }
 
     // If microstates are enabled, return full count
-    return repository.getTypeTotalCoinCount(params.data);
+    return repository.getTypeTotalCoinCount(
+      params.type,
+      startDate: params.startDate,
+    );
   }
 }

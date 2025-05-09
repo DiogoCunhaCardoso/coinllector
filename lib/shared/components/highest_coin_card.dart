@@ -1,11 +1,17 @@
 import 'package:coinllector_app/config/themes/sizes.dart';
 import 'package:coinllector_app/presentation/model/coin_stats.dart';
+import 'package:coinllector_app/utils/text_display.dart';
 import 'package:flutter/material.dart';
 
 class HighestCoinCard extends StatelessWidget {
   final CoinStats stats;
+  final bool isCountry;
 
-  const HighestCoinCard({super.key, required this.stats});
+  const HighestCoinCard({
+    super.key,
+    required this.stats,
+    this.isCountry = true,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +38,11 @@ class HighestCoinCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      stats.label,
-                      style: textTheme.labelMedium!.copyWith(
-                        color: colorScheme.onSurfaceVariant,
-                      ),
+                      isCountry
+                          ? (stats.label.toUpperCase() != 'EU'
+                              ? capitalizeFst(stats.label)
+                              : stats.label)
+                          : showcaseTitle(stats.label),
                     ),
                     Text(
                       "${stats.coinsOwned}/${stats.totalCoins}",

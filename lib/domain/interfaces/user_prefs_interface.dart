@@ -18,4 +18,8 @@ abstract class IUserPreferencesRepository {
   // Profile Picture Preferences
   Future<String?> getUserProfileImage();
   Future<void> saveUserProfileImage(String imagePath);
+
+  // Username Preferences
+  Future<String?> getUsername();
+  Future<void> setUsername(String value);
 }

@@ -6,6 +6,7 @@ import 'package:coinllector_app/domain/interfaces/coin_mint_interface.dart';
 import 'package:coinllector_app/domain/interfaces/country_interface.dart';
 import 'package:coinllector_app/domain/interfaces/user_coin_interface.dart';
 import 'package:coinllector_app/domain/interfaces/user_prefs_interface.dart';
+import 'package:coinllector_app/domain/usecases/coin/get_coin_by_id.dart';
 import 'package:coinllector_app/domain/usecases/coin/get_coin_count_by_country.dart';
 import 'package:coinllector_app/domain/usecases/coin/get_coin_count_by_type.dart';
 import 'package:coinllector_app/domain/usecases/coin/get_coins_by_country.dart';
@@ -35,11 +36,13 @@ import 'package:coinllector_app/domain/usecases/user_prefs/get_coin_quality.dart
 import 'package:coinllector_app/domain/usecases/user_prefs/get_micro_states.dart';
 import 'package:coinllector_app/domain/usecases/user_prefs/get_removal_confirmation.dart';
 import 'package:coinllector_app/domain/usecases/user_prefs/get_user_profile_image.dart';
+import 'package:coinllector_app/domain/usecases/user_prefs/get_username.dart';
 import 'package:coinllector_app/domain/usecases/user_prefs/set_coin_mints.dart';
 import 'package:coinllector_app/domain/usecases/user_prefs/set_coin_quality.dart';
 import 'package:coinllector_app/domain/usecases/user_prefs/set_micro_states.dart';
 import 'package:coinllector_app/domain/usecases/user_prefs/set_removal_confirmation.dart';
 import 'package:coinllector_app/domain/usecases/user_prefs/set_user_profile_image.dart';
+import 'package:coinllector_app/domain/usecases/user_prefs/set_username.dart';
 import 'package:coinllector_app/presentation/providers/coin_mint_provider.dart';
 import 'package:coinllector_app/presentation/providers/coin_provider.dart';
 import 'package:coinllector_app/presentation/providers/country_provider.dart';
@@ -116,6 +119,10 @@ Future setupDependencies() async {
     () => GetCountryCoinCountUseCase(serviceLocator<ICoinRepository>()),
   );
 
+  serviceLocator.registerLazySingleton<GetCoinByIdUseCase>(
+    () => GetCoinByIdUseCase(serviceLocator<ICoinRepository>()),
+  );
+
   // ==========================================================
   // COIN MINT USE CASES
   // ==========================================================
@@ -188,7 +195,10 @@ Future setupDependencies() async {
   );
 
   serviceLocator.registerLazySingleton<GetOwnedCoinsByTypeMapUseCase>(
-    () => GetOwnedCoinsByTypeMapUseCase(serviceLocator<IUserCoinRepository>()),
+    () => GetOwnedCoinsByTypeMapUseCase(
+      serviceLocator<IUserCoinRepository>(),
+      serviceLocator<IUserPreferencesRepository>(),
+    ),
   );
 
   serviceLocator.registerLazySingleton<GetOwnedCoinsByCountryMapUseCase>(
@@ -219,7 +229,7 @@ Future setupDependencies() async {
 
   serviceLocator.registerLazySingleton<GetStatisticsSortedByTypeUseCase>(
     () => GetStatisticsSortedByTypeUseCase(
-      serviceLocator<IUserCoinRepository>(),
+      serviceLocator<GetOwnedCoinsByTypeMapUseCase>(),
       serviceLocator<GetTypeCoinCountUseCase>(),
     ),
   );
@@ -275,6 +285,12 @@ Future setupDependencies() async {
       serviceLocator<IUserPreferencesRepository>(),
     ),
   );
+  serviceLocator.registerLazySingleton(
+    () => GetUsernamePrefsUseCase(serviceLocator<IUserPreferencesRepository>()),
+  );
+  serviceLocator.registerLazySingleton(
+    () => SetUsernamePrefsUseCase(serviceLocator<IUserPreferencesRepository>()),
+  );
 
   // ==========================================================
   // PROVIDERS
@@ -288,6 +304,7 @@ Future setupDependencies() async {
       getCoinsByCountryUseCase: serviceLocator<GetCoinsByCountryUseCase>(),
       getTypeTotalCoinCount: serviceLocator<GetTypeCoinCountUseCase>(),
       getCountryTotalCoinCount: serviceLocator<GetCountryCoinCountUseCase>(),
+      getCoinByIdUseCase: serviceLocator<GetCoinByIdUseCase>(),
     )..init(),
   );
 
@@ -349,6 +366,8 @@ Future setupDependencies() async {
           serviceLocator<SetRemovalConfirmationPrefsUseCase>(),
       getUserProfileImage: serviceLocator<GetUserProfileImagePrefsUseCase>(),
       setUserProfileImage: serviceLocator<SetUserProfileImagePrefsUseCase>(),
+      getUsername: serviceLocator<GetUsernamePrefsUseCase>(),
+      setUsername: serviceLocator<SetUsernamePrefsUseCase>(),
     )..init(),
   );
 }

@@ -51,7 +51,12 @@ class _ProfileStatisticsViewState extends State<ProfileStatisticsView> {
                 child: ListView(
                   children:
                       statsList
-                          .map((stats) => HighestCoinCard(stats: stats))
+                          .map(
+                            (stats) => HighestCoinCard(
+                              stats: stats,
+                              isCountry: _selectedIndex == 1,
+                            ),
+                          )
                           .toList(),
                 ),
               ),

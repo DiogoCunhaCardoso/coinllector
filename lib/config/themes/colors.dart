@@ -36,6 +36,7 @@ class MaterialTheme {
     canvasColor: colorScheme.surface,
     appBarTheme: CustomWidgetStyles.getAppBarTheme(colorScheme),
     cardTheme: CustomWidgetStyles.getCardTheme(colorScheme),
+    snackBarTheme: CustomWidgetStyles.getSnackBarTheme(colorScheme, textTheme),
   );
 
   // Gradient

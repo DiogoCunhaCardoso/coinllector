@@ -159,9 +159,13 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
 
   /// Returns the count of coins the user owns of a specific type.
   @override
-  Future<Result<Map<CoinType, int>>> getUserCoinsByType() async {
+  Future<Result<Map<CoinType, int>>> getUserCoinsByType({
+    List<CountryNames>? excludeCountries,
+  }) async {
     try {
-      final result = await dataSource.getCountGroupedByType();
+      final result = await dataSource.getCountGroupedByType(
+        excludeCountries: excludeCountries,
+      );
       final counts = {for (var type in CoinType.values) type: 0};
       for (var row in result) {
         try {
@@ -218,11 +222,13 @@ class UserCoinRepositoryImpl implements IUserCoinRepository {
   Future<Result<int>> getUserCoinCountByType(
     CoinType type, {
     List<CountryNames>? excludeCountries,
+    String? startDate,
   }) async {
     try {
       final count = await dataSource.getOwnedCoinCountByType(
         type,
         excludeCountries: excludeCountries,
+        startDate: startDate,
       );
       return Result.success(count);
     } catch (e, stackTrace) {

@@ -1,5 +1,6 @@
 import 'dart:collection';
 
+import 'package:coinllector_app/domain/usecases/coin/get_coin_by_id.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 
@@ -31,6 +32,7 @@ class CoinProvider extends ChangeNotifier {
   final GetTotalCoinCountUseCase _getTotalCoinCountUseCase;
   final GetTypeCoinCountUseCase _getTypeTotalCoinCount;
   final GetCountryCoinCountUseCase _getCountryTotalCoinCount;
+  final GetCoinByIdUseCase _getCoinByIdUseCase;
 
   CoinProvider({
     required GetCoinsByTypeUseCase getCoinsByTypeUseCase,
@@ -38,11 +40,13 @@ class CoinProvider extends ChangeNotifier {
     required GetTotalCoinCountUseCase getTotalCoinCountUseCase,
     required GetTypeCoinCountUseCase getTypeTotalCoinCount,
     required GetCountryCoinCountUseCase getCountryTotalCoinCount,
+    required GetCoinByIdUseCase getCoinByIdUseCase,
   }) : _getCoinsByTypeUseCase = getCoinsByTypeUseCase,
        _getCoinsByCountryUseCase = getCoinsByCountryUseCase,
        _getTotalCoinCountUseCase = getTotalCoinCountUseCase,
        _getTypeTotalCoinCount = getTypeTotalCoinCount,
-       _getCountryTotalCoinCount = getCountryTotalCoinCount;
+       _getCountryTotalCoinCount = getCountryTotalCoinCount,
+       _getCoinByIdUseCase = getCoinByIdUseCase;
 
   // ---------------------------------------------------------------------------
   // State
@@ -51,7 +55,6 @@ class CoinProvider extends ChangeNotifier {
   bool _isLoading = false;
   String? _error;
 
-  final Map<CoinType, List<Coin>> _coinsByType = {};
   final Map<CountryNames, List<Coin>> _coinsByCountry = {};
   int _totalCoinCount = 0;
 
@@ -63,9 +66,6 @@ class CoinProvider extends ChangeNotifier {
   String? get error => _error;
 
   int get totalCoinCount => _totalCoinCount;
-
-  Map<CoinType, List<Coin>> get allCoinsByType =>
-      Map.unmodifiable(_coinsByType);
 
   Map<CountryNames, List<Coin>> get allCoinsByCountry =>
       Map.unmodifiable(_coinsByCountry);
@@ -99,11 +99,29 @@ class CoinProvider extends ChangeNotifier {
   // Coin Fetching
   // ---------------------------------------------------------------------------
 
-  Future<List<Coin>> getCoinsByType(CoinType type, {String? year}) async {
-    if (_coinsByType.containsKey(type)) {
-      return _coinsByType[type]!;
-    }
+  Future<Coin> getCoinById(int id) async {
+    try {
+      final result = await _getCoinByIdUseCase(Params(id));
 
+      switch (result) {
+        case Success(value: final coin):
+          if (coin == null) {
+            throw Exception('Coin with id $id not found');
+          }
+          _log.info('Loaded coin with id: $id');
+          return coin;
+
+        case Error(error: final e):
+          _log.severe('Failed to load coin with id $id', e);
+          throw e;
+      }
+    } catch (e) {
+      _log.severe('Unexpected error loading coin with id: $id', e);
+      rethrow;
+    }
+  }
+
+  Future<List<Coin>> getCoinsByType(CoinType type, {String? year}) async {
     try {
       final result = await _getCoinsByTypeUseCase(
         CoinsByTypeParams(type, year: year),
@@ -183,11 +201,17 @@ class CoinProvider extends ChangeNotifier {
     };
   }
 
-  Future<int> getTypeCoinCount(CoinType type) async {
-    final result = await _getTypeTotalCoinCount(Params(type));
+  Future<int> getTypeCoinCount(CoinType type, {String? startDate}) async {
+    final result = await _getTypeTotalCoinCount(
+      TypeCoinCountParams(type, startDate: startDate),
+    );
     return switch (result) {
       Success(value: final count) => count,
-      Error(error: final e) => _logAndReturnZero('type', type.name, e),
+      Error(error: final e) => _logAndReturnZero(
+        'type',
+        '${type.name}${startDate != null ? ' from $startDate' : ''}',
+        e,
+      ),
     };
   }
 
@@ -202,14 +226,14 @@ class CoinProvider extends ChangeNotifier {
 
   void refreshCoinsByType(CoinType type) {
     _log.info('Refreshing coins for type: ${type.name}');
-    _coinsByType.remove(type);
+
     notifyListeners();
     getCoinsByType(type);
   }
 
   void refreshAll() {
     _log.info('Refreshing all coin data');
-    _coinsByType.clear();
+
     _coinsByCountry.clear();
     _totalCoinCount = 0;
     notifyListeners();

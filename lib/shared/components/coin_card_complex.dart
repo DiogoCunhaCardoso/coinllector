@@ -9,6 +9,7 @@ class CoinCardComplex extends StatelessWidget {
   final bool isSelected;
   final ValueChanged<bool> onSelected;
   final String? countryImage;
+  final String? mintOwnedCount;
 
   const CoinCardComplex({
     super.key,
@@ -18,11 +19,14 @@ class CoinCardComplex extends StatelessWidget {
     required this.isSelected,
     required this.onSelected,
     this.countryImage,
+    this.mintOwnedCount,
   });
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
+
     return GestureDetector(
       onTap: onTap,
       child: Stack(
@@ -52,9 +56,15 @@ class CoinCardComplex extends StatelessWidget {
               right: AppSizes.p8 + 6,
               child: CircleAvatar(
                 radius: 12,
-                backgroundColor: colorScheme.surface,
+                backgroundColor: colorScheme.surfaceContainerHighest,
                 backgroundImage: AssetImage(countryImage!),
               ),
+            ),
+          if (mintOwnedCount != null)
+            Positioned(
+              top: AppSizes.p8 + 8,
+              right: AppSizes.p8 + 6,
+              child: Text('$mintOwnedCount/5', style: textTheme.labelMedium),
             ),
         ],
       ),

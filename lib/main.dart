@@ -2,6 +2,7 @@ import 'package:coinllector_app/config/themes/colors.dart';
 import 'package:coinllector_app/presentation/providers/coin_mint_provider.dart';
 import 'package:coinllector_app/presentation/providers/user_prefs_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 /* import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart'; */
@@ -30,6 +31,8 @@ void main() async {
     throw Exception("STRIPE_PUBLISHABLE_KEY is missing in .env");
   }
   Stripe.publishableKey = publishableKey; */
+
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   runApp(const MyApp());
 }

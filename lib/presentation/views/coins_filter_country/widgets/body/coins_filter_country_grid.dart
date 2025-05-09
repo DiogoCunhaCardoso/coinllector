@@ -54,29 +54,42 @@ class CoinsFilterCountryGrid extends StatelessWidget {
         final coin = coins![index];
         final isOwned = ownedCoins.contains(coin.id);
 
-        return CoinCardComplex(
-          countryImage:
-              "assets/country/${coin.country.name.toLowerCase()}-flag.png",
-          imageUrl: coin.image,
-          isSelected: isOwned,
-          onSelected: (selected) async {
-            if (coin.country == CountryNames.GERMANY &&
-                userPrefsProvider.coinMints) {
-              await _handleGermanCoin(context, coinMintProvider, coin);
-            } else {
-              onToggleCoin(coin.id!);
-            }
-          },
-          size: getItemSizeForFilterView(coin.type),
-          onTap: () async {
-            final result = await context.push(
-              AppRoutes.coinsShowcase(coin),
-              extra: {'coin': coin, 'coins': coins, 'currentIndex': index},
-            );
+        return FutureBuilder<int>(
+          future: coinMintProvider.getOwnedMintCount(coin.id!),
+          builder: (context, snapshot) {
+            final count = snapshot.data ?? 0;
+            return CoinCardComplex(
+              mintOwnedCount:
+                  (coin.country == CountryNames.GERMANY &&
+                          userPrefsProvider.coinMints)
+                      ? count.toString()
+                      : null,
+              countryImage:
+                  coin.country == CountryNames.EU
+                      ? "assets/country/${coin.description.split(' ').first.toLowerCase() == 'san' ? 'san_marino' : coin.description.split(' ').first.toLowerCase()}-flag.png"
+                      : "assets/country/${coin.country.name.toLowerCase()}-flag.png",
 
-            if (result is bool && result != isOwned) {
-              onToggleCoin(coin.id!);
-            }
+              imageUrl: coin.image,
+              isSelected: isOwned,
+              onSelected: (selected) async {
+                if (coin.country == CountryNames.GERMANY &&
+                    userPrefsProvider.coinMints) {
+                  await _handleGermanCoin(context, coinMintProvider, coin);
+                } else {
+                  onToggleCoin(coin.id!);
+                }
+              },
+              size: getItemSizeForFilterView(coin.type),
+              onTap: () async {
+                final result = await context.push(
+                  AppRoutes.coinsShowcase(coin),
+                  extra: {'coin': coin, 'coins': coins, 'currentIndex': index},
+                );
+                if (result is bool && result != isOwned) {
+                  onToggleCoin(coin.id!);
+                }
+              },
+            );
           },
         );
       },

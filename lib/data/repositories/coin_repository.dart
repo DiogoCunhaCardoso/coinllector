@@ -53,6 +53,25 @@ class CoinRepositoryImpl implements ICoinRepository {
     }
   }
 
+  @override
+  Future<Result<Coin?>> getCoinById(int id) async {
+    try {
+      final coinModel = await localDataSource.getCoinById(id);
+
+      if (coinModel == null) {
+        _log.info('No coin found with id: $id');
+        return Result.success(null);
+      }
+
+      _log.info('Found coin with id: $id');
+      final coin = CoinMapper.toEntity(coinModel);
+      return Result.success(coin);
+    } catch (e, stackTrace) {
+      _log.severe('Error getting coin by id: $id', e, stackTrace);
+      return Result.error(Exception('Failed to fetch coin by id.'));
+    }
+  }
+
   // COUNT -------------------------------------------------------------------------
 
   @override
@@ -83,10 +102,19 @@ class CoinRepositoryImpl implements ICoinRepository {
   }
 
   @override
-  Future<Result<int>> getTypeTotalCoinCount(CoinType type) async {
+  Future<Result<int>> getTypeTotalCoinCount(
+    CoinType type, {
+    String? startDate,
+  }) async {
     try {
-      final count = await localDataSource.getTypeTotalCoinCount(type);
-      _log.info('Found $count coins for type: ${type.name}');
+      final count = await localDataSource.getTypeTotalCoinCount(
+        type,
+        startDate: startDate,
+      );
+      _log.info(
+        'Found $count coins for type: ${type.name}'
+        '${startDate != null ? ' from year $startDate' : ''}',
+      );
       return Result.success(count);
     } catch (e, stackTrace) {
       _log.severe('Error loading getTypeTotalCoinCount', e, stackTrace);

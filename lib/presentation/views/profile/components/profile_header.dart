@@ -6,9 +6,17 @@ import 'package:flutter/material.dart';
 
 class ProfileHeader extends StatelessWidget {
   final VoidCallback onEditTap;
+  final VoidCallback onUsernameEdit;
   final File? pfp;
+  final String? username;
 
-  const ProfileHeader({super.key, required this.onEditTap, this.pfp});
+  const ProfileHeader({
+    super.key,
+    required this.onEditTap,
+    required this.onUsernameEdit,
+    this.pfp,
+    this.username,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +82,18 @@ class ProfileHeader extends StatelessWidget {
             ],
           ),
           const SizedBox(height: AppSizes.p16),
-          Text("Diogo Cardoso", style: textTheme.titleSmall),
+          GestureDetector(
+            onTap: onUsernameEdit,
+            child: Text(
+              username ?? 'Add Name',
+              style:
+                  username != null
+                      ? textTheme.titleSmall
+                      : textTheme.titleSmall?.copyWith(
+                        color: colorScheme.onSurface.withValues(alpha: 0.6),
+                      ),
+            ),
+          ),
         ],
       ),
     );

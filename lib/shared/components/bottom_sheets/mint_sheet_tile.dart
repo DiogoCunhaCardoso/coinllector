@@ -20,27 +20,33 @@ class MintSheetTile extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
-    return ListTile(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(AppSizes.r8)),
+    return Container(
+      decoration: BoxDecoration(
+        color: colorScheme.surfaceContainerHighest,
+        borderRadius: BorderRadius.circular(8),
       ),
-      tileColor: colorScheme.surfaceContainerHighest,
-      leading: CircleAvatar(
-        radius: 12,
-        backgroundImage: AssetImage("assets/country/germany-flag.png"),
-      ),
-      title: Text(
-        "${mintMark.fullName} (${mintMark.displayName})",
-        style: textTheme.labelMedium,
-      ),
+      child: ListTile(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(AppSizes.r8)),
+        ),
+        tileColor: colorScheme.surfaceContainerHighest,
+        leading: CircleAvatar(
+          radius: 12,
+          backgroundImage: AssetImage("assets/country/germany-flag.png"),
+        ),
+        title: Text(
+          "${mintMark.fullName} (${mintMark.displayName})",
+          style: textTheme.labelMedium,
+        ),
 
-      trailing: GradientCheckbox(
-        value: isSelected,
-        onChanged: (value) => onSelected(value),
+        trailing: GradientCheckbox(
+          value: isSelected,
+          onChanged: (value) => onSelected(value),
+        ),
+        onTap: () {
+          onSelected(!isSelected);
+        },
       ),
-      onTap: () {
-        onSelected(!isSelected);
-      },
     );
   }
 }

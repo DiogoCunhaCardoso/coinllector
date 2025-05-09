@@ -42,10 +42,8 @@ Future<CoinYear?> showYearSelectionModal(BuildContext context) async {
                               children: [
                                 YearSheetTile(
                                   year: year,
-                                  isSelected:
-                                      false, // no need to track selection
+                                  isSelected: false,
                                   onSelected: (_) {
-                                    // Immediately return and close the sheet
                                     Navigator.pop(context, year);
                                   },
                                 ),

@@ -16,6 +16,7 @@ Future<List<MintMark>?> showMintSelectionModal(
   return await showModalBottomSheet<List<MintMark>>(
     context: context,
     isScrollControlled: true,
+    isDismissible: false,
     builder: (context) {
       return StatefulBuilder(
         builder: (context, setState) {
