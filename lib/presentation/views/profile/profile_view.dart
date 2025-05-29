@@ -116,71 +116,77 @@ class _ProfileViewState extends State<ProfileView> {
                 username: userPrefsProvider.username,
               ),
 
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: AppSizes.p24,
-                  horizontal: AppSizes.p16,
-                ),
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("Total", style: textTheme.titleSmall),
-                      SizedBox(height: AppSizes.p8),
-                      ProfileStatsCard(
-                        title: "Total Coins",
-                        coinsOwned: userCoinProvider.ownedCoinCount.toString(),
-                        totalCoins: coinProvider.totalCoinCount.toString(),
-                      ),
-                      SizedBox(height: AppSizes.p24),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Text("Highest", style: textTheme.titleSmall),
-                              SizedBox(width: AppSizes.p16),
-                            ],
-                          ),
-                          TextButton(
-                            onPressed:
-                                () => context.go(AppRoutes.profileStatistics()),
-                            style: TextButton.styleFrom(
-                              foregroundColor: colorScheme.onSurface,
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: AppSizes.p24,
+                    horizontal: AppSizes.p16,
+                  ),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Total", style: textTheme.titleSmall),
+                        SizedBox(height: AppSizes.p8),
+                        ProfileStatsCard(
+                          title: "Total Coins",
+                          coinsOwned:
+                              userCoinProvider.ownedCoinCount.toString(),
+                          totalCoins: coinProvider.totalCoinCount.toString(),
+                        ),
+                        SizedBox(height: AppSizes.p24),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
                               children: [
-                                Text(
-                                  "See All",
-                                  style: textTheme.labelLarge!.copyWith(
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                                ),
-                                const SizedBox(width: AppSizes.p8),
-                                Icon(
-                                  Icons.adaptive.arrow_forward,
-                                  size: 16,
-                                  color: colorScheme.onSurface,
-                                ),
+                                Text("Highest", style: textTheme.titleSmall),
+                                SizedBox(width: AppSizes.p16),
                               ],
                             ),
-                          ),
-                        ],
-                      ),
-                      if (userCoinProvider.isLoading)
-                        const Center(child: CircularProgressIndicator())
-                      else if (topStats == null || topStats.isEmpty)
-                        const Text("No country stats available")
-                      else
-                        Column(
-                          children:
-                              topStats
-                                  .take(3)
-                                  .map((stats) => HighestCoinCard(stats: stats))
-                                  .toList(),
+                            TextButton(
+                              onPressed:
+                                  () =>
+                                      context.go(AppRoutes.profileStatistics()),
+                              style: TextButton.styleFrom(
+                                foregroundColor: colorScheme.onSurface,
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    "See All",
+                                    style: textTheme.labelLarge!.copyWith(
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                                  ),
+                                  const SizedBox(width: AppSizes.p8),
+                                  Icon(
+                                    Icons.adaptive.arrow_forward,
+                                    size: 16,
+                                    color: colorScheme.onSurface,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
-                    ],
+                        if (userCoinProvider.isLoading)
+                          const Center(child: CircularProgressIndicator())
+                        else if (topStats == null || topStats.isEmpty)
+                          const Text("No country stats available")
+                        else
+                          Column(
+                            children:
+                                topStats
+                                    .take(3)
+                                    .map(
+                                      (stats) => HighestCoinCard(stats: stats),
+                                    )
+                                    .toList(),
+                          ),
+                      ],
+                    ),
                   ),
                 ),
               ),
