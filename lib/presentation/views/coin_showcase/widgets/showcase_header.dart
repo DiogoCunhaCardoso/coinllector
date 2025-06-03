@@ -1,4 +1,4 @@
-import 'package:coinllector_app/domain/entities/country.dart';
+import 'package:coinllector_app/domain/entities/coin.dart';
 import 'package:coinllector_app/shared/components/gradient_checkbox.dart';
 import 'package:coinllector_app/shared/components/bottom_sheets/mints_sheet.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';
@@ -9,20 +9,39 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ShowcaseHeader extends StatelessWidget {
-  final Country? country;
+  final Coin coin;
   final bool isOwned;
   final ValueChanged<bool> onToggleOwnership;
-  final int coinId;
   final Function(int, MintMark)? onToggleMintMark;
 
   const ShowcaseHeader({
     super.key,
-    this.country,
+    required this.coin,
     required this.isOwned,
     required this.onToggleOwnership,
-    required this.coinId,
     this.onToggleMintMark,
   });
+
+  String _getFlagImagePath() {
+    if (coin.country == CountryNames.EU) {
+      final firstWord = coin.description.split(' ').first.toLowerCase();
+      final countryCode = firstWord == 'san' ? 'san_marino' : firstWord;
+      return "assets/country/$countryCode-flag.png";
+    } else {
+      return "assets/country/${coin.country.name.toLowerCase()}-flag.png";
+    }
+  }
+
+  bool _isGermanCoin() {
+    if (coin.country == CountryNames.GERMANY) {
+      return true;
+    }
+    if (coin.country == CountryNames.EU) {
+      final firstWord = coin.description.split(' ').first.toLowerCase();
+      return firstWord == 'germany';
+    }
+    return false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,8 +75,7 @@ class ShowcaseHeader extends StatelessWidget {
             child: GradientCheckbox(
               value: isOwned,
               onChanged: (value) async {
-                if (country?.name == CountryNames.GERMANY &&
-                    userPrefsProvider.coinMints) {
+                if (_isGermanCoin() && userPrefsProvider.coinMints) {
                   await _handleGermanCoin(context, coinMintProvider);
                 } else {
                   onToggleOwnership(value);
@@ -68,10 +86,7 @@ class ShowcaseHeader extends StatelessWidget {
           CircleAvatar(
             radius: 16,
             backgroundColor: colorScheme.surfaceContainerHighest,
-            backgroundImage:
-                country?.flagImage != null
-                    ? AssetImage(country!.flagImage)
-                    : null,
+            backgroundImage: AssetImage(_getFlagImagePath()),
           ),
         ],
       ),
@@ -83,13 +98,13 @@ class ShowcaseHeader extends StatelessWidget {
     CoinMintProvider coinMintProvider,
   ) async {
     // Get current mint marks for the coin
-    final mints = await coinMintProvider.getMintMarksForCoin(coinId);
+    final mints = await coinMintProvider.getMintMarksForCoin(coin.id!);
     final currentMints = mints.map((m) => m.mintMark).toList();
 
     // Show mint selection modal
     final selectedMints = await showMintSelectionModal(
       context,
-      coinId,
+      coin.id!,
       currentMints,
     );
 
@@ -101,15 +116,15 @@ class ShowcaseHeader extends StatelessWidget {
 
         if (hadMintBefore && !hasNow) {
           // Remove mint mark
-          await coinMintProvider.removeMintMark(coinId, mintMark);
+          await coinMintProvider.removeMintMark(coin.id!, mintMark);
           if (onToggleMintMark != null) {
-            onToggleMintMark!(coinId, mintMark);
+            onToggleMintMark!(coin.id!, mintMark);
           }
         } else if (!hadMintBefore && hasNow) {
           // Add mint mark
-          await coinMintProvider.addMintMark(coinId, mintMark);
+          await coinMintProvider.addMintMark(coin.id!, mintMark);
           if (onToggleMintMark != null) {
-            onToggleMintMark!(coinId, mintMark);
+            onToggleMintMark!(coin.id!, mintMark);
           }
         }
       }

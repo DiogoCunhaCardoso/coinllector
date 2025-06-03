@@ -670,6 +670,14 @@ final List<CoinModel> coinsData = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    type: CoinType.FIFTY_CENT,
+    image: 'assets/coins/france/models/fifty_cent_v2.png',
+    periodStartDate: '2024-01-01',
+    description:
+        'In 2024 France introduced a new 50 cent coin series. Designed by Joaquin Jimenez, the coin features a portrait of Nobel Prize-winning scientist Marie Curie, known for her pioneering work on radioactivity. The portrait is set within a French flag motif, symbolising Curie\'s iconic place in the French Republic, represented by the letters RF.',
+    country: CountryNames.FRANCE,
+  ),
+  CoinModel(
     type: CoinType.TWENTY_CENT,
     image: 'assets/coins/france/models/twenty_cent.png',
     periodStartDate: '1999-01-01',
@@ -678,11 +686,27 @@ final List<CoinModel> coinsData = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    type: CoinType.TWENTY_CENT,
+    image: 'assets/coins/france/models/twenty_cent_v2.png',
+    periodStartDate: '2024-01-01',
+    description:
+        'In 2024 France introduced a second series of 20 cent coins. Designed by Joaquin Jimenez, the coin features a portrait of Josephine Baker, a singer, dancer and civil rights activist. She was awarded the Resistance Medal, the Croix de Guerre and the Legion of Honour for her efforts during World War II. The portrait is set within a French flag motif, symbolising Baker\'s iconic place in the French Republic, represented by the letters RF.',
+    country: CountryNames.FRANCE,
+  ),
+  CoinModel(
     type: CoinType.TEN_CENT,
     image: 'assets/coins/france/models/ten_cent.png',
     periodStartDate: '1999-01-01',
     description:
         '10, 20 and 50-cent coins: the theme of the sower is a constant in the history of the French franc. Designed by Laurent Jorlo, "this modern, timeless graphic represents France, which stays true to itself, whilst integrating into Europe".',
+    country: CountryNames.FRANCE,
+  ),
+  CoinModel(
+    type: CoinType.TEN_CENT,
+    image: 'assets/coins/france/models/ten_cent_v2.png',
+    periodStartDate: '2024-01-01',
+    description:
+        'In 2024 France introduced a new 10 cent coin designed by Joaquin Jimenez. The new coin depicts Simone Veil, a Holocaust survivor and the first President of the directly elected European Parliament. She spent much of her life fighting for women\'s rights and pushed through the 1975 law decriminalising abortion in France.',
     country: CountryNames.FRANCE,
   ),
   CoinModel(

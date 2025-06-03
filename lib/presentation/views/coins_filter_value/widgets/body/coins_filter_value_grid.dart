@@ -61,8 +61,10 @@ class CoinsFilterValueGrid extends StatelessWidget {
             final count = snapshot.data;
             return CoinCardComplex(
               mintOwnedCount:
-                  (coin.country == CountryNames.GERMANY &&
-                          userPrefsProvider.coinMints)
+                  (coin.country == CountryNames.GERMANY ||
+                          (coin.country == CountryNames.EU &&
+                              coin.description.split(' ').first.toLowerCase() ==
+                                  'germany'))
                       ? count.toString()
                       : null,
               imageUrl: coin.image,
@@ -70,14 +72,19 @@ class CoinsFilterValueGrid extends StatelessWidget {
               isSelected: isOwned,
               onSelected: (selected) async {
                 if (coin.country == CountryNames.GERMANY &&
-                    userPrefsProvider.coinMints) {
+                        userPrefsProvider.coinMints ||
+                    (coin.country == CountryNames.EU &&
+                        coin.description.split(' ').first.toLowerCase() ==
+                            'germany')) {
                   await _handleGermanCoin(context, coinMintProvider, coin);
                 } else {
                   onToggleCoin(coin.id!);
                 }
               },
               countryImage:
-                  "assets/country/${coin.country.name.toLowerCase()}-flag.png",
+                  coin.country == CountryNames.EU
+                      ? "assets/country/${coin.description.split(' ').first.toLowerCase() == 'san' ? 'san_marino' : coin.description.split(' ').first.toLowerCase()}-flag.png"
+                      : "assets/country/${coin.country.name.toLowerCase()}-flag.png",
               onTap: () async {
                 final result = await context.push(
                   AppRoutes.coinsShowcase(coin),

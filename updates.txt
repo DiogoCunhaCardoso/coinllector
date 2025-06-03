@@ -1,0 +1,24 @@
+After beta testing.
+
+- Added 3 missing coins. (50c, 20c, 10c of France V2)
+
+- Changed some wrong information about coins (All coins revised by beta testers with Leuchtturm album).
+
+- Added names with flags for better UX since not everybody know the country name by just looking at the flag (Some beta testers were not from Europe and did not know many european flags by heart).
+
+- Made mint marks settings true as default (most beta testers prefered mints turned on) Also when adding coins without going to having gone to settings yet, a lot thought the feature just did not exist until they went to settings.
+
+- Value tab did not have the coins by scale of their real life size.
+
+- Changed flag on joined coins from EU commemorative flag to specific Country version to improve UX. Some people thought it was hard to understand how to check the country of joined coins.
+
+- Joined commemorative of Germany version: Mint feature was missing. Added it.
+
+
+TODO IN FUTURE
+
+Maybe have sortage system on commemoratives. the default right now is by date but it could be by country A-Z, different filters
+
+- Add 2025 CC,
+
+- Mintmarks should not be counted as a separate coin but as a variant (for now variants are not counted as a separate coin but they are counted as nothing, this is an internal thing for me.)

@@ -9,7 +9,7 @@ class UserPreferencesRepositoryImpl implements IUserPreferencesRepository {
   // Coin Mints
   @override
   Future<bool> getCoinMints() async {
-    return _sharedPreferences.getBool("coinMints") ?? false;
+    return _sharedPreferences.getBool("coinMints") ?? true;
   }
 
   @override
@@ -31,7 +31,7 @@ class UserPreferencesRepositoryImpl implements IUserPreferencesRepository {
   // Coin Quality
   @override
   Future<bool> getCoinQuality() async {
-    return _sharedPreferences.getBool("coinQuality") ?? false;
+    return _sharedPreferences.getBool("coinQuality") ?? true;
   }
 
   @override

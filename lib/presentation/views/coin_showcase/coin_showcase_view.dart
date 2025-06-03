@@ -1,8 +1,6 @@
 import 'package:coinllector_app/config/router/routes.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
 import 'package:coinllector_app/domain/entities/coin.dart';
-import 'package:coinllector_app/domain/entities/country.dart';
-import 'package:coinllector_app/presentation/providers/country_provider.dart';
 import 'package:coinllector_app/presentation/providers/user_coin_provider.dart';
 import 'package:coinllector_app/presentation/providers/user_prefs_provider.dart';
 import 'package:coinllector_app/presentation/views/coin_showcase/widgets/showcase_buttons.dart';
@@ -65,9 +63,15 @@ class _CoinShowcaseState extends State<CoinShowcase> {
 
     final isOwned = await userCoinProvider.checkIfUserOwnsCoin(widget.coin.id!);
 
+    bool isGermanCoin =
+        widget.coin.country == CountryNames.GERMANY ||
+        (widget.coin.country == CountryNames.EU &&
+            widget.coin.description.split(' ').first.toLowerCase() ==
+                'germany');
+
     if (isOwned && prefs.removalConfirmation && !value) {
       // Skip confirmation for German coins
-      if (widget.coin.country != CountryNames.GERMANY) {
+      if (!isGermanCoin) {
         if (!mounted) return;
 
         final confirmed = await ConfirmationDialog.show(context: context);
@@ -86,10 +90,6 @@ class _CoinShowcaseState extends State<CoinShowcase> {
     // PROVIDERS ----------------------------------------
 
     final userCoinProvider = Provider.of<UserCoinProvider>(context);
-    final countryProvider = Provider.of<CountryProvider>(
-      context,
-      listen: false,
-    );
     final userPrefsProvider = Provider.of<UserPreferencesProvider>(context);
 
     final isOwned = userCoinProvider.isOwned(widget.coin.id!);
@@ -99,18 +99,12 @@ class _CoinShowcaseState extends State<CoinShowcase> {
         children: [
           Column(
             children: [
-              FutureBuilder<Country?>(
-                future: countryProvider.getCountry(widget.coin.country),
-                builder: (context, snapshot) {
-                  final country = snapshot.data;
-                  return ShowcaseHeader(
-                    country: country,
-                    isOwned: isOwned,
-                    onToggleOwnership: _handleToggleOwnership,
-                    coinId: widget.coin.id!,
-                  );
-                },
+              ShowcaseHeader(
+                coin: widget.coin,
+                isOwned: isOwned,
+                onToggleOwnership: _handleToggleOwnership,
               ),
+
               Expanded(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.only(bottom: 80),

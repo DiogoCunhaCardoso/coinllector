@@ -2,6 +2,7 @@ import 'package:coinllector_app/presentation/model/coin_display.dart';
 import 'package:coinllector_app/config/router/routes.dart';
 import 'package:coinllector_app/config/themes/sizes.dart';
 import 'package:coinllector_app/presentation/views/coins/widgets/coin_card.dart';
+import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
 import 'package:coinllector_app/utils/get_coin_size.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -32,8 +33,12 @@ class CoinsViewGrid extends StatelessWidget {
         final item = coins[index];
 
         return CoinCard(
+          countryName: isCountry ? item.label : "",
           imageUrl: item.image,
-          size: getItemSizeForCoinsView(item),
+          size:
+              isCountry
+                  ? 92
+                  : getItemSizeForCoinsView(CoinType.values.byName(item.label)),
           onTap: () {
             final route =
                 isCountry

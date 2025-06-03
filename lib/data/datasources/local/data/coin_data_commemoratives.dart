@@ -26,7 +26,7 @@ final List<CoinModel> coinDataCommemoratives = [
   CoinModel(
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2004/2004_3-min.png',
-    periodStartDate: '2000-12-01',
+    periodStartDate: '2004-12-01',
     quantity: 110_000,
     description:
         "Bartolomeo Borghesi (historian, numismatist). The twelve stars of the European Union positioned around the outer circle of the coin and the issuing year '2004', positioned bottom centre, surround the bust of Bartolomeo Borghesi. To the left of the bust is the inscription 'Bartolomeo Borghesi', and one above the other are the letter 'R' and the engraver's initials 'E.L.F.'. To the right of the bust is the word 'San Marino'.",
@@ -4619,7 +4619,7 @@ final List<CoinModel> coinDataCommemoratives = [
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_31-min.png',
     periodStartDate: '2023-02-01',
-    quantity: 500_000,
+    quantity: 120_000,
     description:
         'The 175th anniversary of the Luxembourg Parliament. The design depicts at the left-hand side the effigy of the Grand Duke Henri and at the right-hand side the building of the Chamber of Deputies. The year date ‘1848’ and the text ‘Chambre des députés’ appear above and at the right of the building. At the bottom centre, the name of the issuing country ‘LUXEMBOURG’ as well as the issuing year date ‘2023’ are represented. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.LUXEMBOURG,
@@ -4628,7 +4628,7 @@ final List<CoinModel> coinDataCommemoratives = [
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_32-min.png',
     periodStartDate: '2023-02-01',
-    quantity: 500_000,
+    quantity: 120_000,
     description:
         'The 25th anniversary of the membership of Grand Duke Henri to the International Olympic Committee. The design depicts the effigy of the Grand Duke Henri looking to the right and to the figure ‘25’. Several pictograms of Olympic disciplines are shown close to the effigy. Below the effigy, three intersecting circles are enriching the design. At the bottom right, the text ‘MEMBER VUM INTERNATIONALEN OLYMPESCHE KOMMITEE’ is depicted. The name of the country ‘LËTZEBUERG’ as well as the text ‘GROUSSHERZOG HENRI’ are represented at the left. The coin’s outer ring bears the 12 stars of the European flag. ',
     country: CountryNames.LUXEMBOURG,

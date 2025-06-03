@@ -172,8 +172,13 @@ class _ValueFilterViewState extends State<ValueFilterView> {
           // Get the coin to check its country
           final coin = await coinProvider.getCoinById(coinId);
 
+          bool isGermanCoin =
+              coin.country == CountryNames.GERMANY ||
+              (coin.country == CountryNames.EU &&
+                  coin.description.split(' ').first.toLowerCase() == 'germany');
+
           // Skip confirmation for German coins
-          if (coin.country != CountryNames.GERMANY) {
+          if (!isGermanCoin) {
             if (!mounted) return;
             final confirmed = await ConfirmationDialog.show(context: context);
             if (!confirmed) return;
@@ -209,6 +214,7 @@ class _ValueFilterViewState extends State<ValueFilterView> {
       }
     }
   }
+
   // UI ------------------------------------------------------------------------
 
   @override

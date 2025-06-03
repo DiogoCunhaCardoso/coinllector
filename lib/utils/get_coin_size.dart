@@ -12,7 +12,7 @@ double getItemSizeForCoinsView(dynamic item) {
     CoinType.TWO_CENT: 67.0,
     CoinType.ONE_CENT: 58.0,
   };
-  return coinSizes[item.label] ?? 92.0;
+  return coinSizes[item] ?? 92.0;
 }
 
 double getItemSizeForFilterView(CoinType type) {
