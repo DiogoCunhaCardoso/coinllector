@@ -122,7 +122,7 @@ class CoinRepositoryImpl implements ICoinRepository {
     }
   }
 
-  // ON INIT ------------------------------------------------------------------------
+  // DATABASE ------------------------------------------------------------------------
 
   @override
   Future<Result<void>> insertInitialCoins(List<CoinModel> coins) async {

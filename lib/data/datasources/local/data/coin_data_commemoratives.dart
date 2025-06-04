@@ -6,6 +6,7 @@ import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 final List<CoinModel> coinDataCommemoratives = [
   // 2004 -------------------------------------------------------------
   CoinModel(
+    id: 280,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2004/2004_1-min.png',
     periodStartDate: '2004-12-01',
@@ -15,6 +16,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 281,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2004/2004_2-min.png',
     periodStartDate: '2004-12-01',
@@ -24,6 +26,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 282,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2004/2004_3-min.png',
     periodStartDate: '2004-12-01',
@@ -33,6 +36,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 283,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2004/2004_4-min.png',
     periodStartDate: '2004-06-01',
@@ -42,6 +46,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 284,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2004/2004_5-min.png',
     periodStartDate: '2004-06-01',
@@ -51,6 +56,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 285,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2004/2004_6-min.png',
     periodStartDate: '2004-03-01',
@@ -62,6 +68,7 @@ final List<CoinModel> coinDataCommemoratives = [
 
   // 2005 -------------------------------------------------------------
   CoinModel(
+    id: 286,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2005/2005_01-min.png',
     periodStartDate: '2005-12-01',
@@ -71,6 +78,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 287,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2005/2005_02-min.png',
     periodStartDate: '2005-10-01',
@@ -80,6 +88,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 288,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2005/2005_03-min.png',
     periodStartDate: '2005-10-01',
@@ -89,6 +98,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 289,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2005/2005_04-min.png',
     periodStartDate: '2005-10-01',
@@ -98,6 +108,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 290,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2005/2005_05-min.png',
     periodStartDate: '2005-05-01',
@@ -107,6 +118,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.AUSTRIA,
   ),
   CoinModel(
+    id: 291,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2005/2005_06-min.png',
     periodStartDate: '2005-04-01',
@@ -116,6 +128,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
+    id: 292,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2005/2005_07-min.png',
     periodStartDate: '2005-03-01',
@@ -125,6 +138,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
+    id: 293,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2005/2005_08-min.png',
     periodStartDate: '2005-01-01',
@@ -136,6 +150,7 @@ final List<CoinModel> coinDataCommemoratives = [
 
   // 2006 -------------------------------------------------------------
   CoinModel(
+    id: 294,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2006/2006_01-min.png',
     periodStartDate: '2006-11-01',
@@ -145,6 +160,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 295,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2006/2006_02-min.png',
     periodStartDate: '2006-10-01',
@@ -154,6 +170,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 296,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2006/2006_03-min.png',
     periodStartDate: '2006-10-01',
@@ -163,6 +180,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 297,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2006/2006_04-min.png',
     periodStartDate: '2006-04-01',
@@ -172,6 +190,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
+    id: 298,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2006/2006_05-min.png',
     periodStartDate: '2006-02-01',
@@ -181,6 +200,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GERMANY,
   ),
   CoinModel(
+    id: 299,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2006/2006_06-min.png',
     periodStartDate: '2006-01-01',
@@ -190,6 +210,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 300,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2006/2006_07-min.png',
     periodStartDate: '2006-01-01',
@@ -201,6 +222,7 @@ final List<CoinModel> coinDataCommemoratives = [
 
   // 2007 -------------------------------------------------------------
   CoinModel(
+    id: 301,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2007/2007_01-min.png',
     periodStartDate: '2007-12-01',
@@ -210,6 +232,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 302,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2007/2007_02-min.png',
     periodStartDate: '2007-10-01',
@@ -219,6 +242,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 303,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2007/2007_03-min.png',
     periodStartDate: '2007-10-01',
@@ -228,6 +252,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 304,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2007/2007_04-min.png',
     periodStartDate: '2007-07-01',
@@ -237,6 +262,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MONACO,
   ),
   CoinModel(
+    id: 305,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2007/2007_05-min.png',
     periodStartDate: '2007-07-01',
@@ -246,6 +272,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
+    id: 306,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2007/2007_06-min.png',
     periodStartDate: '2007-03-01',
@@ -255,6 +282,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 307,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2007/2007_07-min.png',
     periodStartDate: '2007-03-01',
@@ -264,6 +292,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 308,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2007/2007_08-min.png',
     periodStartDate: '2007-03-01',
@@ -273,6 +302,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 309,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2007/2007_09-min.png',
     periodStartDate: '2007-03-01',
@@ -282,6 +312,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 310,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2007/2007_10-min.png',
     periodStartDate: '2007-03-01',
@@ -291,6 +322,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 311,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2007/2007_11-min.png',
     periodStartDate: '2007-03-01',
@@ -300,6 +332,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 312,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2007/2007_12-min.png',
     periodStartDate: '2007-03-01',
@@ -309,6 +342,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 313,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2007/2007_13-min.png',
     periodStartDate: '2007-03-01',
@@ -318,6 +352,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 314,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2007/2007_14-min.png',
     periodStartDate: '2007-03-01',
@@ -327,6 +362,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 315,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2007/2007_15-min.png',
     periodStartDate: '2007-03-01',
@@ -336,6 +372,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 316,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2007/2007_16-min.png',
     periodStartDate: '2007-03-01',
@@ -345,6 +382,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 317,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2007/2007_17-min.png',
     periodStartDate: '2007-03-01',
@@ -354,6 +392,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 318,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2007/2007_18-min.png',
     periodStartDate: '2007-03-01',
@@ -363,6 +402,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 319,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2007/2007_19-min.png',
     periodStartDate: '2007-02-01',
@@ -372,6 +412,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GERMANY,
   ),
   CoinModel(
+    id: 320,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2007/2007_20-min.png',
     periodStartDate: '2007-02-01',
@@ -383,6 +424,7 @@ final List<CoinModel> coinDataCommemoratives = [
 
   // 2008 -------------------------------------------------------------
   CoinModel(
+    id: 321,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2008/2008_01-min.png',
     periodStartDate: '2008-10-01',
@@ -392,6 +434,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 322,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2008/2008_02-min.png',
     periodStartDate: '2008-10-01',
@@ -401,6 +444,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 323,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2008/2008_03-min.png',
     periodStartDate: '2008-09-01',
@@ -410,6 +454,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
+    id: 324,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2008/2008_04-min.png',
     periodStartDate: '2008-07-01',
@@ -419,6 +464,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 325,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2008/2008_05-min.png',
     periodStartDate: '2008-05-01',
@@ -428,6 +474,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVENIA,
   ),
   CoinModel(
+    id: 326,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2008/2008_06-min.png',
     periodStartDate: '2008-05-01',
@@ -437,6 +484,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
+    id: 327,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2008/2008_07-min.png',
     periodStartDate: '2008-04-01',
@@ -446,6 +494,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 328,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2008/2008_08-min.png',
     periodStartDate: '2008-04-01',
@@ -455,6 +504,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 329,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2008/2008_09-min.png',
     periodStartDate: '2008-02-01',
@@ -464,6 +514,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 330,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2008/2008_10-min.png',
     periodStartDate: '2008-02-01',
@@ -475,6 +526,7 @@ final List<CoinModel> coinDataCommemoratives = [
 
   // 2009 -------------------------------------------------------------
   CoinModel(
+    id: 331,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2009/2009_01-min.png',
     periodStartDate: '2009-11-01',
@@ -484,6 +536,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVAKIA,
   ),
   CoinModel(
+    id: 332,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2009/2009_02-min.png',
     periodStartDate: '2009-10-01',
@@ -493,6 +546,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 333,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2009/2009_03-min.png',
     periodStartDate: '2009-10-01',
@@ -502,6 +556,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 334,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2009/2009_04-min.png',
     periodStartDate: '2009-10-01',
@@ -511,6 +566,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 335,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2009/2009_05-min.png',
     periodStartDate: '2009-09-01',
@@ -520,6 +576,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
+    id: 336,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2009/2009_06-min.png',
     periodStartDate: '2009-06-01',
@@ -529,6 +586,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
+    id: 337,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2009/2009_07-min.png',
     periodStartDate: '2009-05-01',
@@ -538,6 +596,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 338,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2009/2009_08-min.png',
     periodStartDate: '2009-02-01',
@@ -547,6 +606,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GERMANY,
   ),
   CoinModel(
+    id: 339,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2009/2009_09-min.png',
     periodStartDate: '2009-01-01',
@@ -556,6 +616,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 340,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2009/2009_10-min.png',
     periodStartDate: '2009-01-01',
@@ -565,6 +626,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 341,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2009/2009_11-min.png',
     periodStartDate: '2009-01-01',
@@ -574,6 +636,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 342,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2009/2009_12-min.png',
     periodStartDate: '2009-01-01',
@@ -583,6 +646,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 343,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2009/2009_13-min.png',
     periodStartDate: '2009-01-01',
@@ -592,6 +656,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 344,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2009/2009_14-min.png',
     periodStartDate: '2009-01-01',
@@ -601,6 +666,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 345,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2009/2009_15-min.png',
     periodStartDate: '2009-01-01',
@@ -610,6 +676,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 346,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2009/2009_16-min.png',
     periodStartDate: '2009-01-01',
@@ -619,6 +686,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 347,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2009/2009_17-min.png',
     periodStartDate: '2009-01-01',
@@ -628,6 +696,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 348,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2009/2009_18-min.png',
     periodStartDate: '2009-01-01',
@@ -637,6 +706,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 349,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2009/2009_19-min.png',
     periodStartDate: '2009-01-01',
@@ -646,6 +716,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 350,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2009/2009_20-min.png',
     periodStartDate: '2009-01-01',
@@ -655,6 +726,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 351,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2009/2009_21-min.png',
     periodStartDate: '2009-01-01',
@@ -664,6 +736,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 352,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2009/2009_22-min.png',
     periodStartDate: '2009-01-01',
@@ -673,6 +746,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 353,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2009/2009_23-min.png',
     periodStartDate: '2009-01-01',
@@ -682,6 +756,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 354,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2009/2009_24-min.png',
     periodStartDate: '2009-01-01',
@@ -691,6 +766,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 355,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2009/2009_25-min.png',
     periodStartDate: '2009-01-01',
@@ -700,6 +776,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 356,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2009/2009_26-min.png',
     periodStartDate: '2009-01-01',
@@ -711,6 +788,7 @@ final List<CoinModel> coinDataCommemoratives = [
 
   // 2010 -------------------------------------------------------------
   CoinModel(
+    id: 357,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2010/2010_01-min.png',
     periodStartDate: '2010-10-01',
@@ -720,6 +798,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
+    id: 358,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2010/2010_02-min.png',
     periodStartDate: '2010-10-01',
@@ -729,6 +808,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 359,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2010/2010_03-min.png',
     periodStartDate: '2010-10-01',
@@ -738,6 +818,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 360,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2010/2010_04-min.png',
     periodStartDate: '2010-09-01',
@@ -747,6 +828,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 361,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2010/2010_05-min.png',
     periodStartDate: '2010-09-01',
@@ -756,6 +838,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
+    id: 362,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2010/2010_06-min.png',
     periodStartDate: '2010-06-01',
@@ -765,6 +848,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 363,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2010/2010_07-min.png',
     periodStartDate: '2010-06-01',
@@ -774,6 +858,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
+    id: 364,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2010/2010_08-min.png',
     periodStartDate: '2010-05-01',
@@ -783,6 +868,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVENIA,
   ),
   CoinModel(
+    id: 365,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2010/2010_09-min.png',
     periodStartDate: '2010-03-01',
@@ -792,6 +878,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
+    id: 366,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2010/2010_10-min.png',
     periodStartDate: '2010-03-01',
@@ -801,6 +888,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 367,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2010/2010_11-min.png',
     periodStartDate: '2010-01-01',
@@ -810,6 +898,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 368,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2010/2010_12-min.png',
     periodStartDate: '2010-01-01',
@@ -821,6 +910,7 @@ final List<CoinModel> coinDataCommemoratives = [
 
   // 2011 -------------------------------------------------------------
   CoinModel(
+    id: 369,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2011/2011_01-min.png',
     periodStartDate: '2011-11-01',
@@ -830,6 +920,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
+    id: 370,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2011/2011_02-min.png',
     periodStartDate: '2011-10-01',
@@ -839,6 +930,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 371,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2011/2011_03-min.png',
     periodStartDate: '2011-10-01',
@@ -848,6 +940,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 372,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2011/2011_04-min.png',
     periodStartDate: '2011-09-01',
@@ -857,6 +950,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
+    id: 373,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2011/2011_05-min.png',
     periodStartDate: '2011-07-01',
@@ -866,6 +960,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MONACO,
   ),
   CoinModel(
+    id: 374,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2011/2011_06-min.png',
     periodStartDate: '2011-06-01',
@@ -875,6 +970,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 375,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2011/2011_07-min.png',
     periodStartDate: '2011-06-01',
@@ -884,6 +980,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
+    id: 376,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2011/2011_08-min.png',
     periodStartDate: '2011-06-01',
@@ -893,6 +990,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 377,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2011/2011_09-min.png',
     periodStartDate: '2011-03-01',
@@ -902,6 +1000,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 378,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2011/2011_10-min.png',
     periodStartDate: '2011-03-01',
@@ -911,6 +1010,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
+    id: 379,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2011/2011_11-min.png',
     periodStartDate: '2011-03-01',
@@ -920,6 +1020,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVENIA,
   ),
   CoinModel(
+    id: 380,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2011/2011_12-min.png',
     periodStartDate: '2011-03-01',
@@ -929,6 +1030,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
+    id: 381,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2011/2011_13-min.png',
     periodStartDate: '2011-01-01',
@@ -938,6 +1040,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVAKIA,
   ),
   CoinModel(
+    id: 382,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2011/2011_14-min.png',
     periodStartDate: '2011-01-01',
@@ -947,6 +1050,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 383,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2011/2011_15-min.png',
     periodStartDate: '2011-01-01',
@@ -956,6 +1060,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.NETHERLANDS,
   ),
   CoinModel(
+    id: 384,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2011/2011_16-min.png',
     periodStartDate: '2011-01-01',
@@ -967,6 +1072,7 @@ final List<CoinModel> coinDataCommemoratives = [
 
   // 2012 -------------------------------------------------------------
   CoinModel(
+    id: 385,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_01-min.png',
     periodStartDate: '2012-12-01',
@@ -976,6 +1082,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 386,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_02-min.png',
     periodStartDate: '2012-10-01',
@@ -985,6 +1092,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 387,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_03-min.png',
     periodStartDate: '2012-09-01',
@@ -994,6 +1102,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 388,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_04-min.png',
     periodStartDate: '2012-09-01',
@@ -1003,6 +1112,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
+    id: 389,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_05-min.png',
     periodStartDate: '2012-07-01',
@@ -1012,6 +1122,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MONACO,
   ),
   CoinModel(
+    id: 390,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_06-min.png',
     periodStartDate: '2012-07-01',
@@ -1021,6 +1132,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 391,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_07-min.png',
     periodStartDate: '2012-06-01',
@@ -1030,6 +1142,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
+    id: 392,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_08-min.png',
     periodStartDate: '2012-05-01',
@@ -1039,6 +1152,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
+    id: 393,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_09-min.png',
     periodStartDate: '2012-04-01',
@@ -1048,6 +1162,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 394,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_10-min.png',
     periodStartDate: '2012-03-01',
@@ -1057,6 +1172,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
+    id: 395,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_11-min.png',
     periodStartDate: '2012-01-01',
@@ -1066,6 +1182,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 396,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_12-min.png',
     periodStartDate: '2012-01-01',
@@ -1075,6 +1192,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 397,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_13-min.png',
     periodStartDate: '2012-01-01',
@@ -1084,6 +1202,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 398,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_14-min.png',
     periodStartDate: '2012-01-01',
@@ -1093,6 +1212,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 399,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_15-min.png',
     periodStartDate: '2012-01-01',
@@ -1102,6 +1222,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 400,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_16-min.png',
     periodStartDate: '2012-01-01',
@@ -1111,6 +1232,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 401,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_17-min.png',
     periodStartDate: '2012-01-01',
@@ -1120,6 +1242,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 402,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_18-min.png',
     periodStartDate: '2012-01-01',
@@ -1129,6 +1252,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 403,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_19-min.png',
     periodStartDate: '2012-01-01',
@@ -1138,6 +1262,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 404,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_20-min.png',
     periodStartDate: '2012-01-01',
@@ -1147,6 +1272,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 405,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_21-min.png',
     periodStartDate: '2012-01-01',
@@ -1156,6 +1282,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 406,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_22-min.png',
     periodStartDate: '2012-01-01',
@@ -1165,6 +1292,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 407,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_23-min.png',
     periodStartDate: '2012-01-01',
@@ -1174,6 +1302,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 408,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_24-min.png',
     periodStartDate: '2012-01-01',
@@ -1183,6 +1312,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 409,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_25-min.png',
     periodStartDate: '2012-01-01',
@@ -1192,6 +1322,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 410,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_26-min.png',
     periodStartDate: '2012-01-01',
@@ -1201,6 +1332,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 411,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_27-min.png',
     periodStartDate: '2012-01-01',
@@ -1210,6 +1342,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 412,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_28-min.png',
     periodStartDate: '2012-01-01',
@@ -1219,6 +1352,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 413,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_29-min.png',
     periodStartDate: '2012-01-01',
@@ -1228,6 +1362,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 414,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2012/2012_30-min.png',
     periodStartDate: '2012-01-01',
@@ -1239,6 +1374,7 @@ final List<CoinModel> coinDataCommemoratives = [
 
   // 2013 -------------------------------------------------------------
   CoinModel(
+    id: 415,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2013/2013_01-min.png',
     periodStartDate: '2013-11-01',
@@ -1248,6 +1384,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.NETHERLANDS,
   ),
   CoinModel(
+    id: 416,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2013/2013_02-min.png',
     periodStartDate: '2013-11-01',
@@ -1257,6 +1394,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 417,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2013/2013_03-min.png',
     periodStartDate: '2013-10-01',
@@ -1266,6 +1404,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
+    id: 418,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2013/2013_04-min.png',
     periodStartDate: '2013-10-01',
@@ -1275,6 +1414,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 419,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2013/2013_05-min.png',
     periodStartDate: '2013-10-01',
@@ -1284,6 +1424,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
+    id: 420,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2013/2013_06-min.png',
     periodStartDate: '2013-10-01',
@@ -1293,6 +1434,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
+    id: 421,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2013/2013_07-min.png',
     periodStartDate: '2013-09-01',
@@ -1302,6 +1444,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 422,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2013/2013_08-min.png',
     periodStartDate: '2013-09-01',
@@ -1311,6 +1454,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
+    id: 423,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2013/2013_09-min.png',
     periodStartDate: '2013-09-01',
@@ -1320,6 +1464,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 424,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2013/2013_10-min.png',
     periodStartDate: '2013-09-01',
@@ -1329,6 +1474,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 425,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2013/2013_11-min.png',
     periodStartDate: '2013-07-01',
@@ -1338,6 +1484,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVAKIA,
   ),
   CoinModel(
+    id: 426,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2013/2013_12-min.png',
     periodStartDate: '2013-07-01',
@@ -1347,6 +1494,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MONACO,
   ),
   CoinModel(
+    id: 427,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2013/2013_13-min.png',
     periodStartDate: '2013-07-01',
@@ -1356,6 +1504,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 428,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2013/2013_14-min.png',
     periodStartDate: '2013-06-01',
@@ -1365,6 +1514,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
+    id: 429,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2013/2013_15-min.png',
     periodStartDate: '2013-06-01',
@@ -1374,6 +1524,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 430,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2013/2013_16-min.png',
     periodStartDate: '2013-05-01',
@@ -1383,6 +1534,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 431,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2013/2013_17-min.png',
     periodStartDate: '2013-03-01',
@@ -1392,6 +1544,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 432,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2013/2013_18-min.png',
     periodStartDate: '2013-02-01',
@@ -1401,6 +1554,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.NETHERLANDS,
   ),
   CoinModel(
+    id: 433,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2013/2013_19-min.png',
     periodStartDate: '2013-02-01',
@@ -1410,6 +1564,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GERMANY,
   ),
   CoinModel(
+    id: 434,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2013/2013_20-min.png',
     periodStartDate: '2013-02-01',
@@ -1419,6 +1574,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVENIA,
   ),
   CoinModel(
+    id: 435,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2013/2013_21-min.png',
     periodStartDate: '2013-02-01',
@@ -1428,6 +1584,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
+    id: 436,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2013/2013_22-min.png',
     periodStartDate: '2013-01-01',
@@ -1437,6 +1594,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 437,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2013/2013_23-min.png',
     periodStartDate: '2013-01-01',
@@ -1448,6 +1606,7 @@ final List<CoinModel> coinDataCommemoratives = [
 
   // 2014 -------------------------------------------------------------
   CoinModel(
+    id: 438,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2014/2014_01-min.png',
     periodStartDate: '2014-12-01',
@@ -1457,6 +1616,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
+    id: 439,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2014/2014_02-min.png',
     periodStartDate: '2014-11-01',
@@ -1466,6 +1626,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 440,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2014/2014_03-min.png',
     periodStartDate: '2014-11-01',
@@ -1475,6 +1636,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 441,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2014/2014_04-min.png',
     periodStartDate: '2014-10-01',
@@ -1484,6 +1646,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 442,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2014/2014_05-min.png',
     periodStartDate: '2014-10-01',
@@ -1493,6 +1656,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVENIA,
   ),
   CoinModel(
+    id: 443,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2014/2014_06-min.png',
     periodStartDate: '2014-10-01',
@@ -1502,6 +1666,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 444,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2014/2014_07-min.png',
     periodStartDate: '2014-10-01',
@@ -1511,6 +1676,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
+    id: 445,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2014/2014_08-min.png',
     periodStartDate: '2014-10-01',
@@ -1520,6 +1686,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
+    id: 446,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2014/2014_09-min.png',
     periodStartDate: '2014-09-01',
@@ -1529,6 +1696,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 447,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2014/2014_10-min.png',
     periodStartDate: '2014-09-01',
@@ -1538,6 +1706,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
+    id: 448,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2014/2014_11-min.png',
     periodStartDate: '2014-09-01',
@@ -1547,6 +1716,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
+    id: 449,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2014/2014_12-min.png',
     periodStartDate: '2014-09-01',
@@ -1556,6 +1726,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
+    id: 450,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2014/2014_13-min.png',
     periodStartDate: '2014-09-01',
@@ -1565,6 +1736,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LATVIA,
   ),
   CoinModel(
+    id: 451,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2014/2014_14-min.png',
     periodStartDate: '2014-07-01',
@@ -1574,6 +1746,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
+    id: 452,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2014/2014_15-min.png',
     periodStartDate: '2014-06-01',
@@ -1583,6 +1756,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 453,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2014/2014_16-min.png',
     periodStartDate: '2014-06-01',
@@ -1592,6 +1766,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 454,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2014/2014_17-min.png',
     periodStartDate: '2014-06-01',
@@ -1601,6 +1776,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 455,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2014/2014_18-min.png',
     periodStartDate: '2014-06-01',
@@ -1610,6 +1786,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 456,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2014/2014_19-min.png',
     periodStartDate: '2014-06-01',
@@ -1619,6 +1796,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 457,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2014/2014_20-min.png',
     periodStartDate: '2014-05-01',
@@ -1628,6 +1806,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.NETHERLANDS,
   ),
   CoinModel(
+    id: 458,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2014/2014_21-min.png',
     periodStartDate: '2014-04-01',
@@ -1637,6 +1816,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVAKIA,
   ),
   CoinModel(
+    id: 459,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2014/2014_22-min.png',
     periodStartDate: '2014-04-01',
@@ -1646,6 +1826,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
+    id: 460,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2014/2014_23-min.png',
     periodStartDate: '2014-04-01',
@@ -1655,6 +1836,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
+    id: 461,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2014/2014_24-min.png',
     periodStartDate: '2014-03-01',
@@ -1664,6 +1846,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
+    id: 462,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2014/2014_25-min.png',
     periodStartDate: '2014-02-01',
@@ -1673,6 +1856,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
+    id: 463,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2014/2014_26-min.png',
     periodStartDate: '2014-01-01',
@@ -1682,6 +1866,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 464,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2014/2014_27-min.png',
     periodStartDate: '2014-01-01',
@@ -1693,6 +1878,7 @@ final List<CoinModel> coinDataCommemoratives = [
 
   // 2015 -------------------------------------------------------------
   CoinModel(
+    id: 465,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_01-min.png',
     periodStartDate: '2015-12-01',
@@ -1702,6 +1888,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LITHUANIA,
   ),
   CoinModel(
+    id: 466,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_02-min.png',
     periodStartDate: '2015-12-01',
@@ -1711,6 +1898,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
+    id: 467,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_03-min.png',
     periodStartDate: '2015-12-01',
@@ -1720,6 +1908,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
+    id: 468,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_04-min.png',
     periodStartDate: '2015-11-01',
@@ -1729,6 +1918,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MONACO,
   ),
   CoinModel(
+    id: 469,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_05-min.png',
     periodStartDate: '2015-10-01',
@@ -1738,6 +1928,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 470,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_06-min.png',
     periodStartDate: '2015-10-01',
@@ -1747,6 +1938,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 471,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_07-min.png',
     periodStartDate: '2015-10-01',
@@ -1756,6 +1948,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LATVIA,
   ),
   CoinModel(
+    id: 472,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_08-min.png',
     periodStartDate: '2015-10-01',
@@ -1765,6 +1958,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVAKIA,
   ),
   CoinModel(
+    id: 473,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_09-min.png',
     periodStartDate: '2015-10-01',
@@ -1774,6 +1968,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 474,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_10-min.png',
     periodStartDate: '2015-10-01',
@@ -1783,6 +1978,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 475,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_11-min.png',
     periodStartDate: '2015-10-01',
@@ -1792,6 +1988,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 476,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_12-min.png',
     periodStartDate: '2015-10-01',
@@ -1801,6 +1998,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 477,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_13-min.png',
     periodStartDate: '2015-10-01',
@@ -1810,6 +2008,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 478,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_14-min.png',
     periodStartDate: '2015-10-01',
@@ -1819,6 +2018,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 479,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_15-min.png',
     periodStartDate: '2015-10-01',
@@ -1828,6 +2028,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 480,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_16-min.png',
     periodStartDate: '2015-10-01',
@@ -1837,6 +2038,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 481,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_17-min.png',
     periodStartDate: '2015-10-01',
@@ -1846,6 +2048,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 482,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_18-min.png',
     periodStartDate: '2015-10-01',
@@ -1855,6 +2058,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 483,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_19-min.png',
     periodStartDate: '2015-10-01',
@@ -1864,6 +2068,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 484,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_20-min.png',
     periodStartDate: '2015-10-01',
@@ -1873,6 +2078,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 485,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_21-min.png',
     periodStartDate: '2015-10-01',
@@ -1882,6 +2088,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 486,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_22-min.png',
     periodStartDate: '2015-10-01',
@@ -1891,6 +2098,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 487,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_23-min.png',
     periodStartDate: '2015-10-01',
@@ -1900,6 +2108,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 488,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_24-min.png',
     periodStartDate: '2015-10-01',
@@ -1909,6 +2118,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 489,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_25-min.png',
     periodStartDate: '2015-10-01',
@@ -1918,6 +2128,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 490,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_26-min.png',
     periodStartDate: '2015-10-01',
@@ -1927,6 +2138,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 491,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_27-min.png',
     periodStartDate: '2015-10-01',
@@ -1936,6 +2148,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 492,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_28-min.png',
     periodStartDate: '2015-07-01',
@@ -1945,6 +2158,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
+    id: 493,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_29-min.png',
     periodStartDate: '2015-09-01',
@@ -1954,6 +2168,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
+    id: 494,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_30-min.png',
     periodStartDate: '2015-09-01',
@@ -1963,6 +2178,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 495,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_31-min.png',
     periodStartDate: '2015-09-01',
@@ -1972,6 +2188,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
+    id: 496,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_32-min.png',
     periodStartDate: '2015-08-01',
@@ -1981,6 +2198,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 497,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_33-min.png',
     periodStartDate: '2015-07-01',
@@ -1990,6 +2208,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 498,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_34-min.png',
     periodStartDate: '2015-07-01',
@@ -1999,6 +2218,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 499,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_35-min.png',
     periodStartDate: '2015-07-01',
@@ -2008,6 +2228,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
+    id: 500,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_36-min.png',
     periodStartDate: '2015-04-01',
@@ -2017,6 +2238,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
+    id: 501,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_37-min.png',
     periodStartDate: '2015-04-01',
@@ -2026,6 +2248,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 502,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_38-min.png',
     periodStartDate: '2015-03-01',
@@ -2035,6 +2258,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
+    id: 503,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_39-min.png',
     periodStartDate: '2015-03-01',
@@ -2044,6 +2268,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 504,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_40-min.png',
     periodStartDate: '2015-03-01',
@@ -2053,6 +2278,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 505,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_41-min.png',
     periodStartDate: '2015-02-01',
@@ -2062,6 +2288,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
+    id: 506,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_42-min.png',
     periodStartDate: '2015-01-01',
@@ -2071,6 +2298,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GERMANY,
   ),
   CoinModel(
+    id: 507,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_43-min.png',
     periodStartDate: '2015-01-01',
@@ -2080,6 +2308,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GERMANY,
   ),
   CoinModel(
+    id: 508,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_44-min.png',
     periodStartDate: '2015-01-01',
@@ -2089,6 +2318,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVENIA,
   ),
   CoinModel(
+    id: 509,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_45-min.png',
     periodStartDate: '2015-01-01',
@@ -2098,6 +2328,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 510,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_46-min.png',
     periodStartDate: '2015-01-01',
@@ -2107,6 +2338,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 511,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2015/2015_47-min.png',
     periodStartDate: '2015-01-01',
@@ -2118,6 +2350,7 @@ final List<CoinModel> coinDataCommemoratives = [
 
   // 2016 -------------------------------------------------------------
   CoinModel(
+    id: 512,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_01-min.png',
     periodStartDate: '2016-12-01',
@@ -2127,6 +2360,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
+    id: 513,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_02-min.png',
     periodStartDate: '2016-12-01',
@@ -2136,6 +2370,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
+    id: 514,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_03-min.png',
     periodStartDate: '2016-12-01',
@@ -2145,6 +2380,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
+    id: 515,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_04-min.png',
     periodStartDate: '2016-12-01',
@@ -2154,6 +2390,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
+    id: 516,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_05-min.png',
     periodStartDate: '2016-11-01',
@@ -2163,6 +2400,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
+    id: 517,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_06-min.png',
     periodStartDate: '2016-11-01',
@@ -2172,6 +2410,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LATVIA,
   ),
   CoinModel(
+    id: 518,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_07-min.png',
     periodStartDate: '2016-10-01',
@@ -2181,6 +2420,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 519,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_08-min.png',
     periodStartDate: '2016-10-01',
@@ -2190,6 +2430,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 520,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_09-min.png',
     periodStartDate: '2016-10-01',
@@ -2199,6 +2440,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 521,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_10-min.png',
     periodStartDate: '2016-09-01',
@@ -2208,6 +2450,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 522,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_11-min.png',
     periodStartDate: '2016-07-01',
@@ -2217,6 +2460,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
+    id: 523,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_12-min.png',
     periodStartDate: '2016-07-01',
@@ -2226,6 +2470,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
+    id: 524,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_13-min.png',
     periodStartDate: '2016-05-01',
@@ -2235,6 +2480,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LITHUANIA,
   ),
   CoinModel(
+    id: 525,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_14-min.png',
     periodStartDate: '2016-06-01',
@@ -2244,6 +2490,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 526,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_15-min.png',
     periodStartDate: '2016-06-01',
@@ -2253,6 +2500,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LATVIA,
   ),
   CoinModel(
+    id: 527,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_16-min.png',
     periodStartDate: '2016-06-01',
@@ -2262,6 +2510,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MONACO,
   ),
   CoinModel(
+    id: 528,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_17-min.png',
     periodStartDate: '2016-06-01',
@@ -2271,6 +2520,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVENIA,
   ),
   CoinModel(
+    id: 529,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_18-min.png',
     periodStartDate: '2016-05-01',
@@ -2280,6 +2530,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
+    id: 530,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_19-min.png',
     periodStartDate: '2016-04-01',
@@ -2289,6 +2540,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 531,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_20-min.png',
     periodStartDate: '2016-04-01',
@@ -2298,6 +2550,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 532,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_21-min.png',
     periodStartDate: '2016-03-01',
@@ -2307,6 +2560,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
+    id: 533,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_22-min.png',
     periodStartDate: '2016-03-01',
@@ -2316,6 +2570,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 534,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_23-min.png',
     periodStartDate: '2016-03-01',
@@ -2325,6 +2580,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 535,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_24-min.png',
     periodStartDate: '2016-03-01',
@@ -2334,6 +2590,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
+    id: 536,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_25-min.png',
     periodStartDate: '2016-03-01',
@@ -2343,6 +2600,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVAKIA,
   ),
   CoinModel(
+    id: 537,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_26-min.png',
     periodStartDate: '2016-01-01',
@@ -2352,6 +2610,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 538,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_27-min.png',
     periodStartDate: '2016-02-01',
@@ -2361,6 +2620,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GERMANY,
   ),
   CoinModel(
+    id: 539,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_28-min.png',
     periodStartDate: '2016-02-01',
@@ -2370,6 +2630,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
+    id: 540,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_29-min.png',
     periodStartDate: '2016-01-01',
@@ -2379,6 +2640,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.AUSTRIA,
   ),
   CoinModel(
+    id: 541,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_30-min.png',
     periodStartDate: '2016-01-01',
@@ -2388,6 +2650,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 542,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_31-min.png',
     periodStartDate: '2016-01-01',
@@ -2397,6 +2660,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ESTONIA,
   ),
   CoinModel(
+    id: 543,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2016/2016_32-min.png',
     periodStartDate: '2016-01-01',
@@ -2408,6 +2672,7 @@ final List<CoinModel> coinDataCommemoratives = [
 
   // 2017 -------------------------------------------------------------
   CoinModel(
+    id: 544,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_01-min.png',
     periodStartDate: '2017-12-01',
@@ -2417,6 +2682,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
+    id: 545,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_02-min.png',
     periodStartDate: '2017-12-01',
@@ -2426,6 +2692,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
+    id: 546,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_03-min.png',
     periodStartDate: '2017-11-01',
@@ -2435,6 +2702,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
+    id: 547,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_04-min.png',
     periodStartDate: '2017-11-01',
@@ -2444,6 +2712,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MONACO,
   ),
   CoinModel(
+    id: 548,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_05-min.png',
     periodStartDate: '2017-11-01',
@@ -2453,6 +2722,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
+    id: 549,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_06-min.png',
     periodStartDate: '2017-10-01',
@@ -2462,6 +2732,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LATVIA,
   ),
   CoinModel(
+    id: 550,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_07-min.png',
     periodStartDate: '2017-10-01',
@@ -2471,6 +2742,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 551,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_08-min.png',
     periodStartDate: '2017-10-01',
@@ -2480,6 +2752,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 552,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_09-min.png',
     periodStartDate: '2017-10-01',
@@ -2489,6 +2762,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 553,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_10-min.png',
     periodStartDate: '2017-09-01',
@@ -2498,6 +2772,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.CYPRUS,
   ),
   CoinModel(
+    id: 554,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_11-min.png',
     periodStartDate: '2017-09-01',
@@ -2507,6 +2782,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 555,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_12-min.png',
     periodStartDate: '2017-09-01',
@@ -2516,6 +2792,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
+    id: 556,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_13-min.png',
     periodStartDate: '2017-09-01',
@@ -2525,6 +2802,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 557,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_14-min.png',
     periodStartDate: '2017-09-01',
@@ -2534,6 +2812,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LATVIA,
   ),
   CoinModel(
+    id: 558,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_15-min.png',
     periodStartDate: '2017-07-01',
@@ -2543,6 +2822,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LITHUANIA,
   ),
   CoinModel(
+    id: 559,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_16-min.png',
     periodStartDate: '2017-07-01',
@@ -2552,6 +2832,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ESTONIA,
   ),
   CoinModel(
+    id: 560,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_17-min.png',
     periodStartDate: '2017-07-01',
@@ -2561,6 +2842,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
+    id: 561,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_18-min.png',
     periodStartDate: '2017-07-01',
@@ -2570,6 +2852,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
+    id: 562,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_19-min.png',
     periodStartDate: '2017-07-01',
@@ -2579,6 +2862,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
+    id: 563,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_20-min.png',
     periodStartDate: '2017-06-01',
@@ -2588,6 +2872,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 564,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_21-min.png',
     periodStartDate: '2017-06-01',
@@ -2597,6 +2882,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
+    id: 565,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_22-min.png',
     periodStartDate: '2017-04-01',
@@ -2606,6 +2892,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 566,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_23-min.png',
     periodStartDate: '2017-04-01',
@@ -2615,6 +2902,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 567,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_24-min.png',
     periodStartDate: '2017-04-01',
@@ -2624,6 +2912,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
+    id: 568,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_25-min.png',
     periodStartDate: '2017-03-01',
@@ -2633,6 +2922,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 569,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_26-min.png',
     periodStartDate: '2017-02-01',
@@ -2642,6 +2932,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
+    id: 570,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_27-min.png',
     periodStartDate: '2017-02-01',
@@ -2651,6 +2942,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GERMANY,
   ),
   CoinModel(
+    id: 571,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_28-min.png',
     periodStartDate: '2017-01-01',
@@ -2660,6 +2952,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVAKIA,
   ),
   CoinModel(
+    id: 572,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_29-min.png',
     periodStartDate: '2017-01-01',
@@ -2669,6 +2962,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVENIA,
   ),
   CoinModel(
+    id: 573,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_30-min.png',
     periodStartDate: '2017-01-01',
@@ -2678,6 +2972,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 574,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_31-min.png',
     periodStartDate: '2017-01-01',
@@ -2687,6 +2982,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 575,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2017/2017_32-min.png',
     periodStartDate: '2017-01-01',
@@ -2698,6 +2994,7 @@ final List<CoinModel> coinDataCommemoratives = [
 
   // 2018 -------------------------------------------------------------
   CoinModel(
+    id: 576,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_01-min.png',
     periodStartDate: '2018-11-01',
@@ -2707,6 +3004,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
+    id: 577,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_02-min.png',
     periodStartDate: '2018-11-01',
@@ -2716,6 +3014,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
+    id: 578,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_03-min.png',
     periodStartDate: '2018-10-01',
@@ -2725,6 +3024,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 579,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_04-min.png',
     periodStartDate: '2018-10-01',
@@ -2734,6 +3034,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
+    id: 580,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_05-min.png',
     periodStartDate: '2018-10-01',
@@ -2743,6 +3044,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 581,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_06-min.png',
     periodStartDate: '2018-10-01',
@@ -2752,6 +3054,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
+    id: 582,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_07-min.png',
     periodStartDate: '2018-10-01',
@@ -2761,6 +3064,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
+    id: 583,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_08-min.png',
     periodStartDate: '2018-09-01',
@@ -2770,6 +3074,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LATVIA,
   ),
   CoinModel(
+    id: 584,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_09-min.png',
     periodStartDate: '2018-09-01',
@@ -2779,6 +3084,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 585,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_10-min.png',
     periodStartDate: '2018-09-01',
@@ -2788,6 +3094,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 586,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_11-min.png',
     periodStartDate: '2018-07-01',
@@ -2797,6 +3104,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
+    id: 587,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_12-min.png',
     periodStartDate: '2018-07-01',
@@ -2806,6 +3114,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
+    id: 588,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_13-min.png',
     periodStartDate: '2018-06-01',
@@ -2815,6 +3124,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MONACO,
   ),
   CoinModel(
+    id: 589,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_14-min.png',
     periodStartDate: '2018-05-01',
@@ -2824,6 +3134,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
+    id: 590,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_15-min.png',
     periodStartDate: '2018-05-01',
@@ -2833,6 +3144,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
+    id: 591,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_16-min.png',
     periodStartDate: '2018-05-01',
@@ -2842,6 +3154,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 592,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_17-min.png',
     periodStartDate: '2018-05-01',
@@ -2851,6 +3164,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 593,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_18-min.png',
     periodStartDate: '2018-04-01',
@@ -2860,6 +3174,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 594,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_19-min.png',
     periodStartDate: '2018-04-01',
@@ -2869,6 +3184,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 595,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_20-min.png',
     periodStartDate: '2018-04-01',
@@ -2878,6 +3194,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LITHUANIA,
   ),
   CoinModel(
+    id: 596,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_21-min.png',
     periodStartDate: '2018-04-01',
@@ -2887,6 +3204,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVENIA,
   ),
   CoinModel(
+    id: 597,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_22-min.png',
     periodStartDate: '2018-03-01',
@@ -2896,6 +3214,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 598,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_23-min.png',
     periodStartDate: '2018-02-01',
@@ -2905,6 +3224,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
+    id: 599,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_24-min.png',
     periodStartDate: '2018-02-01',
@@ -2914,6 +3234,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
+    id: 600,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_25-min.png',
     periodStartDate: '2018-01-01',
@@ -2923,6 +3244,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
+    id: 601,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_26-min.png',
     periodStartDate: '2018-01-01',
@@ -2932,6 +3254,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LITHUANIA,
   ),
   CoinModel(
+    id: 602,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_27-min.png',
     periodStartDate: '2018-01-01',
@@ -2941,6 +3264,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LATVIA,
   ),
   CoinModel(
+    id: 603,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_28-min.png',
     periodStartDate: '2018-01-01',
@@ -2950,6 +3274,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ESTONIA,
   ),
   CoinModel(
+    id: 604,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_29-min.png',
     periodStartDate: '2018-01-01',
@@ -2959,6 +3284,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ESTONIA,
   ),
   CoinModel(
+    id: 605,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_30-min.png',
     periodStartDate: '2018-01-01',
@@ -2968,6 +3294,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GERMANY,
   ),
   CoinModel(
+    id: 606,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_31-min.png',
     periodStartDate: '2018-01-01',
@@ -2977,6 +3304,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 607,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_32-min.png',
     periodStartDate: '2018-01-01',
@@ -2986,6 +3314,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 608,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_33-min.png',
     periodStartDate: '2018-01-01',
@@ -2995,6 +3324,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVAKIA,
   ),
   CoinModel(
+    id: 609,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_34-min.png',
     periodStartDate: '2018-01-01',
@@ -3004,6 +3334,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 610,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_35-min.png',
     periodStartDate: '2018-01-01',
@@ -3013,6 +3344,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GERMANY,
   ),
   CoinModel(
+    id: 611,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2018/2018_36-min.png',
     periodStartDate: '2018-01-01',
@@ -3024,6 +3356,7 @@ final List<CoinModel> coinDataCommemoratives = [
 
   // 2019 -------------------------------------------------------------
   CoinModel(
+    id: 612,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_01-min.png',
     periodStartDate: '2019-10-01',
@@ -3033,6 +3366,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
+    id: 613,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_02-min.png',
     periodStartDate: '2019-11-01',
@@ -3042,6 +3376,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ESTONIA,
   ),
   CoinModel(
+    id: 614,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_03-min.png',
     periodStartDate: '2019-10-01',
@@ -3051,6 +3386,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVENIA,
   ),
   CoinModel(
+    id: 615,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_04-min.png',
     periodStartDate: '2019-07-01',
@@ -3060,6 +3396,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LITHUANIA,
   ),
   CoinModel(
+    id: 616,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_05-min.png',
     periodStartDate: '2019-07-01',
@@ -3069,6 +3406,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LITHUANIA,
   ),
   CoinModel(
+    id: 617,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_06-min.png',
     periodStartDate: '2019-07-01',
@@ -3078,6 +3416,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
+    id: 618,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_07-min.png',
     periodStartDate: '2019-07-01',
@@ -3087,6 +3426,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
+    id: 619,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_08-min.png',
     periodStartDate: '2019-10-21',
@@ -3096,6 +3436,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
+    id: 620,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_09-min.png',
     periodStartDate: '2019-10-01',
@@ -3105,6 +3446,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 621,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_10-min.png',
     periodStartDate: '2019-10-01',
@@ -3114,6 +3456,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 622,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_11-min.png',
     periodStartDate: '2019-09-01',
@@ -3123,6 +3466,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GERMANY,
   ),
   CoinModel(
+    id: 623,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_12-min.png',
     periodStartDate: '2019-09-01',
@@ -3132,6 +3476,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 624,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_13-min.png',
     periodStartDate: '2019-09-01',
@@ -3141,6 +3486,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 625,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_14-min.png',
     periodStartDate: '2019-07-01',
@@ -3150,6 +3496,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LATVIA,
   ),
   CoinModel(
+    id: 626,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_15-min.png',
     periodStartDate: '2019-09-01',
@@ -3159,6 +3506,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 627,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_16-min.png',
     periodStartDate: '2019-07-01',
@@ -3168,6 +3516,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
+    id: 628,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_17-min.png',
     periodStartDate: '2019-06-01',
@@ -3177,6 +3526,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ESTONIA,
   ),
   CoinModel(
+    id: 629,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_18-min.png',
     periodStartDate: '2019-06-01',
@@ -3186,6 +3536,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
+    id: 630,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_19-min.png',
     periodStartDate: '2019-06-01',
@@ -3195,6 +3546,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
+    id: 631,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_20-min.png',
     periodStartDate: '2019-06-01',
@@ -3204,6 +3556,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MONACO,
   ),
   CoinModel(
+    id: 632,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_21-min.png',
     periodStartDate: '2019-05-01',
@@ -3213,6 +3566,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 633,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_22-min.png',
     periodStartDate: '2019-04-01',
@@ -3222,6 +3576,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVAKIA,
   ),
   CoinModel(
+    id: 634,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_23-min.png',
     periodStartDate: '2019-04-01',
@@ -3231,6 +3586,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 635,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_24-min.png',
     periodStartDate: '2019-03-01',
@@ -3240,6 +3596,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
+    id: 636,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_25-min.png',
     periodStartDate: '2019-03-01',
@@ -3249,6 +3606,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 637,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_26-min.png',
     periodStartDate: '2019-02-01',
@@ -3258,6 +3616,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
+    id: 638,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_27-min.png',
     periodStartDate: '2019-01-01',
@@ -3267,6 +3626,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.IRELAND,
   ),
   CoinModel(
+    id: 639,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_28-min.png',
     periodStartDate: '2019-01-01',
@@ -3276,6 +3636,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GERMANY,
   ),
   CoinModel(
+    id: 640,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_29-min.png',
     periodStartDate: '2019-01-01',
@@ -3285,6 +3646,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 641,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_30-min.png',
     periodStartDate: '2019-01-01',
@@ -3294,6 +3656,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 642,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_31-min.png',
     periodStartDate: '2019-01-01',
@@ -3303,6 +3666,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
+    id: 643,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2019/2019_32-min.png',
     periodStartDate: '2019-01-01',
@@ -3314,6 +3678,7 @@ final List<CoinModel> coinDataCommemoratives = [
 
   // 2020 -------------------------------------------------------------
   CoinModel(
+    id: 644,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_01-min.png',
     periodStartDate: '2020-12-01',
@@ -3323,6 +3688,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 645,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_02-min.png',
     periodStartDate: '2020-11-01',
@@ -3332,6 +3698,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
+    id: 646,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_03-min.png',
     periodStartDate: '2020-11-01',
@@ -3341,6 +3708,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVAKIA,
   ),
   CoinModel(
+    id: 647,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_04-min.png',
     periodStartDate: '2020-10-01',
@@ -3350,6 +3718,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.CYPRUS,
   ),
   CoinModel(
+    id: 648,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_05-min.png',
     periodStartDate: '2020-10-01',
@@ -3359,6 +3728,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LITHUANIA,
   ),
   CoinModel(
+    id: 649,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_06-min.png',
     periodStartDate: '2020-09-01',
@@ -3368,6 +3738,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 650,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_07-min.png',
     periodStartDate: '2020-10-01',
@@ -3377,6 +3748,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
+    id: 651,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_08-min.png',
     periodStartDate: '2020-10-01',
@@ -3386,6 +3758,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GERMANY,
   ),
   CoinModel(
+    id: 652,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_09-min.png',
     periodStartDate: '2020-10-01',
@@ -3395,6 +3768,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 653,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_10-min.png',
     periodStartDate: '2020-10-01',
@@ -3404,6 +3778,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 654,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_11-min.png',
     periodStartDate: '2020-08-01',
@@ -3413,6 +3788,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 655,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_12-min.png',
     periodStartDate: '2020-06-01',
@@ -3422,6 +3798,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 656,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_13-min.png',
     periodStartDate: '2020-06-01',
@@ -3431,6 +3808,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
+    id: 657,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_14-min.png',
     periodStartDate: '2020-06-01',
@@ -3440,6 +3818,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVENIA,
   ),
   CoinModel(
+    id: 658,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_15-min.png',
     periodStartDate: '2020-04-01',
@@ -3449,6 +3828,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LATVIA,
   ),
   CoinModel(
+    id: 659,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_16-min.png',
     periodStartDate: '2020-10-01',
@@ -3458,6 +3838,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 660,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_17-min.png',
     periodStartDate: '2020-07-01',
@@ -3467,6 +3848,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
+    id: 661,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_18-min.png',
     periodStartDate: '2020-06-01',
@@ -3476,6 +3858,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MONACO,
   ),
   CoinModel(
+    id: 662,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_19-min.png',
     periodStartDate: '2020-06-01',
@@ -3485,6 +3868,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 663,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_20-min.png',
     periodStartDate: '2020-05-01',
@@ -3494,6 +3878,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
+    id: 664,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_21-min.png',
     periodStartDate: '2020-05-01',
@@ -3503,6 +3888,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
+    id: 665,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_22-min.png',
     periodStartDate: '2020-05-01',
@@ -3512,6 +3898,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
+    id: 666,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_23-min.png',
     periodStartDate: '2020-05-01',
@@ -3521,6 +3908,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
+    id: 667,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_24-min.png',
     periodStartDate: '2020-10-01',
@@ -3530,6 +3918,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 668,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_25-min.png',
     periodStartDate: '2020-08-01',
@@ -3539,6 +3928,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 669,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_26-min.png',
     periodStartDate: '2020-03-01',
@@ -3548,6 +3938,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LITHUANIA,
   ),
   CoinModel(
+    id: 670,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_27-min.png',
     periodStartDate: '2020-03-01',
@@ -3557,6 +3948,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ESTONIA,
   ),
   CoinModel(
+    id: 671,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_28-min.png',
     periodStartDate: '2020-02-01',
@@ -3566,6 +3958,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
+    id: 672,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_29-min.png',
     periodStartDate: '2020-02-01',
@@ -3575,6 +3968,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GERMANY,
   ),
   CoinModel(
+    id: 673,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_30-min.png',
     periodStartDate: '2020-02-01',
@@ -3584,6 +3978,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
+    id: 674,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_31-min.png',
     periodStartDate: '2020-02-01',
@@ -3593,6 +3988,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ESTONIA,
   ),
   CoinModel(
+    id: 675,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_32-min.png',
     periodStartDate: '2020-01-01',
@@ -3602,6 +3998,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 676,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_33-min.png',
     periodStartDate: '2020-01-01',
@@ -3611,6 +4008,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 677,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_34-min.png',
     periodStartDate: '2020-01-01',
@@ -3622,6 +4020,7 @@ final List<CoinModel> coinDataCommemoratives = [
 
   // 2021 -------------------------------------------------------------
   CoinModel(
+    id: 678,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_01-min.png',
     periodStartDate: '2021-10-01',
@@ -3631,6 +4030,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
+    id: 679,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_02-min.png',
     periodStartDate: '2021-10-01',
@@ -3640,6 +4040,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
+    id: 680,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_03-min.png',
     periodStartDate: '2021-11-01',
@@ -3649,6 +4050,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVAKIA,
   ),
   CoinModel(
+    id: 681,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_04-min.png',
     periodStartDate: '2021-09-01',
@@ -3658,6 +4060,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 682,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_05-min.png',
     periodStartDate: '2021-09-01',
@@ -3667,6 +4070,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
+    id: 683,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_06-min.png',
     periodStartDate: '2021-09-01',
@@ -3676,6 +4080,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ESTONIA,
   ),
   CoinModel(
+    id: 684,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_07-min.png',
     periodStartDate: '2021-10-01',
@@ -3685,6 +4090,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
+    id: 685,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_08-min.png',
     periodStartDate: '2021-10-01',
@@ -3694,6 +4100,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 686,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_09-min.png',
     periodStartDate: '2021-10-01',
@@ -3703,6 +4110,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVENIA,
   ),
   CoinModel(
+    id: 687,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_10-min.png',
     periodStartDate: '2021-09-01',
@@ -3712,6 +4120,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 688,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_11-min.png',
     periodStartDate: '2021-09-01',
@@ -3721,6 +4130,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ESTONIA,
   ),
   CoinModel(
+    id: 689,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_12-min.png',
     periodStartDate: '2021-08-01',
@@ -3730,6 +4140,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 690,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_13-min.png',
     periodStartDate: '2021-07-01',
@@ -3739,6 +4150,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MONACO,
   ),
   CoinModel(
+    id: 691,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_14-min.png',
     periodStartDate: '2021-07-01',
@@ -3748,6 +4160,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LITHUANIA,
   ),
   CoinModel(
+    id: 692,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_15-min.png',
     periodStartDate: '2021-06-01',
@@ -3757,6 +4170,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 693,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_16-min.png',
     periodStartDate: '2021-06-01',
@@ -3766,6 +4180,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
+    id: 694,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_17-min.png',
     periodStartDate: '2021-06-01',
@@ -3775,6 +4190,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
+    id: 695,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_18-min.png',
     periodStartDate: '2021-05-01',
@@ -3784,6 +4200,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
+    id: 696,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_19-min.png',
     periodStartDate: '2021-03-01',
@@ -3793,6 +4210,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 697,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_20-min.png',
     periodStartDate: '2021-04-01',
@@ -3802,6 +4220,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LITHUANIA,
   ),
   CoinModel(
+    id: 698,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_21-min.png',
     periodStartDate: '2021-04-01',
@@ -3811,6 +4230,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
+    id: 699,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_22-min.png',
     periodStartDate: '2021-01-01',
@@ -3820,6 +4240,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LATVIA,
   ),
   CoinModel(
+    id: 700,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_23-min.png',
     periodStartDate: '2021-03-01',
@@ -3829,6 +4250,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 701,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_24-min.png',
     periodStartDate: '2021-03-01',
@@ -3838,6 +4260,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 702,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_25-min.png',
     periodStartDate: '2021-02-01',
@@ -3847,6 +4270,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
+    id: 703,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_26-min.png',
     periodStartDate: '2021-02-01',
@@ -3856,6 +4280,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 704,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_27-min.png',
     periodStartDate: '2021-01-26',
@@ -3865,6 +4290,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GERMANY,
   ),
   CoinModel(
+    id: 705,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_28-min.png',
     periodStartDate: '2021-01-01',
@@ -3874,6 +4300,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 706,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_29-min.png',
     periodStartDate: '2021-01-01',
@@ -3883,6 +4310,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 707,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_30-min.png',
     periodStartDate: '2021-01-01',
@@ -3892,6 +4320,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 708,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2021/2021_31-min.png',
     periodStartDate: '2021-01-01',
@@ -3903,6 +4332,7 @@ final List<CoinModel> coinDataCommemoratives = [
 
   // 2022 -------------------------------------------------------------
   CoinModel(
+    id: 709,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_01-min.png',
     periodStartDate: '2022-10-01',
@@ -3912,6 +4342,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
+    id: 710,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_02-min.png',
     periodStartDate: '2022-10-01',
@@ -3921,6 +4352,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
+    id: 711,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_03-min.png',
     periodStartDate: '2022-10-01',
@@ -3930,6 +4362,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LITHUANIA,
   ),
   CoinModel(
+    id: 712,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_04-min.png',
     periodStartDate: '2022-10-01',
@@ -3939,6 +4372,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ESTONIA,
   ),
   CoinModel(
+    id: 713,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_05-min.png',
     periodStartDate: '2022-09-01',
@@ -3948,6 +4382,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 714,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_06-min.png',
     periodStartDate: '2022-10-01',
@@ -3957,6 +4392,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
+    id: 715,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_07-min.png',
     periodStartDate: '2022-10-01',
@@ -3966,6 +4402,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 716,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_08-min.png',
     periodStartDate: '2022-10-01',
@@ -3975,6 +4412,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 717,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_09-min.png',
     periodStartDate: '2022-10-01',
@@ -3984,6 +4422,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVAKIA,
   ),
   CoinModel(
+    id: 718,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_10-min.png',
     periodStartDate: '2022-09-01',
@@ -3993,6 +4432,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MONACO,
   ),
   CoinModel(
+    id: 719,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_11-min.png',
     periodStartDate: '2022-09-01',
@@ -4002,6 +4442,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 720,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_12-min.png',
     periodStartDate: '2022-09-01',
@@ -4011,6 +4452,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 721,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_13-min.png',
     periodStartDate: '2022-07-01',
@@ -4020,6 +4462,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
+    id: 722,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_14-min.png',
     periodStartDate: '2022-07-01',
@@ -4029,6 +4472,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 723,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_15-min.png',
     periodStartDate: '2022-07-01',
@@ -4038,6 +4482,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 724,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_16-min.png',
     periodStartDate: '2022-07-01',
@@ -4047,6 +4492,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 725,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_17-min.png',
     periodStartDate: '2022-07-01',
@@ -4056,6 +4502,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 726,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_18-min.png',
     periodStartDate: '2022-07-01',
@@ -4065,6 +4512,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 727,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_19-min.png',
     periodStartDate: '2022-07-01',
@@ -4074,6 +4522,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 728,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_20-min.png',
     periodStartDate: '2022-07-01',
@@ -4083,6 +4532,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 729,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_21-min.png',
     periodStartDate: '2022-07-01',
@@ -4092,6 +4542,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 730,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_22-min.png',
     periodStartDate: '2022-07-01',
@@ -4101,6 +4552,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 731,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_23-min.png',
     periodStartDate: '2022-07-01',
@@ -4110,6 +4562,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 732,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_24-min.png',
     periodStartDate: '2022-07-01',
@@ -4119,6 +4572,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 733,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_25-min.png',
     periodStartDate: '2022-07-01',
@@ -4128,6 +4582,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 734,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_26-min.png',
     periodStartDate: '2022-07-01',
@@ -4137,6 +4592,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 735,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_27-min.png',
     periodStartDate: '2022-07-01',
@@ -4146,6 +4602,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 736,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_28-min.png',
     periodStartDate: '2022-07-01',
@@ -4155,6 +4612,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 737,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_29-min.png',
     periodStartDate: '2022-07-01',
@@ -4164,6 +4622,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 738,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_30-min.png',
     periodStartDate: '2022-07-01',
@@ -4173,6 +4632,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 739,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_31-min.png',
     periodStartDate: '2022-07-01',
@@ -4182,6 +4642,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 740,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_32-min.png',
     periodStartDate: '2022-07-01',
@@ -4191,6 +4652,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.EU,
   ),
   CoinModel(
+    id: 741,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_33-min.png',
     periodStartDate: '2022-04-01',
@@ -4200,6 +4662,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LITHUANIA,
   ),
   CoinModel(
+    id: 742,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_34-min.png',
     periodStartDate: '2022-03-01',
@@ -4209,6 +4672,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 743,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_35-min.png',
     periodStartDate: '2022-03-01',
@@ -4218,6 +4682,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
+    id: 744,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_36-min.png',
     periodStartDate: '2022-05-01',
@@ -4227,6 +4692,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
+    id: 745,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_37-min.png',
     periodStartDate: '2022-04-01',
@@ -4236,6 +4702,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LATVIA,
   ),
   CoinModel(
+    id: 746,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_38-min.png',
     periodStartDate: '2022-04-01',
@@ -4245,6 +4712,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 747,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_39-min.png',
     periodStartDate: '2022-01-01',
@@ -4254,6 +4722,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ESTONIA,
   ),
   CoinModel(
+    id: 748,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_40-min.png',
     periodStartDate: '2022-01-01',
@@ -4263,6 +4732,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
+    id: 749,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_41-min.png',
     periodStartDate: '2022-01-01',
@@ -4272,6 +4742,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
+    id: 750,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_42-min.png',
     periodStartDate: '2022-03-01',
@@ -4281,6 +4752,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
+    id: 751,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_43-min.png',
     periodStartDate: '2022-03-01',
@@ -4290,6 +4762,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 752,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_44-min.png',
     periodStartDate: '2022-01-01',
@@ -4299,6 +4772,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 753,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_45-min.png',
     periodStartDate: '2022-01-01',
@@ -4308,6 +4782,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 754,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_46-min.png',
     periodStartDate: '2022-01-01',
@@ -4317,6 +4792,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 755,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_47-min.png',
     periodStartDate: '2022-01-01',
@@ -4326,6 +4802,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GERMANY,
   ),
   CoinModel(
+    id: 756,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_48-min.png',
     periodStartDate: '2022-01-01',
@@ -4335,6 +4812,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 757,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2022/2022_49-min.png',
     periodStartDate: '2022-01-01',
@@ -4346,6 +4824,7 @@ final List<CoinModel> coinDataCommemoratives = [
 
   // 2023 -------------------------------------------------------------
   CoinModel(
+    id: 758,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_01-min.png',
     periodStartDate: '2023-10-01',
@@ -4355,6 +4834,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
+    id: 759,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_02-min.png',
     periodStartDate: '2023-10-01',
@@ -4364,6 +4844,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
+    id: 760,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_03-min.png',
     periodStartDate: '2023-12-01',
@@ -4373,6 +4854,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVENIA,
   ),
   CoinModel(
+    id: 761,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_04-min.png',
     periodStartDate: '2023-11-01',
@@ -4382,6 +4864,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
+    id: 762,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_05-min.png',
     periodStartDate: '2023-04-01',
@@ -4391,6 +4874,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.CYPRUS,
   ),
   CoinModel(
+    id: 763,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_06-min.png',
     periodStartDate: '2023-09-01',
@@ -4400,6 +4884,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 764,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_07-min.png',
     periodStartDate: '2023-10-01',
@@ -4409,6 +4894,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVAKIA,
   ),
   CoinModel(
+    id: 765,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_08-min.png',
     periodStartDate: '2023-10-01',
@@ -4418,6 +4904,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
+    id: 766,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_09-min.png',
     periodStartDate: '2023-09-01',
@@ -4427,6 +4914,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.CROATIA,
   ),
   CoinModel(
+    id: 767,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_10-min.png',
     periodStartDate: '2023-09-01',
@@ -4436,6 +4924,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 768,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_11-min.png',
     periodStartDate: '2023-07-01',
@@ -4445,6 +4934,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
+    id: 769,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_12-min.png',
     periodStartDate: '2023-07-01',
@@ -4454,6 +4944,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.IRELAND,
   ),
   CoinModel(
+    id: 770,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_13-min.png',
     periodStartDate: '2023-07-01',
@@ -4463,6 +4954,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
+    id: 771,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_14-min.png',
     periodStartDate: '2023-07-01',
@@ -4472,6 +4964,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
+    id: 772,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_15-min.png',
     periodStartDate: '2023-04-01',
@@ -4481,6 +4974,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ESTONIA,
   ),
   CoinModel(
+    id: 773,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_16-min.png',
     periodStartDate: '2023-06-01',
@@ -4490,6 +4984,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 774,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_17-min.png',
     periodStartDate: '2023-06-01',
@@ -4499,6 +4994,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
+    id: 775,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_18-min.png',
     periodStartDate: '2023-06-01',
@@ -4508,6 +5004,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
+    id: 776,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_19-min.png',
     periodStartDate: '2023-06-01',
@@ -4517,6 +5014,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MONACO,
   ),
   CoinModel(
+    id: 777,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_20-min.png',
     periodStartDate: '2023-06-01',
@@ -4526,6 +5024,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
+    id: 778,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_21-min.png',
     periodStartDate: '2023-06-01',
@@ -4535,6 +5034,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
+    id: 779,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_22-min.png',
     periodStartDate: '2023-05-01',
@@ -4544,6 +5044,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 780,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_23-min.png',
     periodStartDate: '2023-05-01',
@@ -4553,6 +5054,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 781,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_24-min.png',
     periodStartDate: '2023-05-01',
@@ -4562,6 +5064,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LATVIA,
   ),
   CoinModel(
+    id: 782,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_25-min.png',
     periodStartDate: '2023-03-01',
@@ -4571,6 +5074,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 783,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_26-min.png',
     periodStartDate: '2023-04-01',
@@ -4580,6 +5084,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 784,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_27-min.png',
     periodStartDate: '2023-01-01',
@@ -4589,6 +5094,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LITHUANIA,
   ),
   CoinModel(
+    id: 785,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_28-min.png',
     periodStartDate: '2023-01-01',
@@ -4598,6 +5104,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
+    id: 786,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_29-min.png',
     periodStartDate: '2023-03-01',
@@ -4607,6 +5114,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GERMANY,
   ),
   CoinModel(
+    id: 787,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_30-min.png',
     periodStartDate: '2023-03-01',
@@ -4616,6 +5124,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVAKIA,
   ),
   CoinModel(
+    id: 788,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_31-min.png',
     periodStartDate: '2023-02-01',
@@ -4625,6 +5134,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 789,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_32-min.png',
     periodStartDate: '2023-02-01',
@@ -4634,6 +5144,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 790,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_33-min.png',
     periodStartDate: '2023-01-01',
@@ -4643,6 +5154,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 791,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_34-min.png',
     periodStartDate: '2023-01-01',
@@ -4652,6 +5164,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 792,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_35-min.png',
     periodStartDate: '2023-01-01',
@@ -4661,6 +5174,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 793,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2023/2023_36-min.png',
     periodStartDate: '2023-01-01',
@@ -4672,6 +5186,7 @@ final List<CoinModel> coinDataCommemoratives = [
 
   // 2024 -------------------------------------------------------------
   CoinModel(
+    id: 794,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_01-min.png',
     periodStartDate: '2024-10-01',
@@ -4681,6 +5196,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LITHUANIA,
   ),
   CoinModel(
+    id: 795,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_02-min.png',
     periodStartDate: '2024-10-01',
@@ -4690,6 +5206,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.CYPRUS,
   ),
   CoinModel(
+    id: 796,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_03-min.png',
     periodStartDate: '2024-10-01',
@@ -4699,6 +5216,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
+    id: 797,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_04-min.png',
     periodStartDate: '2024-10-01',
@@ -4708,6 +5226,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ANDORRA,
   ),
   CoinModel(
+    id: 798,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_05-min.png',
     periodStartDate: '2024-09-01',
@@ -4717,6 +5236,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 799,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_06-min.png',
     periodStartDate: '2024-10-01',
@@ -4726,6 +5246,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LATVIA,
   ),
   CoinModel(
+    id: 800,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_07-min.png',
     periodStartDate: '2024-11-01',
@@ -4735,6 +5256,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVENIA,
   ),
   CoinModel(
+    id: 801,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_08-min.png',
     periodStartDate: '2024-10-01',
@@ -4744,6 +5266,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 802,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_09-min.png',
     periodStartDate: '2024-10-01',
@@ -4753,6 +5276,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.CROATIA,
   ),
   CoinModel(
+    id: 803,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_10-min.png',
     periodStartDate: '2024-09-01',
@@ -4762,6 +5286,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SLOVAKIA,
   ),
   CoinModel(
+    id: 804,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_11-min.png',
     periodStartDate: '2024-09-01',
@@ -4771,6 +5296,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 805,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_12-min.png',
     periodStartDate: '2024-07-01',
@@ -4780,6 +5306,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
+    id: 806,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_13-min.png',
     periodStartDate: '2024-07-01',
@@ -4789,6 +5316,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
+    id: 807,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_14-min.png',
     periodStartDate: '2024-07-01',
@@ -4798,6 +5326,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GREECE,
   ),
   CoinModel(
+    id: 808,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_15-min.png',
     periodStartDate: '2024-06-01',
@@ -4807,6 +5336,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
+    id: 809,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_16-min.png',
     periodStartDate: '2024-03-01',
@@ -4816,6 +5346,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FINLAND,
   ),
   CoinModel(
+    id: 810,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_17-min.png',
     periodStartDate: '2024-04-01',
@@ -4825,6 +5356,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ESTONIA,
   ),
   CoinModel(
+    id: 811,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_18-min.png',
     periodStartDate: '2024-06-01',
@@ -4834,6 +5366,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MONACO,
   ),
   CoinModel(
+    id: 812,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_19-min.png',
     periodStartDate: '2024-06-01',
@@ -4843,6 +5376,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.CROATIA,
   ),
   CoinModel(
+    id: 813,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_20-min.png',
     periodStartDate: '2024-06-01',
@@ -4852,6 +5386,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.MALTA,
   ),
   CoinModel(
+    id: 814,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_21-min.png',
     periodStartDate: '2024-05-01',
@@ -4861,6 +5396,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 815,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_22-min.png',
     periodStartDate: '2024-05-01',
@@ -4870,6 +5406,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.VATICAN,
   ),
   CoinModel(
+    id: 816,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_23-min.png',
     periodStartDate: '2024-05-01',
@@ -4879,6 +5416,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
+    id: 817,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_24-min.png',
     periodStartDate: '2024-04-01',
@@ -4888,6 +5426,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.PORTUGAL,
   ),
   CoinModel(
+    id: 818,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_25-min.png',
     periodStartDate: '2024-04-01',
@@ -4897,6 +5436,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SAN_MARINO,
   ),
   CoinModel(
+    id: 819,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_26-min.png',
     periodStartDate: '2024-01-01',
@@ -4906,6 +5446,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
+    id: 820,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_27-min.png',
     periodStartDate: '2024-01-01',
@@ -4915,6 +5456,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.SPAIN,
   ),
   CoinModel(
+    id: 821,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_28-min.png',
     periodStartDate: '2024-01-01',
@@ -4924,6 +5466,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.BELGIUM,
   ),
   CoinModel(
+    id: 822,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_29-min.png',
     periodStartDate: '2024-03-01',
@@ -4933,6 +5476,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.GERMANY,
   ),
   CoinModel(
+    id: 823,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_30-min.png',
     periodStartDate: '2024-01-01',
@@ -4942,6 +5486,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 824,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_31-min.png',
     periodStartDate: '2024-01-01',
@@ -4951,6 +5496,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.LUXEMBOURG,
   ),
   CoinModel(
+    id: 825,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_32-min.png',
     periodStartDate: '2024-01-01',
@@ -4960,6 +5506,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.FRANCE,
   ),
   CoinModel(
+    id: 826,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_33-min.png',
     periodStartDate: '2024-01-01',
@@ -4969,6 +5516,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 827,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_34-min.png',
     periodStartDate: '2024-01-01',
@@ -4978,6 +5526,7 @@ final List<CoinModel> coinDataCommemoratives = [
     country: CountryNames.ITALY,
   ),
   CoinModel(
+    id: 828,
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2024/2024_35-min.png',
     periodStartDate: '2024-01-01',

@@ -109,10 +109,51 @@ class CoinRemoteDataSource {
 
   // ON INIT ------------------------------------------------------------------------------
 
+  //(used in version 1)
   Future<void> insertInitialCoins(List<CoinModel> coins) async {
     for (var coin in coins) {
       final coinMap = CoinMapper.toMap(coin);
       await db.insert(DatabaseTables.coins, coinMap);
     }
+  }
+
+  // NEW METHOD FOR VERSION 2+ UPGRADES ---------------------------------------------------
+
+  /// Syncs coins data with the database using replace strategy:
+  /// - If coin exists (same ID), replace it completely
+  /// - If coin doesn't exist, insert it with explicit ID
+  /// - No duplicates, no conflicts
+  /// - Safe for production: preserves user data in related tables
+  Future<void> syncCoinsWithReplace(List<CoinModel> coins) async {
+    final batch = db.batch();
+
+    for (var coin in coins) {
+      final coinMap = CoinMapper.toMap(coin);
+
+      // Check if coin already exists by ID
+      final existingCoin = await db.query(
+        DatabaseTables.coins,
+        where: '${DatabaseTables.coinId} = ?',
+        whereArgs: [coin.id],
+        limit: 1,
+      );
+
+      if (existingCoin.isNotEmpty) {
+        // Coin exists - UPDATE it (replace completely)
+        // ID stays the same, so user_coins references remain valid
+        batch.update(
+          DatabaseTables.coins,
+          coinMap,
+          where: '${DatabaseTables.coinId} = ?',
+          whereArgs: [coin.id],
+        );
+      } else {
+        // Coin doesn't exist - INSERT it with explicit ID
+        batch.insert(DatabaseTables.coins, coinMap);
+      }
+    }
+
+    // Execute all operations as a single transaction
+    await batch.commit(noResult: true);
   }
 }

@@ -31,7 +31,7 @@ class DatabaseTables {
   // Table Creation Statements
   static const String createCoinsTable = '''
     CREATE TABLE $coins (
-      $coinId INTEGER PRIMARY KEY AUTOINCREMENT,
+      $coinId INTEGER PRIMARY KEY,
       $type TEXT NOT NULL,
       $image TEXT,
       $quantity INTEGER,

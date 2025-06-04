@@ -58,7 +58,7 @@ class CoinMapper {
   // TO MAP (Convert from data model to database map) ----------------------------------
 
   static Map<String, dynamic> toMap(CoinModel model) {
-    return {
+    final map = <String, dynamic>{
       DatabaseTables.type: model.type.name,
       DatabaseTables.image: model.image,
       DatabaseTables.quantity: model.quantity,
@@ -66,6 +66,9 @@ class CoinMapper {
       DatabaseTables.periodEndDate: model.periodEndDate,
       DatabaseTables.description: model.description,
       DatabaseTables.country: model.country.name,
+      DatabaseTables.coinId: model.id,
     };
+
+    return map;
   }
 }

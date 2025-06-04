@@ -56,25 +56,89 @@ class DatabaseService {
     return await openDatabase(
       databasePath,
       version: DatabaseConfig.databaseVersion,
-      onCreate: _onCreate,
+
+      // Handle database creation - iterate through all versions
+      onCreate: (Database db, int newVersion) async {
+        _log.info('Creating database from scratch to version $newVersion');
+        // Start from version 1 to current version and create DB
+        for (int version = 0; version < newVersion; version++) {
+          await _performDBUpgrade(db, version + 1);
+        }
+      },
+
+      // Handle database upgrades - iterate from old to new version
+      onUpgrade: (Database db, int oldVersion, int newVersion) async {
+        _log.info('Upgrading database from version $oldVersion to $newVersion');
+        // Iterate from the current version to the latest version and execute SQL statements
+        for (int version = oldVersion; version < newVersion; version++) {
+          await _performDBUpgrade(db, version + 1);
+        }
+      },
     );
   }
 
-  Future<void> _onCreate(Database db, int version) async {
-    _log.info('Creating database...');
+  /// Call to upgrade the database. [upgradeToVersion] is the version of SQL statements that should be
+  /// executed. A version of 1 is the initial creation of the database. Anything higher would
+  /// be an upgrade of the database. This function should be called once for every version upgrade.
+  /// For example, if current version is 1 and user is now performing an update and new version is
+  /// 5, then this function should be called 4 times (from `onUpgrade`), where [upgradeToVersion]
+  /// would be passed a 2, 3, 4 and 5.
+  Future<void> _performDBUpgrade(Database db, int upgradeToVersion) async {
+    _log.info('Performing upgrade to version $upgradeToVersion');
 
-    // Create tables
-    await db.execute(DatabaseTables.createCoinsTable);
-    await db.execute(DatabaseTables.createUserCoinsTable);
-    await db.execute(DatabaseTables.createCoinMintsTable);
-    await db.execute(DatabaseTables.createCountriesTable);
+    switch (upgradeToVersion) {
+      // Upgrade to V1 (initial creation)
+      case 1:
+        await _dbUpdatesVersion_1(db);
+        break;
 
-    // Initialize repositories for data insertion
-    final coinRepo = CoinRepositoryImpl(CoinRemoteDataSource(db));
-    final countryRepo = CountryRepositoryImpl(CountryRemoteDataSource(db));
+      // Upgrades for V2 - Add new test coin
+      case 2:
+        await _dbUpdatesVersion_2(db);
+        break;
 
-    // Insert initial data
-    await countryRepo.insertInitialCountries(countriesData);
-    await coinRepo.insertInitialCoins(coinsData);
+      default:
+        _log.warning('No upgrade logic defined for version $upgradeToVersion');
+    }
+  }
+
+  ///(initial creation)
+  Future<void> _dbUpdatesVersion_1(Database db) async {
+    _log.info('Setting up initial database structure (Version 1)');
+
+    try {
+      // Create all tables
+      await db.execute(DatabaseTables.createCoinsTable);
+      await db.execute(DatabaseTables.createUserCoinsTable);
+      await db.execute(DatabaseTables.createCoinMintsTable);
+      await db.execute(DatabaseTables.createCountriesTable);
+
+      // Initialize repositories for data insertion
+      final coinRepo = CoinRepositoryImpl(CoinRemoteDataSource(db));
+      final countryRepo = CountryRepositoryImpl(CountryRemoteDataSource(db));
+
+      // Insert initial data
+      await countryRepo.insertInitialCountries(countriesData);
+      await coinRepo.insertInitialCoins(coinsData);
+
+      _log.info('Version 1 setup completed successfully');
+    } catch (e, stackTrace) {
+      _log.severe('Error in version 1 setup', e, stackTrace);
+      rethrow;
+    }
+  }
+
+  Future<void> _dbUpdatesVersion_2(Database db) async {
+    _log.info('Applying version 2 updates - Syncing with updated coinsData');
+
+    try {
+      final coinDataSource = CoinRemoteDataSource(db);
+      await coinDataSource.syncCoinsWithReplace(coinsData);
+
+      _log.info('Version 2 updates completed successfully');
+    } catch (e, stackTrace) {
+      _log.severe('Error in version 2 updates', e, stackTrace);
+      rethrow;
+    }
   }
 }
