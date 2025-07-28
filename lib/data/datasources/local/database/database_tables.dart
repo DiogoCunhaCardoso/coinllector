@@ -13,6 +13,7 @@ class DatabaseTables {
   static const String periodEndDate = "periodEndDate";
   static const String description = "description";
   static const String country = "country";
+  static const String allowedQualities = "allowedQualities";
 
   // User Coins Columns
   static const String userCoinId = "coin_id";
@@ -39,6 +40,7 @@ class DatabaseTables {
       $periodEndDate TEXT,
       $description TEXT NOT NULL,
       $country TEXT NOT NULL,
+      $allowedQualities TEXT,
       FOREIGN KEY ($country) REFERENCES $countries($countryName)
     )
   ''';

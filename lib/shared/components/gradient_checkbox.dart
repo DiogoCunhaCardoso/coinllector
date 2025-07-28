@@ -1,5 +1,4 @@
 import 'package:coinllector_app/config/themes/colors.dart';
-import 'package:coinllector_app/config/themes/sizes.dart';
 import 'package:flutter/material.dart';
 
 class GradientCheckbox extends StatelessWidget {
@@ -13,7 +12,7 @@ class GradientCheckbox extends StatelessWidget {
     super.key,
     required this.value,
     required this.onChanged,
-    this.size = AppSizes.p24,
+    this.size = 28,
     this.borderWidth = 1.5,
     this.borderRadius = 4.0,
   });
@@ -41,7 +40,7 @@ class GradientCheckbox extends StatelessWidget {
         child:
             value
                 ? const Center(
-                  child: Icon(Icons.check, size: 18, color: Colors.white),
+                  child: Icon(Icons.check, size: 20, color: Colors.white),
                 )
                 : null,
       ),

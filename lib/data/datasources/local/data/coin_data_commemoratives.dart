@@ -1,4 +1,5 @@
 import 'package:coinllector_app/data/models/coin_model.dart';
+import 'package:coinllector_app/shared/enums/coin_quality_enum.dart';
 import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 
@@ -14,6 +15,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         "75th anniversary of the founding of the Vatican City State. The inner part shows a schematic representation of the perimeter walls of the Vatican City with St Peter's Basilica in the foreground. Also in the inner part are the inscriptions '75 o ANNO DELLO STATO' and '1929-2004' as well as, in smaller letters, the name of the designer 'VEROI' and the initials of the engraver 'L.D.S. INC.'. The outer part of the coin features the twelve stars of the European Union and the inscription 'CITTA' DEL VATICANO'.",
     country: CountryNames.VATICAN,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 281,
@@ -24,6 +26,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         "5th decade of the World Food Programme. In the centre is the globe, tilted to the right and bearing the inscription 'WORLD FOOD PROGRAMME'. An ear of wheat, an ear of maize and an ear of rice, the three grains representing the world's basic sources of nourishment, emerge from behind the globe. To the right of the globe is an 'I' superimposed on an 'R', denoting 'Repubblica Italiana', below which there appears a smaller combination of the letters U and P, the initials of the engraver, Uliana Pernazza. To the upper left of the globe is the mint mark 'R' and under the globe is the year – '2004'. The 12 stars of the European Union are positioned around the outer circle.",
     country: CountryNames.ITALY,
+    allowedQualities: [...CoinQualityGroups.circulation],
   ),
   CoinModel(
     id: 282,
@@ -34,6 +37,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         "Bartolomeo Borghesi (historian, numismatist). The twelve stars of the European Union positioned around the outer circle of the coin and the issuing year '2004', positioned bottom centre, surround the bust of Bartolomeo Borghesi. To the left of the bust is the inscription 'Bartolomeo Borghesi', and one above the other are the letter 'R' and the engraver's initials 'E.L.F.'. To the right of the bust is the word 'San Marino'.",
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 283,
@@ -64,6 +68,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         "Olympic Games in Athens 2004. The twelve stars of the European Union positioned around the outer circle surround the design of an ancient statue depicting a discobolus in his attempt to throw the discus. The base of the statue covers a small part of the coin's external ring (outer part). To the left is the logo of the Olympic Games 'ATHENS 2004' and the five Olympic circles, and to the right, one above the other, are the figure '2' and the word 'ΕΥΡΩ'. The yearmark is written in split form around the star positioned bottom centre, as follows: 20*04 and the mintmark is above the athlete's head to the left.",
     country: CountryNames.GREECE,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
 
   // 2005 -------------------------------------------------------------
@@ -76,6 +81,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         "20th World Youth Day. Depicted in the centre of the coin is the Cathedral of Cologne with a comet passing by above. The words ‘XX GIORNATA MONDIALE DELLA GIOVENTÙ’ are inscribed along the upper edge of the central part, separated by the tail of the comet and two of the cathedral’s spires, one of which extends into the coin’s outer ring. Twelve stars are depicted in a semicircle along the upper part of the outer ring, separated at the top by the year of issue (2005) and the mintmark ‘R’. Below the central image of the cathedral, the words ‘CITTÀ DEL VATICANO’ form a semicircle in the outer ring.",
     country: CountryNames.VATICAN,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 287,
@@ -86,6 +92,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         "World Year of Physics 2005. The centre of the coin features a free interpretation of the allegorical painting of Galileo Galilei that is known as ‘la fisica antica’ or the study of the planets. The year of issue appears beneath a globe standing on a desk. To the left of the image is the mintmark ‘R’, and the engraver’s initials ‘LDS’ appear on the right. The words ‘SAN MARINO’ form a semicircle above the image, while the words ‘ANNO MONDIALE DELLA FISICA’ run along the lower edge of the inner part below. The outer ring bears the 12 stars of the European Union, separated by the outer edges of the image of a stylised atom inscribed in the background of the entire coin.",
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 288,
@@ -96,6 +103,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         "1st anniversary of the signing of the European Constitution. The centre of the coin features Europa and the bull, with Europa holding a pen and the text of the European Constitution. To the upper left of the image is the mintmark ‘R’. The initials of engraver Maria Carmela Colaneri, ‘MCC’, appear on the lower left edge of the coin’s central part. The year of mintage is shown in the top right of the image above the head of the bull. Positioned just off-centre at the bottom of the image is the monogram of the Italian Republic, ‘RI’. The words ‘COSTITUZIONE EUROPEA’ form a semicircle along the outer ring of the coin beneath the central image, while twelve stars are depicted on the remainder of the outer ring.",
     country: CountryNames.ITALY,
+    allowedQualities: [...CoinQualityGroups.circulation],
   ),
   CoinModel(
     id: 289,
@@ -106,6 +114,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         "60th anniversary of the establishment of the United Nations and 50th anniversary of Finland’s membership therein. Depicted in the centre of the coin are parts of a jigsaw puzzle showing a dove of peace. Below the image of the dove, inscribed along the edge of the bottom half of the central part of the coin, the inscription ‘FINLAND — UN’ appears on the left and the year of issue on the right. Above the last figure of the year of issue, set close to the edge of a piece of the jigsaw puzzle, is the letter ‘K’, the engraver's initial. The mintmark ‘M’ is inscribed immediately below the image of the dove of peace. The outer ring features the 12 stars of the European Union.",
     country: CountryNames.FINLAND,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 290,
@@ -158,6 +167,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         "5th Centenary of the Swiss Pontifical Guard. The coin features a Swiss guard taking an oath of loyalty to the Pope. The inscription ‘GUARDIA SVIZZERA PONTIFICIA’ forms a semi-circle around the guard, while under the flag appears the name of the issuing state, ‘CITTÀ DEL VATICANO’. ‘1506’ appears on the left side, above the signature of the engraver ‘O. ROSSI’ along the flagpole. ‘2006’ appears on the right side, above the mint mark ‘R’. The 12 stars of the European Union are depicted on the outer ring.",
     country: CountryNames.VATICAN,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 295,
@@ -168,6 +178,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         "500th anniversary of Christopher Columbus' death. The coin shows Christopher Columbus and three caravels. The inscription ‘SAN MARINO’ appears above his portrait, and a wind rose and the mint mark ‘R’ to the right. The dates ‘1506 — 2006’ are shown on a scroll below his portrait. The coin’s outer ring bears the 12 stars of the European Union.",
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 296,
@@ -208,6 +219,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         "XX Olympic Winter Games - Turin 2006. An image of a skier, a dynamic, curvilinear figure, is in the centre of the coin. Above him are the words ‘GIOCHI INVERNALI’ and to his left the location of the Winter Games is marked by the word ‘TORINO’ and an image of Turin’s landmark Mole Antonelliana building. The monogram of the Italian Republic ‘RI’ and the mintmark ‘R’ are also to the skier’s left. The year of issue, 2006, and the initials of the designer ‘MCC’ (Maria Carmela Colaneri) are shown to his right. The coin’s outer ring bears the 12 stars of the European Union.",
     country: CountryNames.ITALY,
+    allowedQualities: [...CoinQualityGroups.circulation],
   ),
   CoinModel(
     id: 300,
@@ -240,6 +252,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Bicentenary of the birth of Giuseppe Garibaldi. The inner part of the coin features the engraving of a portrait of Giuseppe Garibaldi. The words \'SAN MARINO\' and the year of issue (2007) are inscribed along the outer edge of the inner part on the left and right of the portrait respectively. The mint mark (R) is inscribed to the left of the portrait, while the initials of the artist Ettore Lorenzo Frapiccini (E.L.F.) appear on the lower left-hand edge of the inner part. The 12 stars of the European Union are depicted on the outer ring.',
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 303,
@@ -250,6 +263,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '80th birthday of His Holiness Pope Benedict XVI. The inner part of the coin features the profile of His Holiness Benedict XVI facing the left. The legend \'BENEDICTI XVI P.M. AETATIS ANNO LXXX CITTA\' DEL VATICANO\' is engraved along the outer edge of the inner part of the coin. To the left of the effigy are the mintmark, \'R\', the year of issue, \'2007\', and the initials of the engraver, \'M.C.C. INC.\', while the artist\'s name, \'LONGO\', is inscribed on the right. The outer ring of the coin bears the 12 stars of the European Union.',
     country: CountryNames.VATICAN,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 304,
@@ -260,6 +274,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '25th anniversary of the death of Princess Grace. The coin features an effigy of Princess Grace, to the right of which appear the word \'MONACO\', the mint mark, the year \'2007\' and the engraver\'s mark. The name of the artist, \'R.B.BARON\', is shown under the Princess\'s hair. The 12 stars of the European Union are depicted on the outer ring of the coin.',
     country: CountryNames.MONACO,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 305,
@@ -310,6 +325,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'France Version. 50th anniversary of the Treaty of Rome. The coin shows the Treaty document signed by the six founding countries on a background evoking the paving (designed by Michelangelo) of the Piazza del Campidoglio in Rome, where the signing took place on 25 March 1957. ‘Treaty of Rome 50 years’, ‘EUROPE’ and the name of the issuing country appear in the respective languages of the euro area or in Latin. Thus, the legend differs from country to country, but the image is the same. The Treaty of Rome established the European Economic Community and ultimately led to the introduction of the euro in 1999 and the euro banknotes and coins in 2002. The anniversary was celebrated on 25 March 2007. The euro area countries have marked the occasion by jointly issuing this commemorative coin. Its design was selected following a competition organised by the European mints. The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation],
   ),
   CoinModel(
     id: 310,
@@ -330,6 +346,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Greece Version. 50th anniversary of the Treaty of Rome. The coin shows the Treaty document signed by the six founding countries on a background evoking the paving (designed by Michelangelo) of the Piazza del Campidoglio in Rome, where the signing took place on 25 March 1957. ‘Treaty of Rome 50 years’, ‘EUROPE’ and the name of the issuing country appear in the respective languages of the euro area or in Latin. Thus, the legend differs from country to country, but the image is the same. The Treaty of Rome established the European Economic Community and ultimately led to the introduction of the euro in 1999 and the euro banknotes and coins in 2002. The anniversary was celebrated on 25 March 2007. The euro area countries have marked the occasion by jointly issuing this commemorative coin. Its design was selected following a competition organised by the European mints. The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 312,
@@ -350,6 +367,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Italy Version. 50th anniversary of the Treaty of Rome. The coin shows the Treaty document signed by the six founding countries on a background evoking the paving (designed by Michelangelo) of the Piazza del Campidoglio in Rome, where the signing took place on 25 March 1957. ‘Treaty of Rome 50 years’, ‘EUROPE’ and the name of the issuing country appear in the respective languages of the euro area or in Latin. Thus, the legend differs from country to country, but the image is the same. The Treaty of Rome established the European Economic Community and ultimately led to the introduction of the euro in 1999 and the euro banknotes and coins in 2002. The anniversary was celebrated on 25 March 2007. The euro area countries have marked the occasion by jointly issuing this commemorative coin. Its design was selected following a competition organised by the European mints. The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation],
   ),
   CoinModel(
     id: 314,
@@ -390,6 +408,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Slovenia Version. 50th anniversary of the Treaty of Rome. The coin shows the Treaty document signed by the six founding countries on a background evoking the paving (designed by Michelangelo) of the Piazza del Campidoglio in Rome, where the signing took place on 25 March 1957. ‘Treaty of Rome 50 years’, ‘EUROPE’ and the name of the issuing country appear in the respective languages of the euro area or in Latin. Thus, the legend differs from country to country, but the image is the same. The Treaty of Rome established the European Economic Community and ultimately led to the introduction of the euro in 1999 and the euro banknotes and coins in 2002. The anniversary was celebrated on 25 March 2007. The euro area countries have marked the occasion by jointly issuing this commemorative coin. Its design was selected following a competition organised by the European mints. The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 318,
@@ -432,6 +451,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         "The Year of St. Paul – the 2000th anniversary of his birth. The coin depicts the conversion of Paul on the road to Damascus, which is visible in the background. Dazzled by a light from the sky, he falls from his rearing horse. To the left of the image is an inscription denoting the issuing country ‘CITTÀ DEL VATICANO’, and to the right the legend ‘ANNO SANCTO PAULO DICATO’, as well as the year ‘2008’, the mint mark ‘R’ and the artist’s name ‘VEROI’. The initials of the engraver ‘L.D.S. INC.’, Luciana De Simoni, appear beneath the image. The outer ring of the coin shows the 12 stars of the European Union.",
     country: CountryNames.VATICAN,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 322,
@@ -492,6 +512,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         "European Year of Intercultural Dialogue. The coin shows five human silhouettes symbolising the cultures of the five regions in Europe, together with the sacred texts of the different communities. The inscription ‘ANNO EUROPEO DEL DIALOGO INTERCULTURALE’ appears below the motif, while ‘SAN MARINO’, and the year of issue ‘2008’ appear above it. The initials of the artist ‘E.L.F.’, Ettore Lorenzo Frapiccini, are shown to the right of the motif, and the mint mark ‘R’ to the left. The coin’s outer ring contains the 12 stars of the European Union.",
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 328,
@@ -502,6 +523,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         "60th anniversary of the Universal Declaration of Human Rights. The coin depicts a man and a woman with an olive branch, an ear of corn, a cogwheel and some barbed wire – symbols of the right to peace, food, work and freedom respectively. The monogram of the Italian Republic ‘RI’ is placed between the two figures, as is the year of issue ‘2008’. At the bottom of the image are the links of a chain forming the number ‘60’ and the inscription ‘DIRITTI UMANI’ (human rights). The initials ‘MCC’ of the artist Maria Carmela Colaneri and the mint mark ‘R’ are shown on the right. The outer ring of the coin depicts the 12 stars of the European Union.",
     country: CountryNames.ITALY,
+    allowedQualities: [...CoinQualityGroups.circulation],
   ),
   CoinModel(
     id: 329,
@@ -534,6 +556,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '20th anniversary of 17 November 1989 (Day of the fight for freedom and democracy). The coin shows a stylised bell with keys serving as clappers. It recalls the demonstration on 17 November 1989 when protesters jangled their keys to symbolise the unlocking of doors, an event which marked the beginning of the ‘Velvet Revolution’ in Czechoslovakia, as it then was. Under the bell are the artist’s mark and the mint mark of Mincovňa Kremnica (the Slovak mint). Encircling the bell are the legend ‘17. NOVEMBER SLOBODA DEMOKRACIA’, the dates ‘1989-2009’ and the name of the issuing country, ‘SLOVENSKO’. The coin’s outer ring depicts the 12 stars of the European Union.',
     country: CountryNames.SLOVAKIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 332,
@@ -554,6 +577,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         "International Year of Astronomy. This coin was issued on the occasion of the International Year of Astronomy. The inner part of the coin depicts an allegory of the birth of the stars and planets together with several astronomical instruments. The design is inspired by Michelangelo's frescoes in the Sistine Chapel. The coin’s outer ring bears the 12 stars of the European Union.",
     country: CountryNames.VATICAN,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 334,
@@ -564,6 +588,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '200th anniversary of Louis Braille’s birth. The coin depicts a hand reading an open book by touch. The index finger points at a vertical inscription ‘LOUIS BRAILLE 1809-2009’ and two birds in flight above the hand symbolise freedom of knowledge. The monogram of the Italian Republic, ‘RI’, is at the top right, while the mint mark ‘R’ is at the bottom right. Braille’s name is written under the book in the alphabet that he invented. At the very bottom are the initials ‘MCC’ of the artist Maria Carmela Colaneri. The 12 stars of the European Union are shown on the outer ring.',
     country: CountryNames.ITALY,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 335,
@@ -594,6 +619,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'European Year of Creativity and Innovation. The coin shows some symbols of scientific research: a book, a compass, a test tube and a flask. On the left are the three emblematic feathers of the Republic of San Marino. On the right are the year ‘2009’ and the mint mark ‘R’. Above is the legend ‘CREATIVITÀ INNOVAZIONE’. Below are the name of the issuing country ‘SAN MARINO’ and the artist’s initials ‘A.M.’. The coin’s outer ring depicts the 12 stars of the European Union.',
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 338,
@@ -634,6 +660,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Cyprus Version. 10th anniversary of Economic and Monetary Union. The coin shows a stick figure which merges into the € symbol. It seeks to convey the idea of the single currency and, by extension, Economic and Monetary Union (EMU) being the latest step in Europe’s long history of trade and economic integration. The coin is issued by each euro area country and shows the name of the country as well as the legend ‘EMU 1999-2009’ in the respective language(s). The design was chosen out of a shortlist of five by members of the public across the European Union voting online. It was created by George Stamatopoulos, a sculptor from the Minting department at the Bank of Greece. The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 342,
@@ -674,6 +701,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Greece Version. 10th anniversary of Economic and Monetary Union. The coin shows a stick figure which merges into the € symbol. It seeks to convey the idea of the single currency and, by extension, Economic and Monetary Union (EMU) being the latest step in Europe’s long history of trade and economic integration. The coin is issued by each euro area country and shows the name of the country as well as the legend ‘EMU 1999-2009’ in the respective language(s). The design was chosen out of a shortlist of five by members of the public across the European Union voting online. It was created by George Stamatopoulos, a sculptor from the Minting department at the Bank of Greece. The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 346,
@@ -684,6 +712,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Ireland 10th anniversary of Economic and Monetary Union. The coin shows a stick figure which merges into the € symbol. It seeks to convey the idea of the single currency and, by extension, Economic and Monetary Union (EMU) being the latest step in Europe’s long history of trade and economic integration. The coin is issued by each euro area country and shows the name of the country as well as the legend ‘EMU 1999-2009’ in the respective language(s). The design was chosen out of a shortlist of five by members of the public across the European Union voting online. It was created by George Stamatopoulos, a sculptor from the Minting department at the Bank of Greece. The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.PROOF],
   ),
   CoinModel(
     id: 347,
@@ -724,6 +753,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Malta Version. 10th anniversary of Economic and Monetary Union. The coin shows a stick figure which merges into the € symbol. It seeks to convey the idea of the single currency and, by extension, Economic and Monetary Union (EMU) being the latest step in Europe’s long history of trade and economic integration. The coin is issued by each euro area country and shows the name of the country as well as the legend ‘EMU 1999-2009’ in the respective language(s). The design was chosen out of a shortlist of five by members of the public across the European Union voting online. It was created by George Stamatopoulos, a sculptor from the Minting department at the Bank of Greece. The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation],
   ),
   CoinModel(
     id: 351,
@@ -754,6 +784,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Slovakia Version. 10th anniversary of Economic and Monetary Union. The coin shows a stick figure which merges into the € symbol. It seeks to convey the idea of the single currency and, by extension, Economic and Monetary Union (EMU) being the latest step in Europe’s long history of trade and economic integration. The coin is issued by each euro area country and shows the name of the country as well as the legend ‘EMU 1999-2009’ in the respective language(s). The design was chosen out of a shortlist of five by members of the public across the European Union voting online. It was created by George Stamatopoulos, a sculptor from the Minting department at the Bank of Greece. The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 354,
@@ -764,6 +795,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Slovenia Version. 10th anniversary of Economic and Monetary Union. The coin shows a stick figure which merges into the € symbol. It seeks to convey the idea of the single currency and, by extension, Economic and Monetary Union (EMU) being the latest step in Europe’s long history of trade and economic integration. The coin is issued by each euro area country and shows the name of the country as well as the legend ‘EMU 1999-2009’ in the respective language(s). The design was chosen out of a shortlist of five by members of the public across the European Union voting online. It was created by George Stamatopoulos, a sculptor from the Minting department at the Bank of Greece. The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation],
   ),
   CoinModel(
     id: 355,
@@ -796,6 +828,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         "2.500th anniversary of the Battle of Marathon. The coin commemorates the 2.500th anniversary of the Battle of Marathon. The centre of the coin shows a synthesis of a shield and a runner/warrior representing the struggle for freedom and the noble ideals that the Battle of Marathon stands for. The bird on the shield symbolises the birth of Western civilisation in its present form. The coin’s outer ring bears the 12 stars of the European Union.",
     country: CountryNames.GREECE,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 358,
@@ -806,6 +839,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         "Year for Priests. The coin commemorates the Year for Priests, proclaimed by Pope Benedict XVI to run from of 19 June 2009 to 19 June 2010, that was concluded with an international gathering of priests attended by the pope. The coin features a shepherd pulling a lamb from a lion’s mouth. The coin’s outer ring bears the 12 stars of the European Union.",
     country: CountryNames.VATICAN,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 359,
@@ -826,6 +860,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '500th anniversary of the death of Sandro Botticelli. The coin commemorates the 500th anniversary of the death of Alessandro di Mariano di Vanni Filipepi (1445 – 1510), the Italian painter of the Florentine school who is better known as Sandro Botticelli or Il Botticello ("The Little Barrel"). The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 361,
@@ -928,6 +963,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '26th World Youth Day. The inner part of the coin features a number of young people and flags, together with the mintmark “R” and the year “2011”, surrounded, along the upper edge, by the Roman numerals “XXVI” and the letters “G.M.G.”, the abbreviation of Giornata Mondiale della Gioventù (World Youth Day), and by the name of the issuing country “CITTA’ DEL VATICANO” along the lower edge. The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.VATICAN,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 371,
@@ -958,6 +994,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The wedding of Prince Albert and Charlene Wittstock. The inner part of the coin shows, at the centre, the effigies of Prince Albert and Princess Charlene. At the bottom, the name of the issuing country ‘MONACO’ and the year of issuance ‘2011’. The mint mark and the mint engravers mark appear before and after ‘MONACO 2011’, respectively. The 12 stars of the European Union are depicted on the coin’s outer ring.',
     country: CountryNames.MONACO,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 374,
@@ -978,6 +1015,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The Special Olympics World Summer Games — Athens 2011. The inner part of the coin shows the emblem of the Games, a radiant sun, the source of life that underlines the excellence and power of the athletes who take part in the Games, with excellence represented by the olive branch and power by the spiral starting from the centre of the sun. Inscribed around the outer right-hand edge of the inner part are the caption “XIII SPECIAL OLYMPICS W.S.G. ATHENS 2011” and the name of the issuing country “ΕΛΛΗΝΙΚΗ ΔΗΜΟΚΡΑΤΙΑ”, separated from one another by the mintmark. The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.GREECE,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 376,
@@ -988,6 +1026,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '500th anniversary of the birth of Giorgio Vasari. The inner part of the coin commemorating the 500th anniversary of the birth of Giorgio Vasari (30 July 1511 – 27 June 1574), a painter, writer, and architect famous for his biographies of Italian artists and now considered the ideological founder of art-historical writing, shows a detail of his painting “Giuditta decapitates Oloferne”. Centred at the bottom are the dates “1511-2011”, with the name “G. VASARI” and the designation of the issuing country “SAN MARINO” to the left and right respectively along the inner edge. The mintmark “R” is located to the left of the central motif and the letters “CM”, the initials of the designer Claudia Momoni, immediately to the right. The 12 stars of the European Union are depicted on the coin’s outer ring.',
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 377,
@@ -1038,6 +1077,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '20th anniversary of the formation of the Visegrad Group. The design of the inner part of the coin consists of the outlines of four central European states – the Czech Republic, Hungary, Poland and Slovakia – with a superimposed composite “V” to designate the Visegrad Group, a regional alliance also known as the “Visegrad Four” or “V4” that was set up after a summit meeting of the Heads of State or Government of Czechoslovakia, Hungary and Poland in the castle town of Visegrád, Hungary, on 15 February 1991, mainly for purposes of cooperating in areas of common interest within the process of European integration. The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.SLOVAKIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 382,
@@ -1090,6 +1130,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Seventh World Meeting of Families. The inner part of the coin features a family, with the Cathedral of Milan, the host city of the Seventh World Meeting of Families, in the background. The event is held every three years to highlight the family as a common human heritage, reflecting the fact that the family is universal and that it contributes to the human element of life everywhere in the world. Inscribed around the family scene are the names of the event and of the Vatican City in Italian and the year “2012”. The mintmark “R” appears between the boy and his mother. The coin’s outer ring depicts the 12 stars of the European Union.',
     country: CountryNames.VATICAN,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 387,
@@ -1160,6 +1201,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '100th anniversary of the death of Giovanni Pascoli. The inner part of the coin features a portrait of Giovanni Pascoli, a poet from the Romagna region who is a prominent representative of late 19th century Italian literature. The portrait is flanked by the poet’s year of death “1912”, the mintmark “R” and the letters “M.C.C.”, the initials of the designer Maria Carmela Colaneri, on the left and by the year of issue “2012”’ immediately above the monogram of the Italian Republic “RI” on the right. The inscription “G. PASCOLI” forms an arch along the bottom edge of the coin’s inner part below the portrait. The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.ITALY,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 394,
@@ -1260,6 +1302,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Ireland Version. Ten years of the euro. The inner part of the coin, designed by Helmut Andexlinger of the Austrian Mint and chosen by citizens and residents of the euro area to be the common commemorative coin for 2012, features the world in the form of a euro symbol in the centre, showing how the euro has become a true global player over the last ten years. The surrounding elements symbolise the importance of the euro to ordinary people (represented by a family group), to the financial world (the Eurotower), to trade (a ship), to industry (a factory), and to the energy sector and research and development (two wind turbines). The designer’s initials, “A.H.”, can be found (if you look very carefully) between the ship and the Eurotower. Along the upper and lower edges of the inner part of the coin are, respectively, the country of issue and the years “2002 – 2012”. The coin will be issued by all euro area countries. The coin’s outer ring depicts the 12 stars of the European Union.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.PROOF],
   ),
   CoinModel(
     id: 404,
@@ -1290,6 +1333,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Malta Version. Ten years of the euro. The inner part of the coin, designed by Helmut Andexlinger of the Austrian Mint and chosen by citizens and residents of the euro area to be the common commemorative coin for 2012, features the world in the form of a euro symbol in the centre, showing how the euro has become a true global player over the last ten years. The surrounding elements symbolise the importance of the euro to ordinary people (represented by a family group), to the financial world (the Eurotower), to trade (a ship), to industry (a factory), and to the energy sector and research and development (two wind turbines). The designer’s initials, “A.H.”, can be found (if you look very carefully) between the ship and the Eurotower. Along the upper and lower edges of the inner part of the coin are, respectively, the country of issue and the years “2002 – 2012”. The coin will be issued by all euro area countries. The coin’s outer ring depicts the 12 stars of the European Union.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation],
   ),
   CoinModel(
     id: 407,
@@ -1320,6 +1364,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'San Marino Version. Ten years of the euro. The inner part of the coin, designed by Helmut Andexlinger of the Austrian Mint and chosen by citizens and residents of the euro area to be the common commemorative coin for 2012, features the world in the form of a euro symbol in the centre, showing how the euro has become a true global player over the last ten years. The surrounding elements symbolise the importance of the euro to ordinary people (represented by a family group), to the financial world (the Eurotower), to trade (a ship), to industry (a factory), and to the energy sector and research and development (two wind turbines). The designer’s initials, “A.H.”, can be found (if you look very carefully) between the ship and the Eurotower. Along the upper and lower edges of the inner part of the coin are, respectively, the country of issue and the years “2002 – 2012”. The coin will be issued by all euro area countries. The coin’s outer ring depicts the 12 stars of the European Union.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 410,
@@ -1412,6 +1457,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         "28th World Youth Day. The design features the most known monument of Rio de Janeiro, the 'Christ of Corcovado', and some young people around the statue. At the top, in semi-circle, the inscription 'XXVIII G.M.G. CITTÀ DEL VATICANO RIO 2013'. At the right, the mintmark 'R' and the name of the artist 'P DANIELE'. The coin's outer ring bears the 12 stars of the European Union.",
     country: CountryNames.VATICAN,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 419,
@@ -1442,6 +1488,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         "500th anniversary of the death of the Italian painter Pinturicchio. In the foreground, the fresco 'Christ among the doctors'; in the lower part, the inscription 'SAN MARINO' in semi-circle; to the left, the letter 'R', which is the Italian mint mark; below the fresco, the name of the author 'MOMONI'; above the fresco, the inscription 'PINTURICCHIO' in semi-circle with the years '1513' and '2013' below it. The coin's outer ring bears the 12 stars of the European Union.",
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 422,
@@ -1502,6 +1549,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         "700th Anniversary of the birth of Giovanni BOCCACCIO. The design shows the head of Giovanni BOCCACCIO in three quarter view facing right, drawn from the fresco by Andrea del Castagno, around 1450 ca. (Florence, Galleria degli Uffizi); around, on the bottom, BOCCACCIO 1313 2013; on the right, superimposed letters R (monogram of the Mint of Rome)/RI (monogram of Italian Republic)/m (monogram of the author Roberto Mauri). The coin's outer ring bears the 12 stars of the European Union.",
     country: CountryNames.ITALY,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 428,
@@ -1532,6 +1580,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         "Sede Vacante 2013. The design features the coat of arms of the Cardinal Camerlengo and above it the symbol of the Apostolic Camera, two small crosses, the words 'CITTÀ DEL VATICANO' at the left and 'SEDE VACANTE MMXIII' at the right. The coin's outer ring bears the 12 stars of the European Union.",
     country: CountryNames.VATICAN,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 431,
@@ -1644,6 +1693,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '25th anniversary of the fall of the Berlin Wall. The design depicts some bricks of the partially collapsed Berlin Wall in the foreground, with the wording \'XXV ANNIVERSARIO DEL CROLLO DEL MURO DI BERLINO 1989 2014\' (25th anniversary of the fall of the Berlin Wall 1989 2014) written within the bricks. An olive branch can be seen in the centre, in a gap between the bricks and a piece of barbed wire, and the Brandenburg Gate appears in the background. At the top, the words \'CITTA\' DEL VATICANO\' are inscribed. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.VATICAN,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 442,
@@ -1694,6 +1744,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '90th anniversary of the death of Giacomo Puccini. The designs shows a portrait of the composer Giacomo Puccini. At the right the name of the issuing country, in semi-circle, \'SAN MARINO\'. At the left the inscription \'G. PUCCINI\' and the mint mark. At the bottom the year \'2014\'. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 447,
@@ -1744,6 +1795,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '200 years of Malta Police Force. The coin commemorates the 200th anniversary of the Malta Police Force which was set up by means of proclamation XXII of 1814. Thus the Malta Police Force is one of the oldest in Europe. The national side of the coin depicts the badge of the Malta Police Force with the legend \'200 Years Malta Police Force\' and the dates 1814-2014. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.MALTA,
+    allowedQualities: [...CoinQualityGroups.circulation],
   ),
   CoinModel(
     id: 452,
@@ -1754,6 +1806,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '500th anniversary of the death of Bramante Lazzari delle Penne di San Marino. The coin depicts Bramante\'s portrait, and part of Tempietto (Italian: \'small temple\'), which is a small commemorative tomb built by Donato Bramante, possibly as early as 1502, in the courtyard of San Pietro in Montorio and considered a masterpiece of the High Renaissance Italian architecture. The inscription \'BRAMANTE LAZZARI DELLE PENNE DI SAN MARINO\' surrounds almost completely the design. At the left and right the years \'1514\' and \'2014\', respectively. At the bottom the initials of the artist \'MCC\' (Maria Carmela Colaneri) and the mint mark. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 453,
@@ -1814,6 +1867,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '10th anniversary of the accession of the Slovak Republic to the European Union. At the centre of the national side are the stylised letters \'EÚ\', as the abbreviation of the European Union, with the coat of arms of the Slovak Republic incorporated in the foreground. On the right-hand side of the inner part of the coin, in two lines, is the date of the Slovak Republic\'s accession to the European Union, \'1.5.2004\', and immediately below it the year \'2014\'. Inscribed along the bottom edge of the inner part is the name of the issuing country, \'SLOVENSKO\', while in a semi-circle along the upper edge is the inscription \'10. VÝROČIE VSTUPU DO EURÓPSKEJ ÚNIE\'. To the lower left is the mint mark of Kremnica Mint (composed of the letters \'MK\' between two dies), and to the lower right are the stylised letters \'MP\', the initials of the designer, Mária Poldaufová. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.SLOVAKIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 459,
@@ -1854,6 +1908,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '20 years in the Council of Europe. The design shows at the centre left the coat of arms of Andorra followed by the inscription "20" where the zero is stylised to represent the Council of Europe\'s flag. At the top are the inscriptions "ANDORRA" and underneath "AL CONSELL D\'EUROPA". The year "2014" appears at the bottom left followed by an oblique line. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.ANDORRA,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 463,
@@ -1886,6 +1941,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The Lithuanian language. The design shows the word ‘AČIŪ’ (THANK YOU) — one of the most beautiful words in the Lithuanian language. An original Lithuanian font — created specially on the basis of the Latin font for the occasion of the centenary of the restoration of Lithuanian press — in order to match better the combinations of letters used most in the Lithuanian language, is used in the project. All the letters of the Lithuanian language are depicted on the background of the word ‘AČIŪ’, laid out in a tag cloud. At the bottom is the name of the issuing country ‘LIETUVA’ and underneath the name is the year ‘2015’. At the bottom right, under the word ‘AČIŪ’ is the mint mark of the Lithuanian Mint. The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.LITHUANIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 466,
@@ -1896,6 +1952,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '30th anniversary of the Coming of Age and Political Rights to the Men and Women turning 18 years old. The design shows a partial reproduction of a young person casting a vote. The ballot that the figure is holding reproduces the inscription ‘ANDORRA’. To the left of the figure there are the years that are being commemorated ‘1985’ and ‘2015’ (the latter is the year of issue of the coin as well). A shorter inscription of the commemoration surrounds the whole design ‘30è ANIVERSARI MAJORIA D’EDAT ALS 18 ANYS’ (30th anniversary Coming of Age at 18 years old). The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.ANDORRA,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 467,
@@ -1906,6 +1963,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '25th anniversary of the Signature of the Customs Agreement with the European Union. The design shows at the top the map of Andorra with the coat of arms of the Principality highlighted inside it. At the bottom of the design, two opposing arrows interlaced, symbolising the Customs Agreement between Andorra and the EU, show the years that are being commemorated ‘1990’ and ‘2015’ (the latter is also the year of issue of the coin) and the name of the issuing country ‘ANDORRA’. Surrounding the map of Andorra appears the inscription ‘25è aniversari de la Signatura de l’Acord Duaner amb la Unió Europea’ (25th anniversary of the Signature of the Customs Agreement with the European Union). The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.ANDORRA,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 468,
@@ -1916,6 +1974,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '800th anniversary of the construction of the first Castle on the rock. The design shows a tower on the top of the rock. At the top the name of the issuing country ‘MONACO’ flanked by the Paris mint mark and the mint master mark. At the bottom, the inscription ‘FONDATION DE LA FORTERESSE’ (Foundation of the fortress), flanked by the years ‘1215’ and ‘2015’. The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.MONACO,
+    allowedQualities: [CoinQuality.PROOF],
   ),
   CoinModel(
     id: 469,
@@ -1926,6 +1985,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         "The VIII World Meeting of Families. The design depicts two families which ideally embrace the whole Earth. At the top, the year of issuance ‘2015’. At the left side, the name of the artist ‘C. Principe’. The mint mark R appears on the arm of one family member at the right. The design is surrounded by the inscription ‘VIII INCONTRO MONDIALE DELLE FAMIGLIE’ (The VIII World Meeting of Families), from the left to the right in semi-circle and ‘CITTA' DEL VATICANO’ at the bottom. The coin's outer ring depicts the 12 stars of the European flag.",
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 470,
@@ -1956,6 +2016,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '200th anniversary of the birth of Ľudovít Štúr. The design depicts a portrait of Ľudovít Štúr. Inscribed to the right of the portrait, parallel to the edge of the inner part of the coin, are the year of issuance ‘2015’ and, further right along the edge, the name of issuing country ‘SLOVENSKO’. Inscribed to the left of the portrait, parallel to the inner edge, are the dates of Štúr’s birth and death ‘1815–1856’ and, further left along the edge, the name ‘ĽUDOVÍT ŠTÚR’. In the upper right part of the design is the mint mark of the Kremnica Mint (Mincovňa Kremnica), consisting of the initials ‘MK’ placed between two dies. In the lower right part are the stylised letters ‘IŘ’, the initials of the designer, Ivan Řehák. The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.SLOVAKIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 473,
@@ -1966,6 +2027,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Austria Version. The 30th anniversary of the EU flag. The designs show the EU flag as a symbol that unites people and cultures with shared visions and ideals for a better common future. Twelve stars that morph into human figures are embracing the birth of a new Europe. At the top right, in semi-circle, are the issuing country and the years ‘1985-2015’. At the bottom right are the initials of the artist (Georgios Stamatopoulos). The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation],
   ),
   CoinModel(
     id: 474,
@@ -1996,6 +2058,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Estonia Version. The 30th anniversary of the EU flag. The designs show the EU flag as a symbol that unites people and cultures with shared visions and ideals for a better common future. Twelve stars that morph into human figures are embracing the birth of a new Europe. At the top right, in semi-circle, are the issuing country and the years ‘1985-2015’. At the bottom right are the initials of the artist (Georgios Stamatopoulos). The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 477,
@@ -2046,6 +2109,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Ireland Version. The 30th anniversary of the EU flag. The designs show the EU flag as a symbol that unites people and cultures with shared visions and ideals for a better common future. Twelve stars that morph into human figures are embracing the birth of a new Europe. At the top right, in semi-circle, are the issuing country and the years ‘1985-2015’. At the bottom right are the initials of the artist (Georgios Stamatopoulos). The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.PROOF],
   ),
   CoinModel(
     id: 482,
@@ -2056,6 +2120,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Italy Version. The 30th anniversary of the EU flag. The designs show the EU flag as a symbol that unites people and cultures with shared visions and ideals for a better common future. Twelve stars that morph into human figures are embracing the birth of a new Europe. At the top right, in semi-circle, are the issuing country and the years ‘1985-2015’. At the bottom right are the initials of the artist (Georgios Stamatopoulos). The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.PROOF],
   ),
   CoinModel(
     id: 483,
@@ -2076,6 +2141,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Lithuania Version. The 30th anniversary of the EU flag. The designs show the EU flag as a symbol that unites people and cultures with shared visions and ideals for a better common future. Twelve stars that morph into human figures are embracing the birth of a new Europe. At the top right, in semi-circle, are the issuing country and the years ‘1985-2015’. At the bottom right are the initials of the artist (Georgios Stamatopoulos). The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 485,
@@ -2086,6 +2152,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Luxembourg Version. The 30th anniversary of the EU flag. The designs show the EU flag as a symbol that unites people and cultures with shared visions and ideals for a better common future. Twelve stars that morph into human figures are embracing the birth of a new Europe. At the top right, in semi-circle, are the issuing country and the years ‘1985-2015’. At the bottom right are the initials of the artist (Georgios Stamatopoulos). The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation],
   ),
   CoinModel(
     id: 486,
@@ -2126,6 +2193,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Slovakia Version. The 30th anniversary of the EU flag. The designs show the EU flag as a symbol that unites people and cultures with shared visions and ideals for a better common future. Twelve stars that morph into human figures are embracing the birth of a new Europe. At the top right, in semi-circle, are the issuing country and the years ‘1985-2015’. At the bottom right are the initials of the artist (Georgios Stamatopoulos). The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 490,
@@ -2136,6 +2204,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Slovenia Version. The 30th anniversary of the EU flag. The designs show the EU flag as a symbol that unites people and cultures with shared visions and ideals for a better common future. Twelve stars that morph into human figures are embracing the birth of a new Europe. At the top right, in semi-circle, are the issuing country and the years ‘1985-2015’. At the bottom right are the initials of the artist (Georgios Stamatopoulos). The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation],
   ),
   CoinModel(
     id: 491,
@@ -2146,6 +2215,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Spain Version. The 30th anniversary of the EU flag. The designs show the EU flag as a symbol that unites people and cultures with shared visions and ideals for a better common future. Twelve stars that morph into human figures are embracing the birth of a new Europe. At the top right, in semi-circle, are the issuing country and the years ‘1985-2015’. At the bottom right are the initials of the artist (Georgios Stamatopoulos). The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.PROOF],
   ),
   CoinModel(
     id: 492,
@@ -2176,6 +2246,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '25th anniversary of the German reunification. The design shows the Brandenburg Gate which during the Cold War was located in East Berlin, in two representations which are intertwined like two hands, symbolizing the reunification of the two parts of Berlin. At the right the mint mark ‘R’ and at the left the initials of the artist ‘ES’ (Erik Spiekermann). In circle around the design are the inscription ‘25o ANNIVERSARIO DELLA RIUNIFICAZIONE DELLA GERMANIA 1990-2015’ (25th anniversary of the German reunification) and the country and year of issuance ‘San Marino MMXV’. The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 495,
@@ -2186,6 +2257,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '2015 – European Year for Development. The inner part of the coin depicts a hand holding a globe of the Earth with a plant in the foreground. The inscription ‘2015 EUROPEAN YEAR FOR DEVELOPMENT’ features in an arc above the globe. The country code ‘BE’ appears beneath the hand while the signature mark of the Master of the Mint and the mark of the Brussels mint, a helmeted profile of the archangel Michael, are to its left. The coin’s o',
     country: CountryNames.BELGIUM,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 496,
@@ -2216,6 +2288,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '750th anniversary of the birth of Dante Alighieri 1265-2015. The design shows Dante with an open book in his left hand and the Purgatory mountain at the back: detail from the illustration of the Divine Comedy painted by Domenico di Michelino (1417-1491) in the Dome of S. Maria del Fiore in Florence; in the centre, the monogram of the Italian Republic ‘RI’; at the right the inscription ‘R’, identifying the Mint of Rome; below the inscription ‘SP’, initials of Silvia Petrassi and the dates ‘1265 2015’, i.e. the year of the anniversary and that of the coin’s issue respectively; arch shaped, the inscription ‘DANTE ALIGHIERI’. The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.ITALY,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 499,
@@ -2246,6 +2319,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         "The 750th anniversary of the birth of Dante Alighieri. The design by Annalisa Masini shows a portrait of Dante, taken from a fresco by Botticelli. At the right of the portrait, the inscription ‘DANTE’ on a vertical axis. At the right of the inner centre, the name of the issuing country ‘SAN MARINO’ in semi-circle. Between these two inscriptions, the mint mark ‘R’, the years ‘1265’ and ‘2015’ and the initials of the artist ‘AM’. The lettering style used in identifying the nation and the coin's subject was inspired by lettering in the first copies of the Divina Commedia (Dante’s Divine Comedy). The coin’s outer ring bears the 12 stars of the European Union.",
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 502,
@@ -2256,6 +2330,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'First flight from Malta. The coin commemorates an important milestone in Maltese aviation history — the 100 years since the first flight from Malta. It was on 13 February 1915 that Captain Kilmer took off from the Grand Harbour on a seaplane that was carried by HMS Ark Royal. The plane landed in the harbour after a 55-minute flight. The coin depicts Captain Kilmer’s seaplane with Senglea Point, a prominent feature in the Grand Harbour, in the background. At the top the inscription ‘FIRST FLIGHT FROM MALTA’ in semi-circle. At the right the years ‘1915-2015’. At the bottom left the inscription ‘100TH ANNIVERSARY’ and at the bottom the initials of the designer ‘NGB’ (Noel Galea Bason). The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.MALTA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 503,
@@ -2378,6 +2453,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '25th anniversary of the Radio and Television of Andorra. The design shows a microphone and an antenna circled by several circular lines with the inscription \'25è ANIVERSARI DE RÀDIO I TELEVISIÓ D\'ANDORRA\', the year of issuance \'2016\' and the name of the State of issuance \'ANDORRA\'. This commemorative coin celebrates the 25th anniversary of the establishment of the Andorran public media with the beginning of the broadcast of the Andorran public radio and public television. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.ANDORRA,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 515,
@@ -2388,6 +2464,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '150 years of the New Reform 1866. The design shows the main room of \'Casa de la Vall\' (premises of the Andorran Parliament) with the inscription \'150 ANYS DE LA NOVA REFORMA DE 1866\', the year of issuance \'2016\' and the name of the State of issuance \'ANDORRA\'. This commemorative coin celebrates the 150 years of the New Reform Decree, one of the biggest steps on the Andorran and on the Consell General (Andorran Parliament) history, which represented a social and political transformation in the Principality of Andorra. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.ANDORRA,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 516,
@@ -2398,6 +2475,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The role of the Malta Community Chest Fund in Society. This coin is envisaged to commemorate the role of the Malta Community Chest Fund in Society through a programme for secondary school students entitled \'From Children in Solidarity\'. This programme identifies the social role of children in five different areas with the first theme being \'Solidarity through Love\'. This design was created by Ms Sarah Cilia a secondary school student who has expressed this theme through two hands forming a heart shape which displays a representation of the Maltese flag. At the bottom of the design is the inscription \'MALTA 2016\'. Two stylised representations of human bodies are designed on the left wrist and two on the right one. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.MALTA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 517,
@@ -2428,6 +2506,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Jubilee of Mercy. The national face features St Martin of Tours sharing his cloak with a poor man. The design is surrounded by the inscriptions \'GIUBILEO DELLA MISERICORDIA\' at the left and \'CITTÀ DEL VATICANO\' at the right, both in semi-circle. At the right there is as well the year of issuance \'2016\' and at the bottom the mint mark \'R\' and the name of the artist \'M. CRISCIOTTI\'. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 520,
@@ -2448,6 +2527,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '400th anniversary of the death of William Shakespeare. The design depicts a portrait of the poet. On the right, in a semi-circle, the dates \'1616-2016\' and the name of the issuing country \'San Marino\'; on the bottom right, the initials of the artist \'MB\'. On the left, in a semi-circle, the inscription \'William Shakespeare\'; on the bottom left, the mintmark \'R\'. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 522,
@@ -2458,6 +2538,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Ġgantija Temples. The coin depicts the Ġgantija Temples situated on the Island of Gozo. Ġgantija is a megalithic temple complex dating to the Neolithic ages. It is one of the world\'s oldest free-standing structures, as well as one of the oldest religious structures. Built approximately in the 36th century BC, Ġgantija pre-dates Stonehenge and the Egyptian Pyramids. At the top right the inscription \'ĠGANTIJA TEMPLES\' and underneath the years \'3600-3200 BC\'. At the bottom left the name of the country of issuance \'MALTA\' and underneath the year of issuance \'2016\', flanked by the mint master mark and the mint mark. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.MALTA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 523,
@@ -2478,6 +2559,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The Baltic culture. The design shows an amber disc, one of the most characteristic symbols of the Baltic culture. The disc is decorated with a crosspiece of drilled dots — an ornament symbolising the world\'s axis. At the top is the name of the issuing country \'LIETUVA\', flanked by the mint mark and the year of issuance \'2016\'. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.LITHUANIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 525,
@@ -2488,6 +2570,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 200th anniversary of the Vatican Guard. The national face features a Vatican Guard in front of the Dome of St. Peter\'s Basilica. At the top, in semi-circle is the inscription \'CORPO DELLA GENDARMERIA 1816-2016\'. At the bottom, in semi-circle is the name of the issuing country \'CITTÀ DEL VATICANO\'. The mint mark \'R\' appears at the left of the design and the name of the designer \'D. Longo\' appears at the right. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 526,
@@ -2508,6 +2591,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 150th anniversary of the foundation of Monte Carlo by Charles III. The design shows CHARLES III within the background MONTE CARLO. At the top is the name of the issuing country \'MONACO\' flanked by the mint mark and the mint master mark. At the bottom, in semi-circle from left to right is the inscription \'1866 CHARLES III FONDE MONTE CARLO 2016\'. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.MONACO,
+    allowedQualities: [CoinQuality.PROOF],
   ),
   CoinModel(
     id: 528,
@@ -2548,6 +2632,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '550th anniversary of the death of Donatello. The design depicts, in the foreground on the left, a portrait of David, being a detail of the bronze sculpture by Donatello. At centre top, the mintmark \'R\'; on the right, the name of the issuing country \'SAN MARINO\'; at bottom right, the inscription \'Donatello\', the dates \'1466-2016\' and, in the centre, the initials of the artist \'MB\'. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 532,
@@ -2588,6 +2673,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Olympic Games. The inner part of the coin depicts, from top to bottom, a stylised figure, the five Olympic rings and the inscription \'TEAM BELGIUM\'. The year 2016 is written on the left-hand side of the coin. The country code \'BE\' appears on the right-hand side of the coin, between the mark of the Brussels mint, a helmeted profile of the archangel Michael, and the signature mark of the Master of the Mint. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.BELGIUM,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 536,
@@ -2658,6 +2744,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '100th anniversary of the birth of the famous Estonian chess grandmaster Paul Keres. The coin features a portrait of the great Estonian chess player Paul Keres with some chess pieces. At the top left, in semi-circle, is the inscription \'PAUL KERES\'; the name of the issuing country \'EESTI\' appears directly below it, with the year of issuance \'2016\' on the line underneath. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.ESTONIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 543,
@@ -2680,6 +2767,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Andorra – The Pyrenean country. The design reproduces on its upper part a triangle, consisting of three undulating strips representing a simplified version of the map of the country, with the inscriptions \'Andorra\' and \'EL PAÍS DELS PIRINEUS\' (the Pyrenean country). These three elements make up the brand owned by the Government of Andorra, which is used to provide a uniform, consistent and coordinated image to all graphic communication and, at the same time, achieve an unmistakable and instant identification. The lower part of the design depicts the year of issuance \'2017\'. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.ANDORRA,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 545,
@@ -2690,6 +2778,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '100 years of the anthem of Andorra. The design depicts a partial reproduction of the anthem of Andorra published in 1914. The central part of the design reproduces the first notes of the anthem flanked by an ornamentation of floral style and the inscription \'Himne Andorrà\' (Andorran anthem). The upper part of the design shows the year of issuance \'2017\' and the inscription \'100 anys de l\'himne d\'Andorra\' (100 years of the anthem of Andorra). This coin commemorates the 100th anniversary of its admission as the national anthem of Andorra by agreement of the Consell General (Andorran Parliament) of 2 April 1917. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.ANDORRA,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 546,
@@ -2700,6 +2789,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Solidarity and peace. The coin\'s theme centres on the concept of solidarity and peace. The design was created by a school student and depicts two children holding the Maltese flag with the dove of peace flying over them. At the bottom is the name of the issuing country \'Malta\' and at the right side is the year of issuance \'2017\'. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.MALTA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 547,
@@ -2710,6 +2800,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Carabiniers du Prince (\'Carabiniers\' of the Prince). The design shows a CARABINIER and in the background the Palace of Monaco. At the top is the inscription \'MONACO\' flanked by the mintmark and the mint master mark. At the bottom are the years \'1817-2017\' and underneath the inscription \'CARABINIERS DU PRINCE\'. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.MONACO,
+    allowedQualities: [CoinQuality.PROOF],
   ),
   CoinModel(
     id: 548,
@@ -2750,6 +2841,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Centenary of the Fatima apparitions. The design features the three young shepherds to whom Mary appeared, on the background the Sanctuary of Fatima. At the top is the inscription \'CITTÀ DEL VATICANO\' in semi-circle and right under is the year \'1917\'. Underneath the year, from left to right, is the inscription \'FATIMA 2017\'. At the left side is the mintmark \'R\' and at the bottom the name of the designer \'O.ROSSI\'. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 552,
@@ -2790,6 +2882,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '200th anniversary of the Ghent University. The inner part of the piece represents the logo of the Ghent University, with the dates 1817 - 2017 below, surrounded by the inscription 200 JAAR UNIVERSITEIT GENT – 200 YEARS GHENT UNIVERSITY and the country indication BE. The mintmark of Brussels, a helmeted head of the Archangel Michael, and the mint directors\' mintmark, the coat of arms of the municipality Herzele, are located respectively on the right and left of the country indication. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.BELGIUM,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 556,
@@ -2800,6 +2893,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'International Year of Sustainable Tourism for Development. The design shows in the center Planet Earth surrounded by waves; to the right a circle with the letter A, symbol of the designer Andrew Lewis. Arched, above the writing "TURISMO SOSTENIBILE", below "SAN MARINO" and the year "2017"; to the right the initials of the engraver Uliana Pernazza "UP INC."; to the left the letter "R" of the Italian Mint which took care of the mintage. The United Nations General Assembly approved the adoption of 2017 as the International Year of Sustainable Tourism for Development. The idea of sustainable Tourism indicates a kind of travelling that respects the planet, it doesn\'t alter the natural, social and artistic environment and it doesn\'t inhibit the growth of social and economic activities. It is a kind of tourism opposite to mass tourism and it tends to promote the weakest economies. The Republic of San Marino dedicated a 2 euro commemorative coin, designed by the Canadian artist Andrew Lewis to this theme, in order to promote a new mentality and to encourage tourists\' respect for environment. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 557,
@@ -2820,6 +2914,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Vilnius. The design shows a fragment of the Vilnius city panorama. At the left side is the inscription \'VILNIUS\' and the mark of the designer. At the top right is the name of the issuing country \'LIETUVA\' and the year of issuance \'2017\'. At the centre is the mintmark. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.LITHUANIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 559,
@@ -2830,6 +2925,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Estonia\'s Independence. The coin features the sinuous trunk of an oak tree where on one side there are depicted the branches and on the other side the leaves. The branches symbolize the time of revolutions and hardships from which the road to Estonia\'s Independence was paved. The leaves symbolize the strength, achievements and longevity of Estonia. At the bottom left side of the trunk there is the word \'MAAPÄEV\' (Provisional Assembly of Estonia) and above that the year \'1917\'. At the bottom right side there is the name of the issuing country \'EESTI\' and below that the year of issuance \'2017\'. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.ESTONIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 560,
@@ -2870,6 +2966,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '1950th anniversary of the martyrdom of Saint Peter and Saint Paul. The design features Saint Peter and Saint Paul and their symbols, respectively the keys and the sword. At the top is the inscription \'CITTÀ DEL VATICANO\', in semi-circle. At the bottom, in semi-circle is the inscription \'1950o DEL MARTIRIO DEI SANTI PIETRO E PAOLO\'. At the bottom left is the year of issuance \'2017\' and at the bottom right is the mint mark \'R\'. Between them is the name of the artist \'G. TITOTTO\'. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 564,
@@ -2880,6 +2977,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Unesco World Heritage Site: Maltese prehistoric temples of Hagar Qim. The coin depicts the prehistoric temples of Hagar Qim. At the top right the inscriptions \'HAGAR QIM\', \'TEMPLES\' and the years \'3600-3200 BC\' one under the other. At the bottom left the name of the country of issuance \'MALTA\' and underneath the year of issuance \'2017\'. At the bottom right the initials \'NGB\' of the artist Noel Galea Bason. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.MALTA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 565,
@@ -2910,6 +3008,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '200th anniversary of the University of Liège. The inner part of the piece represents the logo of the University of Liege, with the dates 1817 — 2017 below, surrounded by the inscription 200 ANS UNIVERSITE DE LIEGE — 200 YEARS UNIVERSITY OF LIEGE and the country indication BE. The mintmark of Brussels, a helmeted head of the Archangel Michael and the mint directors\' mintmark, the coat of arms of the municipality Herzele, are located respectively on the right and left of the country indication. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.BELGIUM,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 568,
@@ -2920,6 +3019,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '750th anniversary of the birth of Giotto. On the left a detail from the clock tower of Santa Maria del Fiore in Florence, one of Giotto\'s architectural works; vertically, the words SAN MARINO, GIOTTO and the dates 1267-2017; on the right a detail from the portrait of Giotto and the abbreviation of the artist Luciana De Simoni (LDS); on the bottom, the letter R, indicating the \'Zecca\' (mint) of Rome. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 569,
@@ -3002,6 +3102,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '70 years of the Universal Declaration of Human Rights. The design of the coin depicts seven staircases (representing the seven parishes or administrative divisions of Andorra) in the shape of mountains that lead to the valley, where there is the name of the issuing country \'ANDORRA\' and the year of issue \'2018\'. These staircases are, at the same time, the branches of a tree symbolizing humankind, of which Andorra is an integral part. 30 leaves come out of the branches of this tree representing the 30 articles of the Universal Declaration of Human Rights. The Catalan inscription \'70 ANYS DE LA DECLARACIÓ UNIVERSAL DELS DRETS HUMANS\' (70 years of the Universal Declaration of Human Rights) surrounds the design, strengthening this commemorative event. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.ANDORRA,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 577,
@@ -3012,6 +3113,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Cultural Heritage. The design was created by a school student and depicts a variety of themes intrinsic to Maltese heritage including: an allusion to the prehistoric temples, which are the world\'s oldest free-standing structures, a church dome and spire, which is a characteristic feature of the Maltese town and village skyline and a representation of a traditional Maltese boat carrying a Maltese flag. The name of the issuing country \'Malta\' is at the top of the inner circle of the coin and the year \'2018\' at the bottom. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.MALTA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 578,
@@ -3032,6 +3134,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 50th anniversary of the ESRO 2B satellite. The design shows the ESRO 2B satellite, the first successful satellite of the European Space Research Organization and launched in May 1968, circling around planet Earth. The ESRO 2B, also renamed as \'IRIS\' (International Radiation Investigation Satellite) once in orbit, was concentrated on solar X-rays, cosmic radiation and Earth\'s radiation belts. The mintmark of Utrecht (the Mercury\'s wand) is located on the bottom together with the Belgian mint master mark, the coat of arms of the municipality Herzele, the country code BE and the initials LL referring to the designer of the coin, Mr Luc Luycx. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.BELGIUM,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 580,
@@ -3042,6 +3145,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '50th Anniversary of the death of Padre Pio. The design features the right profile of a portrait of Padre Pio. At the top, from left to right, in semi-circle is the inscription of the issuing country \'CITTÀ DEL VATICANO\'. At the bottom is the inscription \'Padre Pio\' and at its right the mint mark \'R\'. At the left hand of the design is the year \'1968\' and at the right is the year of issuance \'2018\'. At the bottom left is the name of the artist \'P.DANIELE\'. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 581,
@@ -3052,6 +3156,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Kostis Palamas – 75 years in memoriam. The design features a portrait of the Greek poet Kostis Palamas (1859-1943). Inscribed along the inner edge at left is the wording \'HELLENIC REPUBLIC\' and the name \'KOSTIS PALAMAS\' (in Greek). Also inscribed is a palmette (the mintmark of the Greek Mint) and the year of issuance \'2018\'. Visible at the lower right is the monogram of the artist (George Stamatopoulos). The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.GREECE,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.PROOF],
   ),
   CoinModel(
     id: 582,
@@ -3062,6 +3167,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '70 years since the union of the Dodecanese. The design features in the central part a rose, the canting badge of Rhodes, inspired from a coin minted by the ancient city of Rhodes, one of the most characteristic coins of the Dodecanese, with stylised waves fanning out from the centre. Inscribed along the inner edge is the wording \'1948-2018 THE UNION OF THE DODECANESE WITH GREECE\' and \'HELLENIC REPUBLIC\' (in Greek). Also visible at left is a palmette (the mintmark of the Greek mint) and, at right, the monogram of the artist (George Stamatopoulos). The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.GREECE,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.PROOF],
   ),
   CoinModel(
     id: 583,
@@ -3092,6 +3198,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '420th anniversary of the birth of Gian Lorenzo Bernini. The centre of the coin features a detail from Bernini\'s sculpture \'Bust of Costanza Bonarelli\', and the dates \'1598-2018\'; at the edge, on the left is the inscription \'SAN MARINO\', on the right the inscription \'BERNINI\', the letter \'R\' identifying the Mint of Rome and the initials of the artist Annalisa Masini \'A.M.\'. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 586,
@@ -3102,6 +3209,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Unesco World Heritage Site — Temples of Mnajdra. The design features the Maltese prehistoric temples of Mnajdra, a Unesco World Heritage Site. Mnajdra is a prehistoric site consisting of three temples nestled around an oval forecourt. It is situated on the Southern coast of Malta, some 500 meters away from Hagar Qim. Mnajdra is best known for its astronomical alignments and the South temple seems to have been constructed to mark the sunrise on the equinox and the solstice. The Oldest parts of this complex date around 3 600-3 200 BC. At the top right of the design there are the inscriptions \'MNAJDRA\', \'TEMPLES\' and the years \'3 600-2 500 BC\', one underneath the other. At the bottom left there is the name of the issuing country \'MALTA\' and underneath there is the year of issuance \'2018\'. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.MALTA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 587,
@@ -3122,6 +3230,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'François Joseph Bosio. The design shows Mr BOSIO and a statue as the background image. The inscription \'MONACO\' is at the top of the image in semi-circle. At the bottom, in semi-circle as well, there are two inscriptions: \'FRANÇOIS-JOSEPH BOSIO\' and underneath \'1768 – SCULPTEUR – 2018\'. At the left and right sides of these two inscriptions, there are the mintmark and the mint master mark. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.MONACO,
+    allowedQualities: [CoinQuality.PROOF],
   ),
   CoinModel(
     id: 589,
@@ -3142,6 +3251,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 50th anniversary of May 1968 events in Belgium. The design represents students with a pamphlet and flag in their hands and refers to student demonstrations that took place in Belgium in connection with the sociocultural changes of May 1968. It was an important national event that shaped Belgium\'s national politics and influenced subsequent Government reforms, now 50 years ago. The mintmark of Utrecht (the Mercury\'s wand) is located on the left together with the Belgian mint master mark (the coat of arms of the municipality Herzele). The year mark 2018 and the country code BE are located at the left as well, just like the initials LL of the designer of the coin, Mr Luc Luycx. An auditorium marks the back, which is a reference to students. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.BELGIUM,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 591,
@@ -3162,6 +3272,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'European Year of Cultural Heritage — The Laocoön group. The design features the Statue of Laocoön and His Sons, also called the Laocoön Group, a fundamental work of the world sculpture, foundational for the Vatican Museums. At the center bottom, the inscription of the issuing country \'Città del VATICANO\'. From left to right, in semi-circle, the inscription \'ANNO EUROPEO DEL PATRIMONIO CULTURALE\'. At the top right the year of issuance \'2018\' and the mintmark \'R\'. At the bottom right the name of the artist \'D. LONGO\'. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 593,
@@ -3172,6 +3283,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '500th anniversary of the birth of Tintoretto. The centre of the coin depicts a detail from Tintoretto\'s painting \'The Visitation\' (the embrace between the Virgin Mary and Elizabeth), and the dates \'1518-2018\'; at the edge: \'SAN MARINO\' written above, and \'Tintoretto\' below; on the left are the initials of the artist Luciana de Simoni \'LDS\' and the letter \'R\' identifying the Mint of Rome. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 594,
@@ -3192,6 +3304,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Lithuanian Song and Dance celebration (inscribed on the Unesco Representative List of the Intangible Cultural Heritage of Humanity). The design features stylised figures of people and birds, typical of one of the Lithuanian folk art genres — paper cuttings, symbolic of folk dance and song. The inscription of the issuing country \'LIETUVA\' is at the center bottom, the year of issuance \'2018\' is at the left hand side and the mark of the Lithuanian Mint is at the right hand side. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.LITHUANIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 596,
@@ -3242,6 +3355,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '25th anniversary of the Andorran Constitution. The design depicts the \'Monument to the Men and Women of Andorra who launched the Constitution\', which stands in the square of the Consell General (Andorra\'s Parliament). This monument shows the silhouettes of a man and a woman and commemorates the will expressed by the Andorran citizenry, in the referendum held on 14 March 1993, to become a constitutional state, democratic and social, as expressed in article 1 of the Constitution. To the right of the monument there is the map of Andorra with the Latin inscription \'VIRTVS VNITA FORTIOR\' (virtue united is stronger) inside, which is the state motto of the Principality of Andorra. Surrounding the design there are the inscriptions \'25è ANIVERSARI DE LA CONSTITUCIÓ 1993-2018\' (25th anniversary of the Constitution 1993-2018) and the name of the country \'ANDORRA\'. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.ANDORRA,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 601,
@@ -3252,6 +3366,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Estonia, Latvia and Lithuania jointly issued a commemorative euro coin with a common design in 2018, celebrating the establishment of the States of Estonia and Latvia and the re-establishment of the State of Lithuania. The three Baltic States are symbolically represented as a braid. They are united by their history: a common past, present and future. A stylised numeral representing the 100th anniversary, and the heraldic signs of all three States, are featured as well. At the left side is the name of the issuing country \'LIETUVA\' and the mint mark and at the right side is the year of issuance \'2018\' and the mark of the designer \'JP\'. The design was selected by public voting in all three Baltic countries. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.LITHUANIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 602,
@@ -3272,6 +3387,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Estonia, Latvia and Lithuania jointly issued a commemorative euro coin with a common design in 2018, celebrating the establishment of the States of Estonia and Latvia and the re-establishment of the State of Lithuania. The three Baltic States are symbolically represented as a braid. They are united by their history: a common past, present and future. A stylised numeral representing the 100th anniversary, and the heraldic signs of all three States, are featured as well. At the left side is the name of the issuing country \'EESTI\' and at the right side is the year of issuance \'2018\'. The design was selected by public voting in all three Baltic countries. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.ESTONIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 604,
@@ -3282,6 +3398,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The centennial of the independence of Estonia. The design depicts simultaneously the numbers 18 and 100, which symbolize the time when Estonia became an independent country and furthermore reflect the past hundred years. At the bottom right is the text \'SADA AASTAT EESTI VABARIIKI\' and next to it the name of the country \'EESTI\' and the year of issuance \'2018\'. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.ESTONIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 605,
@@ -3364,6 +3481,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '600 years of the Council of the Land. The design commemorates the 600th anniversary of the creation of the Consell de la Terra (Council of the Land). It was a representative body created in 1419, predecessor of the Consell General (General Council), the parliament of Andorra. The design depicts the upper part of the entry portal of Casa de la Vall (the parliament\'s old seat), with the coat of arms of the country and a fragment of a window above it. Two compact groups of human faces on both sides of the design, as if they were stones of the building, mean the cohesion of Andorrans as a social community united in history, institutions and values. The inscription \'600 ANYS DEL CONSELL DE LA TERRA\' (600 years of the Council of the Land) at the top, and the name of the issuing country \'ANDORRA\' and both year dates \'1419\' and \'2019\' in the middle of the number \'600\' below complete the design. The coin\'s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.ANDORRA,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 613,
@@ -3374,6 +3492,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The centenary of the University of Tartu. The coin will mark the centenary of the University of Tartu as being established as the first Estonian language university. It was founded in 1632 by Swedish King Gustav II Adolf and is one of the oldest universities in northern and eastern Europe. In 1919 it became the first Estonian language university. The design depicts a motif of the main building of the university. It also bears the inscriptions \'RAHVUSÜLIKOOL 100\' (National University 100) and \'UNIVERSITAS TARTUENSIS\', the year \'1632\', the issuing country \'EESTI\' and the year of issuance \'2019\'. The coin\'s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.ESTONIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 614,
@@ -3394,6 +3513,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Sutartinės (Lithuanian multipart songs — inscribed on the Unesco Representative List of the Intangible Cultural Heritage of Humanity). The design features linear motifs, symbolising polyphonic melodies of the unique Lithuanian heritage — folk songs sutartinės. The lines are widening and narrowing again, spinning into a swirl decorated with various miniature geometric and nature figures. The inscription of the issuing country \'LIETUVA\', as well as the inscription \'SUTARTINĖS\' (Lithuanian multipart songs) and the year of issuance \'2019\' are depicted in semicircle. The mark of the Lithuanian Mint is featured as well. The coin\'s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.LITHUANIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 616,
@@ -3404,6 +3524,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Samogitia (Lithuanian Ethnographic Regions). The design features a bear standing on its hind legs, with a chain collar on the neck. It has been depicted on the coat of arms of Samogitia since the 16th century. The bear is situated against a shield topped with a crown, which is held by an armoured soldier (a symbol of courage, sacrifice and patriotism) and a goddess with an anchor (a symbol of hope). Below is a Latin inscription \'PATRIA UNA\' (one fatherland). The design is surrounded by the inscriptions \'LIETUVA\' (Lithuania) and \'ŽEMAITIJA\' (Samogitia), the year of issuance \'2019\' and the mintmark of the Lithuanian Mint. The coin\'s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.LITHUANIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 617,
@@ -3434,6 +3555,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Nature and Environment. The design was created by a school student and bears a fruit tree and a stylised representation of the sun. At the bottom left is the name of the issuing country \'MALTA\' and underneath the year of issuance \'2019\'. The coin\'s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.MALTA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 620,
@@ -3444,6 +3566,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Sistine Chapel — End of the restoration 1994-2019. The design features the Last Judgment in the Sistine Chapel. At the left, in semi-circle is the inscription of the issuing country \'CITTÀ DEL VATICANO\'. At the right, in semi-circle, are the inscriptions \'CAPPELLA SISTINA — FINE DEI RESTAURI\' and \'1994-2019\'. At the right side is the mintmark \'R\' and at the bottom the name of the artist \'D. LONGO\'. The coin\'s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 621,
@@ -3474,6 +3597,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The Constitution Act of Finland. The design shows three circular fields that are joined together at the centre. The three fields represent the trias politica, separation of powers into three different branches: a legislative, an executive, and a judiciary power. The year of issuance \'2019\' is placed centre left. The indication of the issuing country \'FI\' and the mint mark are placed bottom right. The coin\'s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.FINLAND,
+    allowedQualities: [...CoinQualityGroups.circulation],
   ),
   CoinModel(
     id: 624,
@@ -3504,6 +3628,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '550th anniversary of the death of Filippo Lippi. The centre of the coin features the Madonna and Child, a detail from Filippo Lippi\'s \'Madonna and Child with Two Angels\'; above are the inscriptions \'SAN MARINO\' and \'FILIPPO LIPPI\' and on the left are the year \'1469\' and the letter \'R\' identifying the Mint of Rome. On the bottom left are the initials of the artist Maria Angela Cassol \'M.A.C.\', and in the centre the year \'2019\'. The coin\'s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 627,
@@ -3514,6 +3639,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Unesco World Heritage Site – pre-historic temples of Ta\' Haġrat. The design features Ta\' Haġrat, a prehistoric temple located in Mġarr, a small village in the northwest of Malta. The temple consists of two structures the largest of which dates to around 3 600-3 200 BC. This temple has a monumental doorway, which is its most distinctive characteristic. The inscription \'TA\'HAĠRAT TEMPLES 3600-3000 BC\' appears at the top of the design. At the bottom are the name of the issuing country \'MALTA\' and the year of issuance \'2019\'. The coin\'s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.MALTA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 628,
@@ -3524,6 +3650,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Song Festival\'s 150-year anniversary. The design is inspired by the Song Celebration procession, which moves like the waves on the sea with cheers of pride and joy and a panoply of national dress. The design unites music, national costumes, and the various sites of the great and powerful Song Celebration of the nation by the sea. The design also features the first notes of the Estonian national anthem and, at the bottom, the words \'Laulupidu 150\' (Song Celebration 150). At the top is the year of issuance \'2019\' and underneath the name of the issuing country \'EESTI\'. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.ESTONIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 629,
@@ -3534,6 +3661,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Andreas Kalvos — 150 years in memoriam. Born in Zante, Andreas Kalvos (1792-1869) is one the most important modern Greek poets. Combining a solid neo-classicist education with the high ideals of Romanticism and archaicising with demotic Greek, he expressed both the revolutionary ideas of his time and his personal vision. The national side of the coin features a portrait of Andreas Kalvos. Inscribed along the inner edge at the left is the name \'ANDREAS KALVOS 1792-1869\', along with the minting year and a palmette (mintmark of the Greek Mint); inscribed along the inner edge at the right is the wording \'HELLENIC REPUBLIC\'. Also visible at the right is the monogram of the artist (George Stamatopoulos). The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.GREECE,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 630,
@@ -3544,6 +3672,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Centenary of the birth of Manolis Andronicos. Manolis Andronicos (1919-1992) was one of Greece\'s greatest archaeologists. His discovery of the royal tombs at Vergina in 1977 brought to light exquisite finds that attest to the splendour of ancient Macedonian civilisation. The design features a portrait of Manolis Andronicos. Inscribed along the inner edge at left is the name \'MANOLIS ANDRONICOS 1919-1992\', along with the minting year and a palmette (mintmark of the Greek Mint); inscribed along the inner edge at right is the wording \'HELLENIC REPUBLIC\'. Also visible at the right is the monogram of the artist (George Stamatopoulos). The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.GREECE,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 631,
@@ -3554,6 +3683,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 200th anniversary of the accession to the throne of Prince Honoré V. The design shows the effigy of Prince Honoré V. At the left is the inscription \'HONORÉ V\' and at the right the name of the issuing country \'MONACO\'. At the bottom, in semi-circle, is the inscription \'1819 — Avènement — 2019\'. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.MONACO,
+    allowedQualities: [CoinQuality.PROOF],
   ),
   CoinModel(
     id: 632,
@@ -3564,6 +3694,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 60th anniversary of Asterix. For 60 years, Asterix has been a true icon of the French culture. Created in 1959 by scenarist René Goscinny and cartoonist Albert Uderzo, this character embodies the Frenchman with his smartness and sharpness through the Gallic identity. Apart from its artistic line, depicting contemporary society with humour has brought Asterix a great international fame for many years. Since its inception, it has been translated into all the languages of the European Union meeting a huge success. The reputation of Asterix is for example as strong in Germany as in France. It has also been very well established in the United Kingdom, the Netherlands, Spain, Portugal, Italy and Scandinavia for many years. Beyond the French icon, Asterix has become a true figure of the European 9th art. The design represents Asterix in profile wearing his famous winged helmet. He is surrounded by laurels and Roman inscriptions referring to his 60 years. At the top is the inscription \'ASTÉRIX\' and underneath the indication of the issuing country \'RF\' (standing for République française). The year of issuance \'2019\' is inscribed at the bottom, together with the French mintmark and mintmaster mark. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.FRANCE,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 633,
@@ -3584,6 +3715,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '500th anniversary of the death of Leonardo da Vinci. The centre of the coin bears an angel painted by Leonardo da Vinci in \'The Baptism of Christ\'; at the edge, on the left is the inscription \'SAN MARINO\', on the right the inscription \'1519 Leonardo 2019\'; on the left are the initials of the artist Uliana Pernazza \'UP\' and on the bottom right, the letter \'R\' identifying the Mint of Rome. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 635,
@@ -3594,6 +3726,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Ski World Cup Finals 2019. The 2019 Ski World Cup Finals were held in the Principality of Andorra from 11 to 17 March 2019. With this event, the Principality of Andorra hosted one of the most important alpine skiing competitions in the world. For the Principality of Andorra, it was the most prestigious winter sport event that has ever been held in the country, and a turning point in the country\'s trajectory as a sport destination. The design of the coin shows in the foreground a skier sliding down a slope. In the background, four curved lines, from the official logo of these Ski World Cup Finals, represent the slopes where the competition took place. Some snowflakes complete the design together with the inscription \'FINALS DE LA COPA DEL MÓN D\'ESQUÍ ANDORRA 2019\' (Andorra 2019 Ski World Cup Finals). The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.ANDORRA,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 636,
@@ -3604,6 +3737,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '90th anniversary of the foundation of the Vatican City State. The design features a portrait of Pope Pius XI (Sovereign of the State in 1929) and the Lateran in Rome. At the top, from left to right, in semi-circle is the inscription of the issuing country \'STATO DELLA CITTÀ DEL VATICANO\'. At the bottom are the years \'1929\' and \'2019\' and underneath the name of the artist \'FUSCO\'. The coin\'s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 637,
@@ -3664,6 +3798,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'he 450th anniversary of the death of Pieter Bruegel the Elder. The inner part of the piece bears the portrait of the famous Belgian artist Pieter Bruegel the Elder, together with a painting on an easel. Above this, you can find the name P. BRUEGEL, the years 1569, with a subtle obelisk referring to the year of death, and 2019, the year of issuance. As the Royal Dutch Mint will strike the coins, the mintmark of Utrecht, a mercury staff is located on the left together with the Belgian mint director mintmark, the coat of arms of the municipality Herzele, the country code BE. The initials LL referring to the designer of the coin, Mr Luc Luycx, are located on the right. Finally, around the edge of the inner part small dots form a circle. The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.BELGIUM,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 643,
@@ -3674,6 +3809,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '5th anniversary of the European Monetary Institute (EMI). The inner part of the piece bears the portrait Alexandre Lamfalussy, the first president of the EMI, on the right with his name below. On the left-hand side, the abbreviation EMI stands central with the year 1994 above, referring to date of the establishment of the Institute and the designation of Lamfalussy as its first president. Below ‘EMI’, several coins are depicted falling on each other with the inscription €, ‘ECU’ and ‘BEF’ from top to bottom. Given the fact that this is a Belgian issuance, we have chosen for ‘BEF’, the abbreviation of our former national currency. The purpose of this representation is to symbolise the transition of the national currencies to an European single currency, the euro as the EMI’s main focus was on establishing the European System of Central Banks, including the ECB and the new currency On the upper part of the left side of the coin is an inscription ‘European Monetary Institute’. As the Royal Dutch Mint will strike the coins, the mintmark of Utrecht, a mercury staff is located on the left with the Belgian mint director mintmark, the coat of arms of the municipality Herzele. The country code BE and the year mark 2019 are located on the bottom. The initials LL referring to the designer of the coin, Mr Luc Luycx, are inscribed on the right. The coin’s outer ring bears the 12 stars of the European Union.',
     country: CountryNames.BELGIUM,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
 
   // 2020 -------------------------------------------------------------
@@ -3706,6 +3842,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '20th anniversary of Slovakia’s accession to the Organisation for Economic Co-operation and Development (OECD). The upper right half of the national side design depicts a representation of the concept of digital humanism: printed circuits in the shape of a human brain, in the centre of which is a circle representing a microprocessor. The Slovak coat of arms is placed next to the lower right edge. Inscribed inside a square outline that partly overlaps the main image are the words ‘20. VÝROČIE’ and ‘VSTUP SR DO OECD’ (the 20th anniversary of Slovakia’s accession to the OECD). Below the square is the name of the issuing country ‘SLOVENSKO’ and the year of issuance ‘2020’, one above the other. Between the square and the left edge of the design is the mint mark of the Kremnica Mint (Mincovňa Kremnica), consisting of the letters ‘MK’ placed between two dies. Below the mint mark are the stylised letters ‘PV’ referring to the designer Peter Valach. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.SLOVAKIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.PROOF],
   ),
   CoinModel(
     id: 647,
@@ -3726,6 +3863,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'UNESCO Cultural Heritage - Kryžių Kalnas (the Hill of Crosses). The design depicts the Hill of Crosses: fragments of wooden and forged crosses, symbolising Lithuanian cross-crafting and folk culture. Cross-crafting and cross-symbolism in Lithuania are included in the UNESCO Representative List of the Intangible Cultural Heritage of Humanity. The inscriptions featured are: Lithuania’s name ‘LIETUVA’, the year of issue ‘2020’ on the top, ‘KRYŽIŲ KALNAS’ (the Hill of Crosses) and the mark of the Lithuanian Mint at the bottom. The design is realised by Rytas Jonas Belevičius. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.LITHUANIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 649,
@@ -3746,6 +3884,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Children’s games. The design depicts a melange of traditional games popular with Maltese children. These include marbles, spinning tops and traditional kite-making and flying. Depicted is also a Maltese version of hop-scotch which is known locally as ‘passju’. Three bees flying in a circle allude to a popular chant sung by Maltese children during play. Included in the design is the name of the issuing country, ‘Malta’, and the year of issue, ‘2020’. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.MALTA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 651,
@@ -3766,6 +3905,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Medical Research. The design shows the figuration of the human in union, represented by a face inscribed in a sphere. It faces the infinitely small, represented by fragments of DNA inscribed in a circle. By its oblique axis, this allegory represents the research and its intelligence dominating the infinitely small, studying it and triumphing over the diseases. The indication of the issuing country ‘RF’ is located at the top right while the mintmark and the year of issuance ‘2020’ are located at the bottom left. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.FRANCE,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 653,
@@ -3776,6 +3916,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '500th Anniversary of the death of Raphael Sanzio. The design features a portrait of Raphael and two angels. At the right, in semi-circle, is the inscription ‘RAFFAELLO SANZIO’. Above the image of the two angels are the years ‘1520’ and ‘2020’ and underneath it is the name of the issuing country ‘CITTA’ DEL VATICANO’. At the bottom is the mintmark ‘R’ and the artist’s name ‘D. LONGO’. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 654,
@@ -3786,6 +3927,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '250th anniversary of the death of Giambattista Tiepolo. The left part of the coin features the bust of an angel, a detail from Tiepolo’s painting ‘Angel Succouring Hagar’, which hangs in the Scuola Grande di San Rocco, Venice, and the initials of the designer Claudia Momoni ‘C.M.’. Above is the inscription ‘TIEPOLO’ and the letter ‘R’ identifying the Mint of Rome; on the right are the dates 1770 and 2020 and the inscription ‘San Marino’. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 655,
@@ -3806,6 +3948,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '50 years of Universal Female Suffrage. The design of the coin shows a female face inside a wrapper of endless moving lines. These lines are formed by female names in Catalan language close together, making it difficult to read them individually, as a tribute to solidarity of women in the fight for their rights. The inscriptions ‘50 ANYS DEL SUFRAGI UNIVERSAL FEMENÍ’ (50 years of Universal Female Suffrage) and ‘ANDORRA 1970 - 2020’ complete the design. These inscriptions are also incorporated into the movement of the lines in a way, in order to give more importance to the anniversary that is being commemorated. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.ANDORRA,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 657,
@@ -3842,10 +3985,11 @@ final List<CoinModel> coinDataCommemoratives = [
     type: CoinType.COMMEMORATIVE,
     image: 'assets/coins/_commemoratives/2020/2020_17-min.png',
     periodStartDate: '2020-07-01',
-    quantity: 60_000,
+    quantity: 73_500,
     description:
-        '50 years of Universal Female Suffrage. The design of the coin shows a female face inside a wrapper of endless moving lines. These lines are formed by female names in Catalan language close together, making it difficult to read them individually, as a tribute to solidarity of women in the fight for their rights. The inscriptions ‘50 ANYS DEL SUFRAGI UNIVERSAL FEMENÍ’ (50 years of Universal Female Suffrage) and ‘ANDORRA 1970 - 2020’ complete the design. These inscriptions are also incorporated into the movement of the lines in a way, in order to give more importance to the anniversary that is being commemorated. The coin’s outer ring bears the 12 stars of the European flag.',
+        'The 27th Ibero-American Summit in Andorra. The 27th Ibero-American Summit of Heads of State and Government will be held in the Principality of Andorra in 2020. Andorra, the newest and smallest member of the Ibero-American Conference, will host this meeting of the highest political level, which comprises 19 Latin American countries together with Spain, Portugal and Andorra, in order to work towards common goals such as Sustainable Development. The design of the coin shows a tree made up by human silhouettes and tine wheels. The human silhouettes symbolize the integration of society, culture and education for the realization of a sustainable future. The tine wheels symbolize the synergy of movement between the ideas and proposals of participants to this Summit. Next to the tree, there is the logo of this 27th Summit. On its upper side, three triangles represent the colours of the Andorran flag. On its lower side, six triangles represent Andorra’s opening towards Sustainable Development Goals. Around the design, there is the inscription ‘XXVII CIMERA IBEROAMERICANA ANDORRA 2020’ (27th Ibero-American Summit Andorra 2020). The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.ANDORRA,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 661,
@@ -3856,6 +4000,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 300th anniversary of the birth of Prince Honoré III. The design shows the effigy of Prince Honoré III. At the left is the inscription ‘HONORÉ III’ and at the right the name of the issuing country ‘MONACO’. At the bottom, in semi-circle, is the inscription ‘1720 – Naissance – 2020’. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.MONACO,
+    allowedQualities: [CoinQuality.PROOF],
   ),
   CoinModel(
     id: 662,
@@ -3886,6 +4031,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Jan van Eyck. The inner part of the piece depicts the portrait of the famous Flemish artist Jan van Eyck, together with his signature and a painter’s palette that also contains the initials LL, referring to the designer of the coin, Mr Luc Luycx and two paintbrushes. Above this, you can find the name J. van Eyck. As the Royal Dutch Mint will strike the coins, the mintmark of Utrecht, a mercury staff is located on the bottom together with the Belgian mint director mintmark, the coat of arms of the municipality Herzele. The country code BE and the year mark 2020 is located on the right. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.BELGIUM,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 665,
@@ -3906,6 +4052,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Unesco World Heritage Site – pre-historic temples of Skorba. The design features Skorba, a prehistoric temple located near the hamlet of Zebbiegh, in the northwest of Malta. The complex consists of two temples built side by side. These were built on a much older settlement remains of which were discovered outside the temple complex. Skorba lacks the monumentality of the other temples on the Maltese islands. Nevertheless, the site is of utmost importance having enabled archaeologists to set Malta’s prehistoric cultural sequence and establish that the islands were first inhabited at around 5 000 BC. The inscription ‘SKORBA TEMPLES 3600-2500 BC’ appears at the top of the design. At the bottom are the name of the issuing country ‘MALTA’ and the year of issuance ‘2020’. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.MALTA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 667,
@@ -3916,6 +4063,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '500th Anniversary of the death of Raphael Sanzio. The design features a portrait of Raphael and two angels. At the right, in semi-circle, is the inscription ‘RAFFAELLO SANZIO’. Above the image of the two angels are the years ‘1520’ and ‘2020’ and underneath it is the name of the issuing country ‘CITTA’ DEL VATICANO’. At the bottom is the mintmark ‘R’ and the artist’s name ‘D. LONGO’. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 668,
@@ -3926,6 +4074,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '250th anniversary of the death of Giambattista Tiepolo. The left part of the coin features the bust of an angel, a detail from Tiepolo’s painting ‘Angel Succouring Hagar’, which hangs in the Scuola Grande di San Rocco, Venice, and the initials of the designer Claudia Momoni ‘C.M.’. Above is the inscription ‘TIEPOLO’ and the letter ‘R’ identifying the Mint of Rome; on the right are the dates 1770 and 2020 and the inscription ‘San Marino’. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 669,
@@ -3936,6 +4085,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Aukštaitija (from the series Lithuanian Etnographic Regions). The design features a coat of arms with an armour-clad knight holding a sword in his right hand. The coat of arms is held by two angels, simbolically exalting and protecting Aukštaitija – one of the most important regions of Lithuania and the cradle of its statehood. Below is a Latin inscription PATRIAM TUAM MUNDUM EXISTIMA (CONSIDER YOUR HOMELAND TO BE THE WHOLE WORLD). The design is surrounded by inscriptions: ‘LIETUVA’ (the name of the issuing country), ‘AUKŠTAITIJA’, the year of issuance ‘2020’ and the mintmark of the Lithuanian Mint. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.LITHUANIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 670,
@@ -3946,6 +4096,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The bicentenary of the discovery of Antarctica. The discovery is linked to Estonia because one of the first men to see Antarctica in 1820 was Fabian Gottlieb von Bellingshausen, a Baltic German seafarer born in Saaremaa, who documented the discovery. The design depicts a motif of a sailing ship. It also bear the inscriptions ‘Fabian Gottlieb von Bellingshausen’ and ‘ANTARKTIKA 200’, the country name ‘EESTI’ and the year of issuance ‘2020’. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.ESTONIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 671,
@@ -3986,6 +4137,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The centenary of the Tartu Peace Treaty. The treaty was signed between Estonia and Soviet Russia on 2 February 1920, and it fixed the Eastern border of Estonia, bringing an end to the War of Independence. The design depicts a tree with branches disguising the words TARTU RAHU (Tartu Peace Treaty). It also bears the country name ‘EESTI’ and the date of issue ‘2 February 2020’. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.ESTONIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 675,
@@ -4028,6 +4180,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Taking care of our seniors. The subject of the coin ‘CUIDEM LA NOSTRA GENT GRAN’ (taking care of our seniors) is symbolized by the image of the hand of a young person holding another hand that shows all the signs of aging, with a stethoscope below them. The name of the issuing country ‘ANDORRA’ encircling several reproductions of the SARS-CoV-2 virus represents the State’s commitment to preventing its spread and caring for its citizens. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.ANDORRA,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 679,
@@ -4038,6 +4191,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Our Lady of Meritxell. The foreground of the design depicts the reproduction of the Romanesque carving of Our Lady of Meritxell (patron saint of the Principality of Andorra), which dates back from the 11th and 12th centuries. The background shows a partial reproduction of the basilica sanctuary, a graphic flower element, the name ‘ANDORRA’ and the years ‘1921-2021’. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.ANDORRA,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 680,
@@ -4058,6 +4212,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 100-year autonomy of Åland. The theme is an archipelago landscape: a seaway with nautical signs, a boat bow, compass, sea horizon, sky and clouds. Inscribed “AUTONOMY OF THE ÅLAND ISLANDS FOR 100 YEARS” in Finnish and Swedish, with two diamond highlights, “2021 FI” and the mintmark. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.FINLAND,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.PROOF],
   ),
   CoinModel(
     id: 682,
@@ -4068,6 +4223,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 500th anniversary of the ordinance of Charles V. The national side depicts Charles V’s portrait and a golden Carolus guilder, with Utrecht mintmark, Herzele mark, initials LL, country code BE and year 2021. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.BELGIUM,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 683,
@@ -4078,6 +4234,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The Estonian national animal – the wolf. The design depicts the silhouette of the wolf and a forest. Close to the inner ring are “EESTI”, “2021” and “CANIS LUPUS”. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.ESTONIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 684,
@@ -4088,6 +4245,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Maltese prehistoric temples of Tarxien. The design depicts a detail of the structure with “TARXIEN TEMPLES 3600–2500 BC” above and “MALTA” and “2021” below. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.MALTA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 685,
@@ -4098,6 +4256,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 700th anniversary of the death of Dante Alighieri. The design features a portrait of Dante and Palazzo Vecchio, with “CITTÀ DEL VATICANO”, “Dante”, “1321–2021” and artist “P. DANIELE”. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 686,
@@ -4128,6 +4287,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Finno-Ugric peoples. Based on Lake Äänisjärv cave drawings: symbols of hunter, elk, water bird, sun, forming a life circle around a water bird. Inscribed “EESTI” and “2021” and “FENNOUGRIA”. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.ESTONIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 689,
@@ -4138,6 +4298,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 550th anniversary of the birth of Albrecht Dürer. Depicts Virgin Mary with Child from Dürer’s “Madonna with Child”, with “SAN MARINO”, mintmark “R”, monogram “AD”, initials “VdS” and dates “1471–2021”. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 690,
@@ -4148,6 +4309,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '10th anniversary of the marriage of Prince Albert II and Princess Charlene. Profiles of the couple, with “MONACO” and “2011 MARIAGE PRINCIER 2021”. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.MONACO,
+    allowedQualities: [CoinQuality.PROOF],
   ),
   CoinModel(
     id: 691,
@@ -4158,6 +4320,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Dzūkija (Lithuanian Ethnographic Regions). Coat of arms with soldier, shield, lynxes, ribbon with “EX GENTE BELICOSISSIMA POPULUS LABORIOSUS”, and “LIETUVA”, “DZŪKIJA”, “2021”. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.LITHUANIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 692,
@@ -4168,6 +4331,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 450th anniversary of the birth of Caravaggio. The design features “Boy with a Basket of Fruit” by Caravaggio, with “CITTA’ DEL VATICANO”, mintmark “R”, “CARAVAGGIO”, “1571–2021”, and initials “CP”. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 693,
@@ -4178,6 +4342,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Heroes of the pandemic. Designed by Maria Anna Frisone, depicting two medical professionals bracing to face the unknown, with “HEROES OF THE PANDEMIC” and “MALTA – 2021”. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.MALTA,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 694,
@@ -4188,6 +4353,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 100th anniversary of the Belgium-Luxembourg Economic Union (BLEU). Effigies of King Philip I and Grand Duke Henri, “1921–2021”, Utrecht mintmark, Herzele mark, initials LL. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.BELGIUM,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 695,
@@ -4208,6 +4374,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Journalism and Open Communication supporting Finnish democracy. Stylized human figures entwined in a ribbon-like net, “JOURNALISMI JOURNALISTIK”, and “2021 FI” with mintmark. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.FINLAND,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.PROOF],
   ),
   CoinModel(
     id: 697,
@@ -4218,6 +4385,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'UNESCO’s Man and the Biosphere Programme – Žuvintas Biosphere Reserve. Depicts landscapes, great bittern, fire-bellied toad, aquatic warbler, cranes, mute swan, with “LIETUVA”, “ŽUVINTAS”, “UNESCO”, “2021” and mintmark. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.LITHUANIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 698,
@@ -4248,6 +4416,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 450th anniversary of Caravaggio’s birth. Depicts the penitent Magdalene from Caravaggio’s work in the Doria Pamphilj Gallery, with “SAN MARINO”, “1571–2021”, designer initials “SP”, “CARAVAGGIO” and mintmark. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 701,
@@ -4340,6 +4509,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The legend of Charlemagne. The coin design represents the legend that Emperor Charlemagne founded Andorra in 805. The background shows a mountain landscape with a river, and the name "ANDORRA". In the foreground is a partial reproduction of Charlemagne by Albrecht Dürer and the year "2022".',
     country: CountryNames.ANDORRA,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 710,
@@ -4350,6 +4520,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '10 years of the Monetary Agreement between Andorra and the EU. Puzzle pieces represent the countries involved, symbolizing unity in the eurozone. Stars encircle the euro symbol, with "ANDORRA", "2012" and "2022" inscribed.',
     country: CountryNames.ANDORRA,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 711,
@@ -4360,6 +4531,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Lithuanian Ethnographic Regions - Suvalkija. Features a Taurus on a decorated escutcheon with oak branches and a ribbon inscribed "VIENYBĖ TEŽYDI". Surrounded by "LIETUVA", "SUVALKIJA", the year "2022", and mintmark.',
     country: CountryNames.LITHUANIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 712,
@@ -4370,6 +4542,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Ukraine and Freedom. Depicts a woman holding a bird and wheat. Inscribed with "SLAVA UKRAINI", "EESTI", and "2022".',
     country: CountryNames.ESTONIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 713,
@@ -4380,6 +4553,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Climate research in Finland. Features stylized beard lichen roots. Inscriptions in Finnish and Swedish for "CLIMATE RESEARCH", and "2022 FI".',
     country: CountryNames.FINLAND,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.PROOF],
   ),
   CoinModel(
     id: 714,
@@ -4390,6 +4564,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '22nd anniversary of UNSCR 1325 on Women, Peace and Security. Features three female faces with inscriptions "WOMEN", "PEACE", "SECURITY", "UNSCR", "1325", and "MALTA 2022".',
     country: CountryNames.MALTA,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 715,
@@ -4400,6 +4575,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '530th anniversary of Piero della Francesca’s death. Shows profile of Federico da Montefeltro from the "Diptych of the Dukes of Urbino", with inscriptions "SAN MARINO", "PIERO DELLA FRANCESCA", "1492", "2022", "R", and "C.M.".',
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 716,
@@ -4410,6 +4586,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Bicentenary of Antonio Canova’s death. Features goddess Hebe based on Canova’s sculpture. Inscriptions: "CANOVA", "SAN MARINO", "1822", "2022", "R", and initials of Antonio Vecchio.',
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 717,
@@ -4420,6 +4597,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '300th anniversary of Europe’s first atmospheric steam engine. Features the engine built by Isaac Potter in Nová Baňa, Slovakia. Inscriptions include "SLOVENSKO", "1722·2022", "MK", and designer’s initials.',
     country: CountryNames.SLOVAKIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.PROOF],
   ),
   CoinModel(
     id: 718,
@@ -4430,6 +4608,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '100th anniversary of Prince Albert I’s death. Portrait of Prince Albert I with inscriptions "MONACO", "ALBERT Ier", "1848-1922", and "2022".',
     country: CountryNames.MONACO,
+    allowedQualities: [CoinQuality.PROOF],
   ),
   CoinModel(
     id: 719,
@@ -4450,6 +4629,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 25th anniversary of the death of Mother Teresa of Calcutta. The design features a portrait of Mother Teresa with a child. At the top, in semi-circle, is the inscription ‘MADRE TERESA DI CALCUTTA’ and at the bottom is the name of the issuing country ‘CITTÀ DEL VATICANO’. At the right of the portrait is the mintmark ‘R’ and underneath it are the years ‘1997’ and ‘2022’. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 721,
@@ -4490,6 +4670,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Cyprus Version. 35 years of the Erasmus programme. The design is a mix of two major elements of the Erasmus programme: the original intellectual inspiration, Erasmus himself, and the allegory of its influence over Europe. The first one is symbolised by one of the most known depiction of Erasmus. The second one is symbolised by a beam of links going across the coin from a beacon to another, representing the numerous intellectual and human exchanges between the European students. As a reference to Europe, some of these links form other stars, born from the synergy between the countries. The figure 35, for 35th anniversary comes out from the stars in a contemporary graphical style. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 725,
@@ -4510,6 +4691,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Estonia Version. 35 years of the Erasmus programme. The design is a mix of two major elements of the Erasmus programme: the original intellectual inspiration, Erasmus himself, and the allegory of its influence over Europe. The first one is symbolised by one of the most known depiction of Erasmus. The second one is symbolised by a beam of links going across the coin from a beacon to another, representing the numerous intellectual and human exchanges between the European students. As a reference to Europe, some of these links form other stars, born from the synergy between the countries. The figure 35, for 35th anniversary comes out from the stars in a contemporary graphical style. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 727,
@@ -4520,6 +4702,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Finland Version. 35 years of the Erasmus programme. The design is a mix of two major elements of the Erasmus programme: the original intellectual inspiration, Erasmus himself, and the allegory of its influence over Europe. The first one is symbolised by one of the most known depiction of Erasmus. The second one is symbolised by a beam of links going across the coin from a beacon to another, representing the numerous intellectual and human exchanges between the European students. As a reference to Europe, some of these links form other stars, born from the synergy between the countries. The figure 35, for 35th anniversary comes out from the stars in a contemporary graphical style. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.PROOF],
   ),
   CoinModel(
     id: 728,
@@ -4530,6 +4713,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'France Version. 35 years of the Erasmus programme. The design is a mix of two major elements of the Erasmus programme: the original intellectual inspiration, Erasmus himself, and the allegory of its influence over Europe. The first one is symbolised by one of the most known depiction of Erasmus. The second one is symbolised by a beam of links going across the coin from a beacon to another, representing the numerous intellectual and human exchanges between the European students. As a reference to Europe, some of these links form other stars, born from the synergy between the countries. The figure 35, for 35th anniversary comes out from the stars in a contemporary graphical style. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation],
   ),
   CoinModel(
     id: 729,
@@ -4550,6 +4734,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Ireland Version. 35 years of the Erasmus programme. The design is a mix of two major elements of the Erasmus programme: the original intellectual inspiration, Erasmus himself, and the allegory of its influence over Europe. The first one is symbolised by one of the most known depiction of Erasmus. The second one is symbolised by a beam of links going across the coin from a beacon to another, representing the numerous intellectual and human exchanges between the European students. As a reference to Europe, some of these links form other stars, born from the synergy between the countries. The figure 35, for 35th anniversary comes out from the stars in a contemporary graphical style. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation],
   ),
   CoinModel(
     id: 731,
@@ -4580,6 +4765,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Lithuania version. 35 years of the Erasmus programme. The design is a mix of two major elements of the Erasmus programme: the original intellectual inspiration, Erasmus himself, and the allegory of its influence over Europe. The first one is symbolised by one of the most known depiction of Erasmus. The second one is symbolised by a beam of links going across the coin from a beacon to another, representing the numerous intellectual and human exchanges between the European students. As a reference to Europe, some of these links form other stars, born from the synergy between the countries. The figure 35, for 35th anniversary comes out from the stars in a contemporary graphical style. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation],
   ),
   CoinModel(
     id: 734,
@@ -4590,6 +4776,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Luxembourg Version. 35 years of the Erasmus programme. The design is a mix of two major elements of the Erasmus programme: the original intellectual inspiration, Erasmus himself, and the allegory of its influence over Europe. The first one is symbolised by one of the most known depiction of Erasmus. The second one is symbolised by a beam of links going across the coin from a beacon to another, representing the numerous intellectual and human exchanges between the European students. As a reference to Europe, some of these links form other stars, born from the synergy between the countries. The figure 35, for 35th anniversary comes out from the stars in a contemporary graphical style. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 735,
@@ -4600,6 +4787,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Malta Version. 35 years of the Erasmus programme. The design is a mix of two major elements of the Erasmus programme: the original intellectual inspiration, Erasmus himself, and the allegory of its influence over Europe. The first one is symbolised by one of the most known depiction of Erasmus. The second one is symbolised by a beam of links going across the coin from a beacon to another, representing the numerous intellectual and human exchanges between the European students. As a reference to Europe, some of these links form other stars, born from the synergy between the countries. The figure 35, for 35th anniversary comes out from the stars in a contemporary graphical style. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 736,
@@ -4640,6 +4828,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Slovenia Version. 35 years of the Erasmus programme. The design is a mix of two major elements of the Erasmus programme: the original intellectual inspiration, Erasmus himself, and the allegory of its influence over Europe. The first one is symbolised by one of the most known depiction of Erasmus. The second one is symbolised by a beam of links going across the coin from a beacon to another, representing the numerous intellectual and human exchanges between the European students. As a reference to Europe, some of these links form other stars, born from the synergy between the countries. The figure 35, for 35th anniversary comes out from the stars in a contemporary graphical style. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.EU,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.PROOF],
   ),
   CoinModel(
     id: 740,
@@ -4660,6 +4849,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '100 years of basketball in Lithuania. The design shows the contour of the map of Lithuania arranged as a basketball court in the centre, which signifies that basketball has been played in Lithuania already for 100 years. The coin also features the inscriptions ‘LIETUVA’ (Lithuania), ‘1922-2022’ and the logo of the Lithuanian mint, its manufacturer, arranged in a semi-circle around the centre. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.LITHUANIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 742,
@@ -4670,6 +4860,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '100 years of Finland\'s National Ballet. The design depicts the powerful and free movements of a dancer covered in a light flowing textile that accentuates the beauty and fluidity of the dancer\'s pose. It also bears the year of issuance ‘2022’ and at the top the indication of the issuing country ‘FI’ and the mintmark. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.FINLAND,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.PROOF],
   ),
   CoinModel(
     id: 743,
@@ -4690,6 +4881,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'UNESCO: Ħal Saflieni Hypogeum. The design shows a detail of the prehistoric site... [full description continued as given].',
     country: CountryNames.MALTA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 745,
@@ -4720,6 +4912,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 150th anniversary of the founding of the Society of Estonian Literati... [full description continued as given].',
     country: CountryNames.ESTONIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 748,
@@ -4760,6 +4953,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 125th anniversary of the birth of Pope Paul VI... [full description continued as given].',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 752,
@@ -4832,6 +5026,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Summer solstice fire festivals in the Pyrenees. The summer solstice fire festivals were inscribed on UNESCO’s Representative List of the Intangible Cultural Heritage of Humanity in 2015. They are traditional and popular festivities widely celebrated in Andorra each year. The design reproduces a human figure, named ‘fallaire’, wearing a traditional cape and tracing a circle of fire with the ‘falla’. This is the main element of the festival and consists of tree barks that, once lit, they are energetically whirled around creating large circles of fire. The graphic composition of lines in the background of the design represents the summer solstice together with the name of the issuing country ‘ANDORRA’ and the year ‘2023’. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.ANDORRA,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 759,
@@ -4842,6 +5037,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '30 years of the entry of the Principality of Andorra into the United Nations. The United Nations is represented by two symbolic elements: two laurel wreaths and a globe, which forms part of the number 30 that has been represented, with the inscription ANYS (years) and the year date 2023 below. In the upper part of the design there is the coat of arms of Andorra and the inscription ‘ANDORRA MEMBRE DE LES NACIONS UNIDES’ (Andorra member of the United Nations). The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.ANDORRA,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 760,
@@ -4872,6 +5068,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 60th anniversary of the foundation of the Central Bank of Cyprus. The design depicts tools on a microchip symbolising the stability of the economy in the modern industrial and digital era secured by the Central Bank of Cyprus, which celebrates 60 years of existence. The issuing country\'s name ‘ΚYΠΡΟΣ KIBRIS’ and the dates ‘1963-2023’ are at the bottom. Additionally, the phrase ‘60 ΧΡOΝΙΑ ΑΠO ΤΗΝ IΔΡΥΣΗ ΤΗΣ ΚΕΝΤΡΙKHΣ ΤΡAΠΕΖΑΣ ΤΗΣ ΚYΠΡΟΥ’ (i.e. 60 years since the foundation of the Central Bank of Cyprus) is inscribed on the inner part of the national side of the coin. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.CYPRUS,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 763,
@@ -4882,6 +5079,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Social and health services. The design represents a stylized map of Finland. The left-hand side bears the lettering ‘WELL-BEING’ in Finnish and Swedish. The year of issuance ‘2023’ is slightly on the left-hand side in the middle of the coin. At the bottom is the indication of the issuing country ‘FI’. At the right hand-side is the mintmark of the Mint of Finland. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.FINLAND,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.PROOF],
   ),
   CoinModel(
     id: 764,
@@ -4892,6 +5090,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '200th anniversary of the start of the horse-drawn express mail coach service between Vienna and Bratislava. The design’s symbolic depiction of the express mail coach service between Vienna and Bratislava features a horse-drawn coach in rapid motion and a centrally placed rectangular inset containing a post-horn. Inscribed below the image is the year ‘1823’, when the express mail service began operation, and below that date are the city names in Slovak, ‘VIEDEŇ’ and ‘BRATISLAVA’, one above the other. At the bottom of the coin’s inner circle is the year of issuance ‘2023’, separated from the text above by a horizontal line. The name of the issuing country ‘SLOVENSKO’ is inscribed along the upper edge of the design. To the right of the coach is the mint mark of the Kremnica Mint (Mincovňa Kremnica), consisting of the letters ‘MK’ placed between two dies. Just below the mark are the stylised initials ‘MP’, referring to the national side’s designer Mária Poldaufová. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.SLOVAKIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.PROOF],
   ),
   CoinModel(
     id: 765,
@@ -4902,6 +5101,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 75th anniversary of the national suffrage for women in Belgium. The design depicts in the centre a box on a ballot paper, which is being coloured in by a pencil. The coloured box is overlapped by the Venus symbol (the gender symbol for woman/female). At the bottom left next to the central image is inscribed 75 JAAR ANS. Surrounding the central image are also inscriptions in Dutch and French: ‘ALGEMEEN VROUWENKIESRECHT’ – ‘SUFFRAGE UNIVERSEL FÉMININ’. At the bottom of the piece are located the initials of the designer Iris Bruijns. As the Royal Dutch Mint will strike the coins, the mintmark of Utrecht, a mercury staff is located at the right side of the piece, together with the Belgian mint master mark, an aster flower in front of an Erlenmeyer flask, the country code ‘BE’ and the year mark ‘2023’. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.BELGIUM,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 766,
@@ -4922,6 +5122,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 500th anniversary of the death of Luca Signorelli. The design shows an angel in the centre, a detail from the painting ‘Il Paradiso’ by Luca Signorelli, preserved in the Chapel of San Brizio in the Cathedral of Orvieto. At the left-hand side is the letter R, identifying the Mint of Rome. In semi-circle at the bottom left is the word ‘SIGNORELLI’. At the right-hand side is the name of the issuing country ‘SAN MARINO’, and at the top the years ‘1523 2023’. In the lower centre are the initials of the author Marta Bonifacio, MB. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 768,
@@ -4942,6 +5143,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 50th anniversary of Ireland’s membership of the European Union. The design depicts a modification to the ‘EU50’ programme logo used by Government Departments to promote events marking the 50th anniversary of Ireland’s EU membership. The name of the issuing country ‘ÉIRE’ is inserted above the logo. The year ‘1973’ is referenced to recognise the year Ireland joined the EU as well as ‘2023’ to mark the coin issue year. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.IRELAND,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.PROOF],
   ),
   CoinModel(
     id: 770,
@@ -4972,6 +5174,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Estonian national bird – the barn swallow. The design depicts the silhouette of the barn swallow with the text ‘HIRUNDO RUSTICA’ (the barn swallow in Latin) at the top right, in semi-circle. At the bottom is the name of the issuing country ‘EESTI’ and underneath the year of issuance ‘2023’. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.ESTONIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 773,
@@ -4992,6 +5195,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The arrival of the French in Malta in 1798. In June 1798, Napoleon Bonaparte ended the rule of the Order of St John in Malta. During his short stay in Malta, Napoleon established a Republican Government and issued a thorough reform of laws and institutions of Malta. Amongst other things, slavery and the privileges of nobility were abolished. A lay state was established, and the court of the Inquisition was closed. The design depicts a personification of the French Republic as depicted on the official letterheads of the period. At the left-hand side is the inscription ‘225th ANNIVERSARY’ followed from the top to the right, in semi-circle, by the inscription ‘ARRIVAL OF THE FRENCH IN MALTA’. At the bottom is the year of issuance ‘2023’. The inscriptions ‘Liberté’ (Freedom) and ‘Egalité’ (Equality) are at the left and right side of the image, respectively. At the top left of the inscription ‘Egalité’ are the years ‘1798-2023’. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.MALTA,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 775,
@@ -5002,6 +5206,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 550th anniversary of the birth of Nicolaus Copernicus. The design depicts a profile portrait of Copernicus, together with a stylized heliocentric representation of the universe as proposed by Copernicus. At the top left is the inscription ‘NICOLAUS COPERNICUS 1473 – 1543’ and at the bottom left is the name of the issuing country ‘MALTA’ followed by the year of issuance ‘2023’. Also at the bottom is the signature of the artist Daniela Fusco ‘FUSCO’. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.MALTA,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 776,
@@ -5012,6 +5217,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '100th anniversary of the birth of Prince Rainier III. The design shows the portrait of Prince Rainier III. At the top, in semi-circle, is the name of the issuing country ‘MONACO’ followed by the year of issuance ‘2023’. At the bottom left is the inscription ‘100th ANNIVERSARY’ and at the right-hand side is the inscription ‘PRINCE RAINIER III’ in semi-circle. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.MONACO,
+    allowedQualities: [CoinQuality.PROOF],
   ),
   CoinModel(
     id: 777,
@@ -5022,6 +5228,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The “Year of Art Nouveau,” which takes place during 2023 in Belgium. The design shows a decorative detail from the facade of the “Hotel Van Eetvelde,” an iconic town house in Brussels designed by Belgian Art Nouveau architect Victor Horta and recognized as a UNESCO World Heritage site. The curved, asymmetrical lines of this decorative detail reflect the characteristic nature-inspired style of the Art Nouveau movement. The lower half of the design showcases this detail, while the upper half is empty with the inscription “ART NOUVEAU.” The initials of the designer Iris Bruijns are located at the far right. The coin also includes the mintmark of Utrecht (Mercury staff) and the Belgian mint director’s mintmark, along with the year mark “2023” and the country code “BE.” The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.BELGIUM,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 778,
@@ -5032,6 +5239,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The Spanish Presidency of the Council of the EU in 2023. The design features two images: the first is the logo of the Spanish Presidency of the Council of the EU, surrounded by the captions “ESPANA 2023 – PRESIDENCIA ESPANOLA” and “CONSEJO DE LA UNION EUROPEA.” The second image, at the lower part, represents the mint mark of the Fabrica Nacional de Moneda y Timbre Real Casa de la Moneda with the crowned “M.” The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.SPAIN,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.PROOF],
   ),
   CoinModel(
     id: 779,
@@ -5042,6 +5250,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 150th anniversary of the death of Alessandro Manzoni. The design features Manzoni’s portrait, a pen, and the beginning of his masterpiece “I Promessi Sposi.” The inscription “CITTÀ DEL VATICANO” is placed at the top in a semi-circle, while the bottom has the inscription “Alessandro Manzoni” along with the years “1873–2023.” The left side shows the mintmark “R.” The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 780,
@@ -5052,6 +5261,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 5th Centenary of the death of Pietro Perugino. The design shows Perugino’s portrait and a detail from the fresco “Baptism” in the Sistine Chapel. The inscription “PERUGINO” is at the bottom, with the dates “1523–2023.” The mintmark “R” is at the left. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 781,
@@ -5072,6 +5282,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Finland’s First Nature Conservation Act. The theme of the coin is a stylized beetle, symbolizing nature conservation. The inscription “NATURE CONSERVATION” appears at the top in Finnish and at the bottom in Swedish, with the year “2023.” The mintmark of the Mint of Finland is shown on the left, and the coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.FINLAND,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.PROOF],
   ),
   CoinModel(
     id: 783,
@@ -5082,6 +5293,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 500th anniversary of the death of Perugino. The design showcases the Virgin Mary with the Child Jesus, a detail from the painting “Madonna with Child, Saint Sebastian and Saint John the Baptist” by Perugino. The inscription “PERUGINO” and the years “1523–2023” appear at the left, while the mintmark “R” is located at the right. The country “SAN MARINO” is written at the bottom, and the coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 784,
@@ -5092,6 +5304,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Together with Ukraine. The design features a stylized sunflower, its petals forming silhouettes of people holding hands, symbolizing unity, support, and hope. The sunflower represents the rising sun and freedom, with birds and symbols of courage. The inscriptions include “LIETUVA” (Lithuania), “KARTU SU UKRAINA” (Together with Ukraine), the year “2023,” and the mintmark of the Lithuanian Mint. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.LITHUANIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 785,
@@ -5152,6 +5365,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Olympic Games Paris 2024. One hundred years after the Paris 1924 Olympic Games, the French capital will once again host the Summer Games in 2024. One year before the launch of the Olympic Games, the Monnaie de Paris is continuing the celebration by counting down to the start of the Games by highlighting its heritage and that of Paris. An event with international echo whose intensity gradually increases in the years leading up to the event, with already several €2 commemorative coins dedicated to the Olympic Games over the past years. The design of the coin depicts the Sower, a national figure and icon of French numismatics, practicing pugilism, the forerunner of boxing, in reference to the Antic Olympic Games. Her silhouette is in the foreground in front of the Pont-Neuf and its surroundings, typical of the Ile de la Cité area, a key element of the Parisian landscape. In the background, an athletic track, into which the emblem of Paris 2024 is inserted on the right-hand side, is represented. The year date, the RF mention and the mintmarks are inserted under the arch, on the bridge railing and in the Seine. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.FRANCE,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 791,
@@ -5194,6 +5408,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Lithuanian tradition of straw gardens inscribed on the UNESCO Representative List of the Intangible Cultural Heritage of Humanity. The design features a stylised straw garden consisting of geometric shapes of varying sizes, one tip of which is pointed upwards (to the sky) and the other downwards (to the underground). The design also bears the inscription “LIETUVA” (LITHUANIA), the year of issue (2024) and the mintmark of the Lithuanian Mint. Straw gardens are a Baltic cultural tradition that carries decorative and ceremonial significance and is related to well-being and spirituality. The national side of the coin is designed by Tomas Dragūnas. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.LITHUANIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 795,
@@ -5204,6 +5419,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '20 years since the Accession of Cyprus to the European Union. The design depicts Cyprus as a power of creation and development within the European environment, symbolized by the building of the European Commission in Brussels. The globe of the Earth is also shown, symbolizing the geopolitical importance of Cyprus and its contribution to peace and wellbeing of nations. The issuing country’s name “ΚΥΠΡΟΣ - KIBRIS” and the dates “2004-2024” are inscribed at the bottom of the design. Additionally, the phrase “20 ΧΡΌΝΙΑ ΑΠΌ ΤΗΝ ΈΝΤΑΞΗ ΤΗΣ ΚΎΠΡΟΥ ΣΤΗΝ ΕΥΡΩΠΑΪΚΉ ΈΝΩΣΗ” (i.e. 20 years since the accession of Cyprus to the European Union) is inscribed in circle around the design. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.CYPRUS,
+    allowedQualities: [CoinQuality.PROOF],
   ),
   CoinModel(
     id: 796,
@@ -5214,6 +5430,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '100 years of skiing in Andorra. It is considered that the first contacts of the Andorran population with skiing took place in 1924. Nowadays, skiing is the country\'s king of sports making Andorra a very popular destination thanks to its snow-capped mountains, spectacular landscapes and world-class ski resorts. The design of the coin commemorates the centenary of the practice of this sport in Andorra and reproduces the lower part of the silhouette of a skier together with the name of the issuing country ‘ANDORRA’ and the year of issue ‘2024’. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.ANDORRA,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 797,
@@ -5224,6 +5441,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'UCI Mountain Bike World Championships 2024. This year, Andorra will host an important international sporting event: the UCI Mountain Bike World Championships 2024. The design of the coin shows a rider passing through a landscape showing the spectacular nature of this sport, with the inscription ‘CAMPIONATS DEL MÓN UCI DE BTT’ (UCI Mountain Bike World Championships 2024). The inscriptions of the issuing country ‘ANDORRA’ and the year of issuance ‘2024’ have been reproduced at the sides of the rider, as if they were another element of this sport. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.ANDORRA,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 798,
@@ -5244,6 +5462,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Himmeli. Himmeli is an ancient Latvian Christmas decoration. The design shows the traditional module shape the decoration is made up: the octahedron which consists of 12 interconnected straws and it symbolises the year with its 12 months. The himmeli is one of the oldest Christmas decorations, being in use long before the Christmas tree. At the bottom left is inscribed the name of the country of issuance “LATVIJA”. At the bottom right is inscribed the year of issuance “2024”. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.LATVIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 800,
@@ -5264,6 +5483,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 750th anniversary of the death of St. Thomas Aquinas. The design features St. Thomas Aquinas in the foreground in the vestments of the Dominican Order to which he belonged. In his left hand he holds a volume of his most important work, the Summa Theologiae, and in the other a pen. A shining sun stands out on the saint’s chest, a symbol of his great wisdom. Among the various titles he received, he is most widely known as the “Angelic Doctor”, which is quoted below and which glorifies his exceptional purity of soul and body. In the background on the left is the lily, a symbol of chastity, and the Church of St. Thomas of Roccasecca, the first religious building in the world built in honor of St. Thomas Aquinas, declared a saint on July 18, 1323 by Pope John XXII. At the top is the inscription “CITTÀ DEL VATICANO”. At the left is the year “1274” and at the right the year “2024” and underneath it are the mintmark “R” and the name of the artist “A. CICCONI”. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 802,
@@ -5274,6 +5494,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 500th anniversary of Marko Marulić’s enduring legacy. In recognition of this significant milestone, the Government of the Republic of Croatia has proclaimed 2024 as the Year of Marko Marulić. The central motif of the national side of the coin is the portrait of Marko Marulić (1450–1524), Croatian writer. Marko Marulić (Marul) was born in Split in 1450 and is a prominent representative of European Christian humanism and Renaissance epics. His literary works, mostly written in Latin, are comprised of works in verse and prose, his literary models being the Bible, the Church Fathers\' philosophy and classical antiquity. He wrote the epic poem Judita, his magnum opus, in Croatian. It is the first artistic epic in Croatian literature composed in the Croatian language to contain the underlying poetics of Virgil and the Biblical epics. In it, Marulić achieved a true Renaissance synthesis of Croatian, Latin and Italian literary tradition, thus creating a masterpiece. Completed in 1501, it was first published twenty years later. The coin also features the inscriptions of the two-letter issuing country code "HR" (Croatia), the year of issuance "2024." and the words "MARKO MARULIĆ", which are all inscribed circularly along the edge of the coin\'s core. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.CROATIA,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 803,
@@ -5284,6 +5505,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '100th anniversary of the Košice Peace Marathon. The design depicts, on the left side, a marathon runner and, on the right side, a detail of St Elizabeth’s Cathedral, one of the architectural landmarks of Košice. Inscribed across the lower part of the design are the name of the issuing country ‘SLOVENSKO’ and, below it, the marathon’s inaugural year ‘1924’ and the coin’s year of issuance ‘2024’. The inscription ‘KOŠICKÝ MARATÓN’ runs along the edge of the upper half of the design. Next to the lower left edge is the mint mark of the Kremnica Mint (Mincovňa Kremnica), consisting of the letters ‘MK’ placed between two dies. To the right of it are the stylised initials ‘LR’, referring to the national side’s designer Roman Lugár. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.SLOVAKIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.PROOF],
   ),
   CoinModel(
     id: 804,
@@ -5294,6 +5516,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '530th anniversary of the death of Ghirlandaio. In the centre is the Virgin in prayer, a detail of the painting ‘Adoration of the Shepherds’ by Domenico Ghirlandaio, kept in the Sassetti Chapel of Santa Trinità (Florence). On the left are the inscription ‘SAN MARINO’ and the letter ‘R’, the identifier of the Mint of Rome; on the right, the inscription ‘GHIRLANDAIO’ and the dates ‘1494’ and ‘2024’; at the bottom, the initials of the artist, Valerio de Seta (‘VdS’). The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 805,
@@ -5334,6 +5557,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         "The Maltese Honey Bee. The design was created by Maria Anna Frisone and depicts the Maltese honey bee (Apis Mellifera Ruttneri) which is one of the endemic species of flora and fauna found on the Maltese islands. The design shows a rendition of the bee with a flower and a honeycomb filling up the background. The coin raises awareness of one of Malta's endemic species and encapsulates the work of the bee which pollinates flowers and makes honey. At the left side is the inscription of the issuing country ‘MALTA’ and at the right side the year of issuance ‘2024’. The coin’s outer ring bears the 12 stars of the European flag.",
     country: CountryNames.MALTA,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 809,
@@ -5354,6 +5578,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The cornflower – Estonian national flower. The design shows the silhouette of a cornflower with the text ‘CENTAUREA CYANUS’ (cornflower in Latin) at the top left, in semi-circle. At the bottom is the name of the issuing country ‘EESTI’ and underneath the year of issuance ‘2024’. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.ESTONIA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 811,
@@ -5364,6 +5589,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         '500 years since the signature of the Treaty with Charles V. The design shows the effigy of Charles V. At the top, in semi-circle, is the name of the issuing country ‘MONACO’. At the bottom is the inscription ‘1524 - TRAITE AVEC CHARLES QUINT (Treaty with Charles V) - 2024’. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.MONACO,
+    allowedQualities: [CoinQuality.PROOF],
   ),
   CoinModel(
     id: 812,
@@ -5374,6 +5600,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Varaždin (Stari grad Varaždin – the Old Town of Varaždin). The design features the keep of the Varaždin Castle (12th – 16th century). Varaždin is first mentioned in 1181. Having suffered massive casualties in the Tatar invasion of 1242, it was built as a royal fortress, which would become known as the Old Town. Its appearance has changed through the centuries: from a strong medieval fortress surrounded by water-filled moats to the main fortress and armoury of Slavonian Military Border and Varaždin military headquarters and a beautiful Renaissance castle. At present, the Old Town is the most important and magnificent historical building of the City of Varaždin, a highest-category monument of the Croatian architectural heritage. The coin also features the name of the issuing country ‘HRVATSKA’ (Croatia), the year of issuance ‘2024’, and the words ‘STARI GRAD VARAŽDIN’ (the Old Town of Varaždin), which are all inscribed circularly at the top and the bottom of the design. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.CROATIA,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 813,
@@ -5384,6 +5611,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Iċ-Ċittadella (The Citadel). The design was created by Noel Galea Bason and depicts the walled city known locally as ‘Iċ-Ċittadella’ (The Citadel) on the island of Gozo, which is the second largest island forming the Maltese archipelago. In their present form, the fortifications encircling the ‘Ċittadella’ were built and modified by the Order of St John. The design shows a depiction of the city with its fortified walls. At the bottom left is the inscription of the issuing country ‘MALTA’ and at the bottom right is the year of issuance ‘2024’. At the top is the inscription ‘ĊITTADELLA’ and underneath is the inscription ‘GOZO’. This coin is intended to be part of a series dedicated to Maltese walled cities e.g. Mdina and Valletta which are an intrinsic part of Maltese and European cultural heritage. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.MALTA,
+    allowedQualities: [...CoinQualityGroups.circulation, CoinQuality.BU],
   ),
   CoinModel(
     id: 814,
@@ -5394,6 +5622,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The Eiffel Tower. For the countdown to the Paris 2024 Olympic Games, Monnaie de Paris celebrates the road to the games through Paris as well as its own heritage. 100 years after the 1924 Games, the French capital is once again hosting the Summer Games. This is an event with international resonance, gradually building in intensity in the years leading up to the event, culminating in 2024 with the issue of two commemorative two-euro coins dedicated to the Olympic Games. The design represents an expression of France through iconic buildings; the Eiffel Tower and the Notre Dame de la Garde Basilica situated in Marseille are united there. In the background, a tiare flower represents the island of Tahiti where the surfing competitions will take place. The Eiffel Tower is in motion, she carries the values of sport. Its arms are represented by 73 rivets signifying the host communities. For the first time, the Olympic and Paralympic symbols are brought together, to celebrate the Games for all. The year date, the indication of the issuing country ‘RF’ as well as the mintmarks are inserted on the athletics track. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.FRANCE,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 815,
@@ -5404,6 +5633,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'The 150th anniversary of the birth of Guglielmo Marconi. The design features Marconi’s portrait at the center, the portraits of Pope Pius XI at the right, and future Pius XII at the left. At the top right, in semi-circle, is the inscription ‘GUGLIELMO MARCONI’ and underneath it the dates ‘1874’ and ‘2024’. At the bottom is the inscription ‘CITTÀ DEL VATICANO’ followed by the name of the artist ‘L. PANCOTTO’ (Loredana Pancotto). At the left is the mintmark ‘R’. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 816,
@@ -5434,6 +5664,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         "The 50th anniversary of the Declaration of Citizens' Rights and the Fundamental Principles of San Marino. In the centre is represented an open book bearing the inscription ‘I DIRITTI DELLA PERSONA UMANA SONO INVIOLABILI’ (The rights of the human person are inviolable), taken from Article 5 of the Law n°59 of 8 July 1974 ‘Declaration of Citizens' Rights and of the fundamental principles of the San Marinese legal order’. At the top are the silhouettes of the Statue of Liberty and the Public Palace, as well as the name of the issuing country ‘SAN MARINO’. On the left, the letter ‘R’, identifying the Mint of Rome. At the bottom centre is the year of issuance ‘2024’ and the initials of the engraver Emanuele Ferretti (‘E.F. INC. ’). The coin’s outer ring bears the 12 stars of the European flag.",
     country: CountryNames.SAN_MARINO,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 819,
@@ -5504,6 +5735,7 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Jeux Olympiques 2024 - Lutte. For the countdown to the Paris 2024 Olympic Games, Monnaie de Paris celebrates the road to the games through Paris as well as its own heritage. 100 years after the 1924 Games, the French capital is once again hosting the Summer Games. This is an event with international resonance, gradually building in intensity in the years leading up to the event, culminating in 2024 with the issue of two commemorative two-euro coins dedicated to the Olympic Games. The design represents Hercules, a national figure and icon of French numismatics, practicing antique wrestling with Notre- Dame’s Chimera, in reference to the Olympic Games of the Ancient era. Both wrestlers are depicted in the foreground in front of Notre-Dame Cathedral. In the background, an athletics track in which the emblem of Paris 2024 is inserted on the left side, is represented. The yeardate, the RF indication, as well as the mintmarks are inserted on the athletics track. The coin’s outer ring bears the 12 stars of the European flag.',
     country: CountryNames.FRANCE,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 826,
@@ -5534,5 +5766,193 @@ final List<CoinModel> coinDataCommemoratives = [
     description:
         'Mecklenburg-Vorpommern. The coin is dedicated to the German state (Land) of Mecklenburg-Western Pomerania. It is the second issuance in the second series of German 2-euro commemorative coins featuring the German states, or Länder. Each year, a coin pays tribute to one of the 16 Länder by depicting a significant building or landmark. The order of the states is based on the rotating presidency of the Bundesrat, which is one of the five permanent constitutional bodies of the Federal Republic of Germany and represents the interests of the Länder. The design shows the Königsstuhl, an iconic formation of chalk cliffs and beech forest located in Jasmund National Park on the island of Rügen. The cliffs are depicted from the perspective of the shoreline, thereby highlighting the monumentality of this unique natural landmark in a particularly effective manner. The beautifully detailed image provides scale through the combined rendering of sea, birdlife and humankind. The modern typography, in harmony with the flying seagull, is skilfully integrated into the relief. The upper half of the coin’s inner circle features the inscription ‘MECKLENBURG VORPOMMERN’, the year of issue ‘2024’, Germany’s issuing country code ‘D’ and, at the upper right, the letter ‘X’ as placeholder for the mint mark of the respective mint (‘A’, ‘D’, ‘F’, ‘G’ or ‘J’). The initials of the artist Michael Otto (from Rodenbach, Germany) are shown in the lower half of the inner circle. The coin’s outer ring bears the 12 stars of the European flag',
     country: CountryNames.GERMANY,
+  ),
+
+  // 2025 -------------------------------------------------------------
+  CoinModel(
+    id: 829,
+    type: CoinType.COMMEMORATIVE,
+    image: 'assets/coins/_commemoratives/2025/2025_01-min.png',
+    periodStartDate: '2025-05-09',
+    quantity: 3_000_000,
+    description:
+        'In the center is the training ship Amerigo Vespucci, ploughing through the waves with full sail. Along the upper left edge of the image are the issue reason "AMERIGO VESPUCCI TOUR MONDIALE 2023-2025," and below it, the year of issue "2025," along with the country code "RI." On the right edge of the image, the "R" of the Roman mint is visible. At the bottom of the image, the initials "E. FERRETTI" of the coin designer Emanuele Ferretti are displayed.',
+    country: CountryNames.ITALY,
+  ),
+
+  CoinModel(
+    id: 830,
+    type: CoinType.COMMEMORATIVE,
+    image: 'assets/coins/_commemoratives/2025/2025_02-min.png',
+    periodStartDate: '2025-05-13',
+    quantity: 204_000,
+    description:
+        'An abstract door symbolizing state visits. It is designed within a highly polished rectangle. The mint mark, the year "2025," and the country code "Fl" are arranged vertically along the left edge of the image. The rounded top of the rectangle follows the coin\'s rim. On the right, the surface is ridged with horizontal lines, while a circle intersects the curve of the image area.',
+    country: CountryNames.FINLAND,
+  ),
+
+  CoinModel(
+    id: 831,
+    type: CoinType.COMMEMORATIVE,
+    image: 'assets/coins/_commemoratives/2025/2025_03-min.png',
+    periodStartDate: '2025-05-15',
+    quantity: 147_000,
+    description:
+        'Cityscape of Mdina, situated on a 185-meter-high spur of the Dingli Plateau. The issue reason, "MDINA," is visible at the top left of the motif. The issuing country, "MALTA," is visible below the motif on the left, and the year of issue, "2025," is visible at the bottom right. The coin designer\'s initials, "NGB," are displayed at the top right.',
+    country: CountryNames.MALTA,
+  ),
+
+  CoinModel(
+    id: 832,
+    type: CoinType.COMMEMORATIVE,
+    image: 'assets/coins/_commemoratives/2025/2025_04-min.png',
+    periodStartDate: '2025-01-30',
+    quantity: 2_000_000,
+    description:
+        'The Church and Convent of San Esteban of the Dominican Order in the old town of Salamanca. At the top right edge of the image is the reason for issue, "SALAMANCA," and below it is the mint mark of the Fabrica Nacional de Moneda y Timbre Real Casa de la Moneda – the "M" with a crown. At the bottom edge of the image are the issuing country, "ESPAÑA," and the year of issue, "2025."',
+    country: CountryNames.SPAIN,
+  ),
+
+  CoinModel(
+    id: 833,
+    type: CoinType.COMMEMORATIVE,
+    image: 'assets/coins/_commemoratives/2025/2025_05-min.png',
+    periodStartDate: '2025-06-24',
+    quantity: 515_000,
+    description:
+        'In the center is a lily, the most universal symbol of Scouting. At the top of the image is the reason for the issue, "SEMPRE ALBERTA * SEMPRE PRONTO." To the left is the name of the coin designer, "PEDRO CARVALLHO." At the right is the mint\'s inscription, "CASA DA MOEDA." At the bottom is the issuing country, "PORTUGAL," and the year, "2025." The outer ring depicts the twelve stars of the European flag.',
+    country: CountryNames.PORTUGAL,
+  ),
+
+  CoinModel(
+    id: 834,
+    type: CoinType.COMMEMORATIVE,
+    image: 'assets/coins/_commemoratives/2025/2025_06-min.png',
+    periodStartDate: '2025-01-30',
+    quantity: 315_000,
+    description:
+        'The east façade of the Louvre, linked to the emblematic plan of the museum\'s labyrinth of extraordinary spaces. In the background, the pyramidion and the structure of the Great Pyramid illustrate the traditional and contemporary character of the Louvre. The year "2025," the monogram "RF," and the mint marks of the French Mint and Engraver General Joaquin Jimenez are incorporated into the museum plan.',
+    country: CountryNames.FRANCE,
+  ),
+
+  CoinModel(
+    id: 835,
+    type: CoinType.COMMEMORATIVE,
+    image: 'assets/coins/_commemoratives/2025/2025_07-min.png',
+    periodStartDate: '2025-02-05',
+    quantity: 3_000_000,
+    description:
+        'In the center is the Holy Door of St. Peter\'s Basilica. At the top of the image is the issue reason, "IUBILAEUM," and along the edge, in an arc to close the Latin inscription, is a row of alternating empty and full fish, a symbol of Christianity. On the left are the year of issue, "2025," and the "R" of the Roman mint. On the right are the country code, "RI," and at the bottom right are the initials, "CM," of the coin designer, Claudia Momoni.',
+    country: CountryNames.ITALY,
+  ),
+
+  CoinModel(
+    id: 836,
+    type: CoinType.COMMEMORATIVE,
+    image: 'assets/coins/_commemoratives/2025/2025_08-min.png',
+    periodStartDate: '2025-01-23',
+    quantity: 1_154_000,
+    description:
+        'The logo of the National Lottery, Lady Fortuna with her cornucopia and four-leaf clovers. On the left edge of the image is the issue reason "Loterie nationale loterij," below which is the country code "BE" for the issuing country and the year of issue "2025." The mintmarks of the Royal Netherlands Mint and the current Belgian Mint Master Giovanni Van de Velde, as well as the initials "IB" of the coin designer Iris Bruijns, complete the motif.',
+    country: CountryNames.BELGIUM,
+  ),
+
+  CoinModel(
+    id: 837,
+    type: CoinType.COMMEMORATIVE,
+    image: 'assets/coins/_commemoratives/2025/2025_09-min.png',
+    periodStartDate: '2025-01-16',
+    quantity: 30_000_000,
+    description:
+        'Depiction of the Saar Loop, reduced to the essential features of the meandering river motif, adapting the wooded hilly landscape to the course of the Saar. The characteristic shape of the waterway in a bird\'s eye view disappears into the distance of the surrounding hilltops. At the bottom of the image are the reason for issue, "SAARLAND," the country code "D" for the issuing country, and the year of issue, "2025." The coin designer\'s intersecting lines in the shape of a "W" are placed at the left edge of the image. On the right, the respective mint mark, "A," "D," "F," "G," or "J," can be seen.',
+    country: CountryNames.GERMANY,
+  ),
+
+  CoinModel(
+    id: 838,
+    type: CoinType.COMMEMORATIVE,
+    image: 'assets/coins/_commemoratives/2025/2025_10-min.png',
+    periodStartDate: '2025-05-15',
+    quantity: 140_000,
+    description:
+        'In the center, the Maltese ox stands in a meadow. The issue reason "IL-GENDUS MALTI" is shown at the top of the image, while the issuing country "MALTA" and the year of issue "2025" are shown at the bottom. The coin designer\'s initials "MAF" are placed at the bottom right.',
+    country: CountryNames.MALTA,
+  ),
+
+  CoinModel(
+    id: 839,
+    type: CoinType.COMMEMORATIVE,
+    image: 'assets/coins/_commemoratives/2025/2025_11-min.png',
+    periodStartDate: '2025-06-16',
+    quantity: 15_000,
+    description:
+        'In the center is the house of the Princes of Monaco de Vic-sur-Cère (Cantal) in the Vice-County of Carladès. At the top of the image, the issuing country, "MONACO," is depicted in front of a diamond-shaped shield on the left, and the leopard-headed lion, Carladès\'s heraldic animal, is depicted on the right. At the bottom of the image, the reason for the issue, "COMTÉ DE CARLADÈS," is depicted, and at the right, the year of issue, "2025," along with the mint marks of the Monnaie de Paris and the Engraver General, Joaquin Jimenez.',
+    country: CountryNames.MONACO,
+  ),
+
+  CoinModel(
+    id: 840,
+    type: CoinType.COMMEMORATIVE,
+    image: 'assets/coins/_commemoratives/2025/2025_12-min.png',
+    periodStartDate: '2025-03-27',
+    quantity: 500_000,
+    description:
+        'Outline of Lithuania. The national borders are surrounded by a stylized barrier with outward-facing spikes, symbolizing the concept of holistic defense of the entire society. Lithuania is depicted as a hedgehog, always ready to defend itself. The image of the hedgehog also represents the openness and fragility of free societies, which must be defended against external threats by all means. The issuing country, "LIETUVA," is depicted in the center, with the year of issue, "2025," and the mint mark of the Lithuanian Mint below.',
+    country: CountryNames.LITHUANIA,
+  ),
+
+  CoinModel(
+    id: 841,
+    type: CoinType.COMMEMORATIVE,
+    image: 'assets/coins/_commemoratives/2025/2025_13-min.png',
+    periodStartDate: '2025-03-27',
+    quantity: 59_000,
+    description:
+        'In the center is a depiction of Mary as "Stella Maris," the star of the sea, holding the infant Jesus by the hand, against the backdrop of an anchor and the calm sea surface, as well as a brightly shining star, a symbol of hope. The issuing country, "SAN MARINO," and the "R" of the Roman mint are depicted to the left, while the issue event, "IUBILAEUM," and the year "2025" are depicted to the right of the motif. The initials "DI MAVLO," of the coin designer, Gabriele Di Maulo, at the bottom of the image complete the motif.',
+    country: CountryNames.SAN_MARINO,
+  ),
+
+  CoinModel(
+    id: 842,
+    type: CoinType.COMMEMORATIVE,
+    image: 'assets/coins/_commemoratives/2025/2025_14-min.png',
+    periodStartDate: '2025-05-05',
+    quantity: 136_000,
+    description:
+        'On the left is the number "75," and below it, on the right, a hand holding a quill pen, signing the aforementioned treaty. The quill pen, consisting of a leafy branch, dissolves upwards into flying doves, which form a semicircle of the six stars of the signatory states. At the top of the image is the reason for the issue, "DÉCLARATION SCHUMANN 09.05.1950." At the right is the issuing state, "LUXEMBOURG," the year of issue, "2025," and the mint marks of the French mint and Engraver General Joaquin Jimenez. At the bottom left is the Grand Duke\'s monogram, and at the bottom is the designer\'s initials, "CP."',
+    country: CountryNames.LUXEMBOURG,
+  ),
+
+  CoinModel(
+    id: 843,
+    type: CoinType.COMMEMORATIVE,
+    image: 'assets/coins/_commemoratives/2025/2025_15-min.png',
+    periodStartDate: '2025-01-30',
+    quantity: 850_000,
+    description:
+        'In the center, four stylized books form the letter E. Above, along the edge of the image, is the issue date "EESTI KIRJAKEEL 500," and at the bottom, the dates "1525" and "2025," separated by dots.',
+    country: CountryNames.ESTONIA,
+  ),
+
+  CoinModel(
+    id: 844,
+    type: CoinType.COMMEMORATIVE,
+    image: 'assets/coins/_commemoratives/2025/2025_16-min.png',
+    periodStartDate: '2025-05-05',
+    quantity: 136_000,
+    description:
+        'In the center, Grand Duke Henri is depicted in full profile in front of the Grand Ducal Palace. The issuing country, "LËTZEBUERG," the year of issue, "2025," and the designer\'s initials, "MAF," are displayed at the bottom. Along the top edge, the issue occasion, "25th Anniversary of Grand Duke Henri," is depicted, and on the right edge, the mintmarks of the French Mint and the Engraver General, Joaquin Jimenez.',
+    country: CountryNames.LUXEMBOURG,
+  ),
+
+  CoinModel(
+    id: 845,
+    type: CoinType.COMMEMORATIVE,
+    image: 'assets/coins/_commemoratives/2025/2025_17-min.png',
+    periodStartDate: '2025-01-20',
+    quantity: 1_000_000,
+    description:
+        'In the foreground, an ice hockey player in dynamic motion with his stick. In the background, a forest and mountain panorama of the Tatra Mountains can be seen. At the top of the image, the issue date "MAJSTROVSTVÁ EURÓPY V HOKEJI" is visible, below it the years "1925 – 2025," and below the motif, the issuing country "SLOVENSKO."',
+    country: CountryNames.SLOVAKIA,
   ),
 ];

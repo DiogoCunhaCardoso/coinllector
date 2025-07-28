@@ -4,6 +4,7 @@ import 'package:coinllector_app/presentation/providers/user_prefs_provider.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 /* import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart'; */
 import 'package:provider/provider.dart';
@@ -20,6 +21,13 @@ import 'package:coinllector_app/utils/service_locator.dart';
 void main() async {
   Logger.root.level = Level.ALL;
   WidgetsFlutterBinding.ensureInitialized();
+
+  // ADS
+  MobileAds.instance.initialize();
+  RequestConfiguration requestConfiguration = RequestConfiguration(
+    testDeviceIds: ['62f3e530-9fd2-46f3-be66-18547939e2b1'],
+  );
+  MobileAds.instance.updateRequestConfiguration(requestConfiguration);
 
   // Initialize dependencies
   await setupDependencies();

@@ -3,8 +3,6 @@ import 'package:coinllector_app/shared/enums/mint.dart';
 import 'package:coinllector_app/utils/result.dart';
 
 abstract class ICoinMintRepository {
-  // MODIFY COLLECTION --------------------------------------------------------
-
   // MINTS -----------------------------------------------------------
 
   Future<Result<void>> addMintMark(int coinId, MintMark mintMark);

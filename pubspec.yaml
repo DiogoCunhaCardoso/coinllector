@@ -48,6 +48,7 @@ dependencies:
   flutter_dotenv: ^5.2.1
   dio: ^5.8.0+1
   image_picker: ^1.1.2
+  google_mobile_ads: ^6.0.0
 
 dev_dependencies:
   flutter_test:
@@ -130,6 +131,7 @@ flutter:
     - assets/coins/_commemoratives/2022/
     - assets/coins/_commemoratives/2023/
     - assets/coins/_commemoratives/2024/
+    - assets/coins/_commemoratives/2025/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

@@ -2,6 +2,7 @@
 import 'package:coinllector_app/data/datasources/local/database/database_tables.dart';
 import 'package:coinllector_app/data/models/coin_model.dart';
 import 'package:coinllector_app/domain/entities/coin.dart';
+import 'package:coinllector_app/shared/enums/coin_quality_enum.dart';
 import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 
@@ -19,6 +20,7 @@ class CoinMapper {
       periodEndDate: entity.periodEndDate,
       description: entity.description,
       country: entity.country,
+      allowedQualities: model.allowedQualities,
     );
   } */
 
@@ -34,6 +36,7 @@ class CoinMapper {
       description: model.description,
       country: model.country,
       quantity: model.quantity,
+      allowedQualities: model.allowedQualities,
     );
   }
 
@@ -42,6 +45,14 @@ class CoinMapper {
   static CoinModel fromMap(Map<String, dynamic> map) {
     final coinType = CoinType.values.byName(map[DatabaseTables.type]);
     final countryEnum = CountryNames.values.byName(map[DatabaseTables.country]);
+
+    // You’ll need to store qualities as a comma-separated string (e.g., "BU,PROOF")
+    final allowedQualitiesStr = map[DatabaseTables.allowedQualities] as String?;
+    final allowedQualities =
+        allowedQualitiesStr
+            ?.split(',')
+            .map((q) => CoinQuality.values.byName(q.trim()))
+            .toList();
 
     return CoinModel(
       id: map[DatabaseTables.coinId] as int,
@@ -52,6 +63,7 @@ class CoinMapper {
       periodEndDate: map[DatabaseTables.periodEndDate] as String?,
       description: map[DatabaseTables.description] as String,
       country: countryEnum,
+      allowedQualities: allowedQualities,
     );
   }
 
@@ -68,6 +80,12 @@ class CoinMapper {
       DatabaseTables.country: model.country.name,
       DatabaseTables.coinId: model.id,
     };
+
+    if (model.allowedQualities != null) {
+      map['allowedQualities'] = model.allowedQualities!
+          .map((q) => q.name)
+          .join(',');
+    }
 
     return map;
   }

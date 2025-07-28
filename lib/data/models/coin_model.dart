@@ -1,3 +1,4 @@
+import 'package:coinllector_app/shared/enums/coin_quality_enum.dart';
 import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 
@@ -11,6 +12,7 @@ class CoinModel {
   final String? periodEndDate;
   final String description;
   final CountryNames country;
+  final List<CoinQuality>? allowedQualities;
 
   CoinModel({
     required this.id,
@@ -21,5 +23,6 @@ class CoinModel {
     this.periodEndDate,
     required this.description,
     required this.country,
+    this.allowedQualities, // Default is null (meaning all qualities)
   });
 }

@@ -39,7 +39,7 @@ class ShowcaseStats extends StatelessWidget {
                       style: TextStyle(color: colorScheme.onSurfaceVariant),
                     ),
                     SizedBox(height: 4),
-                    Text("Quantity", style: textTheme.bodySmall),
+                    Text("Mintage", style: textTheme.bodySmall),
                   ],
                 ),
               if (coin.quantity != null && coin.quantity! > 0)

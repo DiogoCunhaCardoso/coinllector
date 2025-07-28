@@ -8,6 +8,7 @@ import 'package:coinllector_app/presentation/views/coin_showcase/widgets/showcas
 import 'package:coinllector_app/presentation/views/coin_showcase/widgets/showcase_header.dart';
 import 'package:coinllector_app/presentation/views/coin_showcase/widgets/showcase_quality_selector.dart';
 import 'package:coinllector_app/presentation/views/coin_showcase/widgets/showcase_stats.dart';
+import 'package:coinllector_app/presentation/views/coin_showcase/widgets/quality_info_dialog.dart';
 import 'package:coinllector_app/shared/components/confirmation_dialog.dart';
 import 'package:coinllector_app/shared/enums/coin_quality_enum.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';
@@ -87,6 +88,8 @@ class _CoinShowcaseState extends State<CoinShowcase> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     // PROVIDERS ----------------------------------------
 
     final userCoinProvider = Provider.of<UserCoinProvider>(context);
@@ -112,7 +115,6 @@ class _CoinShowcaseState extends State<CoinShowcase> {
                     children: [
                       const SizedBox(height: 64),
                       ShowcaseStats(coin: widget.coin),
-                      const SizedBox(height: AppSizes.p24),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                           horizontal: AppSizes.p16,
@@ -136,10 +138,24 @@ class _CoinShowcaseState extends State<CoinShowcase> {
                                           : -1;
 
                                   return Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
+                                      IconButton(
+                                        iconSize: 20,
+                                        icon: Icon(
+                                          Icons.info_outline,
+                                          color: colorScheme.primary,
+                                        ),
+                                        onPressed:
+                                            () => showCoinQualityInfoDialog(
+                                              context,
+                                            ),
+                                        tooltip: 'Quality Info',
+                                        splashRadius: 16,
+                                      ),
                                       ShowcaseQualitySelector(
+                                        allowedQualities:
+                                            widget.coin.allowedQualities,
                                         selectedQualityIndex: selectedIndex,
                                         isDisabled: !isOwned,
                                         onQualitySelected: (index) async {
@@ -170,7 +186,8 @@ class _CoinShowcaseState extends State<CoinShowcase> {
                                   );
                                 },
                               ),
-                            const SizedBox(height: AppSizes.p24),
+
+                            const SizedBox(height: AppSizes.p16),
                             ShowcaseDescription(coin: widget.coin),
                           ],
                         ),

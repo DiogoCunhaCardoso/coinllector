@@ -14,6 +14,9 @@ After beta testing.
 
 - Joined commemorative of Germany version: Mint feature was missing. Added it.
 
+- Bigger Checkbox, some users were frustrated by accidentally clicking the card instead of the checkbox. It happened multiple times.
+
+- Added more coin qualities for uncirculated collectors & an info dialog for it.
 
 TODO IN FUTURE
 

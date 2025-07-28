@@ -1,5 +1,6 @@
 import 'package:coinllector_app/data/datasources/local/data/coin_data_commemoratives.dart';
 import 'package:coinllector_app/data/models/coin_model.dart';
+import 'package:coinllector_app/shared/enums/coin_quality_enum.dart';
 import 'package:coinllector_app/shared/enums/coin_types_enum.dart';
 import 'package:coinllector_app/shared/enums/country_names_enum.dart';
 
@@ -736,6 +737,7 @@ final List<CoinModel> coinsData = [
     description:
         'In 2022 France introduced a second series of €1 and €2 coins. The new design features oak and olive branches that form the tree of life and symbolise strength, solidity and peace. The tree and the motto stand within a hexagon. Edge lettering of the €2 coin: 2**, repeated six times, alternately upright and inverted.',
     country: CountryNames.FRANCE,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 77,
@@ -1469,6 +1471,7 @@ final List<CoinModel> coinsData = [
     description:
         'HSH Prince Albert’s monogram is depicted on the 10, 20 and 50-cent coins.',
     country: CountryNames.MONACO,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
 
   // MONACO - 20 Cent coins
@@ -1489,6 +1492,7 @@ final List<CoinModel> coinsData = [
     description:
         'HSH Prince Albert’s monogram is depicted on the 10, 20 and 50-cent coins.',
     country: CountryNames.MONACO,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
 
   // MONACO - 10 Cent coins
@@ -1499,9 +1503,7 @@ final List<CoinModel> coinsData = [
     periodStartDate: '2001-01-01',
     periodEndDate: '2005-12-31',
     description: 'The 10, 20 and 50 cent coins depict the Prince’s seal.',
-    country:
-        CountryNames
-            .MALTA, // You might want to correct this to CountryNames.MONACO
+    country: CountryNames.MONACO,
   ),
   CoinModel(
     id: 159,
@@ -1511,6 +1513,7 @@ final List<CoinModel> coinsData = [
     description:
         'HSH Prince Albert’s monogram is depicted on the 10, 20 and 50-cent coins.',
     country: CountryNames.MONACO,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
 
   // MONACO - 5 Cent coins
@@ -1532,6 +1535,7 @@ final List<CoinModel> coinsData = [
     description:
         'The coat of arms of the Sovereign Princes of Monaco is the main feature of the design on the 1, 2 and 5-cent coins.',
     country: CountryNames.MONACO,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
 
   // MONACO - 2 Cent coins
@@ -1553,6 +1557,7 @@ final List<CoinModel> coinsData = [
     description:
         'The coat of arms of the Sovereign Princes of Monaco is the main feature of the design on the 1, 2 and 5-cent coins.',
     country: CountryNames.MONACO,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
 
   // MONACO - 1 Cent coins
@@ -1574,6 +1579,7 @@ final List<CoinModel> coinsData = [
     description:
         'The coat of arms of the Sovereign Princes of Monaco is the main feature of the design on the 1, 2 and 5-cent coins.',
     country: CountryNames.MONACO,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
 
   // NETHERLANDS
@@ -2354,6 +2360,7 @@ final List<CoinModel> coinsData = [
     description:
         'The third series, issued between April 2006 and December 2013, shows Pope Benedict XVI. To the left are the designer’s initials ("DL").',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 243,
@@ -2364,6 +2371,7 @@ final List<CoinModel> coinsData = [
     description:
         'The fourth series, first issued in January 2014, shows Pope Francis.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 244,
@@ -2373,6 +2381,7 @@ final List<CoinModel> coinsData = [
     description:
         'The fifth series, first issued in March 2017, shows the coat of arms of the Sovereign of the Vatican City State, Pope Francis.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
 
   // ONE_EURO
@@ -2394,6 +2403,7 @@ final List<CoinModel> coinsData = [
     description:
         'All second series of Vatican, show the coat of arms of the Cardinal Chamberlain, the acting head of state of the Vatican City, superimposed on the emblem of the Apostolic Chamber in the centre of the coin. The upper part of this design is surrounded by the semicircular words "SEDE VACANTE" and the year of issue in Roman numerals, i.e. "MMV". The designer\'s name, "D. LONGO", appears on the lower left-hand edge of the central design, while the respective engraver\'s initials appear on the lower right-hand edge, namely "ELF inc" (on the 5 cent and €1 coins).',
     country: CountryNames.VATICAN,
+    allowedQualities: [CoinQuality.BU],
   ),
   CoinModel(
     id: 247,
@@ -2404,6 +2414,7 @@ final List<CoinModel> coinsData = [
     description:
         'The third series, issued between April 2006 and December 2013, shows Pope Benedict XVI. To the left are the designer’s initials ("DL").',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 248,
@@ -2414,6 +2425,7 @@ final List<CoinModel> coinsData = [
     description:
         'The fourth series, first issued in January 2014, shows Pope Francis.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 249,
@@ -2423,6 +2435,7 @@ final List<CoinModel> coinsData = [
     description:
         'The fifth series, first issued in March 2017, shows the coat of arms of the Sovereign of the Vatican City State, Pope Francis.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
 
   // FIFTY_CENT
@@ -2504,6 +2517,7 @@ final List<CoinModel> coinsData = [
     description:
         'The third series, issued between April 2006 and December 2013, shows Pope Benedict XVI. To the left are the designer’s initials ("DL").',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 258,
@@ -2514,6 +2528,7 @@ final List<CoinModel> coinsData = [
     description:
         'The fourth series, first issued in January 2014, shows Pope Francis.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 259,
@@ -2523,6 +2538,7 @@ final List<CoinModel> coinsData = [
     description:
         'The fifth series, first issued in March 2017, shows the coat of arms of the Sovereign of the Vatican City State, Pope Francis.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
 
   // TEN_CENT
@@ -2554,6 +2570,7 @@ final List<CoinModel> coinsData = [
     description:
         'The third series, issued between April 2006 and December 2013, shows Pope Benedict XVI. To the left are the designer’s initials ("DL").',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 263,
@@ -2564,7 +2581,9 @@ final List<CoinModel> coinsData = [
     description:
         'The fourth series, first issued in January 2014, shows Pope Francis.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
+
   CoinModel(
     id: 264,
     type: CoinType.TEN_CENT,
@@ -2573,6 +2592,7 @@ final List<CoinModel> coinsData = [
     description:
         'The fifth series, first issued in March 2017, shows the coat of arms of the Sovereign of the Vatican City State, Pope Francis.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
 
   // FIVE_CENT
@@ -2604,6 +2624,7 @@ final List<CoinModel> coinsData = [
     description:
         'The third series, issued between April 2006 and December 2013, shows Pope Benedict XVI. To the left are the designer’s initials ("DL").',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 268,
@@ -2614,6 +2635,7 @@ final List<CoinModel> coinsData = [
     description:
         'The fourth series, first issued in January 2014, shows Pope Francis.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 269,
@@ -2623,6 +2645,7 @@ final List<CoinModel> coinsData = [
     description:
         'The fifth series, first issued in March 2017, shows the coat of arms of the Sovereign of the Vatican City State, Pope Francis.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
 
   // TWO_CENT
@@ -2654,6 +2677,7 @@ final List<CoinModel> coinsData = [
     description:
         'The third series, issued between April 2006 and December 2013, shows Pope Benedict XVI. To the left are the designer’s initials ("DL").',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 273,
@@ -2664,6 +2688,7 @@ final List<CoinModel> coinsData = [
     description:
         'The fourth series, first issued in January 2014, shows Pope Francis.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 274,
@@ -2673,6 +2698,7 @@ final List<CoinModel> coinsData = [
     description:
         'The fifth series, first issued in March 2017, shows the coat of arms of the Sovereign of the Vatican City State, Pope Francis.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
 
   // ONE_CENT
@@ -2704,6 +2730,7 @@ final List<CoinModel> coinsData = [
     description:
         'The third series, issued between April 2006 and December 2013, shows Pope Benedict XVI. To the left are the designer’s initials ("DL").',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 278,
@@ -2714,6 +2741,7 @@ final List<CoinModel> coinsData = [
     description:
         'The fourth series, first issued in January 2014, shows Pope Francis.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
   CoinModel(
     id: 279,
@@ -2723,6 +2751,7 @@ final List<CoinModel> coinsData = [
     description:
         'The fifth series, first issued in March 2017, shows the coat of arms of the Sovereign of the Vatican City State, Pope Francis.',
     country: CountryNames.VATICAN,
+    allowedQualities: [...CoinQualityGroups.collector],
   ),
 
   ...coinDataCommemoratives,

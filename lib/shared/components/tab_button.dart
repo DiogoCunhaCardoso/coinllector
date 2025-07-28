@@ -9,6 +9,8 @@ class TabButton extends StatelessWidget {
 
   final Color unselectedColor;
   final bool isUnselectedOnShowcase;
+  final bool isDisabled;
+  final bool isVisuallyDisabled;
 
   const TabButton({
     super.key,
@@ -18,6 +20,8 @@ class TabButton extends StatelessWidget {
 
     this.unselectedColor = Colors.transparent,
     this.isUnselectedOnShowcase = false,
+    this.isDisabled = false,
+    this.isVisuallyDisabled = false, // Allows tapping but styles as disabled
   });
 
   @override
@@ -27,9 +31,14 @@ class TabButton extends StatelessWidget {
 
     return SizedBox(
       child: FilledButton(
-        onPressed: onPressed,
+        onPressed:
+            isDisabled
+                ? null
+                : onPressed, // Only truly disabled if isDisabled is true
         style: FilledButton.styleFrom(
           backgroundColor: isSelected ? colorScheme.onSurface : unselectedColor,
+          disabledBackgroundColor:
+              isSelected ? colorScheme.onSurface : unselectedColor,
           foregroundColor: colorScheme.surface,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppSizes.r8),
@@ -51,7 +60,10 @@ class TabButton extends StatelessWidget {
               text,
               style: textTheme.labelLarge!.copyWith(
                 color:
-                    isSelected
+                    (isDisabled ||
+                            isVisuallyDisabled) // Style as disabled for both states
+                        ? colorScheme.onSurface.withValues(alpha: 0.15)
+                        : isSelected
                         ? colorScheme.surface
                         : isUnselectedOnShowcase
                         ? colorScheme.onSurface.withValues(alpha: 0.5)
