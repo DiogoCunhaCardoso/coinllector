@@ -1,6 +1,6 @@
 After beta testing.
 
-- Added 3 missing coins. (50c, 20c, 10c of France V2)
+- Added 3 missing coins. (50c, 20c, 10c of France V2) and 2025 coins
 
 - Changed some wrong information about coins (All coins revised by beta testers with Leuchtturm album).
 
@@ -18,10 +18,6 @@ After beta testing.
 
 - Added more coin qualities for uncirculated collectors & an info dialog for it.
 
-TODO IN FUTURE
+- Added new feature of allowed qualities
 
-Maybe have sortage system on commemoratives. the default right now is by date but it could be by country A-Z, different filters
-
-- Add 2025 CC,
-
-- Mintmarks should not be counted as a separate coin but as a variant (for now variants are not counted as a separate coin but they are counted as nothing, this is an internal thing for me.)
+- Added ads
